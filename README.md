@@ -17,10 +17,6 @@
   <a href="https://github.com/Richard110206/MineIntel-Autoclaw">
     <img src="https://img.shields.io/github/stars/Richard110206/MineIntel-Autoclaw?style=social" alt="GitHub stars">
   </a>
-  <img src="https://img.shields.io/badge/%E8%B5%9B%E4%BA%8B-2026%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AE%BE%E8%AE%A1%E5%A4%A7%E8%B5%9B-ff6b6b?style=flat-square" alt="Competition">
-  <img src="https://img.shields.io/badge/%E5%A5%96%E9%A1%B9-%E6%B1%9F%E8%8B%8F%E7%9C%81%E4%B8%80%E7%AD%89%E5%A5%96-gold?style=flat-square&labelColor=%23c9a227&color=%23ffd700" alt="Award">
-  <img src="https://img.shields.io/badge/%E8%B5%9B%E9%81%93-%E6%99%BA%E8%83%BD%E4%BD%93%E4%B8%93%E9%A1%B9%E8%B5%9B-9b59b6?style=flat-square" alt="Track">
-  <br>
   <img src="https://img.shields.io/badge/%E5%B9%B3%E5%8F%B0-AutoClaw%20%7C%20GLM-34b7a0?style=flat-square" alt="Platform">
   <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
   <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License">
@@ -302,5 +298,5 @@ MineIntel-AutoClaw-Skill/
   <img src="https://img.shields.io/badge/AutoClaw-34b7a0?style=flat-square" alt="AutoClaw">
   <img src="https://img.shields.io/badge/%E7%9F%BF%E5%B0%8F%E6%99%BA-4fd4bb?style=flat-square" alt="矿小智">
   <br>
-  <sub>MineIntel-AutoClaw &copy; 2026 — 2026 CCDC 智能体专项赛 江苏省一等奖</sub>
+  <sub>MineIntel-AutoClaw &copy; 2026</sub>
 </p>

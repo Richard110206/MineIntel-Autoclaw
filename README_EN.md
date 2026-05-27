@@ -17,10 +17,6 @@
   <a href="https://github.com/Richard110206/MineIntel-Autoclaw">
     <img src="https://img.shields.io/github/stars/Richard110206/MineIntel-Autoclaw?style=social" alt="GitHub stars">
   </a>
-  <img src="https://img.shields.io/badge/Competition-2026%20CCDC-ff6b6b?style=flat-square" alt="Competition">
-  <img src="https://img.shields.io/badge/Award-Jiangsu%20%F0%9F%A5%87%20First%20Prize-gold?style=flat-square&logoColor=white&labelColor=%23c9a227&color=%23ffd700" alt="Award">
-  <img src="https://img.shields.io/badge/Track-Intelligent%20Agent%20Special-9b59b6?style=flat-square" alt="Track">
-  <br>
   <img src="https://img.shields.io/badge/Platform-AutoClaw%20%7C%20GLM-34b7a0?style=flat-square" alt="Platform">
   <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
   <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License">
@@ -304,5 +300,5 @@ This project is licensed under the MIT License.
   <img src="https://img.shields.io/badge/AutoClaw-34b7a0?style=flat-square" alt="AutoClaw">
   <img src="https://img.shields.io/badge/MineIntel-4fd4bb?style=flat-square" alt="MineIntel">
   <br>
-  <sub>MineIntel-AutoClaw &copy; 2026 — 2026 CCDC Intelligent Agent Track, Jiangsu First Prize</sub>
+  <sub>MineIntel-AutoClaw &copy; 2026</sub>
 </p>
