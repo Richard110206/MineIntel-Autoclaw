@@ -1,0 +1,1329 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MineIntel 实时进度 v2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;0,900;1,500;1,700&family=Noto+Serif+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── 矿业纪事报 — MineIntel Chronicle ───────────────────── */
+    :root {
+      --bg-deep: #06090b;
+      --bg: #0a0f12;
+      --bg-elevated: #0f1519;
+      --surface: #141b21;
+      --surface-hover: #192228;
+      --ink: #e4edf2;
+      --ink-soft: #b8c9d3;
+      --muted: #6d8594;
+      --muted-dim: #3d5463;
+      --line: rgba(52, 183, 160, 0.10);
+      --line-mid: rgba(52, 183, 160, 0.18);
+      --line-strong: rgba(52, 183, 160, 0.32);
+      --teal: #34b7a0;
+      --teal-bright: #4fd4bb;
+      --teal-dim: #1f8a78;
+      --emerald: #2ee67a;
+      --emerald-bright: #5dffa0;
+      --cyan: #4ac8e8;
+      --amber: #f0a830;
+      --amber-dim: rgba(240, 168, 48, 0.15);
+      --red: #f04858;
+      --red-dim: rgba(240, 72, 88, 0.12);
+      --glow-teal: 0 0 20px rgba(52, 183, 160, 0.25);
+      --glow-emerald: 0 0 24px rgba(46, 230, 122, 0.30);
+      --glow-amber: 0 0 16px rgba(240, 168, 48, 0.25);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --font-display: "Playfair Display", "STKaiti", "KaiTi", "Noto Serif SC", Georgia, serif;
+      --font-body: "STKaiti", "KaiTi", "Noto Serif SC", "PingFang SC", Georgia, serif;
+      --font-mono: "JetBrains Mono", "Fira Code", Consolas, monospace;
+      --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg-deep);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── atmospheric background ──────────────────────────────────── */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 50% at 15% 10%, rgba(52, 183, 160, 0.06), transparent),
+        radial-gradient(ellipse 50% 40% at 85% 85%, rgba(46, 230, 122, 0.04), transparent),
+        radial-gradient(ellipse 80% 60% at 50% 50%, rgba(74, 200, 232, 0.02), transparent);
+    }
+
+    /* grain texture overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
+
+    /* ── page layout ─────────────────────────────────────────────── */
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 36px 32px 56px;
+    }
+
+    /* ── brand card / masthead ────────────────────────────────────── */
+    .brand-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      padding: 28px 32px 24px;
+      margin-bottom: 24px;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(52, 183, 160, 0.06), rgba(10, 15, 18, 0.9) 40%, rgba(46, 230, 122, 0.03));
+      border: 1px solid var(--line-mid);
+      animation: card-reveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .brand-card::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--emerald), var(--teal));
+    }
+
+    .brand-card::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--emerald), var(--teal));
+    }
+
+    .brand-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line-mid);
+    }
+
+    .brand-logo {
+      margin: 18px 0 12px;
+      white-space: pre;
+      overflow: hidden;
+      color: var(--teal-bright);
+      font-family: var(--font-mono);
+      font-size: clamp(7px, 0.8vw, 11px);
+      line-height: 1.15;
+      text-shadow:
+        0 0 12px rgba(52, 183, 160, 0.35),
+        0 0 40px rgba(52, 183, 160, 0.12);
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand-caption {
+      color: var(--muted);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+      padding-top: 8px;
+      border-top: 1px solid var(--line-mid);
+    }
+
+    /* ── topbar ──────────────────────────────────────────────────── */
+    .topbar {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 24px;
+      animation: slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-family: var(--font-display);
+      font-size: 38px;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      font-style: italic;
+    }
+
+    h1::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 2px;
+      margin-top: 10px;
+      background: linear-gradient(90deg, var(--teal), var(--emerald), transparent);
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--teal-bright);
+      text-transform: none;
+      border-bottom: 1px solid var(--line-mid);
+      padding-bottom: 8px;
+    }
+
+    p { margin: 0; }
+
+    .subtle {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* ── pill (status) ───────────────────────────────────────────── */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-width: max-content;
+      border-radius: 999px;
+      padding: 8px 14px;
+      background: rgba(52, 183, 160, 0.06);
+      border: 1px solid var(--line-mid);
+      color: var(--ink-soft);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      letter-spacing: 0.02em;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--amber);
+      box-shadow: var(--glow-amber);
+    }
+
+    .dot.running {
+      background: var(--emerald);
+      box-shadow: var(--glow-emerald);
+      animation: crystal-pulse 1.4s ease-in-out infinite;
+    }
+
+    .dot.done {
+      background: var(--emerald);
+      box-shadow: var(--glow-emerald);
+    }
+
+    .dot.error {
+      background: var(--red);
+      box-shadow: 0 0 12px rgba(240, 72, 88, 0.35);
+    }
+
+    @keyframes crystal-pulse {
+      0%, 100% { transform: scale(1); opacity: 0.7; box-shadow: 0 0 8px rgba(46, 230, 122, 0.2); }
+      50% { transform: scale(1.6); opacity: 1; box-shadow: 0 0 20px rgba(46, 230, 122, 0.45); }
+    }
+
+    /* ── panels (glass) ──────────────────────────────────────────── */
+    .panel {
+      position: relative;
+      background: linear-gradient(165deg, rgba(20, 27, 33, 0.85), rgba(15, 21, 25, 0.95));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow:
+        0 1px 0 rgba(52, 183, 160, 0.06) inset,
+        0 20px 48px -16px rgba(0, 0, 0, 0.45);
+      animation: panel-reveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .panel:nth-child(2) { animation-delay: 0.05s; }
+    .panel:nth-child(3) { animation-delay: 0.10s; }
+    .panel:nth-child(4) { animation-delay: 0.15s; }
+    .panel:nth-child(5) { animation-delay: 0.20s; }
+
+    /* ── choices grid ────────────────────────────────────────────── */
+    .choices {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .choice {
+      position: relative;
+      border-radius: var(--radius-md);
+      padding: 16px;
+      background: rgba(10, 15, 18, 0.6);
+      border: 1px solid var(--line);
+      min-height: 88px;
+      transition: all var(--transition-smooth);
+      overflow: hidden;
+    }
+
+    .choice::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--teal), var(--emerald));
+      opacity: 0;
+      transition: opacity var(--transition-smooth);
+    }
+
+    .choice:hover {
+      border-color: var(--line-strong);
+      background: rgba(52, 183, 160, 0.04);
+      transform: translateY(-2px);
+      box-shadow: var(--glow-teal);
+    }
+
+    .choice:hover::before { opacity: 1; }
+
+    .choice span {
+      display: block;
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .choice strong {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+      color: var(--ink);
+    }
+
+    /* ── progress section ────────────────────────────────────────── */
+    .progress-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .percent {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 40px;
+      letter-spacing: -0.02em;
+      color: var(--teal-bright);
+      text-shadow: 0 0 30px rgba(52, 183, 160, 0.3);
+      line-height: 1;
+    }
+
+    .track {
+      position: relative;
+      height: 10px;
+      background: rgba(6, 9, 11, 0.8);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .track::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: inherit;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent);
+      pointer-events: none;
+    }
+
+    .fill {
+      width: 0%;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--teal-dim), var(--teal), var(--emerald));
+      transition: width 500ms cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      box-shadow: 0 0 16px rgba(52, 183, 160, 0.3);
+    }
+
+    .fill::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: inherit;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+      animation: shimmer-bar 2s ease-in-out infinite;
+    }
+
+    @keyframes shimmer-bar {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(200%); }
+    }
+
+    .message {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 13px;
+      min-height: 24px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    /* ── step indicators ─────────────────────────────────────────── */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .step {
+      position: relative;
+      border-radius: var(--radius-md);
+      padding: 14px;
+      color: var(--muted-dim);
+      background: rgba(10, 15, 18, 0.5);
+      border: 1px solid rgba(52, 183, 160, 0.06);
+      min-height: 80px;
+      transition: all var(--transition-smooth);
+      overflow: hidden;
+    }
+
+    .step strong {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 13px;
+      display: block;
+      line-height: 1.35;
+    }
+
+    .step-mark {
+      width: 16px;
+      height: 16px;
+      border-radius: 6px;
+      border: 1.5px solid rgba(52, 183, 160, 0.15);
+      background: var(--bg-deep);
+      margin-bottom: 10px;
+      transition: all var(--transition-smooth);
+    }
+
+    .step.active {
+      color: var(--ink);
+      border-color: rgba(52, 183, 160, 0.3);
+      background: rgba(52, 183, 160, 0.05);
+      box-shadow:
+        0 0 0 1px rgba(52, 183, 160, 0.1),
+        0 0 28px rgba(52, 183, 160, 0.08),
+        inset 0 1px 0 rgba(52, 183, 160, 0.08);
+    }
+
+    .step.active .step-mark {
+      background: var(--teal);
+      border-color: var(--teal);
+      box-shadow: 0 0 14px rgba(52, 183, 160, 0.5), 0 0 4px rgba(52, 183, 160, 0.8) inset;
+      animation: mark-breathe 2s ease-in-out infinite;
+    }
+
+    @keyframes mark-breathe {
+      0%, 100% { box-shadow: 0 0 10px rgba(52, 183, 160, 0.4), 0 0 4px rgba(52, 183, 160, 0.8) inset; }
+      50% { box-shadow: 0 0 20px rgba(52, 183, 160, 0.6), 0 0 4px rgba(52, 183, 160, 0.8) inset; }
+    }
+
+    .step.done {
+      color: var(--ink-soft);
+      border-color: rgba(46, 230, 122, 0.12);
+    }
+
+    .step.done .step-mark {
+      background: var(--emerald);
+      border-color: var(--emerald);
+      box-shadow: 0 0 8px rgba(46, 230, 122, 0.3);
+    }
+
+    .step.error {
+      border-color: rgba(240, 72, 88, 0.35);
+      background: var(--red-dim);
+    }
+
+    .step.error .step-mark {
+      background: var(--red);
+      border-color: var(--red);
+      box-shadow: 0 0 10px rgba(240, 72, 88, 0.4);
+    }
+
+    /* ── report flow ─────────────────────────────────────────────── */
+    .report-flow {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 16px;
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      background: rgba(10, 15, 18, 0.5);
+      border: 1px solid var(--line);
+      transition: all var(--transition-smooth);
+    }
+
+    .report-flow:hover {
+      border-color: var(--line-mid);
+      background: rgba(52, 183, 160, 0.03);
+    }
+
+    .report-flow strong {
+      display: block;
+      color: var(--cyan);
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .report-flow span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* ── summary / results ───────────────────────────────────────── */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .summary-box {
+      border-radius: var(--radius-md);
+      padding: 18px;
+      background: rgba(10, 15, 18, 0.5);
+      border: 1px solid var(--line);
+      min-height: 180px;
+      transition: all var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .summary-box::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--teal), transparent);
+      opacity: 0;
+      transition: opacity var(--transition-smooth);
+    }
+
+    .summary-box:hover {
+      border-color: var(--line-strong);
+      transform: translateY(-2px);
+      box-shadow: var(--glow-teal);
+    }
+
+    .summary-box:hover::before { opacity: 0.6; }
+
+    .summary-box h2 {
+      font-size: 13px;
+      margin-bottom: 12px;
+      font-style: italic;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .item-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .result-item {
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+      transition: all var(--transition-fast);
+    }
+
+    .result-item:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .result-item:hover {
+      background: rgba(52, 183, 160, 0.02);
+      border-radius: var(--radius-sm);
+      padding-left: 6px;
+    }
+
+    .item-title {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 14px;
+      overflow-wrap: anywhere;
+      color: var(--ink);
+    }
+
+    .advisor-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .advisor-head .item-title {
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 15px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: rgba(10, 15, 18, 0.7);
+      padding: 3px 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      transition: all var(--transition-fast);
+    }
+
+    .chip:hover {
+      border-color: var(--line-mid);
+      color: var(--ink-soft);
+    }
+
+    .item-link,
+    .item-link:link,
+    .item-link:visited {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 30px;
+      padding: 4px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(46, 230, 122, 0.5);
+      background: linear-gradient(135deg, rgba(46, 230, 122, 0.15), rgba(46, 230, 122, 0.08));
+      color: var(--emerald-bright);
+      text-decoration: none;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.02em;
+      transition: all var(--transition-fast);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    .item-link:hover {
+      background: linear-gradient(135deg, rgba(46, 230, 122, 0.25), rgba(46, 230, 122, 0.15));
+      border-color: rgba(46, 230, 122, 0.7);
+      box-shadow: 0 0 20px rgba(46, 230, 122, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .item-link:active {
+      transform: translateY(0);
+    }
+
+    .empty {
+      color: var(--muted-dim);
+      font-style: italic;
+    }
+
+    /* ── tool calls list ───────────────────────────────────────── */
+    .tool-calls-list {
+      display: grid;
+      gap: 8px;
+      max-height: 320px;
+      overflow-y: auto;
+    }
+    .tool-call-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
+      background: rgba(10, 15, 18, 0.5);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      transition: all var(--transition-fast);
+    }
+    .tool-call-item:hover {
+      border-color: var(--line-mid);
+      background: rgba(52, 183, 160, 0.03);
+    }
+    .tool-call-item.running {
+      border-color: var(--line-strong);
+      box-shadow: var(--glow-teal);
+    }
+    .tool-call-item.error {
+      border-color: rgba(240, 72, 88, 0.3);
+      background: var(--red-dim);
+    }
+    .tc-status {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--muted-dim);
+      flex-shrink: 0;
+    }
+    .tc-status.success { background: var(--emerald); box-shadow: 0 0 6px rgba(46, 230, 122, 0.3); }
+    .tc-status.running { background: var(--amber); box-shadow: var(--glow-amber); animation: crystal-pulse 1.4s ease-in-out infinite; }
+    .tc-status.error { background: var(--red); box-shadow: 0 0 6px rgba(240, 72, 88, 0.3); }
+    .tc-status.fallback { background: var(--cyan); }
+    .tc-name {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--teal-bright);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .tc-server {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .tc-params {
+      font-size: 12px;
+      color: var(--ink-soft);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .tc-time {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted-dim);
+      white-space: nowrap;
+    }
+    .tc-duration {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--amber);
+    }
+
+    /* ── thinking chain timeline ────────────────────────────────── */
+    .thinking-chain {
+      position: relative;
+      max-height: 400px;
+      overflow-y: auto;
+      padding-left: 24px;
+    }
+    .thinking-chain::before {
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--teal), var(--line-mid), transparent);
+      border-radius: 1px;
+    }
+    .think-item {
+      position: relative;
+      padding: 8px 14px 12px;
+      margin-bottom: 4px;
+      border-radius: var(--radius-md);
+      background: rgba(10, 15, 18, 0.5);
+      border: 1px solid var(--line);
+      transition: all var(--transition-fast);
+    }
+    .think-item:hover {
+      border-color: var(--line-mid);
+      background: rgba(52, 183, 160, 0.03);
+    }
+    .think-item::before {
+      content: "";
+      position: absolute;
+      left: -21px;
+      top: 14px;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--teal);
+      border: 2px solid var(--bg-deep);
+      box-shadow: 0 0 8px rgba(52, 183, 160, 0.3);
+    }
+    .think-role {
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--teal-bright);
+      margin-bottom: 4px;
+    }
+    .think-content {
+      font-size: 13px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+    .think-meta {
+      display: flex;
+      gap: 10px;
+      margin-top: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted-dim);
+    }
+
+    /* ── scrollbar ───────────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(52, 183, 160, 0.12); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(52, 183, 160, 0.22); }
+
+    /* ── reveal animations ───────────────────────────────────────── */
+    @keyframes card-reveal {
+      from { opacity: 0; transform: translateY(12px) scale(0.98); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @keyframes panel-reveal {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    @keyframes slide-up {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    /* ── responsive ──────────────────────────────────────────────── */
+    @media (max-width: 920px) {
+      .page { padding: 24px 20px 40px; }
+
+      .choices,
+      .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page { padding: 16px 14px 32px; }
+
+      .brand-card { padding: 20px 18px 18px; }
+
+      .topbar,
+      .progress-head {
+        display: block;
+      }
+
+      h1 { font-size: 26px; }
+
+      .pill,
+      .percent {
+        margin-top: 12px;
+        display: inline-flex;
+      }
+
+      .percent { font-size: 28px; }
+
+      .choices,
+      .steps,
+      .report-flow {
+        grid-template-columns: 1fr;
+      }
+
+      .report-flow {
+        display: grid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="brand-card">
+      <div class="brand-meta"><span>CUMT / 矿业纪事报</span><span>Vol.1 &middot; AutoClaw Skill Monitor</span></div>
+      <pre class="brand-logo">  ███╗   ███╗██╗███╗   ██╗███████╗██╗███╗   ██╗████████╗███████╗██╗
+  ████╗ ████║██║████╗  ██║██╔════╝██║████╗  ██║╚══██╔══╝██╔════╝██║
+  ██╔████╔██║██║██╔██╗ ██║█████╗  ██║██╔██╗ ██║   ██║   █████╗  ██║
+  ██║╚██╔╝██║██║██║╚██╗██║██╔══╝  ██║██║╚██╗██║   ██║   ██╔══╝  ██║
+  ██║ ╚═╝ ██║██║██║ ╚████║███████╗██║██║ ╚████║   ██║   ███████╗███████╗
+  ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚══════╝╚═╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚══════╝</pre>
+      <p class="brand-caption">MineIntel CLI v1.0 / 矿小智科研情报任务看板</p>
+    </section>
+
+    <div class="topbar">
+      <div>
+        <h1>实时进度</h1>
+        <p class="subtle" id="taskName">等待 AutoClaw 启动任务</p>
+      </div>
+      <div class="pill"><span class="dot" id="liveDot"></span><span id="liveState">待命</span></div>
+    </div>
+
+    <section class="panel">
+      <h2><span style="color:var(--teal);margin-right:6px">&#x2776;</span> 我的选择</h2>
+      <div class="choices">
+        <div class="choice"><span>专业或方向</span><strong id="majorValue">未填写</strong></div>
+        <div class="choice"><span>研究领域</span><strong id="fieldValue">未填写</strong></div>
+        <div class="choice"><span>矿业场景</span><strong id="sceneValue">未填写</strong></div>
+        <div class="choice"><span>交付格式</span><strong id="formatsValue">HTML 完整报告 / 文献综述 LaTeX / PDF</strong></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="progress-head">
+        <div>
+          <h2><span style="color:var(--teal);margin-right:6px">&#x2777;</span> 处理进度</h2>
+          <p class="subtle" id="currentLabel">等待开始</p>
+        </div>
+        <div class="percent" id="progressText">0%</div>
+      </div>
+      <div class="track"><div class="fill" id="progressFill"></div></div>
+      <p class="message" id="progressMessage">进度面板已就绪。</p>
+      <div class="steps" id="steps"></div>
+      <div class="report-flow" id="reportFlow">
+        <div>
+          <strong id="reportState">报告未生成</strong>
+          <span id="reportHint">完成"报告生成与导出"阶段后显示状态。</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2><span style="color:var(--teal);margin-right:6px">&#x2778;</span> MCP 工具调用</h2>
+      <div id="toolCallsList" class="tool-calls-list"><p class="empty">执行过程中将展示 MCP 工具调用记录。</p></div>
+    </section>
+
+    <section class="panel">
+      <h2><span style="color:var(--teal);margin-right:6px">&#x2779;</span> 思维链</h2>
+      <div id="thinkingChain" class="thinking-chain"><p class="empty">执行过程中将展示多专家推理链路。</p></div>
+    </section>
+
+    <section class="panel">
+      <h2><span style="color:var(--teal);margin-right:6px">&#x277A;</span> 结果区</h2>
+      <div class="summary-grid">
+        <section class="summary-box">
+          <h2>论文线索</h2>
+          <div class="item-list" id="papersList"><p class="empty">完成后展示全部论文标题、来源、年份和链接。</p></div>
+        </section>
+        <section class="summary-box">
+          <h2>GitHub baseline</h2>
+          <div class="item-list" id="baselineList"><p class="empty">完成后展示仓库名称和适配用途。</p></div>
+        </section>
+        <section class="summary-box">
+          <h2>导师匹配</h2>
+          <div class="item-list" id="advisorsList"><p class="empty">完成后展示姓名、学院和链接。</p></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer style="text-align:center;padding:24px 32px 36px;color:var(--muted-dim);font-family:var(--font-body);font-size:12px;position:relative;z-index:1;">
+    <div style="width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--teal),transparent);margin:0 auto 12px;"></div>
+    <span style="font-style:italic;">MineIntel &middot; 矿小智科研情报平台 &middot; 中国矿业大学</span>
+  </footer>
+
+  <script>
+    const defaultSteps = [
+      { id: "confirm", label: "确认专业和研究领域" },
+      { id: "knowledge", label: "矿井应用知识图谱" },
+      { id: "paper", label: "领域论文线索检索" },
+      { id: "baseline", label: "前沿技术与 baseline" },
+      { id: "advisor", label: "导师方向匹配" },
+      { id: "experience", label: "科研经验参考检索" },
+      { id: "report", label: "报告生成与导出" }
+    ];
+
+    let latestState = {};
+
+    const els = {
+      taskName: document.getElementById("taskName"),
+      liveDot: document.getElementById("liveDot"),
+      liveState: document.getElementById("liveState"),
+      majorValue: document.getElementById("majorValue"),
+      fieldValue: document.getElementById("fieldValue"),
+      sceneValue: document.getElementById("sceneValue"),
+      formatsValue: document.getElementById("formatsValue"),
+      currentLabel: document.getElementById("currentLabel"),
+      progressText: document.getElementById("progressText"),
+      progressFill: document.getElementById("progressFill"),
+      progressMessage: document.getElementById("progressMessage"),
+      steps: document.getElementById("steps"),
+      reportState: document.getElementById("reportState"),
+      reportHint: document.getElementById("reportHint"),
+      papersList: document.getElementById("papersList"),
+      baselineList: document.getElementById("baselineList"),
+      advisorsList: document.getElementById("advisorsList"),
+      toolCallsList: document.getElementById("toolCallsList"),
+      thinkingChain: document.getElementById("thinkingChain")
+    };
+
+    function text(value, fallback = "未填写") {
+      return value && String(value).trim() ? String(value).trim() : fallback;
+    }
+
+    function escapeHTML(value) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function searchLink(query, scope = "") {
+      const text = [scope, query].filter(Boolean).join(" ").trim() || "中国矿业大学 科研";
+      return `https://www.baidu.com/s?wd=${encodeURIComponent(text)}`;
+    }
+
+    function resultLink(url, query, scope = "") {
+      const href = url && String(url).trim() ? String(url).trim() : searchLink(query, scope);
+      return `<a class="item-link" href="${escapeHTML(href)}" target="_blank" rel="noreferrer">链接</a>`;
+    }
+
+    function validPaperItem(item) {
+      const title = String(item?.title || "").trim();
+      if (!title || title.length < 6) return false;
+      if (/^\|?[\s:\-|\u2014]+$/.test(title)) return false;
+      const badFragments = ["|", "---", "线索 |", "方向 |", "可用价值", "最终确认", "人工核验", "搜索线索", "以下为", "该条为", "中文核心期刊", "国际期刊", "GitHub开源项目", "GitHub 开源项目", "论文检索来源", "检索来源", "网络服务限制", "公开资料", "基于知识图谱", "需进一步核验"];
+      if (badFragments.some(token => title.includes(token))) return false;
+      const useful = ["论文", "文献", "研究", "方法", "系统", "模型", "检测", "识别", "监测", "预警", "智能", "矿", "煤", "井", "YOLO", "CNN", "Transformer", "review", "survey", "detection", "monitoring", "mining"];
+      return useful.some(token => title.toLowerCase().includes(token.toLowerCase()));
+    }
+
+    function normalizePaper(item) {
+      if (!validPaperItem(item)) return null;
+      const url = String(item.url || "").trim();
+      if (!/^https?:\/\//i.test(url)) return null;
+      if (/(github\.com|zhihu\.com|xiaohongshu\.com|baidu\.com\/s)/i.test(url)) return null;
+      return {
+        title: String(item.title || "").trim().slice(0, 120),
+        source: String(item.source || "").trim(),
+        year: String(item.year || "").trim(),
+        url
+      };
+    }
+
+    function statusLabel(status) {
+      if (status === "done") return "已完成";
+      if (status === "error") return "异常";
+      if (status === "running") return "执行中";
+      return "待命";
+    }
+
+    function renderSteps(state) {
+      const steps = state.steps || defaultSteps;
+      const current = state.current_step || "";
+      const foundIndex = steps.findIndex(step => step.id === current);
+      const currentIndex = foundIndex >= 0 ? foundIndex : 0;
+      const percent = Math.max(0, Math.min(100, Number(state.percent || 0)));
+      const rawCompleted = new Set(state.completed || []);
+      const completed = new Set();
+      steps.forEach((step, index) => {
+        const beforeCurrent = foundIndex >= 0 && index < currentIndex && state.status !== "idle";
+        const explicitSafe = rawCompleted.has(step.id) && index < currentIndex;
+        const finalDone = state.status === "done" && percent >= 100;
+        if (finalDone || beforeCurrent || explicitSafe) {
+          completed.add(step.id);
+        }
+      });
+      els.steps.innerHTML = steps.map(step => {
+        const isCurrentError = step.id === current && state.status === "error";
+        const cls = isCurrentError ? "step error" : completed.has(step.id) ? "step done" : step.id === current && state.status !== "done" ? "step active" : "step";
+        return `<div class="${cls}"><div class="step-mark"></div><strong>${step.label}</strong></div>`;
+      }).join("");
+    }
+
+    function renderReportStatus(state) {
+      if (state.status !== "done" && !(state.completed || []).includes("report")) {
+        els.reportState.textContent = "报告未生成";
+        els.reportHint.textContent = "完成「报告生成与导出」阶段后显示状态。";
+        return;
+      }
+      els.reportState.textContent = "报告已生成";
+      const output = state.output || {};
+      els.reportHint.textContent = output.relative_dir ? `报告保存目录：${output.relative_dir}` : "报告文件路径会在 AutoClaw 对话中给出。";
+    }
+
+    function renderPapers(items) {
+      const paperItems = (items || []).map(normalizePaper).filter(Boolean);
+      if (paperItems.length === 0) {
+        els.papersList.innerHTML = `<p class="empty">完成后展示全部论文标题、来源、年份和链接。</p>`;
+        return;
+      }
+      els.papersList.innerHTML = paperItems.map(item => `
+        <div class="result-item">
+          <div class="item-title">${escapeHTML(item.title)}</div>
+          <div class="meta">
+            ${item.source ? `<span class="chip">来源：${escapeHTML(item.source)}</span>` : ""}
+            ${item.year ? `<span class="chip">${escapeHTML(item.year)}</span>` : ""}
+            ${resultLink(item.url, item.title || "论文线索", item.source || "")}
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function renderBaseline(items) {
+      const repo = (items || []).map(normalizeRepo).find(Boolean);
+      if (!repo) {
+        els.baselineList.innerHTML = `<p class="empty">完成后展示仓库名称和适配用途。</p>`;
+        return;
+      }
+      const repoName = shortRepoTitle(repo.name || "GitHub baseline");
+      els.baselineList.innerHTML = `
+        <div class="result-item">
+          <div class="item-title">${escapeHTML(repoName)}</div>
+          <div class="meta">
+            ${resultLink(repo.url, repoName, "GitHub")}
+          </div>
+        </div>
+      `;
+    }
+
+    function shortRepoTitle(name) {
+      const value = String(name || "").trim();
+      if (!value) return "GitHub baseline";
+      if (/PPE_Compliance|Coal_Minning|Coal_Mining/i.test(value)) return "煤矿 PPE 合规监测 baseline";
+      if (value.length <= 64) return value;
+      const parts = value.split("/");
+      return parts.length === 2 ? `${parts[0]}/矿井视觉 baseline` : "GitHub baseline";
+    }
+
+    function normalizeRepo(item) {
+      if (!item) return null;
+      const rawUrl = String(item.url || "").trim();
+      const rawName = String(item.name || "").trim();
+      const urlMatch = rawUrl.match(/https?:\/\/github\.com\/([A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+)/i);
+      const nameMatch = rawName.match(/^([A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+)$/);
+      const embeddedName = rawName.match(/github\.com\/([A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+)/i);
+      const name = urlMatch?.[1] || nameMatch?.[1] || embeddedName?.[1] || "";
+      if (!name) return null;
+      return {
+        name,
+        url: urlMatch ? rawUrl : `https://github.com/${name}`
+      };
+    }
+
+    const badAdvisorNameFragments = ["学院", "方向", "部门", "职称", "系统", "控制", "工程", "团队", "研究", "信息", "智能", "机械", "电气", "模式", "识别", "计算机", "相关", "教师", "群体", "队伍"];
+    const badAdvisorDepartments = ["中国矿业大学北京", "北京", "机械与电气工程学院"];
+    const allowedAdvisorDepartments = ["计算机科学与技术学院", "人工智能学院", "安全工程学院", "矿业工程学院", "力学与土木工程学院", "机电工程学院", "信息与控制工程学院", "资源与地球科学学院", "化工学院", "环境与测绘学院", "电气工程学院", "低碳能源与动力工程学院", "材料与物理学院", "数学学院", "经济管理学院", "公共管理学院", "应急管理学院", "马克思主义学院", "外国语言文化学院", "建筑与设计学院", "人文与艺术学院", "体育学院", "孙越崎学院", "未来技术学院", "能源学院", "国家卓越工程师学院", "国际学院", "继续教育学院"];
+
+    function validAdvisorName(name) {
+      const value = String(name || "").trim();
+      return /^[\u4e00-\u9fff]{2,4}$/.test(value) && !badAdvisorNameFragments.some(token => value.includes(token));
+    }
+
+    function validAdvisorDepartment(department) {
+      const value = normalizeAdvisorDepartment(department);
+      return value && !badAdvisorDepartments.some(token => value.includes(token)) && allowedAdvisorDepartments.some(token => value.includes(token));
+    }
+
+    function normalizeAdvisorDepartment(department) {
+      let value = String(department || "").replace(/\s+/g, "").replace(/^[\-—–：:，,。；;|｜]+/, "");
+      const matched = allowedAdvisorDepartments.find(token => value.includes(token));
+      return matched || value;
+    }
+
+    function diversifyAdvisorItems(items, limit = 6, maxPerDepartment = 6) {
+      const picked = [];
+      const overflow = [];
+      const counts = new Map();
+      items.forEach(item => {
+        const department = String(item.department || "").trim();
+        const count = counts.get(department) || 0;
+        if (count < maxPerDepartment) {
+          picked.push(item);
+          counts.set(department, count + 1);
+        } else {
+          overflow.push(item);
+        }
+      });
+      overflow.forEach(item => {
+        if (picked.length < limit) picked.push(item);
+      });
+      return picked.slice(0, limit);
+    }
+
+    function renderAdvisors(items) {
+      const advisorItems = diversifyAdvisorItems((items || [])
+        .filter(item => item && validAdvisorName(item.name) && validAdvisorDepartment(item.department))
+        .map(item => ({ ...item, department: normalizeAdvisorDepartment(item.department) })));
+      if (advisorItems.length === 0) {
+        els.advisorsList.innerHTML = `<p class="empty">暂无导师结果。请继续检索或补充研究方向。</p>`;
+        return;
+      }
+      els.advisorsList.innerHTML = advisorItems.map(item => `
+        <div class="result-item">
+          <div class="advisor-head">
+            <div class="item-title">${escapeHTML(item.name)}</div>
+            ${resultLink(item.url, `${item.department || ""} ${item.name || ""} 教师`, "中国矿业大学 徐州")}
+          </div>
+          <div class="meta">
+            ${item.department ? `<span class="chip">学院：${escapeHTML(item.department)}</span>` : ""}
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function renderToolCalls(state) {
+      const calls = state.tool_calls || [];
+      if (!Array.isArray(calls) || calls.length === 0) {
+        els.toolCallsList.innerHTML = `<p class="empty">执行过程中将展示 MCP 工具调用记录。</p>`;
+        return;
+      }
+      els.toolCallsList.innerHTML = calls.slice().reverse().map(call => `
+        <div class="tool-call-item ${call.status || ""}">
+          <span class="tc-status ${call.status || ""}"></span>
+          <span class="tc-name" title="${escapeHTML(call.params)}">${escapeHTML(call.tool)}</span>
+          <span class="tc-server">${call.server ? escapeHTML(call.server) : "local"}</span>
+          <span class="tc-time">${escapeHTML(call.time || "")}${call.duration ? ` <span class="tc-duration">${escapeHTML(call.duration)}</span>` : ""}</span>
+        </div>
+      `).join("");
+    }
+
+    function renderThinkingChain(state) {
+      const chain = state.thinking_chain || [];
+      if (!Array.isArray(chain) || chain.length === 0) {
+        els.thinkingChain.innerHTML = `<p class="empty">执行过程中将展示多专家推理链路。</p>`;
+        return;
+      }
+      const stepLabels = { confirm: "任务理解", knowledge: "知识图谱", paper: "论文检索", baseline: "前沿技术", advisor: "导师匹配", experience: "经验参考", report: "报告导出" };
+      els.thinkingChain.innerHTML = chain.slice().reverse().map(item => `
+        <div class="think-item">
+          <div class="think-role">${escapeHTML(item.role)}</div>
+          <div class="think-content">${escapeHTML(item.content)}</div>
+          <div class="think-meta">
+            <span>${escapeHTML(item.time || "")}</span>
+            ${item.step ? `<span class="chip">${escapeHTML(stepLabels[item.step] || item.step)}</span>` : ""}
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function renderResults(state) {
+      const results = state.results || {};
+      renderReportStatus(state);
+      renderPapers(results.papers || []);
+      renderBaseline(results.baseline || []);
+      renderAdvisors(results.advisors || []);
+    }
+
+    function renderState(state) {
+      latestState = state || {};
+      const percent = Math.max(0, Math.min(100, Number(latestState.percent || 0)));
+      const selection = latestState.selection || {};
+      els.taskName.textContent = text(latestState.task, "等待 AutoClaw 启动任务");
+      els.liveState.textContent = statusLabel(latestState.status);
+      els.liveDot.className = `dot ${latestState.status || ""}`;
+      els.majorValue.textContent = text(selection.major);
+      els.fieldValue.textContent = text(selection.field);
+      els.sceneValue.textContent = text(selection.scene);
+      els.formatsValue.textContent = text(selection.formats, "HTML 完整报告 / 文献综述 LaTeX / PDF");
+      els.currentLabel.textContent = text(latestState.current_label, "等待开始");
+      els.progressText.textContent = `${percent}%`;
+      els.progressFill.style.width = `${percent}%`;
+      els.progressMessage.textContent = text(latestState.message, "进度面板已就绪。");
+      renderSteps(latestState);
+      renderToolCalls(latestState);
+      renderThinkingChain(latestState);
+      renderResults(latestState);
+    }
+
+    async function poll() {
+      try {
+        const response = await fetch(`/state?t=${Date.now()}`, { cache: "no-store" });
+        if (!response.ok) throw new Error("state unavailable");
+        const data = await response.json();
+        console.log("[poll] fetched state:", data.status, data.percent + "%", data.current_step);
+        renderState(data);
+        return;
+      } catch (_) {
+        // fallback: read local JSON file (works with file:// protocol)
+      }
+      try {
+        const response = await fetch(`progress_state.json?t=${Date.now()}`, { cache: "no-store" });
+        if (!response.ok) throw new Error("local json unavailable");
+        renderState(await response.json());
+      } catch (error) {
+        renderState({
+          status: "idle",
+          task: "等待进度服务",
+          current_label: "未连接",
+          message: "请让 AutoClaw 调用 start_progress_ui.py 打开本页面，直接双击 HTML 时只能查看静态页面。",
+          percent: 0,
+          steps: defaultSteps,
+          completed: [],
+          selection: {},
+          sections: {},
+          results: {},
+          artifacts: []
+        });
+      }
+    }
+
+    renderState({});
+    poll();
+    setInterval(poll, 1000);
+  </script>
+</body>
+</html>

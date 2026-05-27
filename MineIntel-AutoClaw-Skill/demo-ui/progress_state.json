@@ -1,0 +1,95 @@
+{
+  "task": "等待 AutoClaw 启动任务",
+  "status": "idle",
+  "current_step": "confirm",
+  "current_label": "等待 AutoClaw 开始执行",
+  "message": "进度面板已就绪。",
+  "percent": 0,
+  "steps": [
+    {
+      "id": "confirm",
+      "label": "确认专业和研究领域"
+    },
+    {
+      "id": "knowledge",
+      "label": "矿井应用知识图谱"
+    },
+    {
+      "id": "paper",
+      "label": "领域论文线索检索"
+    },
+    {
+      "id": "baseline",
+      "label": "前沿技术与 baseline"
+    },
+    {
+      "id": "advisor",
+      "label": "导师方向匹配"
+    },
+    {
+      "id": "experience",
+      "label": "科研经验参考检索"
+    },
+    {
+      "id": "report",
+      "label": "报告生成与导出"
+    }
+  ],
+  "completed": [],
+  "selection": {
+    "major": "",
+    "field": "",
+    "scene": "",
+    "formats": "HTML 完整报告 / 文献综述 LaTeX / PDF"
+  },
+  "sections": {
+    "papers": {
+      "title": "论文线索",
+      "content": "",
+      "items": []
+    },
+    "baseline": {
+      "title": "GitHub baseline",
+      "content": "",
+      "items": []
+    },
+    "advisors": {
+      "title": "导师匹配",
+      "content": "",
+      "items": []
+    },
+    "route": {
+      "title": "技术路线",
+      "content": "",
+      "items": []
+    },
+    "experience": {
+      "title": "科研经验参考",
+      "content": "",
+      "items": []
+    }
+  },
+  "results": {
+    "papers": [],
+    "baseline": [],
+    "advisors": [],
+    "route": {
+      "center": "技术路线",
+      "branches": []
+    },
+    "experience": []
+  },
+  "artifacts": [],
+  "output": {},
+  "logs": [
+    {
+      "time": "2026-05-22 08:53:27",
+      "text": "进度面板已就绪。"
+    },
+    {
+      "time": "2026-05-22 08:53:27",
+      "text": "进度面板已就绪。"
+    }
+  ],
+  "updated_at": "2026-05-22 08:53:27"
+}

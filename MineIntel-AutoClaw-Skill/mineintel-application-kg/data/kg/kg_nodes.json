@@ -1,0 +1,4780 @@
+[
+  {
+    "id": "application_concept:三维gis-0ff3ac2712",
+    "type": "application_concept",
+    "name": "三维GIS",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "application_scenario",
+      "candidate_count": 5,
+      "candidate_source_count": 1
+    }
+  },
+  {
+    "id": "application_concept:地质保障-24be8287cc",
+    "type": "application_concept",
+    "name": "地质保障",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "application_scenario",
+      "candidate_count": 12,
+      "candidate_source_count": 5
+    }
+  },
+  {
+    "id": "application_concept:安全管控-1606a7bc47",
+    "type": "application_concept",
+    "name": "安全管控",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "application_scenario",
+      "candidate_count": 18,
+      "candidate_source_count": 5
+    }
+  },
+  {
+    "id": "application_concept:巡检机器人-258fb62fb6",
+    "type": "application_concept",
+    "name": "巡检机器人",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "application_scenario",
+      "candidate_count": 32,
+      "candidate_source_count": 7
+    }
+  },
+  {
+    "id": "application_concept:掘进机远程控制-d67c9aedcf",
+    "type": "application_concept",
+    "name": "掘进机远程控制",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "application_scenario",
+      "candidate_count": 4,
+      "candidate_source_count": 1
+    }
+  },
+  {
+    "id": "application_concept:探放水-d953f431df",
+    "type": "application_concept",
+    "name": "探放水",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "application_scenario",
+      "candidate_count": 2,
+      "candidate_source_count": 1
+    }
+  },
+  {
+    "id": "application_concept:无人驾驶-87ee30bb34",
+    "type": "application_concept",
+    "name": "无人驾驶",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "application_scenario",
+      "candidate_count": 46,
+      "candidate_source_count": 9
+    }
+  },
+  {
+    "id": "application_concept:智能掘进-ad7cf1cfcf",
+    "type": "application_concept",
+    "name": "智能掘进",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "application_scenario",
+      "candidate_count": 3,
+      "candidate_source_count": 3
+    }
+  },
+  {
+    "id": "application_concept:智能洗选-16a3fccdbf",
+    "type": "application_concept",
+    "name": "智能洗选",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "application_scenario",
+      "candidate_count": 3,
+      "candidate_source_count": 2
+    }
+  },
+  {
+    "id": "application_concept:智能综采-a39cec5540",
+    "type": "application_concept",
+    "name": "智能综采",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "application_scenario",
+      "candidate_count": 2,
+      "candidate_source_count": 1
+    }
+  },
+  {
+    "id": "application_concept:智能采煤-30d3d67387",
+    "type": "application_concept",
+    "name": "智能采煤",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "application_scenario",
+      "candidate_count": 2,
+      "candidate_source_count": 2
+    }
+  },
+  {
+    "id": "application_concept:有轨电机车-aef76ef31a",
+    "type": "application_concept",
+    "name": "有轨电机车",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "application_scenario",
+      "candidate_count": 9,
+      "candidate_source_count": 3
+    }
+  },
+  {
+    "id": "application_concept:煤流调速-e0b0001b3c",
+    "type": "application_concept",
+    "name": "煤流调速",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "application_scenario",
+      "candidate_count": 1,
+      "candidate_source_count": 1
+    }
+  },
+  {
+    "id": "application_concept:皮带巡检-c843148df0",
+    "type": "application_concept",
+    "name": "皮带巡检",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "application_scenario",
+      "candidate_count": 6,
+      "candidate_source_count": 2
+    }
+  },
+  {
+    "id": "application_concept:皮带异物-9a0bc29fd0",
+    "type": "application_concept",
+    "name": "皮带异物",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "application_scenario",
+      "candidate_count": 5,
+      "candidate_source_count": 4
+    }
+  },
+  {
+    "id": "application_concept:矿卡无人驾驶-1cd3c7c7f5",
+    "type": "application_concept",
+    "name": "矿卡无人驾驶",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "application_scenario",
+      "candidate_count": 10,
+      "candidate_source_count": 2
+    }
+  },
+  {
+    "id": "application_concept:矿山态势可视化-d6b9a56d71",
+    "type": "application_concept",
+    "name": "矿山态势可视化",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "application_scenario",
+      "candidate_count": 4,
+      "candidate_source_count": 1
+    }
+  },
+  {
+    "id": "application_concept:边坡监测-39e79f45c4",
+    "type": "application_concept",
+    "name": "边坡监测",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "application_scenario",
+      "candidate_count": 5,
+      "candidate_source_count": 1
+    }
+  },
+  {
+    "id": "application_concept:远程控制-57ac2408e3",
+    "type": "application_concept",
+    "name": "远程控制",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "application_scenario",
+      "candidate_count": 45,
+      "candidate_source_count": 4
+    }
+  },
+  {
+    "id": "application_concept:铲运车-f19181af87",
+    "type": "application_concept",
+    "name": "铲运车",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "application_scenario",
+      "candidate_count": 6,
+      "candidate_source_count": 2
+    }
+  },
+  {
+    "id": "application_concept:集中控制-7dac4e0afb",
+    "type": "application_concept",
+    "name": "集中控制",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "application_scenario",
+      "candidate_count": 6,
+      "candidate_source_count": 1
+    }
+  },
+  {
+    "id": "application_concept:露天矿卡-e42e9e8b53",
+    "type": "application_concept",
+    "name": "露天矿卡",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "application_scenario",
+      "candidate_count": 7,
+      "candidate_source_count": 3
+    }
+  },
+  {
+    "id": "application_concept:预测性维护-b6e2614c2a",
+    "type": "application_concept",
+    "name": "预测性维护",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "application_scenario",
+      "candidate_count": 12,
+      "candidate_source_count": 4
+    }
+  },
+  {
+    "id": "application_scenario:ai大模型赋能-df51d150af",
+    "type": "application_scenario",
+    "name": "AI大模型赋能",
+    "aliases": [],
+    "attributes": {
+      "curated": true,
+      "source_file": "user_sources\\矿井场景总览.csv"
+    }
+  },
+  {
+    "id": "application_scenario:井下主运输系统带式输送机-c035ee4ee7",
+    "type": "application_scenario",
+    "name": "井下主运输系统（带式输送机）",
+    "aliases": [],
+    "attributes": {
+      "curated": true,
+      "source_file": "user_sources\\矿井场景总览.csv"
+    }
+  },
+  {
+    "id": "application_scenario:井下人员定位与管理-e14b25d077",
+    "type": "application_scenario",
+    "name": "井下人员定位与管理",
+    "aliases": [],
+    "attributes": {
+      "curated": true,
+      "source_file": "user_sources\\矿井场景总览.csv"
+    }
+  },
+  {
+    "id": "application_scenario:井下辅助运输-5822e85007",
+    "type": "application_scenario",
+    "name": "井下辅助运输",
+    "aliases": [],
+    "attributes": {
+      "curated": true,
+      "source_file": "user_sources\\矿井场景总览.csv"
+    }
+  },
+  {
+    "id": "application_scenario:地质保障与三维建模-3aa5106885",
+    "type": "application_scenario",
+    "name": "地质保障与三维建模",
+    "aliases": [],
+    "attributes": {
+      "curated": true,
+      "source_file": "user_sources\\矿井场景总览.csv"
+    }
+  },
+  {
+    "id": "application_scenario:大型固定设备运维主提升主排水压风等-ab39706388",
+    "type": "application_scenario",
+    "name": "大型固定设备运维（主提升/主排水/压风等）",
+    "aliases": [],
+    "attributes": {
+      "curated": true,
+      "source_file": "user_sources\\矿井场景总览.csv"
+    }
+  },
+  {
+    "id": "application_scenario:掘进工作面-554742f0ce",
+    "type": "application_scenario",
+    "name": "掘进工作面",
+    "aliases": [],
+    "attributes": {
+      "curated": true,
+      "source_file": "user_sources\\矿井场景总览.csv"
+    }
+  },
+  {
+    "id": "application_scenario:水害防治-a1cdb07242",
+    "type": "application_scenario",
+    "name": "水害防治",
+    "aliases": [],
+    "attributes": {
+      "curated": true,
+      "source_file": "user_sources\\矿井场景总览.csv"
+    }
+  },
+  {
+    "id": "application_scenario:火灾与防灭火-88ee4d6639",
+    "type": "application_scenario",
+    "name": "火灾与防灭火",
+    "aliases": [],
+    "attributes": {
+      "curated": true,
+      "source_file": "user_sources\\矿井场景总览.csv"
+    }
+  },
+  {
+    "id": "application_scenario:瓦斯监测监控-b0c64d407e",
+    "type": "application_scenario",
+    "name": "瓦斯监测监控",
+    "aliases": [],
+    "attributes": {
+      "curated": true,
+      "source_file": "user_sources\\矿井场景总览.csv"
+    }
+  },
+  {
+    "id": "application_scenario:矿井供电系统-a84c72fbe0",
+    "type": "application_scenario",
+    "name": "矿井供电系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true,
+      "source_file": "user_sources\\矿井场景总览.csv"
+    }
+  },
+  {
+    "id": "application_scenario:矿井通信网络-836ee9fb60",
+    "type": "application_scenario",
+    "name": "矿井通信网络",
+    "aliases": [],
+    "attributes": {
+      "curated": true,
+      "source_file": "user_sources\\矿井场景总览.csv"
+    }
+  },
+  {
+    "id": "application_scenario:矿井通风系统-3e86a766d2",
+    "type": "application_scenario",
+    "name": "矿井通风系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true,
+      "source_file": "user_sources\\矿井场景总览.csv"
+    }
+  },
+  {
+    "id": "application_scenario:矿山综合管控平台-a7bc97aa29",
+    "type": "application_scenario",
+    "name": "矿山综合管控平台",
+    "aliases": [],
+    "attributes": {
+      "curated": true,
+      "source_file": "user_sources\\矿井场景总览.csv"
+    }
+  },
+  {
+    "id": "application_scenario:穿爆作业露天矿-ea6d3b977f",
+    "type": "application_scenario",
+    "name": "穿爆作业（露天矿）",
+    "aliases": [],
+    "attributes": {
+      "curated": true,
+      "source_file": "user_sources\\矿井场景总览.csv"
+    }
+  },
+  {
+    "id": "application_scenario:综采工作面-7017a7b2ec",
+    "type": "application_scenario",
+    "name": "综采工作面",
+    "aliases": [],
+    "attributes": {
+      "curated": true,
+      "source_file": "user_sources\\矿井场景总览.csv"
+    }
+  },
+  {
+    "id": "application_scenario:绿色低碳与环保-01e9cf9a26",
+    "type": "application_scenario",
+    "name": "绿色低碳与环保",
+    "aliases": [],
+    "attributes": {
+      "curated": true,
+      "source_file": "user_sources\\矿井场景总览.csv"
+    }
+  },
+  {
+    "id": "application_scenario:选矿洗煤生产-79f94c00d6",
+    "type": "application_scenario",
+    "name": "选矿/洗煤生产",
+    "aliases": [],
+    "attributes": {
+      "curated": true,
+      "source_file": "user_sources\\矿井场景总览.csv"
+    }
+  },
+  {
+    "id": "application_scenario:露天矿卡车运输-8e675923cb",
+    "type": "application_scenario",
+    "name": "露天矿卡车运输",
+    "aliases": [],
+    "attributes": {
+      "curated": true,
+      "source_file": "user_sources\\矿井场景总览.csv"
+    }
+  },
+  {
+    "id": "application_scenario:顶板与矿压监测-83921c28bd",
+    "type": "application_scenario",
+    "name": "顶板与矿压监测",
+    "aliases": [],
+    "attributes": {
+      "curated": true,
+      "source_file": "user_sources\\矿井场景总览.csv"
+    }
+  },
+  {
+    "id": "metric:准确率-ada4348c6f",
+    "type": "metric",
+    "name": "准确率",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "metric",
+      "candidate_count": 5,
+      "candidate_source_count": 3
+    }
+  },
+  {
+    "id": "metric:减人-38195788f8",
+    "type": "metric",
+    "name": "减人",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "metric",
+      "candidate_count": 15,
+      "candidate_source_count": 8
+    }
+  },
+  {
+    "id": "metric:可用性-11b0f73018",
+    "type": "metric",
+    "name": "可用性",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "metric",
+      "candidate_count": 6,
+      "candidate_source_count": 3
+    }
+  },
+  {
+    "id": "metric:可靠性-d97ad76236",
+    "type": "metric",
+    "name": "可靠性",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "metric",
+      "candidate_count": 61,
+      "candidate_source_count": 6
+    }
+  },
+  {
+    "id": "metric:响应时延-3577f1395e",
+    "type": "metric",
+    "name": "响应时延",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "metric",
+      "candidate_count": 2,
+      "candidate_source_count": 1
+    }
+  },
+  {
+    "id": "metric:增安-56dfea46d1",
+    "type": "metric",
+    "name": "增安",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "metric",
+      "candidate_count": 8,
+      "candidate_source_count": 4
+    }
+  },
+  {
+    "id": "metric:实时性-4d717ad524",
+    "type": "metric",
+    "name": "实时性",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "metric",
+      "candidate_count": 16,
+      "candidate_source_count": 6
+    }
+  },
+  {
+    "id": "metric:常态化-6f16d2d6ff",
+    "type": "metric",
+    "name": "常态化",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "metric",
+      "candidate_count": 5,
+      "candidate_source_count": 4
+    }
+  },
+  {
+    "id": "metric:成本-5354b098e2",
+    "type": "metric",
+    "name": "成本",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "metric",
+      "candidate_count": 66,
+      "candidate_source_count": 12
+    }
+  },
+  {
+    "id": "metric:提效-0a8c01c761",
+    "type": "metric",
+    "name": "提效",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "metric",
+      "candidate_count": 17,
+      "candidate_source_count": 8
+    }
+  },
+  {
+    "id": "metric:稳定性-b040e698ea",
+    "type": "metric",
+    "name": "稳定性",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "metric",
+      "candidate_count": 10,
+      "candidate_source_count": 6
+    }
+  },
+  {
+    "id": "metric:能耗-3ec646fca5",
+    "type": "metric",
+    "name": "能耗",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "metric",
+      "candidate_count": 9,
+      "candidate_source_count": 4
+    }
+  },
+  {
+    "id": "metric:节能-8ebd40d66e",
+    "type": "metric",
+    "name": "节能",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "metric",
+      "candidate_count": 8,
+      "candidate_source_count": 5
+    }
+  },
+  {
+    "id": "pain_concept:互联互通-5b23faa0af",
+    "type": "pain_concept",
+    "name": "互联互通",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "pain_point",
+      "candidate_count": 8,
+      "candidate_source_count": 4
+    }
+  },
+  {
+    "id": "pain_concept:人才-bc10285c64",
+    "type": "pain_concept",
+    "name": "人才",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "pain_point",
+      "candidate_count": 23,
+      "candidate_source_count": 11
+    }
+  },
+  {
+    "id": "pain_concept:低时延-8a888449ed",
+    "type": "pain_concept",
+    "name": "低时延",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "pain_point",
+      "candidate_count": 54,
+      "candidate_source_count": 3
+    }
+  },
+  {
+    "id": "pain_concept:信息安全-46cf7f22bc",
+    "type": "pain_concept",
+    "name": "信息安全",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "pain_point",
+      "candidate_count": 15,
+      "candidate_source_count": 6
+    }
+  },
+  {
+    "id": "pain_concept:光照-f1b6cc662d",
+    "type": "pain_concept",
+    "name": "光照",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "pain_point",
+      "candidate_count": 2,
+      "candidate_source_count": 2
+    }
+  },
+  {
+    "id": "pain_concept:安全风险-0079c61b34",
+    "type": "pain_concept",
+    "name": "安全风险",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "pain_point",
+      "candidate_count": 15,
+      "candidate_source_count": 6
+    }
+  },
+  {
+    "id": "pain_concept:常态化运行-cda4fa8723",
+    "type": "pain_concept",
+    "name": "常态化运行",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "pain_point",
+      "candidate_count": 2,
+      "candidate_source_count": 2
+    }
+  },
+  {
+    "id": "pain_concept:成本-5354b098e2",
+    "type": "pain_concept",
+    "name": "成本",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "pain_point",
+      "candidate_count": 66,
+      "candidate_source_count": 12
+    }
+  },
+  {
+    "id": "pain_concept:故障-5e3fe540b9",
+    "type": "pain_concept",
+    "name": "故障",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "pain_point",
+      "candidate_count": 53,
+      "candidate_source_count": 7
+    }
+  },
+  {
+    "id": "pain_concept:数据孤岛-23610d8643",
+    "type": "pain_concept",
+    "name": "数据孤岛",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "pain_point",
+      "candidate_count": 1,
+      "candidate_source_count": 1
+    }
+  },
+  {
+    "id": "pain_concept:本安-685ea6df5c",
+    "type": "pain_concept",
+    "name": "本安",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "pain_point",
+      "candidate_count": 22,
+      "candidate_source_count": 3
+    }
+  },
+  {
+    "id": "pain_concept:标准体系-4136666e94",
+    "type": "pain_concept",
+    "name": "标准体系",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "pain_point",
+      "candidate_count": 33,
+      "candidate_source_count": 12
+    }
+  },
+  {
+    "id": "pain_concept:灾害-2258441779",
+    "type": "pain_concept",
+    "name": "灾害",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "pain_point",
+      "candidate_count": 37,
+      "candidate_source_count": 10
+    }
+  },
+  {
+    "id": "pain_concept:烟囱-45cb548cce",
+    "type": "pain_concept",
+    "name": "烟囱",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "pain_point",
+      "candidate_count": 4,
+      "candidate_source_count": 2
+    }
+  },
+  {
+    "id": "pain_concept:粉尘-99c9cca8a5",
+    "type": "pain_concept",
+    "name": "粉尘",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "pain_point",
+      "candidate_count": 21,
+      "candidate_source_count": 8
+    }
+  },
+  {
+    "id": "pain_concept:网络不稳定-ad3109f2a5",
+    "type": "pain_concept",
+    "name": "网络不稳定",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "pain_point",
+      "candidate_count": 1,
+      "candidate_source_count": 1
+    }
+  },
+  {
+    "id": "pain_concept:运维-57bd58e6ff",
+    "type": "pain_concept",
+    "name": "运维",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "pain_point",
+      "candidate_count": 66,
+      "candidate_source_count": 10
+    }
+  },
+  {
+    "id": "pain_concept:遮挡-9830020761",
+    "type": "pain_concept",
+    "name": "遮挡",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "pain_point",
+      "candidate_count": 8,
+      "candidate_source_count": 5
+    }
+  },
+  {
+    "id": "pain_concept:防爆-d46698af34",
+    "type": "pain_concept",
+    "name": "防爆",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "pain_point",
+      "candidate_count": 25,
+      "candidate_source_count": 7
+    }
+  },
+  {
+    "id": "pain_concept:高可靠-0199ed22f2",
+    "type": "pain_concept",
+    "name": "高可靠",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "pain_point",
+      "candidate_count": 31,
+      "candidate_source_count": 2
+    }
+  },
+  {
+    "id": "pain_point:ai工业机理模型与矿山专业知识结合不-7739e2fbf3",
+    "type": "pain_point",
+    "name": "AI工业机理模型与矿山专业知识结合不足",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:临时支护与永久支护衔接不畅效率低-871b9858f2",
+    "type": "pain_point",
+    "name": "临时支护与永久支护衔接不畅，效率低",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:井下供电可靠性要求高但故障频发-b7b00a81d3",
+    "type": "pain_point",
+    "name": "井下供电可靠性要求高但故障频发",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:井下无线通信信号覆盖不完整-e808956837",
+    "type": "pain_point",
+    "name": "井下无线通信信号覆盖不完整",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:井下突水透水事故预警手段不足-08b944cd36",
+    "type": "pain_point",
+    "name": "井下突水/透水事故预警手段不足",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:井下道路狭窄交叉点多运输安全隐患大-6d057b9248",
+    "type": "pain_point",
+    "name": "井下道路狭窄、交叉点多，运输安全隐患大",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:人员入井升井管理依赖人工-36fa55382a",
+    "type": "pain_point",
+    "name": "人员入井/升井管理依赖人工",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:传感器维护标定频繁工作量大-ec794e1ac2",
+    "type": "pain_point",
+    "name": "传感器维护标定频繁，工作量大",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:传统定位精度低区域级无法精确到人-b2183121f0",
+    "type": "pain_point",
+    "name": "传统定位精度低（区域级），无法精确到人",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:供电系统单线图与实际拓扑不同步-635324517a",
+    "type": "pain_point",
+    "name": "供电系统单线图与实际拓扑不同步",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:关键设备运行参数监测不全面-39faa2bbc0",
+    "type": "pain_point",
+    "name": "关键设备运行参数监测不全面",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:冲击地压预警手段不足-bf0a8fe3d4",
+    "type": "pain_point",
+    "name": "冲击地压预警手段不足",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:各场景ai模型重复开发通用性差-ea6a764d1b",
+    "type": "pain_point",
+    "name": "各场景AI模型重复开发、通用性差",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:各子系统通风排水运输安全供电等信息孤-1aebb40c2d",
+    "type": "pain_point",
+    "name": "各子系统（通风/排水/运输/安全/供电等）信息孤岛严重",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:围岩变形监测手段单一-8f75f56097",
+    "type": "pain_point",
+    "name": "围岩变形监测手段单一",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:在线检测滞后无法实时反馈-a47d73ac9e",
+    "type": "pain_point",
+    "name": "在线检测滞后，无法实时反馈",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:地表水体与井下联系分析不充分-dff5feba75",
+    "type": "pain_point",
+    "name": "地表水体与井下联系分析不充分",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:地质条件未知前方探水探瓦斯困难-e8f08f1672",
+    "type": "pain_point",
+    "name": "地质条件未知，前方探水探瓦斯困难",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:地质构造探查精度不够前方隐伏构造难发-0d680aa0d0",
+    "type": "pain_point",
+    "name": "地质构造探查精度不够，前方隐伏构造难发现",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:地质模型更新滞后与实际偏差大-b6ec71583d",
+    "type": "pain_point",
+    "name": "地质模型更新滞后，与实际偏差大",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:地面与井下通信可靠性差-b83c4c5c55",
+    "type": "pain_point",
+    "name": "地面与井下通信可靠性差",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:备品备件管理粗放-8ce4dff155",
+    "type": "pain_point",
+    "name": "备品备件管理粗放",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:外因火灾电缆设备起火发现滞后-c3539cbe65",
+    "type": "pain_point",
+    "name": "外因火灾（电缆/设备起火）发现滞后",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:多台皮带机联动控制效率低空载率高-2d86400f49",
+    "type": "pain_point",
+    "name": "多台皮带机联动控制效率低，空载率高",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:多源地质数据融合分析能力弱-349b5baa13",
+    "type": "pain_point",
+    "name": "多源地质数据融合分析能力弱",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:多种通信系统并存wifi4g5g广播-52e513e04a",
+    "type": "pain_point",
+    "name": "多种通信系统并存（WiFi/4G/5G/广播），互不兼容",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:大倾角弯曲运输工况适应性差-6b39c0c4d9",
+    "type": "pain_point",
+    "name": "大倾角/弯曲运输工况适应性差",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:大型矿卡人力成本高司机招聘难-ae79953ab6",
+    "type": "pain_point",
+    "name": "大型矿卡人力成本高，司机招聘难",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:大采高放顶煤工作面矿压显现复杂-74c4990430",
+    "type": "pain_point",
+    "name": "大采高/放顶煤工作面矿压显现复杂",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:大面积瓦斯监测覆盖不完整-cb2e657493",
+    "type": "pain_point",
+    "name": "大面积瓦斯监测覆盖不完整",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:尾矿品位偏高回收率不稳定-5960d44429",
+    "type": "pain_point",
+    "name": "尾矿品位偏高，回收率不稳定",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:局部通风机管理分散-e3f525ec26",
+    "type": "pain_point",
+    "name": "局部通风机管理分散",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:工作面前方煤层厚度岩性变化预判不足-112086aaa1",
+    "type": "pain_point",
+    "name": "工作面前方煤层厚度/岩性变化预判不足",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:工作面直线度难以保障易导致设备偏移-ea0e3e0473",
+    "type": "pain_point",
+    "name": "工作面直线度难以保障，易导致设备偏移",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:应急指挥缺乏多系统联动支撑-1f475591c0",
+    "type": "pain_point",
+    "name": "应急指挥缺乏多系统联动支撑",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:应急预案执行依赖人工决策-f2c6f7ad42",
+    "type": "pain_point",
+    "name": "应急预案执行依赖人工决策",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:排水系统自动化程度低-7810069f4c",
+    "type": "pain_point",
+    "name": "排水系统自动化程度低",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:掘进回采中地质异常影响生产-38553be6a5",
+    "type": "pain_point",
+    "name": "掘进/回采中地质异常影响生产",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:掘进与运输通风协调不足-f6a3c0bfb1",
+    "type": "pain_point",
+    "name": "掘进与运输、通风协调不足",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:掘进工作面粉尘大能见度低-97006b7dd3",
+    "type": "pain_point",
+    "name": "掘进工作面粉尘大，能见度低",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:掘进机截割精度依赖人工经验超欠挖严重-4c2ce20a98",
+    "type": "pain_point",
+    "name": "掘进机截割精度依赖人工经验，超欠挖严重",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:支架工作阻力监测不连续-83a06e0a51",
+    "type": "pain_point",
+    "name": "支架工作阻力监测不连续",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:数据标注与训练样本积累不足-2ab781d68d",
+    "type": "pain_point",
+    "name": "数据标注与训练样本积累不足",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:新能源车辆充电管理困难-a80c4056cd",
+    "type": "pain_point",
+    "name": "新能源车辆充电管理困难",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:无轨胶轮车电机车调度依赖人工效率低-2dfc004f17",
+    "type": "pain_point",
+    "name": "无轨胶轮车/电机车调度依赖人工，效率低",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:核心分选设备重介旋流器浮选机智能化程-4c6d283597",
+    "type": "pain_point",
+    "name": "核心分选设备（重介旋流器/浮选机）智能化程度低",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:液压支架自动跟机率低人工操作劳动强度-14c4b15cc9",
+    "type": "pain_point",
+    "name": "液压支架自动跟机率低，人工操作劳动强度大",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:火灾发生后风流调控不及时-e81d8799c7",
+    "type": "pain_point",
+    "name": "火灾发生后风流调控不及时",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:灾变时人员搜救定位不准-430a9e5a18",
+    "type": "pain_point",
+    "name": "灾变时人员搜救定位不准",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:灾变时期风流调控手段有限-042731e615",
+    "type": "pain_point",
+    "name": "灾变时期风流调控手段有限",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:炮孔利用率低大块率高-7da3a7fe71",
+    "type": "pain_point",
+    "name": "炮孔利用率低，大块率高",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:煤层厚度变化时采高难以自动调整-ce5db91575",
+    "type": "pain_point",
+    "name": "煤层厚度变化时采高难以自动调整",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:煤层自燃发火早期征兆难以识别-5cb95143f8",
+    "type": "pain_point",
+    "name": "煤层自燃发火早期征兆难以识别",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:煤流分布不均导致运力浪费-382808acec",
+    "type": "pain_point",
+    "name": "煤流分布不均导致运力浪费",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:燃油消耗大碳排放高-bdff5b097e",
+    "type": "pain_point",
+    "name": "燃油消耗大，碳排放高",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:爆破参数设计凭经验块度不均匀-ae2fff76a9",
+    "type": "pain_point",
+    "name": "爆破参数设计凭经验，块度不均匀",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:爆破安全距离内人员管理困难-38605f729b",
+    "type": "pain_point",
+    "name": "爆破安全距离内人员管理困难",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:爆破振动对周边建筑边坡影响不可控-a252a3273f",
+    "type": "pain_point",
+    "name": "爆破振动对周边建筑/边坡影响不可控",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:物料人员运输缺乏统一调度-f2e6d72d4c",
+    "type": "pain_point",
+    "name": "物料/人员运输缺乏统一调度",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:特殊岗位人员在岗状态不明-3eedefcc9d",
+    "type": "pain_point",
+    "name": "特殊岗位人员在岗状态不明",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:瓦斯传感器精度不足误报率高-ab891f1521",
+    "type": "pain_point",
+    "name": "瓦斯传感器精度不足，误报率高",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:瓦斯抽采系统与监测联动不足-9817cae126",
+    "type": "pain_point",
+    "name": "瓦斯抽采系统与监测联动不足",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:瓦斯超限后应急响应不及时-0f7007bcb2",
+    "type": "pain_point",
+    "name": "瓦斯超限后应急响应不及时",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:生产数据分散无法形成统一决策依据-78811e27eb",
+    "type": "pain_point",
+    "name": "生产数据分散，无法形成统一决策依据",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:电能质量监测不完善-e5efed8347",
+    "type": "pain_point",
+    "name": "电能质量监测不完善",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:疲劳驾驶导致安全事故-f11d1ea33f",
+    "type": "pain_point",
+    "name": "疲劳驾驶导致安全事故",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:矸石山尾矿库环境监测不完善-78413b4917",
+    "type": "pain_point",
+    "name": "矸石山/尾矿库环境监测不完善",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:矿井水处理达标率不稳定-c6ec5217e0",
+    "type": "pain_point",
+    "name": "矿井水处理达标率不稳定",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:矿山专业ai算法开发门槛高周期长-98563f9d30",
+    "type": "pain_point",
+    "name": "矿山专业AI算法开发门槛高、周期长",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:矿山碳排放核算不准确-cc19bbe849",
+    "type": "pain_point",
+    "name": "矿山碳排放核算不准确",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:粉尘噪声污染治理手段落后-f9db2ee461",
+    "type": "pain_point",
+    "name": "粉尘/噪声污染治理手段落后",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:继电保护整定复杂协调困难-0244428f04",
+    "type": "pain_point",
+    "name": "继电保护整定复杂，协调困难",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:绿色矿山评价缺乏数据支撑-8aa9021c12",
+    "type": "pain_point",
+    "name": "绿色矿山评价缺乏数据支撑",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:缺乏全局性的生产态势感知-024ee06b87",
+    "type": "pain_point",
+    "name": "缺乏全局性的生产态势感知",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:缺乏统一的ai开发与部署平台-6eb70bdab1",
+    "type": "pain_point",
+    "name": "缺乏统一的AI开发与部署平台",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:老空区含水层水文参数监测不全面-363baa30ee",
+    "type": "pain_point",
+    "name": "老空区/含水层水文参数监测不全面",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:设备健康状态评估缺乏数据支撑-16d6a9f711",
+    "type": "pain_point",
+    "name": "设备健康状态评估缺乏数据支撑",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:设备故障停机影响生产损失大-ff10b91c8c",
+    "type": "pain_point",
+    "name": "设备故障停机影响生产，损失大",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:设备检修依赖定期计划过度维修或维修不-d5b0540237",
+    "type": "pain_point",
+    "name": "设备检修依赖定期计划，过度维修或维修不足",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:语音数据视频传输带宽不足-6f87cfcb06",
+    "type": "pain_point",
+    "name": "语音/数据/视频传输带宽不足",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:调度指挥依赖电话对讲机效率低-e7bedd2d22",
+    "type": "pain_point",
+    "name": "调度指挥依赖电话+对讲机，效率低",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:谐波治理与无功补偿不足-33d9485b34",
+    "type": "pain_point",
+    "name": "谐波治理与无功补偿不足",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:车辆利用率不高空驶率高-880cc87ab1",
+    "type": "pain_point",
+    "name": "车辆利用率不高，空驶率高",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:车辆超速违规驾驶难以实时管控-fe25926dd7",
+    "type": "pain_point",
+    "name": "车辆超速、违规驾驶难以实时管控",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:输送带跑偏撕裂断带等故障频发-a6a416b1a3",
+    "type": "pain_point",
+    "name": "输送带跑偏、撕裂、断带等故障频发",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:输送机沿线巡检依赖人工劳动强度大-ec7acd48da",
+    "type": "pain_point",
+    "name": "输送机沿线巡检依赖人工，劳动强度大",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:运输路线固定但调度效率低-c27f751967",
+    "type": "pain_point",
+    "name": "运输路线固定但调度效率低",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:选矿洗煤工艺参数人工调节产品质量波动-cfa2dfa2a8",
+    "type": "pain_point",
+    "name": "选矿/洗煤工艺参数人工调节，产品质量波动",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:选矿过程能耗高药剂消耗大-1002da7a81",
+    "type": "pain_point",
+    "name": "选矿过程能耗高、药剂消耗大",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:通信设备防爆认证要求高-046ee9ad80",
+    "type": "pain_point",
+    "name": "通信设备防爆认证要求高",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:通风网络复杂风量分配不合理-de3fce32af",
+    "type": "pain_point",
+    "name": "通风网络复杂，风量分配不合理",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:通风能耗高主扇运行效率低-bc21fdaa46",
+    "type": "pain_point",
+    "name": "通风能耗高，主扇运行效率低",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:通风设施风门风桥状态监测不足-497230e320",
+    "type": "pain_point",
+    "name": "通风设施（风门/风桥）状态监测不足",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:采煤机截割参数凭经验设定无法自适应煤-5a05de3912",
+    "type": "pain_point",
+    "name": "采煤机截割参数凭经验设定，无法自适应煤层变化",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:采空区温度co监测覆盖不全-c829824e86",
+    "type": "pain_point",
+    "name": "采空区温度/CO监测覆盖不全",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:防灭火材料注入效果无法评估-bb86961127",
+    "type": "pain_point",
+    "name": "防灭火材料注入效果无法评估",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:限员管理困难超员风险高-0c40b4f0cf",
+    "type": "pain_point",
+    "name": "限员管理困难，超员风险高",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "pain_point:顶板来压规律预测精度低-b4f55ed262",
+    "type": "pain_point",
+    "name": "顶板来压规律预测精度低",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "scenario_category:人员管理-e62b01e3ce",
+    "type": "scenario_category",
+    "name": "人员管理",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "scenario_category:供电保障-c83333a387",
+    "type": "scenario_category",
+    "name": "供电保障",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "scenario_category:地质保障-24be8287cc",
+    "type": "scenario_category",
+    "name": "地质保障",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "scenario_category:安全监控-1b87e02b55",
+    "type": "scenario_category",
+    "name": "安全监控",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "scenario_category:综合管理-584036bcb1",
+    "type": "scenario_category",
+    "name": "综合管理",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "scenario_category:设备运维-accac6fe62",
+    "type": "scenario_category",
+    "name": "设备运维",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "scenario_category:运输场景-2fb211a285",
+    "type": "scenario_category",
+    "name": "运输场景",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "scenario_category:选矿加工-617a2d4354",
+    "type": "scenario_category",
+    "name": "选矿加工",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "scenario_category:通信与信息化-ed93f1232a",
+    "type": "scenario_category",
+    "name": "通信与信息化",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "scenario_category:通风场景-ee1951594b",
+    "type": "scenario_category",
+    "name": "通风场景",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "scenario_category:采掘场景-afc24f1e73",
+    "type": "scenario_category",
+    "name": "采掘场景",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:ai模型在线推理与持续迭代-25ff64a726",
+    "type": "solution",
+    "name": "AI模型在线推理与持续迭代",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:三维地质模型动态更新-f114f659d2",
+    "type": "solution",
+    "name": "三维地质模型动态更新",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:主通风机变频节能运行-94fd361a87",
+    "type": "solution",
+    "name": "主通风机变频节能运行",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:井下核心网下沉mec边缘计算-46e1dc1e72",
+    "type": "solution",
+    "name": "井下核心网下沉（MEC边缘计算）",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:井下辅助运输智能调度系统-0bee47ad34",
+    "type": "solution",
+    "name": "井下辅助运输智能调度系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:人员轨迹分析与行为识别-9ab43048d7",
+    "type": "solution",
+    "name": "人员轨迹分析与行为识别",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:传感器远程标定与自诊断-a405540d4a",
+    "type": "solution",
+    "name": "传感器远程标定与自诊断",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:供电网络拓扑自动识别-858246cf53",
+    "type": "solution",
+    "name": "供电网络拓扑自动识别",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:关键设备在线状态监测-6e32bf8868",
+    "type": "solution",
+    "name": "关键设备在线状态监测",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:冲击地压多参量综合预警-f8c2719d6d",
+    "type": "solution",
+    "name": "冲击地压多参量综合预警",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:变配电房智能巡检-59d30f2632",
+    "type": "solution",
+    "name": "变配电房智能巡检",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:围岩变形多源信息融合分析-4d8bd953c9",
+    "type": "solution",
+    "name": "围岩变形多源信息融合分析",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:在线品位分析与实时反馈控制-236b7eba2a",
+    "type": "solution",
+    "name": "在线品位分析与实时反馈控制",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:地表井下立体化水情监测-d38cd63fe2",
+    "type": "solution",
+    "name": "地表-井下立体化水情监测",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:基于ai的地质异常智能识别-61206d8290",
+    "type": "solution",
+    "name": "基于AI的地质异常智能识别",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:基于ai的工艺参数优化与质量预测-de4377e7b4",
+    "type": "solution",
+    "name": "基于AI的工艺参数优化与质量预测",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:基于ai的瓦斯涌出量预测-27235865ce",
+    "type": "solution",
+    "name": "基于AI的瓦斯涌出量预测",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:基于ai的设备故障诊断与寿命预测-9152a7c590",
+    "type": "solution",
+    "name": "基于AI的设备故障诊断与寿命预测",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:基于ai的采高自动调节-ada3cde7c7",
+    "type": "solution",
+    "name": "基于AI的采高自动调节",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:基于ai的顶板管理决策支持-12b5a20d54",
+    "type": "solution",
+    "name": "基于AI的顶板管理决策支持",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:基于大模型的低代码ai开发-d5091856b4",
+    "type": "solution",
+    "name": "基于大模型的低代码AI开发",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:基于数字孪生的矿山态势感知-686e593824",
+    "type": "solution",
+    "name": "基于数字孪生的矿山态势感知",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:多机智能联动与煤流均衡调度-ee962e8f08",
+    "type": "solution",
+    "name": "多机智能联动与煤流均衡调度",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:多源地质数据融合分析平台-abee23ccc6",
+    "type": "solution",
+    "name": "多源地质数据融合分析平台",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:多系统数据融合与统一展示-53882d5322",
+    "type": "solution",
+    "name": "多系统数据融合与统一展示",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:尾矿综合利用智能管理-a9e73fae12",
+    "type": "solution",
+    "name": "尾矿综合利用智能管理",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:局部通风机智能联动控制-f833888b0e",
+    "type": "solution",
+    "name": "局部通风机智能联动控制",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:工作面自动找直系统-caf33995fa",
+    "type": "solution",
+    "name": "工作面自动找直系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:应急指挥多系统联动-e2f7ffa252",
+    "type": "solution",
+    "name": "应急指挥多系统联动",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:应急搜救精确定位-6f2326c62a",
+    "type": "solution",
+    "name": "应急搜救精确定位",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:应急通信保障体系-fac4531090",
+    "type": "solution",
+    "name": "应急通信保障体系",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:建设5gwifi6融合的矿井通信网络-ea426c304b",
+    "type": "solution",
+    "name": "建设5G+WiFi6融合的矿井通信网络",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:排水系统自动化与智能调控-d514af9807",
+    "type": "solution",
+    "name": "排水系统自动化与智能调控",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:掘支平行作业系统-681e272ca9",
+    "type": "solution",
+    "name": "掘支平行作业系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:掘进机自主定位定向截割-8318f81912",
+    "type": "solution",
+    "name": "掘进机自主定位定向截割",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:支架工作阻力连续监测与来压预测-84de3518a0",
+    "type": "solution",
+    "name": "支架工作阻力连续监测与来压预测",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:数字化爆破设计与管理平台-66e1c70eb7",
+    "type": "solution",
+    "name": "数字化爆破设计与管理平台",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:新能源车辆智能充电管理-ced865867e",
+    "type": "solution",
+    "name": "新能源车辆智能充电管理",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:无人驾驶远程驾驶辅助运输-f94ad47bc1",
+    "type": "solution",
+    "name": "无人驾驶/远程驾驶辅助运输",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:智能供电管理系统-b3dc8c6b48",
+    "type": "solution",
+    "name": "智能供电管理系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:智能入井考勤与限员管理-ce1ccc571e",
+    "type": "solution",
+    "name": "智能入井考勤与限员管理",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:智能化综采工作面实现记忆截割自适应截-3429884765",
+    "type": "solution",
+    "name": "智能化综采工作面：实现\"记忆截割+自适应截割\"联动",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:智能备件管理与库存优化-25a98a2590",
+    "type": "solution",
+    "name": "智能备件管理与库存优化",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:智能掘进成套装备截割支护运输除尘一体-d9d5cf89ea",
+    "type": "solution",
+    "name": "智能掘进成套装备：截割+支护+运输+除尘一体化",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:智能注氮注浆防灭火系统-6fb70b682b",
+    "type": "solution",
+    "name": "智能注氮/注浆防灭火系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:智能穿爆系统基于地质模型的爆破参数优-398acb5593",
+    "type": "solution",
+    "name": "智能穿爆系统：基于地质模型的爆破参数优化",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:智能继电保护与故障自愈-94cf1febf8",
+    "type": "solution",
+    "name": "智能继电保护与故障自愈",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:智能选矿洗煤全流程控制-6e7bf83d0f",
+    "type": "solution",
+    "name": "智能选矿/洗煤全流程控制",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:智能通风系统按需通风与风量优化-22c577d9b8",
+    "type": "solution",
+    "name": "智能通风系统：按需通风与风量优化",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:机器人沿线智能巡检替代人工-dd1cf6cf0c",
+    "type": "solution",
+    "name": "机器人沿线智能巡检替代人工",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:核心分选设备智能控制重介密度浮选液位-244c73a4ea",
+    "type": "solution",
+    "name": "核心分选设备智能控制（重介密度/浮选液位）",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:水文动态多源信息融合分析-3a0153ec8a",
+    "type": "solution",
+    "name": "水文动态多源信息融合分析",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:液压支架自动跟机拉移与自动纠偏-852c33f0dd",
+    "type": "solution",
+    "name": "液压支架自动跟机拉移与自动纠偏",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:火灾智能通风联动控制-9f4d55b9b8",
+    "type": "solution",
+    "name": "火灾智能通风联动控制",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:灾变通风智能应急调控-6b29a68c0d",
+    "type": "solution",
+    "name": "灾变通风智能应急调控",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:煤自然发火智能预测预警-a61f82c1f7",
+    "type": "solution",
+    "name": "煤自然发火智能预测预警",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:煤量智能识别与变频调速-565c54b44c",
+    "type": "solution",
+    "name": "煤量智能识别与变频调速",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:爆破区域智能安全管控-44c9ad7900",
+    "type": "solution",
+    "name": "爆破区域智能安全管控",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:爆破振动实时监测与预警-64dff6bd37",
+    "type": "solution",
+    "name": "爆破振动实时监测与预警",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:瓦斯抽采系统智能调控-cca6273456",
+    "type": "solution",
+    "name": "瓦斯抽采系统智能调控",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:瓦斯智能监测预警系统-51236c3ba4",
+    "type": "solution",
+    "name": "瓦斯智能监测预警系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:瓦斯超限智能联动控制自动断电通风-8e7876e4a7",
+    "type": "solution",
+    "name": "瓦斯超限智能联动控制（自动断电/通风）",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:生产调度智能指挥中心-004f3becb1",
+    "type": "solution",
+    "name": "生产调度智能指挥中心",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:电子围栏与禁区管控-7d0af1dcf7",
+    "type": "solution",
+    "name": "电子围栏与禁区管控",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:电缆设备火灾热成像监控-a79d870bad",
+    "type": "solution",
+    "name": "电缆/设备火灾热成像监控",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:电能质量在线监测与治理-a22b062840",
+    "type": "solution",
+    "name": "电能质量在线监测与治理",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:矸石山尾矿库在线安全监测-582149f804",
+    "type": "solution",
+    "name": "矸石山/尾矿库在线安全监测",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:矿井水处理智能控制系统-4aa6826778",
+    "type": "solution",
+    "name": "矿井水处理智能控制系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:矿井水害智能监测预警系统-6faa30ce72",
+    "type": "solution",
+    "name": "矿井水害智能监测预警系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:矿压在线智能监测与预警-7080a38b64",
+    "type": "solution",
+    "name": "矿压在线智能监测与预警",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:矿山ai大模型一体化平台-be88b49e84",
+    "type": "solution",
+    "name": "矿山AI大模型一体化平台",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:矿山专业领域ai模型库-b43ed20262",
+    "type": "solution",
+    "name": "矿山专业领域AI模型库",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:矿山知识图谱与智能问答-1db96328e7",
+    "type": "solution",
+    "name": "矿山知识图谱与智能问答",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:矿山碳排放智能监测与管理-76096fa5b6",
+    "type": "solution",
+    "name": "矿山碳排放智能监测与管理",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:矿山综合管控平台一体化平台-986c9ab6ea",
+    "type": "solution",
+    "name": "矿山综合管控平台（一体化平台）",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:矿鸿mineharmony统一物联协-f2cdb1348c",
+    "type": "solution",
+    "name": "矿鸿(MineHarmony)统一物联协议",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:粉尘噪声在线监测与自动降尘-b150128cd1",
+    "type": "solution",
+    "name": "粉尘/噪声在线监测与自动降尘",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:纯电动新能源矿卡替代-6add374db0",
+    "type": "solution",
+    "name": "纯电动/新能源矿卡替代",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:统一的人车物料调度平台-e9f50fc37e",
+    "type": "solution",
+    "name": "统一的\"人-车-物料\"调度平台",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:统一的矿山通信平台语音数据视频-2c3d9541cd",
+    "type": "solution",
+    "name": "统一的矿山通信平台（语音+数据+视频）",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:绿色矿山评价指标数据化管理-c8b7a5f183",
+    "type": "solution",
+    "name": "绿色矿山评价指标数据化管理",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:装卸载全流程自动化-1716c715f5",
+    "type": "solution",
+    "name": "装卸载全流程自动化",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:设备全生命周期管理平台-fc612a4a08",
+    "type": "solution",
+    "name": "设备全生命周期管理平台",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:设备预测性维护phm系统-6d343085ec",
+    "type": "solution",
+    "name": "设备预测性维护（PHM）系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:超前地质探测与智能导引-8e64f8ca8f",
+    "type": "solution",
+    "name": "超前地质探测与智能导引",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:车辆实时定位与轨迹跟踪-bda4b623ab",
+    "type": "solution",
+    "name": "车辆实时定位与轨迹跟踪",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:车队智能调度与路径优化-288c3d2b50",
+    "type": "solution",
+    "name": "车队智能调度与路径优化",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:输送带防跑偏防撕裂智能保护-d4a094c0e2",
+    "type": "solution",
+    "name": "输送带防跑偏/防撕裂智能保护",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:输送机智能运维实时故障预测与健康管理-e6a6a678af",
+    "type": "solution",
+    "name": "输送机智能运维：实时故障预测与健康管理(PHM)",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:运输数据分析与运营优化-8946f321ff",
+    "type": "solution",
+    "name": "运输数据分析与运营优化",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:远程遥控自动化掘进-6d7dafd136",
+    "type": "solution",
+    "name": "远程遥控/自动化掘进",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:透明地质透明工作面系统-c21679196e",
+    "type": "solution",
+    "name": "透明地质/透明工作面系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:透水事故智能应急联动-7ea4df4bba",
+    "type": "solution",
+    "name": "透水事故智能应急联动",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:通风设施状态在线监测-9c004aacb6",
+    "type": "solution",
+    "name": "通风设施状态在线监测",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:采空区多参数温度coo2立体监测-edf75fef26",
+    "type": "solution",
+    "name": "采空区多参数（温度+CO+O2）立体监测",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:随掘随采地震超前探测-47112be956",
+    "type": "solution",
+    "name": "随掘/随采地震超前探测",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:露天矿无人驾驶运输系统-262fdf7095",
+    "type": "solution",
+    "name": "露天矿无人驾驶运输系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution:高精度井下人员定位系统亚米级厘米级-727b65cb39",
+    "type": "solution",
+    "name": "高精度井下人员定位系统（亚米级/厘米级）",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "solution_concept:一套安全体系-26229816e9",
+    "type": "solution_concept",
+    "name": "一套安全体系",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "solution",
+      "candidate_count": 1,
+      "candidate_source_count": 1
+    }
+  },
+  {
+    "id": "solution_concept:一平台-22516b499a",
+    "type": "solution_concept",
+    "name": "一平台",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "solution",
+      "candidate_count": 6,
+      "candidate_source_count": 2
+    }
+  },
+  {
+    "id": "solution_concept:一张网-05305370b1",
+    "type": "solution_concept",
+    "name": "一张网",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "solution",
+      "candidate_count": 5,
+      "candidate_source_count": 3
+    }
+  },
+  {
+    "id": "solution_concept:一朵云-84e30ceba2",
+    "type": "solution_concept",
+    "name": "一朵云",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "solution",
+      "candidate_count": 5,
+      "candidate_source_count": 3
+    }
+  },
+  {
+    "id": "solution_concept:云边协同-881944a6a7",
+    "type": "solution_concept",
+    "name": "云边协同",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "solution",
+      "candidate_count": 18,
+      "candidate_source_count": 3
+    }
+  },
+  {
+    "id": "solution_concept:健康监测-a7874c4008",
+    "type": "solution_concept",
+    "name": "健康监测",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "solution",
+      "candidate_count": 8,
+      "candidate_source_count": 2
+    }
+  },
+  {
+    "id": "solution_concept:工业融合网关-c4dc70ac2a",
+    "type": "solution_concept",
+    "name": "工业融合网关",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "solution",
+      "candidate_count": 6,
+      "candidate_source_count": 1
+    }
+  },
+  {
+    "id": "solution_concept:数据平台-e12a03746e",
+    "type": "solution_concept",
+    "name": "数据平台",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "solution",
+      "candidate_count": 18,
+      "candidate_source_count": 4
+    }
+  },
+  {
+    "id": "solution_concept:智能监测-667282d07f",
+    "type": "solution_concept",
+    "name": "智能监测",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "solution",
+      "candidate_count": 5,
+      "candidate_source_count": 3
+    }
+  },
+  {
+    "id": "solution_concept:智能矿灯-ed981e9850",
+    "type": "solution_concept",
+    "name": "智能矿灯",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "solution",
+      "candidate_count": 6,
+      "candidate_source_count": 2
+    }
+  },
+  {
+    "id": "solution_concept:智能终端-5ea9314d90",
+    "type": "solution_concept",
+    "name": "智能终端",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "solution",
+      "candidate_count": 3,
+      "candidate_source_count": 2
+    }
+  },
+  {
+    "id": "solution_concept:智能调度-eb0f464767",
+    "type": "solution_concept",
+    "name": "智能调度",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "solution",
+      "candidate_count": 10,
+      "candidate_source_count": 5
+    }
+  },
+  {
+    "id": "solution_concept:统一平台-865f879970",
+    "type": "solution_concept",
+    "name": "统一平台",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "solution",
+      "candidate_count": 4,
+      "candidate_source_count": 2
+    }
+  },
+  {
+    "id": "solution_concept:远程监控-d040128601",
+    "type": "solution_concept",
+    "name": "远程监控",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "solution",
+      "candidate_count": 7,
+      "candidate_source_count": 2
+    }
+  },
+  {
+    "id": "solution_concept:远程驾驶-82dac70bc6",
+    "type": "solution_concept",
+    "name": "远程驾驶",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "solution",
+      "candidate_count": 8,
+      "candidate_source_count": 4
+    }
+  },
+  {
+    "id": "solution_concept:集中管控-0063396a79",
+    "type": "solution_concept",
+    "name": "集中管控",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "solution",
+      "candidate_count": 3,
+      "candidate_source_count": 2
+    }
+  },
+  {
+    "id": "solution_concept:预测预警-25a1d1bd29",
+    "type": "solution_concept",
+    "name": "预测预警",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "solution",
+      "candidate_count": 6,
+      "candidate_source_count": 2
+    }
+  },
+  {
+    "id": "source_document:2024智能矿山暨无人驾驶行业蓝皮书-75e037680e",
+    "type": "source_document",
+    "name": "2024 智能矿山暨无人驾驶行业蓝皮书",
+    "aliases": [],
+    "attributes": {
+      "source_id": "B04",
+      "publisher": "中国矿业大学煤炭精细勘探与智能开发全国重点实验室、徐州数字空间矿山研究院等",
+      "year": "2024",
+      "credibility": "B/C",
+      "url": "https://www.hulianhutongshequ.cn/upload/tank/report/2024/202410/1/0624527d6d944f35bfb34b683914859a.pdf",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:2024智能矿山暨无人驾驶行业蓝皮书-e5f418fa6a",
+    "type": "source_document",
+    "name": "2024 智能矿山暨无人驾驶行业蓝皮书完整报告页",
+    "aliases": [],
+    "attributes": {
+      "source_id": "B05",
+      "publisher": "报告汇",
+      "year": "2024",
+      "credibility": "C/D",
+      "url": "https://www.vicsdf.com/doc/ecdbf8eddbedffcf",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:5g未来矿山产业发展论坛发布有色矿山-45f35cc064",
+    "type": "source_document",
+    "name": "5G 未来矿山产业发展论坛发布有色矿山数字化转型白皮书",
+    "aliases": [],
+    "attributes": {
+      "source_id": "B07",
+      "publisher": "华为新闻",
+      "year": "2021",
+      "credibility": "A",
+      "url": "https://www.huawei.com/cn/news/2021/9/5g-smart-mining-digital-transformation",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:5g云ai赋能有色矿山数字化转型白皮-1bfddebc8d",
+    "type": "source_document",
+    "name": "5G+云+AI：赋能有色矿山数字化转型白皮书",
+    "aliases": [],
+    "attributes": {
+      "source_id": "B06",
+      "publisher": "华为、中国铜业、中铝智能科技、中国移动云南、中国信通院等",
+      "year": "2021",
+      "credibility": "A",
+      "url": "https://carrier.huawei.com/cn/products/service-and-software/5g-cloud-ai",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:abbmineelectrifica-fc49269d9e",
+    "type": "source_document",
+    "name": "ABB Mine Electrification / Next Level Mining 页面",
+    "aliases": [],
+    "attributes": {
+      "source_id": "B15",
+      "publisher": "ABB",
+      "year": "动态页面",
+      "credibility": "A",
+      "url": "https://new.abb.com/mining/next-level-mining/mine-electrificaton",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:abbnextlevelmining-eeae34d659",
+    "type": "source_document",
+    "name": "ABB Next Level Mining White Paper",
+    "aliases": [],
+    "attributes": {
+      "source_id": "B14",
+      "publisher": "ABB",
+      "year": "未标明具体发布年",
+      "credibility": "A",
+      "url": "https://library.e.abb.com/public/5d588609dd1842de95c7f7312dbd24fe/Next_Level_Mining_White_%20paper.pdf",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:abbnextlevelmining-5e5750bd94",
+    "type": "source_document",
+    "name": "ABB《Next Level Mining》白皮书",
+    "aliases": [],
+    "attributes": {
+      "curated_reference": true
+    }
+  },
+  {
+    "id": "source_document:faromappingtheunde-dbf7ef194a",
+    "type": "source_document",
+    "name": "FARO《Mapping the Underground World》白皮书",
+    "aliases": [],
+    "attributes": {
+      "curated_reference": true
+    }
+  },
+  {
+    "id": "source_document:schneiderelectricm-68f0a1bc3f",
+    "type": "source_document",
+    "name": "Schneider Electric Mining Operations Excellence White Paper",
+    "aliases": [],
+    "attributes": {
+      "source_id": "B18",
+      "publisher": "Schneider Electric",
+      "year": "2015",
+      "credibility": "A/B",
+      "url": "https://www.se.com/us/en/download/document/PNSS-0194/",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:schneiderelectricm-6b11570b0a",
+    "type": "source_document",
+    "name": "Schneider Electric Mining Power System White Paper Series",
+    "aliases": [],
+    "attributes": {
+      "source_id": "B19",
+      "publisher": "Schneider Electric",
+      "year": "2021",
+      "credibility": "B",
+      "url": "https://perspectives.se.com/mining-metals-minerals/mining-white-paper-series-sustainability-optimized-power-systems",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:siemensminingindus-74585e371f",
+    "type": "source_document",
+    "name": "Siemens Mining Industry 页面",
+    "aliases": [],
+    "attributes": {
+      "source_id": "B16",
+      "publisher": "Siemens",
+      "year": "动态页面",
+      "credibility": "A",
+      "url": "https://www.siemens.com/global/en/industries/mining-industry/mining-automation/minerals-automation-standard.html",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:siemensnavigatemin-55e9c2c319",
+    "type": "source_document",
+    "name": "Siemens Navigate Mining Industry Challenges with Smarter Connected Strategies",
+    "aliases": [],
+    "attributes": {
+      "source_id": "B17",
+      "publisher": "Siemens",
+      "year": "动态页面",
+      "credibility": "B/C",
+      "url": "https://resources.sw.siemens.com/de-CH/white-paper-navigate-mining-industry-challenges-with-smarter-connected-strategies/",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:2024智能矿山暨无人驾驶行业蓝皮书-c7233c4294",
+    "type": "source_document",
+    "name": "《2024智能矿山暨无人驾驶行业蓝皮书》",
+    "aliases": [],
+    "attributes": {
+      "curated_reference": true
+    }
+  },
+  {
+    "id": "source_document:2025智能矿山暨无人驾驶行业蓝皮书-4401ffe888",
+    "type": "source_document",
+    "name": "《2025智能矿山暨无人驾驶行业蓝皮书》(亿欧智库)",
+    "aliases": [],
+    "attributes": {
+      "curated_reference": true
+    }
+  },
+  {
+    "id": "source_document:2026年ai智慧矿山全场景应用解决-b74a5b6ee7",
+    "type": "source_document",
+    "name": "《2026年AI+智慧矿山全场景应用解决方案白皮书》",
+    "aliases": [],
+    "attributes": {
+      "curated_reference": true
+    }
+  },
+  {
+    "id": "source_document:中国智能矿山产业发展白皮书亿欧智库-1a3641c7e1",
+    "type": "source_document",
+    "name": "《中国智能矿山产业发展白皮书》(亿欧智库)",
+    "aliases": [],
+    "attributes": {
+      "curated_reference": true
+    }
+  },
+  {
+    "id": "source_document:中央企业ai应用场景白皮书2024-235e7bd730",
+    "type": "source_document",
+    "name": "《中央企业AI应用场景白皮书》(2024)",
+    "aliases": [],
+    "attributes": {
+      "curated_reference": true
+    }
+  },
+  {
+    "id": "source_document:关于加快煤矿智能化发展的指导意见政策-49306f71a6",
+    "type": "source_document",
+    "name": "《关于加快煤矿智能化发展的指导意见》政策解读",
+    "aliases": [],
+    "attributes": {
+      "source_id": "A06",
+      "publisher": "国家发展改革委",
+      "year": "2020",
+      "credibility": "A",
+      "url": "https://www.ndrc.gov.cn/xxgk/jd/jd/202003/t20200320_1223780.html",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:煤矿智能化发展蓝皮书2025-c21cfb626e",
+    "type": "source_document",
+    "name": "《煤矿智能化发展蓝皮书》2025",
+    "aliases": [],
+    "attributes": {
+      "curated_reference": true
+    }
+  },
+  {
+    "id": "source_document:煤矿智能化标准体系建设指南政策解读-6d6a50f17e",
+    "type": "source_document",
+    "name": "《煤矿智能化标准体系建设指南》政策解读",
+    "aliases": [],
+    "attributes": {
+      "source_id": "A02",
+      "publisher": "国家能源局",
+      "year": "2024",
+      "credibility": "A",
+      "url": "https://www.nea.gov.cn/2024-03/20/c_1310768368.htm",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:金属矿山数字化转型白皮书华为-7a4f8fd7fe",
+    "type": "source_document",
+    "name": "《金属矿山数字化转型白皮书》(华为)",
+    "aliases": [],
+    "attributes": {
+      "curated_reference": true
+    }
+  },
+  {
+    "id": "source_document:中国电信5g智慧矿山终端融合白皮书-e5fa4a8f6c",
+    "type": "source_document",
+    "name": "中国电信 5G 智慧矿山终端融合白皮书",
+    "aliases": [],
+    "attributes": {
+      "source_id": "B12",
+      "publisher": "中国电信、煤炭科学技术研究院、华为等",
+      "year": "2023",
+      "credibility": "B/C",
+      "url": "https://intelmining2018.com/sys-nd/2275.html",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:中国电信5g智慧矿山融合方案白皮书-ff17be22d8",
+    "type": "source_document",
+    "name": "中国电信 5G 智慧矿山融合方案白皮书",
+    "aliases": [],
+    "attributes": {
+      "source_id": "B11",
+      "publisher": "中国电信，行业平台转载",
+      "year": "2023",
+      "credibility": "B/C",
+      "url": "https://intelmining2018.com/sys-nd/2273.html",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:中国电信5g智慧矿山行业白皮书-15fc7b16af",
+    "type": "source_document",
+    "name": "中国电信 5G 智慧矿山行业白皮书",
+    "aliases": [],
+    "attributes": {
+      "source_id": "B10",
+      "publisher": "中国电信，行业平台转载",
+      "year": "2023",
+      "credibility": "B/C",
+      "url": "https://intelmining2018.com/sys-nd/2270.html",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:中国电信5g智慧矿山终端融合白皮书-c600ef3cca",
+    "type": "source_document",
+    "name": "中国电信《5G智慧矿山终端融合白皮书》",
+    "aliases": [],
+    "attributes": {
+      "curated_reference": true
+    }
+  },
+  {
+    "id": "source_document:中国电信5g智慧矿山融合方案白皮书-09482519a1",
+    "type": "source_document",
+    "name": "中国电信《5G智慧矿山融合方案白皮书》",
+    "aliases": [],
+    "attributes": {
+      "curated_reference": true
+    }
+  },
+  {
+    "id": "source_document:关于深入推进矿山智能化建设促进矿山安-31923bfd83",
+    "type": "source_document",
+    "name": "关于深入推进矿山智能化建设促进矿山安全发展的指导意见",
+    "aliases": [],
+    "attributes": {
+      "source_id": "A03",
+      "publisher": "国家矿山安全监察局等 7 部门",
+      "year": "2024",
+      "credibility": "A",
+      "url": "https://www.chinamine-safety.gov.cn/xw/zt/2018zt/mkjqryfyy/gzdt_01/202405/t20240517_488716.shtml",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:华为矿山智能化白皮书-e678ffd9b9",
+    "type": "source_document",
+    "name": "华为《矿山智能化白皮书》",
+    "aliases": [],
+    "attributes": {
+      "curated_reference": true
+    }
+  },
+  {
+    "id": "source_document:华为集团云与矿山大模型解决方案-5e572021ef",
+    "type": "source_document",
+    "name": "华为集团云与矿山大模型解决方案",
+    "aliases": [],
+    "attributes": {
+      "source_id": "B09",
+      "publisher": "华为企业业务官网",
+      "year": "2025/2026 页面",
+      "credibility": "A",
+      "url": "https://e.huawei.com/cn/industries/mining/mine-ict-technology-enablement/group-center-cloud",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:原mineintel矿业计算机应用知-a212af4e1d",
+    "type": "source_document",
+    "name": "原 MineIntel 矿业计算机应用知识库",
+    "aliases": [],
+    "attributes": {
+      "source_id": "L01",
+      "publisher": "MineIntel 项目内置数据",
+      "credibility": "B",
+      "url": "local://legacy-mineintel-knowledge",
+      "source_type": "legacy_mineintel_knowledge"
+    }
+  },
+  {
+    "id": "source_document:国家矿山安全监察局我国煤矿智能化发展-da1a527374",
+    "type": "source_document",
+    "name": "国家矿山安全监察局：我国煤矿智能化发展取得明显成效",
+    "aliases": [],
+    "attributes": {
+      "source_id": "B03",
+      "publisher": "新浪财经转载",
+      "year": "2025",
+      "credibility": "C",
+      "url": "https://finance.sina.com.cn/wm/2025-04-18/doc-inetqzhr2259379.shtml",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:国家能源局煤矿智能化标准体系建设指南-75df49037e",
+    "type": "source_document",
+    "name": "国家能源局《煤矿智能化标准体系建设指南》(2024)",
+    "aliases": [],
+    "attributes": {
+      "curated_reference": true
+    }
+  },
+  {
+    "id": "source_document:智慧矿山5g自动驾驶白皮书-46fba5c93f",
+    "type": "source_document",
+    "name": "智慧矿山 5G 自动驾驶白皮书",
+    "aliases": [],
+    "attributes": {
+      "source_id": "B13",
+      "publisher": "中国信通院牵头，西安建筑科技大学矿山系统工程研究所转载",
+      "year": "2020",
+      "credibility": "B",
+      "url": "https://mse.xauat.edu.cn/info/1039/2027.htm",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:有色金属行业智能工厂矿山建设指南试行-b154e782db",
+    "type": "source_document",
+    "name": "有色金属行业智能工厂（矿山）建设指南（试行）解读",
+    "aliases": [],
+    "attributes": {
+      "source_id": "A08",
+      "publisher": "工业和信息化部",
+      "year": "2020",
+      "credibility": "A",
+      "url": "https://www.miit.gov.cn/n6676569/n6676582/art/2020/art_9b4f11d58e9047c3bd81e70ea3819a41.html",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:有色金属行业智能矿山建设指南pdf-18ac2064be",
+    "type": "source_document",
+    "name": "有色金属行业智能矿山建设指南 PDF",
+    "aliases": [],
+    "attributes": {
+      "source_id": "A10",
+      "publisher": "中国政府网附件",
+      "year": "2020",
+      "credibility": "A",
+      "url": "https://www.gov.cn/zhengce/zhengceku/2020-05/08/5509729/files/30864cb808b741acb56f33f1cf635ebe.pdf",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:有色金属行业智能矿山建设指南试行公告-135d7ec07a",
+    "type": "source_document",
+    "name": "有色金属行业智能矿山建设指南（试行）公告/摘要",
+    "aliases": [],
+    "attributes": {
+      "source_id": "A09",
+      "publisher": "国家矿山安全监察局转载",
+      "year": "2020",
+      "credibility": "A/B",
+      "url": "https://www.chinamine-safety.gov.cn/xw/zt/2018zt/mkjqryfyy/kpbl/202005/t20200522_352738.shtml",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:煤矿智能化发展蓝皮书发布报道-8917ef26a4",
+    "type": "source_document",
+    "name": "煤矿智能化发展蓝皮书发布报道",
+    "aliases": [],
+    "attributes": {
+      "source_id": "B02",
+      "publisher": "经济日报",
+      "year": "2025",
+      "credibility": "B",
+      "url": "https://www.jingjiribao.cn/static/detail.jsp?id=581710",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:煤矿智能化发展蓝皮书2025年-8e49a0ac1e",
+    "type": "source_document",
+    "name": "煤矿智能化发展蓝皮书（2025 年）",
+    "aliases": [],
+    "attributes": {
+      "source_id": "B01",
+      "publisher": "国家矿山安全监察局矿山智能化建设专家委员会",
+      "year": "2025",
+      "credibility": "B/C",
+      "url": "https://www.grcc.vip/article-44380-.html",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:煤矿智能化建设指南2021年版-55b99bb81d",
+    "type": "source_document",
+    "name": "煤矿智能化建设指南（2021 年版）",
+    "aliases": [],
+    "attributes": {
+      "source_id": "A07",
+      "publisher": "国家能源局、国家矿山安全监察局",
+      "year": "2021",
+      "credibility": "A/B",
+      "url": "https://www.chinamine-safety.gov.cn/xw/zt/2018zt/mkjqryfyy/zyzc/202108/t20210806_395342.shtml",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:煤矿智能化标准体系建设指南-8b4831da9e",
+    "type": "source_document",
+    "name": "煤矿智能化标准体系建设指南",
+    "aliases": [],
+    "attributes": {
+      "source_id": "A01",
+      "publisher": "国家能源局",
+      "year": "2024",
+      "credibility": "A",
+      "url": "https://zfxxgk.nea.gov.cn/2024-03/13/c_1310768359.htm",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:矿井场景总览-bdd0797773",
+    "type": "source_document",
+    "name": "矿井场景总览",
+    "aliases": [],
+    "attributes": {
+      "source_id": "U01",
+      "publisher": "团队人工整理数据",
+      "year": "2026",
+      "credibility": "A-",
+      "url": "local://user-curated-scenario-csv",
+      "source_type": "user_curated_scenario"
+    }
+  },
+  {
+    "id": "source_document:矿山智能化暨矿山大模型最佳实践白皮书-04d4b8ed5f",
+    "type": "source_document",
+    "name": "矿山智能化暨矿山大模型最佳实践白皮书",
+    "aliases": [],
+    "attributes": {
+      "source_id": "B08",
+      "publisher": "华为云/华为智能矿山",
+      "year": "2023",
+      "credibility": "A/B",
+      "url": "https://res-static.hc-cdn.cn/cloudbu-site/china/zh-cn/HuaweiCloudStack/mineintelligence.pdf",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:矿山智能化标准体系框架-358a9bf8c9",
+    "type": "source_document",
+    "name": "矿山智能化标准体系框架",
+    "aliases": [],
+    "attributes": {
+      "source_id": "A04",
+      "publisher": "国家矿山安全监察局",
+      "year": "2023",
+      "credibility": "A",
+      "url": "https://www.chinamine-safety.gov.cn/xw/zt/2018zt/mkjqryfyy/gzdt_01/202309/t20230907_461905.shtml",
+      "source_type": "application_source"
+    }
+  },
+  {
+    "id": "source_document:竞赛版矿业科研选题补充知识库-094e936370",
+    "type": "source_document",
+    "name": "竞赛版矿业科研选题补充知识库",
+    "aliases": [],
+    "attributes": {
+      "source_id": "L02",
+      "publisher": "MineIntel 项目内置数据",
+      "credibility": "B",
+      "url": "local://legacy-mineintel-knowledge",
+      "source_type": "legacy_mineintel_knowledge"
+    }
+  },
+  {
+    "id": "source_document:竞赛版结构化矿业场景样例-462738c655",
+    "type": "source_document",
+    "name": "竞赛版结构化矿业场景样例",
+    "aliases": [],
+    "attributes": {
+      "source_id": "L03",
+      "publisher": "MineIntel 项目内置数据",
+      "credibility": "B",
+      "url": "local://legacy-mineintel-knowledge",
+      "source_type": "legacy_mineintel_knowledge"
+    }
+  },
+  {
+    "id": "technology:5g-2bb0d13048",
+    "type": "technology",
+    "name": "5G",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 195,
+      "candidate_source_count": 13
+    }
+  },
+  {
+    "id": "technology:5glan-274b4072a0",
+    "type": "technology",
+    "name": "5G LAN",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 12,
+      "candidate_source_count": 2
+    }
+  },
+  {
+    "id": "technology:ai-141a92417f",
+    "type": "technology",
+    "name": "AI",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 194,
+      "candidate_source_count": 17
+    }
+  },
+  {
+    "id": "technology:f5g-4cea767e98",
+    "type": "technology",
+    "name": "F5G",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 1,
+      "candidate_source_count": 1
+    }
+  },
+  {
+    "id": "technology:v2x-8267e89ffa",
+    "type": "technology",
+    "name": "V2X",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 4,
+      "candidate_source_count": 3
+    }
+  },
+  {
+    "id": "technology:云边端-4fd52c42b5",
+    "type": "technology",
+    "name": "云边端",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 2,
+      "candidate_source_count": 1
+    }
+  },
+  {
+    "id": "technology:人工智能-63fe855a00",
+    "type": "technology",
+    "name": "人工智能",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 63,
+      "candidate_source_count": 14
+    }
+  },
+  {
+    "id": "technology:传感器融合-01f5918db3",
+    "type": "technology",
+    "name": "传感器融合",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 7,
+      "candidate_source_count": 2
+    }
+  },
+  {
+    "id": "technology:大数据-de064aec70",
+    "type": "technology",
+    "name": "大数据",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 77,
+      "candidate_source_count": 15
+    }
+  },
+  {
+    "id": "technology:大模型-3401ed05a1",
+    "type": "technology",
+    "name": "大模型",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 32,
+      "candidate_source_count": 4
+    }
+  },
+  {
+    "id": "technology:工业互联网-c175304f82",
+    "type": "technology",
+    "name": "工业互联网",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 48,
+      "candidate_source_count": 9
+    }
+  },
+  {
+    "id": "technology:工业环网-406e81877b",
+    "type": "technology",
+    "name": "工业环网",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 7,
+      "candidate_source_count": 3
+    }
+  },
+  {
+    "id": "technology:数字孪生-9a88efcf6a",
+    "type": "technology",
+    "name": "数字孪生",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 25,
+      "candidate_source_count": 8
+    }
+  },
+  {
+    "id": "technology:无人化-b3f876bcfa",
+    "type": "technology",
+    "name": "无人化",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 33,
+      "candidate_source_count": 12
+    }
+  },
+  {
+    "id": "technology:机器人-df3f9d38d7",
+    "type": "technology",
+    "name": "机器人",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 53,
+      "candidate_source_count": 12
+    }
+  },
+  {
+    "id": "technology:机器视觉-77b33a32ec",
+    "type": "technology",
+    "name": "机器视觉",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 7,
+      "candidate_source_count": 3
+    }
+  },
+  {
+    "id": "technology:物联网-44a38206ff",
+    "type": "technology",
+    "name": "物联网",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 42,
+      "candidate_source_count": 9
+    }
+  },
+  {
+    "id": "technology:矿山大模型-9f6085d9f0",
+    "type": "technology",
+    "name": "矿山大模型",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 23,
+      "candidate_source_count": 2
+    }
+  },
+  {
+    "id": "technology:网络授时-db1e266736",
+    "type": "technology",
+    "name": "网络授时",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 6,
+      "candidate_source_count": 1
+    }
+  },
+  {
+    "id": "technology:自动驾驶-9e9d8bf4f6",
+    "type": "technology",
+    "name": "自动驾驶",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 14,
+      "candidate_source_count": 5
+    }
+  },
+  {
+    "id": "technology:视频识别-debf91a7f3",
+    "type": "technology",
+    "name": "视频识别",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 7,
+      "candidate_source_count": 2
+    }
+  },
+  {
+    "id": "technology:计算机视觉-3cda93d326",
+    "type": "technology",
+    "name": "计算机视觉",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 3,
+      "candidate_source_count": 3
+    }
+  },
+  {
+    "id": "technology:设备云化-404d0e0c05",
+    "type": "technology",
+    "name": "设备云化",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 8,
+      "candidate_source_count": 1
+    }
+  },
+  {
+    "id": "technology:超级上行-c1615cd85a",
+    "type": "technology",
+    "name": "超级上行",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 17,
+      "candidate_source_count": 3
+    }
+  },
+  {
+    "id": "technology:软硬解耦-82140ee279",
+    "type": "technology",
+    "name": "软硬解耦",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 12,
+      "candidate_source_count": 2
+    }
+  },
+  {
+    "id": "technology:边缘计算-5531d4fb4d",
+    "type": "technology",
+    "name": "边缘计算",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 30,
+      "candidate_source_count": 9
+    }
+  },
+  {
+    "id": "technology:高精度定位-7a4c7805ba",
+    "type": "technology",
+    "name": "高精度定位",
+    "aliases": [],
+    "attributes": {
+      "candidate_category": "technology",
+      "candidate_count": 11,
+      "candidate_source_count": 4
+    }
+  },
+  {
+    "id": "technology_equipment:5g专网v2x车路协同设备-8493fdcf07",
+    "type": "technology_equipment",
+    "name": "5G专网+V2X车路协同设备",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:ai一体机推理训练服务器-8e5818f453",
+    "type": "technology_equipment",
+    "name": "AI一体机（推理/训练服务器）",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:ai决策支持系统-73cc4c90ed",
+    "type": "technology_equipment",
+    "name": "AI决策支持系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:gpunpu算力集群-f8b77081ec",
+    "type": "technology_equipment",
+    "name": "GPU/NPU算力集群",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:lasc直线度检测系统-f04349bb17",
+    "type": "technology_equipment",
+    "name": "LASC直线度检测系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:mec边缘计算平台-8ad90813ba",
+    "type": "technology_equipment",
+    "name": "MEC边缘计算平台",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:mlops平台-4ae2345625",
+    "type": "technology_equipment",
+    "name": "MLOps平台",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:plc控制系统scada平台-62b8135b04",
+    "type": "technology_equipment",
+    "name": "PLC控制系统+SCADA平台",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:plc数据采集网关-75803cd3da",
+    "type": "technology_equipment",
+    "name": "PLC数据采集网关",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:uwbble定位基站与标签-b540c56127",
+    "type": "technology_equipment",
+    "name": "UWB/BLE定位基站与标签",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:v2x通信设备-acc9e91995",
+    "type": "technology_equipment",
+    "name": "V2X通信设备",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:三维地质建模软件-04bc5372df",
+    "type": "technology_equipment",
+    "name": "三维地质建模软件",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:三维地震勘探设备-5877ce1860",
+    "type": "technology_equipment",
+    "name": "三维地震勘探设备",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:主通风机变频器在线监测-0a0c4fd0f9",
+    "type": "technology_equipment",
+    "name": "主通风机变频器+在线监测",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:井下高精度定位系统uwbble-b56e766368",
+    "type": "technology_equipment",
+    "name": "井下高精度定位系统（UWB/BLE）",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:人员行为ai分析系统-ef6c747962",
+    "type": "technology_equipment",
+    "name": "人员行为AI分析系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:人脸识别闸机-57a8cb885e",
+    "type": "technology_equipment",
+    "name": "人脸识别闸机",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:供电监控scada系统-f3924fa901",
+    "type": "technology_equipment",
+    "name": "供电监控SCADA系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:充电桩智能管理系统-1d2c82b0f1",
+    "type": "technology_equipment",
+    "name": "充电桩智能管理系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:分布式光纤温度传感系统dts-34bba7a206",
+    "type": "technology_equipment",
+    "name": "分布式光纤温度传感系统(DTS)",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:刮板输送机工况监测传感器-6d72fd103f",
+    "type": "technology_equipment",
+    "name": "刮板输送机工况监测传感器",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:变频器智能阀门执行器-35875655b6",
+    "type": "technology_equipment",
+    "name": "变频器+智能阀门执行器",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:变频驱动器vfd-b4da12c01c",
+    "type": "technology_equipment",
+    "name": "变频驱动器(VFD)",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:在线x荧光分析仪xrf在线灰分仪-9cd4cb59d3",
+    "type": "technology_equipment",
+    "name": "在线X荧光分析仪(XRF)/在线灰分仪",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:地质大数据分析平台-66edb8bfa1",
+    "type": "technology_equipment",
+    "name": "地质大数据分析平台",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:地质雷达-d522554bb8",
+    "type": "technology_equipment",
+    "name": "地质雷达",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:多参数环境监测传感器瓦斯co温度风速-28df330392",
+    "type": "technology_equipment",
+    "name": "多参数环境监测传感器（瓦斯+CO+温度+风速）",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:大屏可视化系统-06ea57cb3b",
+    "type": "technology_equipment",
+    "name": "大屏可视化系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:安全监控综合平台软件-56556e6744",
+    "type": "technology_equipment",
+    "name": "安全监控综合平台软件",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:定位管理平台软件-550ab2b470",
+    "type": "technology_equipment",
+    "name": "定位管理平台软件",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:工业大数据分析平台-9206465290",
+    "type": "technology_equipment",
+    "name": "工业大数据分析平台",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:工业摄像头ai矿石品位识别-b630653a78",
+    "type": "technology_equipment",
+    "name": "工业摄像头+AI矿石品位识别",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:工业摄像头边缘计算盒子-10bbbfb1f8",
+    "type": "technology_equipment",
+    "name": "工业摄像头+边缘计算盒子",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:工业环网交换机-f38f13d90b",
+    "type": "technology_equipment",
+    "name": "工业环网交换机",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:工作面视频监控ai识别-aa3f3fa6af",
+    "type": "technology_equipment",
+    "name": "工作面视频监控+AI识别",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:微震监测系统-5b8c6d3a79",
+    "type": "technology_equipment",
+    "name": "微震监测系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:截割轨迹规划与自动控制软件-f38c0b5c36",
+    "type": "technology_equipment",
+    "name": "截割轨迹规划与自动控制软件",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:振动传感器温度传感器油液分析传感器-d48441afee",
+    "type": "technology_equipment",
+    "name": "振动传感器/温度传感器/油液分析传感器",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:掘进机机身位姿感知系统惯性导航全站仪-80f155c8b3",
+    "type": "technology_equipment",
+    "name": "掘进机机身位姿感知系统（惯性导航+全站仪）",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:支架压力监测分站-63e7f1b96c",
+    "type": "technology_equipment",
+    "name": "支架压力监测分站",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:数字孪生仿真系统-d447c1ed87",
+    "type": "technology_equipment",
+    "name": "数字孪生仿真系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:数字孪生引擎-29f0dedc5b",
+    "type": "technology_equipment",
+    "name": "数字孪生引擎",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:数据中台数据湖-de80788900",
+    "type": "technology_equipment",
+    "name": "数据中台/数据湖",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:数据标注工具-0129aeee0f",
+    "type": "technology_equipment",
+    "name": "数据标注工具",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:无人机环保巡检系统-b627e7fd4b",
+    "type": "technology_equipment",
+    "name": "无人机环保巡检系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:无人机航拍三维建模系统-c6a6aef6c2",
+    "type": "technology_equipment",
+    "name": "无人机航拍+三维建模系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:无人驾驶矿卡-ef8db0b961",
+    "type": "technology_equipment",
+    "name": "无人驾驶矿卡",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:无功补偿与谐波治理装置-cd73598e18",
+    "type": "technology_equipment",
+    "name": "无功补偿与谐波治理装置",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:智能交通信号灯道岔控制器-e0ccd6aaa9",
+    "type": "technology_equipment",
+    "name": "智能交通信号灯/道岔控制器",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:智能喷雾降尘系统-0d50d3a33d",
+    "type": "technology_equipment",
+    "name": "智能喷雾降尘系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:智能巡检仪手持终端-39dc68f1c9",
+    "type": "technology_equipment",
+    "name": "智能巡检仪/手持终端",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:智能开关柜-cd63d375b9",
+    "type": "technology_equipment",
+    "name": "智能开关柜",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:智能排水泵站及自动控制系统-50059c160b",
+    "type": "technology_equipment",
+    "name": "智能排水泵站及自动控制系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:智能断电控制器-79d5a545f2",
+    "type": "technology_equipment",
+    "name": "智能断电控制器",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:智能注氮站注浆站-03506df91b",
+    "type": "technology_equipment",
+    "name": "智能注氮站/注浆站",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:智能综合保护装置-894b7c0c33",
+    "type": "technology_equipment",
+    "name": "智能综合保护装置",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:智能调度平台-e4569a5464",
+    "type": "technology_equipment",
+    "name": "智能调度平台",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:智能钻机自动布孔精确定位-b8f98e4d76",
+    "type": "technology_equipment",
+    "name": "智能钻机（自动布孔+精确定位）",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:智能风门风窗执行机构-dc04d853c8",
+    "type": "technology_equipment",
+    "name": "智能风门/风窗执行机构",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:机载临时支护机器人-bc5633dcd9",
+    "type": "technology_equipment",
+    "name": "机载临时支护机器人",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:束管监测系统-c41d9b3419",
+    "type": "technology_equipment",
+    "name": "束管监测系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:核心分选设备智能控制器-662a73e41a",
+    "type": "technology_equipment",
+    "name": "核心分选设备智能控制器",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:槽波地震仪-c2d2f82528",
+    "type": "technology_equipment",
+    "name": "槽波地震仪",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:气体分析色谱仪-6f025218fa",
+    "type": "technology_equipment",
+    "name": "气体分析色谱仪",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:气体检测传感器-f2731fa019",
+    "type": "technology_equipment",
+    "name": "气体检测传感器",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:水情预警平台软件-6e97c2b159",
+    "type": "technology_equipment",
+    "name": "水情预警平台软件",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:水文监测传感器水位水压流量水温-5379f11e2c",
+    "type": "technology_equipment",
+    "name": "水文监测传感器（水位/水压/流量/水温）",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:浮选重介工艺优化软件-ced8c45264",
+    "type": "technology_equipment",
+    "name": "浮选/重介工艺优化软件",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:液压支架电液控制系统-c0ae421083",
+    "type": "technology_equipment",
+    "name": "液压支架电液控制系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:激光雷达毫米波雷达摄像头-0cf28dd25c",
+    "type": "technology_equipment",
+    "name": "激光雷达+毫米波雷达+摄像头",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:煤量检测雷达称重传感器-ba7454c34d",
+    "type": "technology_equipment",
+    "name": "煤量检测雷达/称重传感器",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:爆破振动监测仪-c133461407",
+    "type": "technology_equipment",
+    "name": "爆破振动监测仪",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:爆破设计软件-05fbf2562b",
+    "type": "technology_equipment",
+    "name": "爆破设计软件",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:环保数据管理平台-effd2c57e9",
+    "type": "technology_equipment",
+    "name": "环保数据管理平台",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:环境监测分站-eaf21bbb7b",
+    "type": "technology_equipment",
+    "name": "环境监测分站",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:环境监测站粉尘噪声水质-ec7dfa8d78",
+    "type": "technology_equipment",
+    "name": "环境监测站（粉尘/噪声/水质）",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:瓦斯抽采在线监控装置-a87a6c694a",
+    "type": "technology_equipment",
+    "name": "瓦斯抽采在线监控装置",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:电子围栏系统-f813dc9ac2",
+    "type": "technology_equipment",
+    "name": "电子围栏系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:电能质量分析仪-3ec6004d38",
+    "type": "technology_equipment",
+    "name": "电能质量分析仪",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:电铲挖掘机协同装载系统-b54abe22f0",
+    "type": "technology_equipment",
+    "name": "电铲/挖掘机协同装载系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:瞬变电磁仪地质雷达-e398b028ad",
+    "type": "technology_equipment",
+    "name": "瞬变电磁仪/地质雷达",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:瞬变电磁探测仪超前探水-6bd9da2c5d",
+    "type": "technology_equipment",
+    "name": "瞬变电磁探测仪（超前探水）",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:矿井水处理plc控制系统-29d7131733",
+    "type": "technology_equipment",
+    "name": "矿井水处理PLC控制系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:矿压数据分析预警平台-a82a091340",
+    "type": "technology_equipment",
+    "name": "矿压数据分析预警平台",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:矿压监测传感器压力位移应力-835bfc5e4b",
+    "type": "technology_equipment",
+    "name": "矿压监测传感器（压力/位移/应力）",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:矿山ai大模型如国家能源集团ai平台-dfdebd35ab",
+    "type": "technology_equipment",
+    "name": "矿山AI大模型（如国家能源集团AI平台/中煤\"地知\"大模型）",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:矿山知识图谱构建工具-65c7843c5c",
+    "type": "technology_equipment",
+    "name": "矿山知识图谱构建工具",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:矿用5g基站宏站微站基站-968413860d",
+    "type": "technology_equipment",
+    "name": "矿用5G基站（宏站+微站+基站）",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:矿用巡检机器人轨道式履带式-30b4a6016b",
+    "type": "technology_equipment",
+    "name": "矿用巡检机器人（轨道式/履带式）",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:矿用防爆手机终端-fdbaf76137",
+    "type": "technology_equipment",
+    "name": "矿用防爆手机/终端",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:矿用阻燃电缆火灾探测器-b3c90341fe",
+    "type": "technology_equipment",
+    "name": "矿用阻燃电缆火灾探测器",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:矿鸿协议智能终端-dd622109ad",
+    "type": "technology_equipment",
+    "name": "矿鸿协议智能终端",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:碳排放监测传感器-565ed2f310",
+    "type": "technology_equipment",
+    "name": "碳排放监测传感器",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:红外激光瓦斯传感器新一代-49c3d49288",
+    "type": "technology_equipment",
+    "name": "红外/激光瓦斯传感器（新一代）",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:红外测温振动传感器-ce42b2cf76",
+    "type": "technology_equipment",
+    "name": "红外测温/振动传感器",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:红外热成像仪-9557dc6c29",
+    "type": "technology_equipment",
+    "name": "红外热成像仪",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:统一指挥调度台-5a3f3fc9ff",
+    "type": "technology_equipment",
+    "name": "统一指挥调度台",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:综合管控平台软件-45731357df",
+    "type": "technology_equipment",
+    "name": "综合管控平台软件",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:综合除尘成套设备-8411c28da2",
+    "type": "technology_equipment",
+    "name": "综合除尘成套设备",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:融合通信调度平台-90569fb4ad",
+    "type": "technology_equipment",
+    "name": "融合通信调度平台",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:设备健康管理平台phm-f2ecea3dd5",
+    "type": "technology_equipment",
+    "name": "设备健康管理平台(PHM)",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:超前地质探测仪地质雷达瞬变电磁仪-01c491bc05",
+    "type": "technology_equipment",
+    "name": "超前地质探测仪（地质雷达/瞬变电磁仪）",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:车载终端自动驾驶控制器-7cb944f20d",
+    "type": "technology_equipment",
+    "name": "车载终端+自动驾驶控制器",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:车载计算平台自动驾驶算法-f30747afce",
+    "type": "technology_equipment",
+    "name": "车载计算平台+自动驾驶算法",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:输送带防跑偏防撕裂传感器-ead530d229",
+    "type": "technology_equipment",
+    "name": "输送带防跑偏/防撕裂传感器",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:边缘计算网关-ca35908b8b",
+    "type": "technology_equipment",
+    "name": "边缘计算网关",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:选矿dcs控制系统-777ff401bc",
+    "type": "technology_equipment",
+    "name": "选矿DCS控制系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:通风网络解算软件-5dbd347b79",
+    "type": "technology_equipment",
+    "name": "通风网络解算软件",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:配电房巡检机器人-a5adbf8656",
+    "type": "technology_equipment",
+    "name": "配电房巡检机器人",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:采煤机惯性导航系统-c15eb2c571",
+    "type": "technology_equipment",
+    "name": "采煤机惯性导航系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:钻孔应力计-a87ebfcff9",
+    "type": "technology_equipment",
+    "name": "钻孔应力计",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:钻孔测井仪-78b0b8e8a7",
+    "type": "technology_equipment",
+    "name": "钻孔测井仪",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:防爆智能安全帽集成定位通信-1f4f466a89",
+    "type": "technology_equipment",
+    "name": "防爆智能安全帽（集成定位+通信）",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:顶板离层仪-402f8c8d81",
+    "type": "technology_equipment",
+    "name": "顶板离层仪",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:风速风压风量传感器-297cbe5610",
+    "type": "technology_equipment",
+    "name": "风速/风压/风量传感器",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:高精度gpsrtk定位系统-4ff317a5de",
+    "type": "technology_equipment",
+    "name": "高精度GPS/RTK定位系统",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  },
+  {
+    "id": "technology_equipment:高精度卫星定位rtkgnss-3d155b312b",
+    "type": "technology_equipment",
+    "name": "高精度卫星定位（RTK-GNSS）",
+    "aliases": [],
+    "attributes": {
+      "curated": true
+    }
+  }
+]

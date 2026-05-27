@@ -1,0 +1,480 @@
+[
+  {
+    "source_id": "A01",
+    "title": "煤矿智能化标准体系建设指南",
+    "publisher": "国家能源局",
+    "year": "2024",
+    "credibility": "A",
+    "url": "https://zfxxgk.nea.gov.cn/2024-03/13/c_1310768359.htm",
+    "summary_hint": "标准体系、基础通用、信息基础、平台与软件、生产系统与技术装备、运维保障与管理",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\A01_煤矿智能化标准体系建设指南.html"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "A02",
+    "title": "《煤矿智能化标准体系建设指南》政策解读",
+    "publisher": "国家能源局",
+    "year": "2024",
+    "credibility": "A",
+    "url": "https://www.nea.gov.cn/2024-03/20/c_1310768368.htm",
+    "summary_hint": "到 2025/2030 的标准体系目标、五个标准子体系、组织实施机制",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\A02_《煤矿智能化标准体系建设指南》政策解读.html"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "A03",
+    "title": "关于深入推进矿山智能化建设促进矿山安全发展的指导意见",
+    "publisher": "国家矿山安全监察局等 7 部门",
+    "year": "2024",
+    "credibility": "A",
+    "url": "https://www.chinamine-safety.gov.cn/xw/zt/2018zt/mkjqryfyy/gzdt_01/202405/t20240517_488716.shtml",
+    "summary_hint": "顶层设计、创新驱动、数字化进程、智能化场景、整体应用水平",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\A03_关于深入推进矿山智能化建设促进矿山安全发展的指导意见.html"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "A04",
+    "title": "矿山智能化标准体系框架",
+    "publisher": "国家矿山安全监察局",
+    "year": "2023",
+    "credibility": "A",
+    "url": "https://www.chinamine-safety.gov.cn/xw/zt/2018zt/mkjqryfyy/gzdt_01/202309/t20230907_461905.shtml",
+    "summary_hint": "基础通用、数据与模型、生产系统与技术装备、决策与应用",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\A04_矿山智能化标准体系框架.html"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "A05",
+    "title": "关于加快煤矿智能化发展的指导意见",
+    "publisher": "国家发展改革委等 8 部门",
+    "year": "2020",
+    "credibility": "A",
+    "url": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/202007/t20200710_1233536.html",
+    "summary_hint": "煤矿智能化政策起点、技术融合、供给侧改革、智能化水平提升",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\A05_关于加快煤矿智能化发展的指导意见.html"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "A06",
+    "title": "《关于加快煤矿智能化发展的指导意见》政策解读",
+    "publisher": "国家发展改革委",
+    "year": "2020",
+    "credibility": "A",
+    "url": "https://www.ndrc.gov.cn/xxgk/jd/jd/202003/t20200320_1223780.html",
+    "summary_hint": "政策背景、智能化煤矿建设目标、主要任务解释",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\A06_《关于加快煤矿智能化发展的指导意见》政策解读.html"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "A07",
+    "title": "煤矿智能化建设指南（2021 年版）",
+    "publisher": "国家能源局、国家矿山安全监察局",
+    "year": "2021",
+    "credibility": "A/B",
+    "url": "https://www.chinamine-safety.gov.cn/xw/zt/2018zt/mkjqryfyy/zyzc/202108/t20210806_395342.shtml",
+    "summary_hint": "开拓、采掘、运输、通风、洗选、安全保障、经营管理全过程智能化",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\A07_煤矿智能化建设指南（2021_年版）.html"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "A08",
+    "title": "有色金属行业智能工厂（矿山）建设指南（试行）解读",
+    "publisher": "工业和信息化部",
+    "year": "2020",
+    "credibility": "A",
+    "url": "https://www.miit.gov.cn/n6676569/n6676582/art/2020/art_9b4f11d58e9047c3bd81e70ea3819a41.html",
+    "summary_hint": "有色矿山云边端架构、矿石流、智能生产系统、本质安全、工业大数据",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\A08_有色金属行业智能工厂（矿山）建设指南（试行）解读.html"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "A09",
+    "title": "有色金属行业智能矿山建设指南（试行）公告/摘要",
+    "publisher": "国家矿山安全监察局转载",
+    "year": "2020",
+    "credibility": "A/B",
+    "url": "https://www.chinamine-safety.gov.cn/xw/zt/2018zt/mkjqryfyy/kpbl/202005/t20200522_352738.shtml",
+    "summary_hint": "物联网、大数据、AI、5G、边缘计算、虚拟现实在有色矿山应用",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\A09_有色金属行业智能矿山建设指南（试行）公告_摘要.html"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "A10",
+    "title": "有色金属行业智能矿山建设指南 PDF",
+    "publisher": "中国政府网附件",
+    "year": "2020",
+    "credibility": "A",
+    "url": "https://www.gov.cn/zhengce/zhengceku/2020-05/08/5509729/files/30864cb808b741acb56f33f1cf635ebe.pdf",
+    "summary_hint": "资源数字化、智能生产管控、少人无人化、本质安全、绿色高效",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\A10_有色金属行业智能矿山建设指南_PDF.pdf"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "B01",
+    "title": "煤矿智能化发展蓝皮书（2025 年）",
+    "publisher": "国家矿山安全监察局矿山智能化建设专家委员会",
+    "year": "2025",
+    "credibility": "B/C",
+    "url": "https://www.grcc.vip/article-44380-.html",
+    "summary_hint": "政策环境、建设成效、问题挑战、科技攻关方向、未来目标",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\B01_煤矿智能化发展蓝皮书（2025_年）.html"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "B02",
+    "title": "煤矿智能化发展蓝皮书发布报道",
+    "publisher": "经济日报",
+    "year": "2025",
+    "credibility": "B",
+    "url": "https://www.jingjiribao.cn/static/detail.jsp?id=581710",
+    "summary_hint": "蓝皮书结构、首部系统性煤矿智能化报告、五部分内容",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\B02_煤矿智能化发展蓝皮书发布报道.html"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "B03",
+    "title": "国家矿山安全监察局：我国煤矿智能化发展取得明显成效",
+    "publisher": "新浪财经转载",
+    "year": "2025",
+    "credibility": "C",
+    "url": "https://finance.sina.com.cn/wm/2025-04-18/doc-inetqzhr2259379.shtml",
+    "summary_hint": "5G、工业互联网、云计算、大数据、AI 对煤炭开采模式和安全管理的影响",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\B03_国家矿山安全监察局：我国煤矿智能化发展取得明显成效.html"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "B04",
+    "title": "2024 智能矿山暨无人驾驶行业蓝皮书",
+    "publisher": "中国矿业大学煤炭精细勘探与智能开发全国重点实验室、徐州数字空间矿山研究院等",
+    "year": "2024",
+    "credibility": "B/C",
+    "url": "https://www.hulianhutongshequ.cn/upload/tank/report/2024/202410/1/0624527d6d944f35bfb34b683914859a.pdf",
+    "summary_hint": "智能矿山概念、无人驾驶关系、空天地架构、市场现状、产业趋势",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\B04_2024_智能矿山暨无人驾驶行业蓝皮书.pdf"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "B05",
+    "title": "2024 智能矿山暨无人驾驶行业蓝皮书完整报告页",
+    "publisher": "报告汇",
+    "year": "2024",
+    "credibility": "C/D",
+    "url": "https://www.vicsdf.com/doc/ecdbf8eddbedffcf",
+    "summary_hint": "58 页完整报告线索，含发展背景、市场现状、解决方案、趋势展望摘要",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\B05_2024_智能矿山暨无人驾驶行业蓝皮书完整报告页.html"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "B06",
+    "title": "5G+云+AI：赋能有色矿山数字化转型白皮书",
+    "publisher": "华为、中国铜业、中铝智能科技、中国移动云南、中国信通院等",
+    "year": "2021",
+    "credibility": "A",
+    "url": "https://carrier.huawei.com/cn/products/service-and-software/5g-cloud-ai",
+    "summary_hint": "有色井工矿山、矿山流/业务流、5G、云、AI、大数据、垂直应用、管理转型",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\B06_5G+云+AI：赋能有色矿山数字化转型白皮书.html"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "B07",
+    "title": "5G 未来矿山产业发展论坛发布有色矿山数字化转型白皮书",
+    "publisher": "华为新闻",
+    "year": "2021",
+    "credibility": "A",
+    "url": "https://www.huawei.com/cn/news/2021/9/5g-smart-mining-digital-transformation",
+    "summary_hint": "一副蓝图、一张网络、一个平台、一套安全体系、N 个智能应用",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\B07_5G_未来矿山产业发展论坛发布有色矿山数字化转型白皮书.html"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "B08",
+    "title": "矿山智能化暨矿山大模型最佳实践白皮书",
+    "publisher": "华为云/华为智能矿山",
+    "year": "2023",
+    "credibility": "A/B",
+    "url": "https://res-static.hc-cdn.cn/cloudbu-site/china/zh-cn/HuaweiCloudStack/mineintelligence.pdf",
+    "summary_hint": "矿山大模型、集团云、AI 安全监管、设备巡检、煤流调速、智能洗选",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\B08_矿山智能化暨矿山大模型最佳实践白皮书.pdf"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "B09",
+    "title": "华为集团云与矿山大模型解决方案",
+    "publisher": "华为企业业务官网",
+    "year": "2025/2026 页面",
+    "credibility": "A",
+    "url": "https://e.huawei.com/cn/industries/mining/mine-ict-technology-enablement/group-center-cloud",
+    "summary_hint": "感知、认知、决策、执行四位一体，训练中心+边缘推理，大模型覆盖采掘机运通等九大领域",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\B09_华为集团云与矿山大模型解决方案.html"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "B10",
+    "title": "中国电信 5G 智慧矿山行业白皮书",
+    "publisher": "中国电信，行业平台转载",
+    "year": "2023",
+    "credibility": "B/C",
+    "url": "https://intelmining2018.com/sys-nd/2270.html",
+    "summary_hint": "5G 融合、云计算、工业互联网数据平台、AI、数字孪生、机器人、网信安全、核心业务场景和案例",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\B10_中国电信_5G_智慧矿山行业白皮书.html",
+      "raw_docs\\B10P_中国电信5G智慧矿山行业白皮书PDF.pdf"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "B11",
+    "title": "中国电信 5G 智慧矿山融合方案白皮书",
+    "publisher": "中国电信，行业平台转载",
+    "year": "2023",
+    "credibility": "B/C",
+    "url": "https://intelmining2018.com/sys-nd/2273.html",
+    "summary_hint": "一张网、一朵云、一平台、安全保障，5G 专网、云边端协同、矿山数字平台",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\B11_中国电信_5G_智慧矿山融合方案白皮书.html",
+      "raw_docs\\B11P_中国电信5G智慧矿山融合方案白皮书PDF.pdf"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "B12",
+    "title": "中国电信 5G 智慧矿山终端融合白皮书",
+    "publisher": "中国电信、煤炭科学技术研究院、华为等",
+    "year": "2023",
+    "credibility": "B/C",
+    "url": "https://intelmining2018.com/sys-nd/2275.html",
+    "summary_hint": "终端软硬解耦、设备云化、矿山终端需求、5G LAN、定位、授时、超级上行、巡检机器人、矿灯",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\B12_中国电信_5G_智慧矿山终端融合白皮书.html",
+      "raw_docs\\B12P_中国电信5G智慧矿山终端融合白皮书PDF.pdf"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "B13",
+    "title": "智慧矿山 5G 自动驾驶白皮书",
+    "publisher": "中国信通院牵头，西安建筑科技大学矿山系统工程研究所转载",
+    "year": "2020",
+    "credibility": "B",
+    "url": "https://mse.xauat.edu.cn/info/1039/2027.htm",
+    "summary_hint": "矿卡自动驾驶、装载/运输/卸载/作业保障四场景、智能网联矿卡、车联网、云平台、安全保障",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\B13A_智慧矿山5G自动驾驶白皮书发布页.html",
+      "raw_docs\\B13B_中国信通院智慧矿山自动驾驶服务页.html"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "B14",
+    "title": "ABB Next Level Mining White Paper",
+    "publisher": "ABB",
+    "year": "未标明具体发布年",
+    "credibility": "A",
+    "url": "https://library.e.abb.com/public/5d588609dd1842de95c7f7312dbd24fe/Next_Level_Mining_White_%20paper.pdf",
+    "summary_hint": "自动化、信息集成、远程运营中心、实时价值链优化、预测性维护、过程与电力一体化",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\B14_ABB_Next_Level_Mining_White_Paper.pdf"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "B15",
+    "title": "ABB Mine Electrification / Next Level Mining 页面",
+    "publisher": "ABB",
+    "year": "动态页面",
+    "credibility": "A",
+    "url": "https://new.abb.com/mining/next-level-mining/mine-electrificaton",
+    "summary_hint": "矿山电气化、安全、灵活性、运营可用性、能耗和全生命周期经济性",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\B15_ABB_Mine_Electrification_Next_Level_Mining_页面.html"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "B16",
+    "title": "Siemens Mining Industry 页面",
+    "publisher": "Siemens",
+    "year": "动态页面",
+    "credibility": "A",
+    "url": "https://www.siemens.com/global/en/industries/mining-industry/mining-automation/minerals-automation-standard.html",
+    "summary_hint": "安全、可持续、运营效率、数字孪生、IoT、AI、数据分析、自动化装备",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\B16_Siemens_Mining_Industry_页面.html"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "B17",
+    "title": "Siemens Navigate Mining Industry Challenges with Smarter Connected Strategies",
+    "publisher": "Siemens",
+    "year": "动态页面",
+    "credibility": "B/C",
+    "url": "https://resources.sw.siemens.com/de-CH/white-paper-navigate-mining-industry-challenges-with-smarter-connected-strategies/",
+    "summary_hint": "自动化、AI、数字孪生、运营效率、可持续性，可能需要下载注册",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\B17_Siemens_Navigate_Mining_Industry_Challenges_with.html"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "B18",
+    "title": "Schneider Electric Mining Operations Excellence White Paper",
+    "publisher": "Schneider Electric",
+    "year": "2015",
+    "credibility": "A/B",
+    "url": "https://www.se.com/us/en/download/document/PNSS-0194/",
+    "summary_hint": "仿真、培训、优化、矿山运营卓越、生产流程改进",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\B18A_Schneider_Electric_Mining_Operations_Excellence_direct_PDF.pdf"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "B19",
+    "title": "Schneider Electric Mining Power System White Paper Series",
+    "publisher": "Schneider Electric",
+    "year": "2021",
+    "credibility": "B",
+    "url": "https://perspectives.se.com/mining-metals-minerals/mining-white-paper-series-sustainability-optimized-power-systems",
+    "summary_hint": "矿山电力系统、能源效率、可持续、优化供电架构",
+    "source_type": "application_source",
+    "local_files": [
+      "raw_docs\\B19_Schneider_Electric_Mining_Power_System_White_Pap.html"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "B20",
+    "title": "Caterpillar MineStar Operations Solutions",
+    "publisher": "Caterpillar",
+    "year": "动态页面",
+    "credibility": "A",
+    "url": "https://www.cat.com/en_US/by-industry/mining/minexpo2024/technology/minestar-solutions/minestar-operations-solutions.html",
+    "summary_hint": "设备追踪、生产调度、自治运输、远程控制、资产监测、运营数据",
+    "source_type": "application_source",
+    "local_files": [],
+    "notes": []
+  },
+  {
+    "source_id": "L01",
+    "title": "原 MineIntel 矿业计算机应用知识库",
+    "publisher": "MineIntel 项目内置数据",
+    "year": "",
+    "credibility": "B",
+    "url": "local://legacy-mineintel-knowledge",
+    "summary_hint": "项目已有矿业场景、技术路线和应用知识，用于与新采集白皮书/蓝皮书资料合并清洗。",
+    "source_type": "legacy_mineintel_knowledge",
+    "local_files": [
+      "D:\\chuangye\\IntelliSearch\\data\\knowledge\\mining_cs_domain.md"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "L02",
+    "title": "竞赛版矿业科研选题补充知识库",
+    "publisher": "MineIntel 项目内置数据",
+    "year": "",
+    "credibility": "B",
+    "url": "local://legacy-mineintel-knowledge",
+    "summary_hint": "项目已有矿业场景、技术路线和应用知识，用于与新采集白皮书/蓝皮书资料合并清洗。",
+    "source_type": "legacy_mineintel_knowledge",
+    "local_files": [
+      "D:\\chuangye\\IntelliSearch\\autoclaw_submit\\mineintel-research\\data\\knowledge\\mining_research_guide.md"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "L03",
+    "title": "竞赛版结构化矿业场景样例",
+    "publisher": "MineIntel 项目内置数据",
+    "year": "",
+    "credibility": "B",
+    "url": "local://legacy-mineintel-knowledge",
+    "summary_hint": "项目已有矿业场景、技术路线和应用知识，用于与新采集白皮书/蓝皮书资料合并清洗。",
+    "source_type": "legacy_mineintel_knowledge",
+    "local_files": [
+      "D:\\chuangye\\IntelliSearch\\autoclaw_submit\\mineintel-research\\data\\sample_knowledge.json"
+    ],
+    "notes": []
+  },
+  {
+    "source_id": "U01",
+    "title": "矿井场景总览",
+    "publisher": "团队人工整理数据",
+    "year": "2026",
+    "credibility": "A-",
+    "url": "local://user-curated-scenario-csv",
+    "summary_hint": "团队人工整理的矿井场景、痛点、解决方案、技术设备和参考来源总览，用作知识图谱高置信场景骨架。",
+    "source_type": "user_curated_scenario",
+    "local_files": [
+      "user_sources\\矿井场景总览.csv"
+    ],
+    "notes": []
+  }
+]

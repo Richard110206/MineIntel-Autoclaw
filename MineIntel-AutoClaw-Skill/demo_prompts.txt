@@ -1,0 +1,38 @@
+MineIntel Research Skill 演示提示词
+=================================
+
+推荐主演示：
+
+请使用 MineIntel-AutoClaw-Skill（矿小智）技能组，按 mineintel-research 主控流程，围绕“计算机视觉在矿井安全监测中的大创选题”生成一份科研分析报告。我的专业是软件工程，想研究的技术领域是计算机视觉，矿业场景是矿井安全监测。开始后自动打开实时进度 UI，工作过程中对话里只输出“当前”和“已完成”，最后生成 HTML 完整报告、文献综述 LaTeX 和文献综述 PDF（如果工作区内 xelatex 可用）。
+
+一句话主演示：
+
+请使用 MineIntel-AutoClaw-Skill（矿小智）技能组，按 mineintel-research 主控流程，帮我做一个矿井方向的大创选题调研。请先确认我的专业和想研究的技术领域两个信息，收到回答后自动打开实时进度 UI，再开始执行，最后生成 HTML 完整报告和文献综述 LaTeX/PDF。
+
+高级主演示：
+
+请使用 MineIntel-AutoClaw-Skill（矿小智）技能组，按 mineintel-research 主控流程，并按“矿井应用专家、领域分析师、行业前沿技术专家、导师与申报专家、科研经验参考专家、总报告专家”的流程，调研“弱光粉尘环境下的煤矿皮带异物检测”。我的专业是软件工程，想研究的技术领域是计算机视觉。请自动打开实时进度 UI，调用矿井应用知识图谱、MCP 论文检索、前沿检索、一个 GitHub baseline 和知乎/小红书科研经验检索，最后生成并保存 HTML 完整报告、文献综述 LaTeX 和文献综述 PDF。
+
+备用演示 1：
+
+请使用 mineintel-research 技能，调研“深度学习在煤矿皮带异物检测中的应用”，输出论文线索、baseline 仓库、导师方向和项目实施建议。
+
+备用演示 2：
+
+请使用 mineintel-research 技能，帮我分析“井下巡检机器人视觉感知”这个大创方向是否可行，并推荐技术路线和导师方向。
+
+子 Skill 演示 1：
+
+请使用 mineintel-application-kg 技能，检索“井下主运输 皮带异物”，输出相关场景、痛点、解决方案、技术设备和来源依据。
+
+子 Skill 演示 2：
+
+请使用 mineintel-literature-baseline 技能，检索“机器人 井下巡检”的中文论文线索、国际前沿和一个 GitHub baseline。
+
+子 Skill 演示 3：
+
+请使用 mineintel-experience-insights 技能，检索“计算机视觉 矿井安全监测”的知乎/小红书科研经验参考。
+
+子 Skill 演示 4：
+
+请使用 mineintel-report-export 技能，把已有报告正文导出为 HTML 完整报告、文献综述 LaTeX 和文献综述 PDF；PDF 失败时保留 tex 源码。

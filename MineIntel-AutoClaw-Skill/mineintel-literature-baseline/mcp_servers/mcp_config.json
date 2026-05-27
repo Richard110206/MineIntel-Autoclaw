@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "mineintel-literature-mcp": {
+      "command": "python",
+      "args": [
+        "${skillDir}/mcp_servers/mineintel_literature_mcp.py"
+      ],
+      "transport": "stdio",
+      "tools": [
+        "mineintel_domain_analyst_search",
+        "mineintel_frontier_technology_search"
+      ]
+    }
+  }
+}

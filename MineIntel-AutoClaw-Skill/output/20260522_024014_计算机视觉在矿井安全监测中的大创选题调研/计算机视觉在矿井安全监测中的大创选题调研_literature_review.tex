@@ -1,0 +1,105 @@
+\documentclass[UTF8,zihao=-4,fontset=fandol]{ctexart}
+\usepackage[a4paper,left=3cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{setspace}
+\usepackage{tabularx}
+\usepackage{booktabs}
+
+% ---- Fonts: Fandol (bundled, works with tectonic/xelatex/lualatex) ----
+
+% ---- Academic formatting ----
+\setstretch{1.5}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0pt}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue!70!black,
+  citecolor=black,
+  bookmarks=true,
+  bookmarksopen=true
+}
+\Urlmuskip=0mu plus 2mu
+\sloppy
+
+% ---- Section formatting: GB/T academic style ----
+\ctexset{
+  section = {
+    format = \centering\bfseries\fontsize{15bp}{20bp}\selectfont,
+    beforeskip = 1.5ex plus .2ex minus .2ex,
+    afterskip = 1.5ex plus .2ex minus .2ex,
+  },
+  subsection = {
+    format = \bfseries\fontsize{14bp}{18bp}\selectfont,
+    beforeskip = 1ex plus .2ex minus .2ex,
+    afterskip = 1ex plus .2ex minus .2ex,
+  },
+  subsubsection = {
+    format = \bfseries\fontsize{12bp}{16bp}\selectfont,
+    beforeskip = 0.8ex plus .2ex minus .2ex,
+    afterskip = 0.8ex plus .2ex minus .2ex,
+  }
+}
+
+% ---- Title formatting ----
+\renewcommand{\maketitle}{
+  \begin{center}
+    \vspace*{0.8cm}
+    {\bfseries\fontsize{22bp}{26bp}\selectfont 计算机视觉在矿井安全监测中的研究}\\[0.6cm]
+    {\fontsize{14bp}{18bp}\selectfont 文献综述}
+  \end{center}
+  \vspace{0.8cm}
+}
+
+\begin{document}
+\maketitle
+\pagestyle{plain}
+
+\section{研究背景}
+矿井安全监测是保障煤矿安全生产的重要环节，也是煤矿智能化建设的核心内容之一。2020年，国家发改委等八部委联合印发《关于加快煤矿智能化发展的指导意见》，明确提出加快煤矿智能化技术研发与应用；2023年国家能源局发布《煤矿智能化标准体系建设指南》，系统规划了智能视频监控、算法平台等方向的标准体系；《十四五矿山安全生产规划》进一步强调推进少人化、无人化智能化矿山建设。在政策驱动下，基于计算机视觉和深度学习的矿井安全监测技术已成为学术界和工业界的研究热点。然而，井下环境存在弱光、粉尘、水雾、遮挡等特殊约束条件，对目标检测算法的鲁棒性和实时性提出了更高要求。近年来，基于卷积神经网络（CNN）和 Transformer 架构的目标检测算法在通用场景中取得了显著进展，但在矿井复杂环境中的适配性和工程落地仍是亟待解决的关键问题
+
+煤炭工业作为我国基础能源产业，其安全生产直接关系到国家能源安全和社会稳定。在国家大力推进煤矿智能化建设的背景下，井下视频监控系统已基本普及，但传统人工巡检方式存在效率低、实时性差、易疲劳疏漏等不足。计算机视觉与深度学习技术为矿井安全监测提供了新的解决思路，能够在复杂环境下实现人员行为识别、设备状态监测、隐患自动预警等功能，具有重要的理论意义和工程应用价值
+
+\section{国内外研究现状}
+\subsection{国内研究现状}
+国内学者在矿井安全监测领域开展了大量研究工作。在综述性研究方面，机器视觉感知理论与技术在煤炭工业领域应用进展综述系统梳理了矿井视觉领域的技术演进路线。在监测方法方面，矿井视觉计算体系架构与关键技术从工程应用角度提出了可落地的技术方案。矿井视觉体系。在目标检测与识别方面，基于超像素特征与 SVM 分类的人员安全帽分割方法针对矿井环境特点提出了改进方法，安全帽/PPE。总体来看，国内研究主要聚焦于YOLO系列目标检测算法在矿井场景中的适配改进、人员防护装备识别以及井下异常状态监测等方向
+
+\subsection{国外研究现状}
+国际上，矿井安全监测领域的研究同样取得了显著进展。Safety monitoring method of moving target in underground coal mine based on computer vision processing。地下煤矿移动目标。The Future of Mine Safety: A Comprehensive Review of Anti-Collision Systems Based on Computer Vision in Underground Mines。地下矿山防碰撞。An open paradigm dataset for intelligent monitoring of underground drilling operations in coal mines。地下钻进数据集。SubSurfaceGeoRobo: a Comprehensive Underground Dataset for SLAM-Based Geomonitoring with Sensor Calibration。地下 SLAM/监测。国际研究在深度模型架构创新、多模态感知融合、以及基准数据集建设等方面具有较强引领性
+
+\section{研究趋势与展望}
+综合上述国内外研究现状，当前矿井安全监测领域的研究主要集中在以下几个方面：矿井视觉/安全监测综述、矿井视觉监测方法、人员防护装备/安全帽识别、井下场景数据集与基准构建。尽管已有大量研究成果，但以下问题仍待进一步解决：（1）井下真实场景数据获取困难，公开数据集与实际工况存在分布偏差；（2）弱光、粉尘、水雾和遮挡等多重退化因素同时出现时，现有算法的鲁棒性不足；（3）大多数研究侧重于算法精度提升，缺乏面向边缘端部署的轻量化设计；（4）从监测到预警再到处置的安全闭环尚未完全打通
+
+未来研究方向应聚焦于：（1）构建更大规模、更多样化的矿井场景数据集；（2）设计面向复杂环境鲁棒性的自适应检测算法；（3）推进模型轻量化与边缘端实时部署；（4）建立从感知到决策的智能安全闭环系统
+
+\section*{参考文献}
+\addcontentsline{toc}{section}{参考文献}
+
+\hangindent=2em \hangafter=1 \noindent [1] 机器视觉感知理论与技术在煤炭工业领域应用进展综述.  工矿自动化 PDF  [\url{http://www.gkzdh.cn/cn/article/pdf/preview/10.13272/j.issn.1671-251x.2022100087.pdf]}
+
+\hangindent=2em \hangafter=1 \noindent [2] 矿井视觉计算体系架构与关键技术.  煤炭科学技术 PDF  [\url{https://www.mtkxjs.com.cn/cn/article/pdf/preview/10.12438/cst.2023-0152.pdf]}
+
+\hangindent=2em \hangafter=1 \noindent [3] 煤矿井下工业视频图像增强技术研究与分析.  中国矿业 PDF  [\url{http://www.chinaminingmagazine.com/cn/article/pdf/preview/10.12075/j.issn.1004-4051.20240273.pdf]}
+
+\hangindent=2em \hangafter=1 \noindent [4] 矿井视频图像目标检测与隐患识别方法研究综述.  煤炭科学技术 PDF  [\url{https://mtkxjs.com.cn/cn/article/pdf/preview/10.12438/cst.2025-1116.pdf]}
+
+\hangindent=2em \hangafter=1 \noindent [5] 机器视觉在煤矿掘进工作面中的应用.  山西煤炭  [\url{http://www.sxmtzz.com/article/doi/10.20120/j.cnki.issn.1671-749x.2026.0527]}
+
+\hangindent=2em \hangafter=1 \noindent [6] Safety monitoring method of moving target in underground coal mine based on computer vision processing.  [\url{https://www.nature.com/articles/s41598-022-22564-8]}
+
+\hangindent=2em \hangafter=1 \noindent [7] The Future of Mine Safety: A Comprehensive Review of Anti-Collision Systems Based on Computer Vision in Underground Mines.  [\url{https://www.mdpi.com/1424-8220/23/9/4294]}
+
+\hangindent=2em \hangafter=1 \noindent [8] An open paradigm dataset for intelligent monitoring of underground drilling operations in coal mines.  [\url{https://www.nature.com/articles/s41597-025-05118-1]}
+
+\hangindent=2em \hangafter=1 \noindent [9] SubSurfaceGeoRobo: a Comprehensive Underground Dataset for SLAM-Based Geomonitoring with Sensor Calibration.  [\url{https://link.springer.com/article/10.1007/s41064-025-00361-y]}
+
+\hangindent=2em \hangafter=1 \noindent [10] Application of Artificial Intelligence in Predicting Coal Mine Disaster Risks: A Review.  [\url{https://www.mdpi.com/1424-8220/25/21/6586]}
+
+\hangindent=2em \hangafter=1 \noindent [11] A Review of the Application of Computer Vision Techniques in Sustainable Engineering of Open Pit Mines.  [\url{https://www.mdpi.com/2071-1050/17/7/3051]}
+
+\end{document}

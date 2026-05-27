@@ -1,0 +1,4 @@
+# AutoClaw 工作区模式下不要写外部绝对路径。
+# 如确需在工作区内编译 PDF，请把便携 TeX 编译器放进 Skill 包内，
+# 然后在这里写包内相对路径，例如：
+# ../../tools/tex/xelatex.exe

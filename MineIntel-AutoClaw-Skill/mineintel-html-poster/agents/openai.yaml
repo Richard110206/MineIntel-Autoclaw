@@ -1,0 +1,3 @@
+interface:
+  display_name: "MineIntel HTML 完整报告"
+  short_description: "将调研报告渲染为 MineIntel magazine-poster 风格 HTML"
