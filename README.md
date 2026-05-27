@@ -10,21 +10,21 @@
 <h3 align="center">基于多智能体的科创孵化助手</h3>
 
 <p align="center">
-  <em>Multi-Agent Based Sci-Tech Innovation Incubation Assistant</em>
+  <a href="README_EN.md">English</a> | <strong>中文</strong>
 </p>
 
 <p align="center">
   <a href="https://github.com/Richard110206/MineIntel-Autoclaw">
     <img src="https://img.shields.io/github/stars/Richard110206/MineIntel-Autoclaw?style=social" alt="GitHub stars">
   </a>
-  <img src="https://img.shields.io/badge/Competition-2026%20CCDC-ff6b6b?style=flat-square" alt="Competition">
-  <img src="https://img.shields.io/badge/Award-Jiangsu%20%F0%9F%A5%87%20First%20Prize-gold?style=flat-square&logoColor=white&labelColor=%23c9a227&color=%23ffd700" alt="Award">
-  <img src="https://img.shields.io/badge/Track-Intelligent%20Agent%20Special-9b59b6?style=flat-square" alt="Track">
+  <img src="https://img.shields.io/badge/%E8%B5%9B%E4%BA%8B-2026%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AE%BE%E8%AE%A1%E5%A4%A7%E8%B5%9B-ff6b6b?style=flat-square" alt="Competition">
+  <img src="https://img.shields.io/badge/%E5%A5%96%E9%A1%B9-%E6%B1%9F%E8%8B%8F%E7%9C%81%E4%B8%80%E7%AD%89%E5%A5%96-gold?style=flat-square&labelColor=%23c9a227&color=%23ffd700" alt="Award">
+  <img src="https://img.shields.io/badge/%E8%B5%9B%E9%81%93-%E6%99%BA%E8%83%BD%E4%BD%93%E4%B8%93%E9%A1%B9%E8%B5%9B-9b59b6?style=flat-square" alt="Track">
   <br>
-  <img src="https://img.shields.io/badge/Platform-AutoClaw%20%7C%20GLM-34b7a0?style=flat-square" alt="Platform">
+  <img src="https://img.shields.io/badge/%E5%B9%B3%E5%8F%B0-AutoClaw%20%7C%20GLM-34b7a0?style=flat-square" alt="Platform">
   <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
   <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License">
-  <img src="https://img.shields.io/badge/MCP-Compatible-4ac8e8?style=flat-square" alt="MCP">
+  <img src="https://img.shields.io/badge/MCP-%E5%85%BC%E5%AE%B9-4ac8e8?style=flat-square" alt="MCP">
 </p>
 
 <p align="center">
@@ -36,32 +36,28 @@
 
 ---
 
-## Award
+## 获奖
 
 > **2026 年（第 21 届）中国大学生计算机设计大赛 — 智能体专项赛 江苏省一等奖**
->
-> 2026 Chinese Collegiate Computing Competition (CCDC) — Intelligent Agent Special Track, Jiangsu Province **First Prize**
 
 ---
 
-## Overview
+## 项目简介
 
-**MineIntel-AutoClaw (矿小智)** 是一个基于多智能体协作的科创孵化助手，面向矿井/矿业场景提供端到端科研调研服务，基于 [AutoClaw](https://github.com/zhipu-ai/autoclaw) 原生 Skill 架构构建。它通过 7 个协作专家角色的多步编排，自动完成从场景分析、知识图谱检索、论文线索整理、Baseline 推荐到导师匹配的全链路科研调研，最终交付 HTML 完整报告与 LaTeX/PDF 文献综述。
-
-> **English:** MineIntel-AutoClaw is a multi-agent based sci-tech innovation incubation assistant built on AutoClaw's native Skill architecture. It orchestrates 7 collaborative expert roles to automate the full research pipeline — from scene analysis and knowledge graph retrieval to paper search, baseline recommendation, and advisor matching — delivering polished HTML reports and LaTeX/PDF literature reviews.
+**MineIntel-AutoClaw（矿小智）** 是一个基于多智能体协作的科创孵化助手，面向矿井/矿业场景提供端到端科研调研服务。项目基于 [AutoClaw](https://github.com/zhipu-ai/autoclaw) 原生 Skill 架构构建，通过 7 个协作专家角色的多步编排，自动完成从场景分析、知识图谱检索、论文线索整理、Baseline 推荐到导师匹配的全链路科研调研，最终交付 HTML 完整报告与 LaTeX/PDF 文献综述。
 
 ---
 
-## Architecture
+## 系统架构
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                    MineIntel-AutoClaw-Skill                      │
-│                       (矿小智 总入口)                              │
+│                         （矿小智 总入口）                          │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                  │
 │  ┌─────────────────── mineintel-research ───────────────────┐   │
-│  │                 (主控闭环 Skill)                           │   │
+│  │                   （主控闭环 Skill）                        │   │
 │  │                                                          │   │
 │  │   ┌──────────┐  ┌──────────┐  ┌──────────────────────┐  │   │
 │  │   │ Step 1   │→ │ Step 2   │→ │ Step 3               │  │   │
@@ -81,32 +77,32 @@
 │  └──────────────────────────────────────────────────────────┘   │
 │                                                                  │
 │  ┌─────────────┐  ┌────────────┐  ┌─────────────────────────┐  │
-│  │ Knowledge   │  │ Literature │  │ HTML Poster & LaTeX      │  │
-│  │ Graph       │  │ MCP Server │  │ Report Engine            │  │
-│  │ 知识图谱     │  │ MCP 检索   │  │ 报告生成引擎              │  │
+│  │  知识图谱    │  │  MCP 检索   │  │  报告生成引擎            │  │
+│  │  Knowledge   │  │  Literature │  │  HTML Poster & LaTeX    │  │
+│  │  Graph       │  │  MCP Server │  │  Report Engine          │  │
 │  └─────────────┘  └────────────┘  └─────────────────────────┘  │
 │                                                                  │
 │  ┌───────────────────────────────────────────────────────────┐  │
-│  │               Real-time Progress UI (demo-ui)              │  │
+│  │                 实时进度展示 UI (demo-ui)                    │  │
 │  └───────────────────────────────────────────────────────────┘  │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Feature Highlights
+## 核心功能
 
 <table>
 <tr>
 <td width="50%">
 
-### Knowledge Graph
-基于白皮书、蓝皮书、政策标准和人工场景表构建的矿井应用知识图谱，支持 **场景 → 痛点 → 解决方案 → 技术设备 → 来源依据** 的结构化检索与溯源。
+### 矿井应用知识图谱
+基于白皮书、蓝皮书、政策标准和人工场景表构建，支持 **场景 → 痛点 → 解决方案 → 技术设备 → 来源依据** 的结构化检索与溯源。
 
 </td>
 <td width="50%">
 
-### Multi-Agent Orchestration
+### 多智能体协作编排
 7 个协作专家角色按序编排：矿井应用专家 → 领域分析师 → 行业前沿专家 → Baseline 专家 → 导师申报专家 → 经验参考专家 → 总报告专家。
 
 </td>
@@ -114,13 +110,13 @@
 <tr>
 <td width="50%">
 
-### Literature Search
+### 论文线索检索
 内置 MCP Server，支持中文矿业期刊（煤炭学报、工矿自动化等）和国际前沿（arXiv、IEEE、MDPI）论文线索检索，MCP 不可用时自动脚本兜底。
 
 </td>
 <td width="50%">
 
-### Advisor Matching
+### 导师方向匹配
 自动检索中国矿业大学各学院官网师资页面，匹配研究方向相关的导师，给出姓名、学院和官网链接。
 
 </td>
@@ -128,13 +124,13 @@
 <tr>
 <td width="50%">
 
-### Report Generation
+### 报告自动生成
 自动生成 **HTML 完整报告**（magazine-poster 风格）和 **LaTeX/PDF 文献综述**，包含研究主题、场景分析、论文线索、技术路线等完整内容。
 
 </td>
 <td width="50%">
 
-### Real-time Progress UI
+### 实时进度 UI
 调研过程中实时同步进度到 Web 页面，展示当前阶段、思考过程、工具调用状态和完成百分比。
 
 </td>
@@ -143,10 +139,10 @@
 
 ---
 
-## Skill Structure
+## 技能组结构
 
-| Skill | Description | Key Capability |
-|:------|:------------|:---------------|
+| 技能 | 说明 | 核心能力 |
+|:-----|:-----|:---------|
 | `mineintel-research` | 主控闭环 Skill | 端到端任务编排，7 步流水线调度 |
 | `mineintel-application-kg` | 矿井应用知识图谱 | 场景-痛点-解决方案结构化检索 |
 | `mineintel-knowledge-rag` | 本地知识库与导师匹配 | RAG 检索 + 官网导师推荐 |
@@ -158,28 +154,28 @@
 
 ---
 
-## Quick Start
+## 快速开始
 
-### Prerequisites
+### 环境要求
 
 - [AutoClaw](https://github.com/zhipu-ai/autoclaw) Desktop App
 - Python 3.x
-- (可选) XeLaTeX — 用于 PDF 编译
+- （可选）XeLaTeX — 用于 PDF 编译
 
-### Installation
+### 安装
 
 ```bash
-# 1. Clone the repository
+# 1. 克隆仓库
 git clone git@github.com:Richard110206/MineIntel-Autoclaw.git
 
 # 2. 将整个 MineIntel-AutoClaw-Skill 文件夹导入 AutoClaw 作为 Skill 组
 #    拖入 AutoClaw Skills 目录即可自动识别
 
-# 3. (可选) 如果 AutoClaw 支持 MCP 注册，配置文献检索 MCP Server:
+# 3. （可选）如果 AutoClaw 支持 MCP 注册，配置文献检索 MCP Server：
 #    参见 MineIntel-AutoClaw-Skill/mineintel-literature-baseline/mcp_servers/mcp_config.json
 ```
 
-### Usage
+### 使用方法
 
 在 AutoClaw 中发送以下提示词即可触发完整的科研调研流程：
 
@@ -192,15 +188,15 @@ git clone git@github.com:Richard110206/MineIntel-Autoclaw.git
 
 输出将保存到 `output/<时间戳_报告标题>/` 目录：
 
-| File | Description |
-|:-----|:------------|
-| `<标题>_poster.html` | HTML 完整报告 (magazine-poster 风格) |
+| 文件 | 说明 |
+|:-----|:-----|
+| `<标题>_poster.html` | HTML 完整报告（magazine-poster 风格） |
 | `<标题>_literature_review.tex` | 文献综述 LaTeX 源码 |
-| `<标题>_literature_review.pdf` | 文献综述 PDF (需 XeLaTeX) |
+| `<标题>_literature_review.pdf` | 文献综述 PDF（需 XeLaTeX） |
 
 ---
 
-## Tech Stack
+## 技术栈
 
 <p>
   <img src="https://img.shields.io/badge/AutoClaw-Agent%20Platform-34b7a0?style=for-the-badge" alt="AutoClaw">
@@ -212,21 +208,21 @@ git clone git@github.com:Richard110206/MineIntel-Autoclaw.git
 
 ---
 
-## Data Sources
+## 数据来源
 
-| Source | Type | Usage |
-|:-------|:-----|:------|
-| 煤矿智能化蓝皮书 (2025) | 白皮书 | 知识图谱构建 |
-| 煤矿智能化建设指南 (2021) | 政策标准 | 场景依据 |
+| 来源 | 类型 | 用途 |
+|:-----|:-----|:-----|
+| 煤矿智能化蓝皮书（2025） | 白皮书 | 知识图谱构建 |
+| 煤矿智能化建设指南（2021） | 政策标准 | 场景依据 |
 | 国家矿山安全监察局政策 | 政策文件 | 行业背景 |
 | 5G 智慧矿山白皮书 | 行业白皮书 | 技术参考 |
 | 华为/中兴/中国电信矿山方案 | 企业方案 | 技术路线 |
 | ABB/Siemens/Schneider Mining | 国际方案 | 前沿对比 |
-| 矿井场景总览 (20 场景) | 人工标注 | 高置信骨架 |
+| 矿井场景总览（20 场景） | 人工标注 | 高置信骨架 |
 
 ---
 
-## Project Structure
+## 项目结构
 
 ```
 MineIntel-AutoClaw-Skill/
@@ -250,12 +246,12 @@ MineIntel-AutoClaw-Skill/
 │   ├── scripts/
 │   └── data/
 │       ├── user_sources/             # 人工场景表
-│       ├── raw_docs/                 # 原始文档 (30+)
+│       ├── raw_docs/                 # 原始文档（30+）
 │       ├── clean/                    # 清洗后语料
 │       └── kg/                       # 知识图谱数据
 │
 ├── mineintel-knowledge-rag/          # 知识库 Skill
-├── mineintel-literature-baseline/    # 论文检索 Skill (含 MCP)
+├── mineintel-literature-baseline/    # 论文检索 Skill（含 MCP）
 │   ├── mcp_servers/                  # MCP Server
 │   └── scripts/
 ├── mineintel-experience-insights/    # 经验参考 Skill
@@ -273,33 +269,19 @@ MineIntel-AutoClaw-Skill/
 
 ---
 
-## Demo
+## 参赛信息
 
-<div align="center">
-
-### Real-time Progress UI
-
-<img src="MineIntel-AutoClaw-Skill/demo-ui/assets/mineintel-preview.png" alt="MineIntel Demo Preview" width="80%">
-
-*调研过程中的实时进度展示 — 矿业纪事报风格*
-
-</div>
+| 项目 | 详情 |
+|:-----|:-----|
+| **赛事** | 2026 年中国大学生计算机设计大赛（CCDC） |
+| **赛道** | 智能体专项赛 |
+| **奖项** | 江苏省一等奖 |
+| **作品** | MineIntel-AutoClaw（矿小智） |
+| **院校** | 中国矿业大学 |
 
 ---
 
-## Competition Info
-
-| Item | Detail |
-|:-----|:-------|
-| **Competition** | 2026 年中国大学生计算机设计大赛 (CCDC) |
-| **Track** | 智能体专项赛 (Intelligent Agent Special) |
-| **Award** | 江苏省一等奖 (Jiangsu Province First Prize) |
-| **Project** | MineIntel-AutoClaw (矿小智) |
-| **Institution** | China University of Mining and Technology |
-
----
-
-## Team
+## 团队
 
 <p align="center">
   <a href="https://github.com/Richard110206">
@@ -309,9 +291,9 @@ MineIntel-AutoClaw-Skill/
 
 ---
 
-## License
+## 许可证
 
-This project is licensed under the MIT License.
+本项目基于 MIT 许可证开源。
 
 ---
 
@@ -320,5 +302,5 @@ This project is licensed under the MIT License.
   <img src="https://img.shields.io/badge/AutoClaw-34b7a0?style=flat-square" alt="AutoClaw">
   <img src="https://img.shields.io/badge/%E7%9F%BF%E5%B0%8F%E6%99%BA-4fd4bb?style=flat-square" alt="矿小智">
   <br>
-  <sub>MineIntel-AutoClaw &copy; 2026 — 2026 CCDC Intelligent Agent Track, Jiangsu First Prize</sub>
+  <sub>MineIntel-AutoClaw &copy; 2026 — 2026 CCDC 智能体专项赛 江苏省一等奖</sub>
 </p>
