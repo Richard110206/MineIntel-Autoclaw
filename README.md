@@ -7,10 +7,10 @@
 
 <h1 align="center">MineIntel-AutoClaw</h1>
 
-<h3 align="center">矿井智能化科研调研智能体 — 矿小智</h3>
+<h3 align="center">基于多智能体的科创孵化助手</h3>
 
 <p align="center">
-  <em>Mining Intelligence Research Agent Powered by AutoClaw</em>
+  <em>Multi-Agent Based Sci-Tech Innovation Incubation Assistant</em>
 </p>
 
 <p align="center">
@@ -46,9 +46,9 @@
 
 ## Overview
 
-**MineIntel-AutoClaw (矿小智)** 是一个面向矿井/矿业场景的端到端科研调研智能体，基于 [AutoClaw](https://github.com/zhipu-ai/autoclaw) 原生 Skill 架构构建。它通过 7 个协作专家角色的多步编排，自动完成从场景分析、知识图谱检索、论文线索整理、Baseline 推荐到导师匹配的全链路科研调研，最终交付 HTML 完整报告与 LaTeX/PDF 文献综述。
+**MineIntel-AutoClaw (矿小智)** 是一个基于多智能体协作的科创孵化助手，面向矿井/矿业场景提供端到端科研调研服务，基于 [AutoClaw](https://github.com/zhipu-ai/autoclaw) 原生 Skill 架构构建。它通过 7 个协作专家角色的多步编排，自动完成从场景分析、知识图谱检索、论文线索整理、Baseline 推荐到导师匹配的全链路科研调研，最终交付 HTML 完整报告与 LaTeX/PDF 文献综述。
 
-> **English:** MineIntel-AutoClaw is an end-to-end mining research agent built on AutoClaw's native Skill architecture. It orchestrates 7 collaborative expert roles to automate the full research pipeline — from scene analysis and knowledge graph retrieval to paper search, baseline recommendation, and advisor matching — delivering polished HTML reports and LaTeX/PDF literature reviews.
+> **English:** MineIntel-AutoClaw is a multi-agent based sci-tech innovation incubation assistant built on AutoClaw's native Skill architecture. It orchestrates 7 collaborative expert roles to automate the full research pipeline — from scene analysis and knowledge graph retrieval to paper search, baseline recommendation, and advisor matching — delivering polished HTML reports and LaTeX/PDF literature reviews.
 
 ---
 
