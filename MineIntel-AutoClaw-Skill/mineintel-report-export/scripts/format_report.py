@@ -2,8 +2,8 @@
 """Compatibility formatter for MineIntel deliverables.
 
 This script no longer generates Word/DOCX. It exports the same competition
-deliverables as the report-export flow: HTML poster, literature-review tex,
-and optional PDF.
+deliverables as the report-export flow: complete HTML report, presentation
+deck, literature-review tex, and optional PDF.
 """
 
 from __future__ import annotations
@@ -67,6 +67,14 @@ def export(title: str, markdown: str, output_dir: Path, formats: list[str]) -> d
         result = module.export(title, markdown, output_dir)
         children["html_poster"] = result
         files.update(result.get("files", {}))
+    if requested.intersection({"deck", "ppt", "slides"}):
+        module = load_module(
+            "mineintel_deck_export",
+            PACKAGE_DIR / "mineintel-deck-export" / "scripts" / "render_deck.py",
+        )
+        result = module.export(title, markdown, output_dir)
+        children["deck"] = result
+        files.update(result.get("files", {}))
     if requested.intersection({"tex", "latex", "pdf"}):
         module = load_module(
             "mineintel_literature_review",
@@ -85,12 +93,12 @@ def export(title: str, markdown: str, output_dir: Path, formats: list[str]) -> d
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Export MineIntel HTML poster and literature-review LaTeX/PDF.")
+    parser = argparse.ArgumentParser(description="Export MineIntel HTML report, deck, and literature-review LaTeX/PDF.")
     parser.add_argument("--title", required=True)
     parser.add_argument("--content")
     parser.add_argument("--content-file")
     parser.add_argument("--output-dir", default=str(OUTPUT_ROOT))
-    parser.add_argument("--formats", default="html,tex,pdf", help="Comma-separated formats: html, tex, pdf.")
+    parser.add_argument("--formats", default="html,deck,tex,pdf", help="Comma-separated formats: html, deck, tex, pdf.")
     args = parser.parse_args()
     try:
         formats = [x.strip().lower() for x in args.formats.split(",") if x.strip()]

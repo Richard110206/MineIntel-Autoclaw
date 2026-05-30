@@ -150,7 +150,7 @@ def main() -> int:
     parser.add_argument("--major", default="")
     parser.add_argument("--field", default="")
     parser.add_argument("--scene", default="")
-    parser.add_argument("--formats", default="HTML 完整报告 / 文献综述 LaTeX / PDF")
+    parser.add_argument("--formats", default="HTML 完整报告 / 逐页展示 Deck / 文献综述 LaTeX / PDF")
     args = parser.parse_args()
 
     if args.serve:

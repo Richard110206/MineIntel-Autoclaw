@@ -12,8 +12,11 @@ Skill 组：
   mineintel-literature-baseline     论文线索与 GitHub baseline Skill，内置 MCP 检索工具
   mineintel-experience-insights     知乎/小红书科研经验参考 Skill
   mineintel-report-export           报告交付父级 Skill
-  mineintel-html-poster             HTML magazine-poster 海报 Skill
+  mineintel-html-poster             HTML 完整报告 Skill（沿用 poster 文件名）
+  mineintel-deck-export             归藏风格横向翻页 HTML deck Skill
   mineintel-literature-review       文献综述 LaTeX/PDF Skill
+  mineintel-email-draft             导师套磁邮件草稿 Skill（只写 Gmail Drafts，不发送）
+  excalidraw-diagram-generator      项目内 Excalidraw skill，用于生成技术路线图源文件
 
 演示 UI：
   demo-ui/index.html
@@ -35,6 +38,8 @@ Skill 组：
 
   默认正式输出：
     <标题>_poster.html  （HTML 完整报告，沿用 poster 文件名）
+    <标题>_deck.html     （逐页展示版 HTML deck）
+    assets/<标题>_technical_route.excalidraw（技术路线图源文件，已嵌入 HTML 技术路线章节）
     <标题>_literature_review.tex
     <标题>_literature_review.pdf（工作区内 xelatex 可用时）
 
@@ -44,7 +49,8 @@ Skill 组：
   不需要启动原项目后端，不需要本地外部模型 API Key，不需要本地向量模型。
   运行时主要依赖 AutoClaw/GLM、AutoGLM 搜索能力和 Python 3 标准库。
   提交包不内置 MiKTeX/TeX Live。演示机如需 PDF，可把编译器放在工作区根目录 local_tools/MiKTeX/，与 MineIntel-AutoClaw-Skill 平级；脚本只在工作区内查找 xelatex，不跳出工作区调用外部绝对路径。
-  若工作区内 xelatex 不可用，仍会保留 HTML 完整报告和文献综述 tex。
+  若工作区内 xelatex 不可用，仍会保留 HTML 完整报告、逐页展示 Deck 和文献综述 tex。
+  Gmail 草稿功能只使用 Python 标准库 IMAP append 写入 Drafts；需要用户在本机环境变量中自行配置 GMAIL_USER 和 GMAIL_APP_PASSWORD，不在聊天或文件中保存凭证。
 
 演示提示词：
   见 demo_prompts.txt。

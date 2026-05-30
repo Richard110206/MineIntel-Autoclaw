@@ -10,8 +10,8 @@
 | Web 检索 | MCP/后端工具 | `mineintel-literature-baseline` 内置 MCP server，暴露领域分析师和行业前沿技术专家两个检索工具 | 贴近比赛允许的 Skill + MCP 扩展方式，未启用 MCP 时仍可脚本兜底 |
 | 论文调研 | Agent 生成检索词并整合 | MCP tool `mineintel_domain_analyst_search` 检索中文应用期刊，`mineintel_frontier_technology_search` 检索国际前沿 | 查询角色更清晰，但最终核验仍依赖公开网页 |
 | GitHub baseline | MCP/搜索工具 | `mineintel_frontier_technology_search` 内部补充 1 个最相关 GitHub baseline，失败时 fallback | 不需要登录 GitHub，避免网页端重复展示多个地址 |
-| 报告保存 | 后端生成文件 | `mineintel-report-export` 编排 `mineintel-html-poster` 和 `mineintel-literature-review`，生成 HTML 海报、文献综述 LaTeX 和 PDF | 保留比赛演示最需要的可视化交付和论文综述交付 |
+| 报告保存 | 后端生成文件 | `mineintel-report-export` 编排 `mineintel-html-poster`、`mineintel-deck-export` 和 `mineintel-literature-review`，生成 HTML 完整报告、逐页展示 Deck、文献综述 LaTeX 和 PDF | 保留比赛演示最需要的报告、演示和论文综述交付 |
 
 ## 结论
 
-Skill 版不是把原项目所有后端搬进 AutoClaw，而是把核心业务闭环迁移成 AutoClaw 可直接调度的技能组：`mineintel-research` 负责主控编排，`mineintel-application-kg` 负责矿井应用知识图谱，`mineintel-literature-baseline` 通过 MCP/脚本负责论文和 baseline，`mineintel-experience-insights` 负责科研经验参考，`mineintel-report-export` 负责交付编排，并进一步拆成 `mineintel-html-poster` 与 `mineintel-literature-review` 两个原子输出 Skill。原知识库源文件可以随 Skill 一起提交；原 `rag_index` 属于模型生成缓存，不适合作为唯一提交物。这样牺牲了一部分向量语义召回能力，但换来更低依赖、更容易一键试运行，也更符合比赛对原生 Skill 的要求。
+Skill 版不是把原项目所有后端搬进 AutoClaw，而是把核心业务闭环迁移成 AutoClaw 可直接调度的技能组：`mineintel-research` 负责主控编排，`mineintel-application-kg` 负责矿井应用知识图谱，`mineintel-literature-baseline` 通过 MCP/脚本负责论文和 baseline，`mineintel-experience-insights` 负责科研经验参考，`mineintel-report-export` 负责交付编排，并进一步拆成 `mineintel-html-poster`、`mineintel-deck-export` 与 `mineintel-literature-review` 三个原子输出 Skill。原知识库源文件可以随 Skill 一起提交；原 `rag_index` 属于模型生成缓存，不适合作为唯一提交物。这样牺牲了一部分向量语义召回能力，但换来更低依赖、更容易一键试运行，也更符合比赛对原生 Skill 的要求。

@@ -105,12 +105,9 @@ def main() -> int:
     parser.add_argument("query")
     parser.add_argument("--limit", type=int, default=8)
     args = parser.parse_args()
-    result = search(args.query, args.limit)
-    output_path = SCRIPT_DIR / "kg_output.json"
-    output_path.write_text(
-        json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8"
-    )
-    print(output_path)
+    result = json.dumps(search(args.query, args.limit), ensure_ascii=False, indent=2)
+    with open("kg_output.json", "w", encoding="utf-8") as f:
+        f.write(result)
     return 0
 
 

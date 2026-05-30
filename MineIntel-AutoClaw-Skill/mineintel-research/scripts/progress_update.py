@@ -28,6 +28,7 @@ DEFAULT_STEPS = [
     {"id": "advisor", "label": "导师方向匹配"},
     {"id": "experience", "label": "科研经验参考检索"},
     {"id": "report", "label": "报告生成与导出"},
+    {"id": "email", "label": "邮件草稿生成"},
 ]
 
 STEP_ORDER = {step["id"]: index for index, step in enumerate(DEFAULT_STEPS)}
@@ -51,7 +52,7 @@ def default_state() -> dict[str, Any]:
             "major": "",
             "field": "",
             "scene": "",
-            "formats": "HTML 完整报告 / 文献综述 LaTeX / PDF",
+            "formats": "HTML 完整报告 / 逐页展示 Deck / 文献综述 LaTeX / PDF",
         },
         "sections": {
             "papers": {"title": "论文线索", "content": "", "items": []},
@@ -59,6 +60,7 @@ def default_state() -> dict[str, Any]:
             "advisors": {"title": "导师匹配", "content": "", "items": []},
             "route": {"title": "技术路线", "content": "", "items": []},
             "experience": {"title": "科研经验参考", "content": "", "items": []},
+            "email": {"title": "邮件草稿", "content": "", "items": []},
         },
         "results": {
             "papers": [],
@@ -66,6 +68,7 @@ def default_state() -> dict[str, Any]:
             "advisors": [],
             "route": {"center": "技术路线", "branches": []},
             "experience": [],
+            "email": {},
         },
         "artifacts": [],
         "output": {},
@@ -159,6 +162,7 @@ def clear_finished_outputs_for_active_run(state: dict[str, Any]) -> None:
         "advisors": [],
         "route": {"center": "技术路线", "branches": []},
         "experience": [],
+        "email": {},
     }
 
 
@@ -166,7 +170,7 @@ def sanitize_completed(state: dict[str, Any], mark_current_done: bool) -> None:
     """Keep completed steps consistent when the same UI window is reused."""
     current_step = state.get("current_step", "confirm")
     percent = int(state.get("percent") or 0)
-    if state.get("status") == "done" and (current_step == "report" or percent >= 100):
+    if state.get("status") == "done" and percent >= 100:
         state["percent"] = 100
         state["completed"] = [step["id"] for step in DEFAULT_STEPS]
         return
@@ -179,36 +183,6 @@ def sanitize_completed(state: dict[str, Any], mark_current_done: bool) -> None:
         if index is not None and index <= max_done_index and step_id not in completed:
             completed.append(step_id)
     state["completed"] = completed
-
-
-def apply_tool_call(state: dict[str, Any], args: argparse.Namespace) -> None:
-    """Record a tool/MCP call in the state for UI display."""
-    if not args.tool_call:
-        return
-    calls = state.setdefault("tool_calls", [])
-    calls.append({
-        "time": now(),
-        "tool": args.tool_call,
-        "server": args.tool_server or "",
-        "params": args.tool_params or "",
-        "status": args.tool_status or "running",
-        "duration": args.tool_duration or "",
-    })
-    state["tool_calls"] = calls[-50:]
-
-
-def apply_thinking(state: dict[str, Any], args: argparse.Namespace) -> None:
-    """Record a thinking/reasoning step in the state for UI display."""
-    if not args.thinking:
-        return
-    chain = state.setdefault("thinking_chain", [])
-    chain.append({
-        "time": now(),
-        "role": args.thinking_role or "系统",
-        "content": args.thinking,
-        "step": state.get("current_step", ""),
-    })
-    state["thinking_chain"] = chain[-80:]
 
 
 def main() -> int:
@@ -224,20 +198,11 @@ def main() -> int:
     parser.add_argument("--field", help="User-selected research field.")
     parser.add_argument("--scene", help="User-selected mining scenario.")
     parser.add_argument("--formats", help="Requested output formats.")
-    parser.add_argument("--section", choices=["papers", "baseline", "advisors", "route", "experience", "report"])
+    parser.add_argument("--section", choices=["papers", "baseline", "advisors", "route", "experience", "email", "report"])
     parser.add_argument("--section-title")
     parser.add_argument("--section-content")
     parser.add_argument("--section-file")
     parser.add_argument("--artifact", action="append", default=[], help="Register a downloadable file as LABEL=PATH.")
-    # Tool call tracking
-    parser.add_argument("--tool-call", help="Record a tool/MCP call name, e.g. mineintel_domain_analyst_search")
-    parser.add_argument("--tool-server", default="", help="MCP server name, e.g. mineintel-literature-mcp")
-    parser.add_argument("--tool-params", default="", help="Key parameters passed to the tool")
-    parser.add_argument("--tool-status", choices=["running", "success", "error", "fallback"], default="running")
-    parser.add_argument("--tool-duration", default="", help="Execution duration string, e.g. 2.3s")
-    # Thinking chain
-    parser.add_argument("--thinking", help="Record a reasoning/thinking step")
-    parser.add_argument("--thinking-role", default="", help="Expert role, e.g. 矿井应用专家")
     parser.add_argument("--verbose", action="store_true", help="Print the updated state for debugging.")
     args = parser.parse_args()
 
@@ -265,8 +230,6 @@ def main() -> int:
     apply_selection(state, args)
     apply_section(state, args)
     apply_artifacts(state, args.artifact)
-    apply_tool_call(state, args)
-    apply_thinking(state, args)
     sanitize_completed(state, mark_current_done=bool(args.done and args.step))
     clear_finished_outputs_for_active_run(state)
     state["updated_at"] = now()

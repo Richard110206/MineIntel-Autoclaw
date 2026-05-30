@@ -133,8 +133,45 @@ DEFAULT_REFERENCE_LINKS = [
 ]
 
 
+def is_paper_section_title(title: str) -> bool:
+    lowered = strip_markdown(title).lower()
+    blocked = ("github", "baseline", "导师", "课题组", "技术路线", "研究建议", "科研经验", "搜索路径", "溯源")
+    if any(token.lower() in lowered for token in blocked):
+        return False
+    allowed = ("论文", "文献", "前沿线索", "国际前沿", "经典代表性线索", "近年前沿线索")
+    return any(token.lower() in lowered for token in allowed)
+
+
 def is_paper_url(url: str) -> bool:
-    return bool(url) and not re.search(r"(github\.com|zhihu\.com|xiaohongshu\.com|baidu\.com/s)", url, re.I)
+    if not url:
+        return False
+    blocked = (
+        r"github\.com",
+        r"zhihu\.com",
+        r"xiaohongshu\.com",
+        r"baidu\.com/s",
+        r"faculty\.cumt\.edu\.cn",
+        r"cs\.cumt\.edu\.cn/info/",
+        r"safe\.cumt\.edu\.cn/info/",
+        r"cese\.cumt\.edu\.cn/info/",
+        r"cmee\.cumt\.edu\.cn/info/",
+        r"siee\.cumt\.edu\.cn/info/",
+        r"导师|教师|teacher|faculty",
+    )
+    return not re.search("|".join(blocked), url, re.I)
+
+
+def reference_urls_from_paper_sections(markdown: str) -> list[str]:
+    urls: list[str] = []
+    seen: set[str] = set()
+    for section in split_sections(markdown):
+        if not is_paper_section_title(section["title"]):
+            continue
+        for url in extract_urls(section["content"]):
+            if is_paper_url(url) and url not in seen:
+                urls.append(url)
+                seen.add(url)
+    return urls
 
 
 def default_reference_papers() -> list[Paper]:
@@ -273,14 +310,6 @@ def extract_papers(markdown: str) -> list[Paper]:
     active_paper_area = False
     table_headers: list[str] = []
 
-    def paper_heading(title: str) -> bool:
-        lowered = title.lower()
-        blocked = ("github", "baseline", "导师", "技术路线", "研究建议", "科研经验", "搜索路径", "溯源")
-        if any(token.lower() in lowered for token in blocked):
-            return False
-        allowed = ("论文", "文献", "前沿线索", "国际前沿", "经典代表性线索", "近年前沿线索")
-        return any(token.lower() in lowered for token in allowed)
-
     def push() -> None:
         nonlocal current
         if current and current.title and current.title not in seen and valid_paper_title(current.title, current.section):
@@ -297,8 +326,8 @@ def extract_papers(markdown: str) -> list[Paper]:
             table_headers = []
             level = len(heading.group(1))
             if level <= 2:
-                in_paper_parent = paper_heading(current_heading)
-            active_paper_area = paper_heading(current_heading) or (
+                in_paper_parent = is_paper_section_title(current_heading)
+            active_paper_area = is_paper_section_title(current_heading) or (
                 in_paper_parent
                 and not any(token.lower() in current_heading.lower() for token in ("github", "baseline", "导师", "技术路线", "研究建议", "科研经验", "搜索路径", "溯源"))
             )
@@ -417,213 +446,112 @@ def group_review_paragraph(papers: list[Paper], group_name: str) -> list[str]:
     return [text, ""]
 
 
-def _cite(idx: int) -> str:
-    """Produce a citation marker like [1]."""
-    return f"[{idx}]"
-
-
-def _build_references(papers: list[Paper], extra_urls: list[str]) -> list[tuple[str, str]]:
-    """Build a numbered reference list: [(key, formatted_entry), ...].
-
-    Only includes actual paper references, filtering out advisor pages and non-academic URLs.
-    """
-    refs: list[tuple[str, str]] = []
-    seen: set[str] = set()
-    non_paper_domains = ("github.com", "zhihu.com", "xiaohongshu.com", "baidu.com/s",
-                         "cs.cumt.edu.cn", "cese.cumt.edu.cn", "safe.cumt.edu.cn",
-                         "mtxb.com.cn", "nea.gov.cn")
-    for paper in papers:
-        key = (paper.url or paper.title).lower()
-        if key in seen:
-            continue
-        # Skip non-paper URLs (advisor pages, government PDFs, etc.)
-        if paper.url and any(domain in paper.url for domain in non_paper_domains):
-            continue
-        seen.add(key)
-        source_part = f"  {paper.source}" if paper.source else ""
-        entry = f"{paper.title}.{source_part}"
-        if paper.url:
-            entry += f"  [{paper.url}]"
-        refs.append((paper.title, entry))
-    for url in extra_urls:
-        if url.lower() in seen or not is_paper_url(url):
-            continue
-        if any(domain in url for domain in non_paper_domains):
-            continue
-        seen.add(url.lower())
-        refs.append((url, f"[online] {url}"))
-    return refs
-
-
-def build_review_markdown(title: str, markdown: str) -> tuple[str, str]:
-    """Build an academic-style literature review with inline citations [1][2]...
-
-    Returns (clean_title, review_markdown).
-    """
+def build_review_markdown(title: str, markdown: str) -> str:
     papers = extract_papers(markdown)
     domestic, international = classify_papers(papers)
     background = section_text(markdown, ("研究主题", "主题概述"), 900)
+    difficulties = section_text(markdown, ("技术难点", "特殊技术难点", "痛点", "难点"), 900)
+    route = section_text(markdown, ("技术路线", "研究建议", "路线"), 1000)
+    family_counter = Counter(method_family(paper) for paper in papers)
+    family_summary = "；".join(f"{family} {count} 条" for family, count in family_counter.most_common(5))
+    representative = "前述中文应用论文、国际前沿论文和工程系统线索"
+    if not family_summary:
+        family_summary = "矿井视觉监测方法、数据集与工程系统线索"
+    if not papers:
+        representative = "后续补充的可核验论文线索"
 
-    # Collect all URLs for the reference list
-    all_extra_urls = [url for url in extract_urls(markdown) if is_paper_url(url)]
-    refs = _build_references(papers, all_extra_urls)
-    # Pad with defaults if needed
-    if len(refs) < 5:
-        for ref_title, ref_url in DEFAULT_REFERENCE_LINKS:
-            if len(refs) >= 12:
-                break
-            if ref_url.lower() not in {r[0].lower() for r in refs}:
-                refs.append((ref_title, f"{ref_title}.  [{ref_url}]"))
+    if not background:
+        background = "矿井安全监测具有明确工程需求：井下人员、设备、运输皮带、火灾烟雾和巡检机器人等对象需要持续感知，但现场存在弱光、粉尘、水雾、遮挡和网络不稳定等约束。计算机视觉与深度学习适合作为大创项目切入点，因为它可以用公开数据、仿真数据和可复现 baseline 形成相对完整的验证闭环。"
+    if not difficulties:
+        difficulties = "主要难点集中在低照度成像、粉尘水雾导致的图像退化、人员/设备遮挡、小目标漏检、边缘端算力受限、井下安全误报成本较高，以及公开矿井数据不足。"
+    if not route:
+        route = "建议采用场景定义、数据采集、baseline 复现、矿井适配优化、实验评估和申报产出的路线推进。"
 
-    # Build title->citation-index mapping
-    cite_map: dict[str, int] = {}
-    for idx, (key, _entry) in enumerate(refs, 1):
-        cite_map[key] = idx
-
-    def cite_paper(paper: Paper) -> str:
-        key = (paper.url or paper.title).lower()
-        for ref_key, idx in cite_map.items():
-            if ref_key.lower() == key:
-                return _cite(idx)
-        return ""
-
-    def cite_papers_inline(paper_list: list[Paper]) -> str:
-        markers = sorted({cite_paper(p) for p in paper_list if cite_paper(p)}, key=lambda s: int(s.strip("[]")))
-        return "".join(markers)
-
-    # Always use a clean academic background — never inject 大创/报告/选题 content
-    background = (
-        "矿井安全监测是保障煤矿安全生产的重要环节，也是煤矿智能化建设的核心内容之一。"
-        "2020年，国家发改委等八部委联合印发《关于加快煤矿智能化发展的指导意见》，明确提出加快煤矿智能化技术研发与应用；"
-        "2023年国家能源局发布《煤矿智能化标准体系建设指南》，系统规划了智能视频监控、算法平台等方向的标准体系；"
-        "《十四五矿山安全生产规划》进一步强调推进少人化、无人化智能化矿山建设。"
-        "在政策驱动下，基于计算机视觉和深度学习的矿井安全监测技术已成为学术界和工业界的研究热点。"
-        "然而，井下环境存在弱光、粉尘、水雾、遮挡等特殊约束条件，对目标检测算法的鲁棒性和实时性提出了更高要求。"
-        "近年来，基于卷积神经网络（CNN）和 Transformer 架构的目标检测算法在通用场景中取得了显著进展，"
-        "但在矿井复杂环境中的适配性和工程落地仍是亟待解决的关键问题。"
-    )
-
-    # Derive a clean academic title
-    clean_title = re.sub(r"(大创|选题|调研|报告|科研).*$", "研究", title).strip()
-    if not clean_title.endswith(("研究", "综述", "分析", "方法")):
-        clean_title = title.rstrip("调研报告") + "研究"
-
-    # --- Section 1: 研究背景 ---
     lines: list[str] = [
-        f"# {clean_title}文献综述",
+        f"# {title}：文献综述",
+        "",
+        "> 本综述只基于已检索到的公开题名、摘要/网页片段、链接和已解析资料做归纳，不把未取得全文的实验细节写成确定结论。正式申报或引用前应逐条核验原文、DOI、期刊信息和发表时间。",
         "",
         "## 研究背景",
         "",
         background,
         "",
-        "煤炭工业作为我国基础能源产业，其安全生产直接关系到国家能源安全和社会稳定"
-        + (cite_papers_inline([p for p in papers if "综述" in p.title or "survey" in p.title.lower() or "Review" in p.title]) or "")
-        + "。在国家大力推进煤矿智能化建设的背景下，井下视频监控系统已基本普及，但传统人工巡检方式存在效率低、实时性差、易疲劳疏漏等不足。计算机视觉与深度学习技术为矿井安全监测提供了新的解决思路，能够在复杂环境下实现人员行为识别、设备状态监测、隐患自动预警等功能，具有重要的理论意义和工程应用价值。",
+        "矿井安全监测类选题的价值不只在模型精度，还在于能否把算法嵌入实际生产约束：摄像头安装位置受限、井下光照和粉尘条件不稳定、数据采集成本高、误报漏报会影响安全调度。因此，大创阶段更适合从一个清晰对象切入，例如安全帽/自救器佩戴、井下人员越界、皮带异物、烟雾火焰或巡检机器人目标识别，再逐步扩展到系统化监测。",
+        "",
+        "## 研究问题与技术痛点",
+        "",
+        difficulties,
+        "",
+        "结合检索线索，本项目应把问题定义为“矿井复杂环境下的可部署视觉识别”，而不是泛化地做普通目标检测。关键评价指标除 mAP、Precision、Recall 外，还应加入弱光/粉尘/遮挡子集表现、边缘端推理速度、误报类型和可解释性分析。",
+        "",
+        "## 已有论文方法综述",
+        "",
+        "### 中文应用研究",
         "",
     ]
 
-    # --- Section 2: 国内外研究现状 ---
-    lines.append("## 国内外研究现状")
-    lines.append("")
-
-    # 2.1 国内研究现状
-    lines.append("### 国内研究现状")
-    lines.append("")
-
     if domestic:
-        # Group by method family
-        from collections import defaultdict
-        families: dict[str, list[Paper]] = defaultdict(list)
-        for p in domestic:
-            families[method_family(p)].append(p)
-
-        para = "国内学者在矿井安全监测领域开展了大量研究工作。"
-        for family_name, family_papers in families.items():
-            cites = cite_papers_inline(family_papers)
-            first_paper = family_papers[0]
-            summary_text = first_paper.summary[:120] if first_paper.summary else ""
-            if "检测" in family_name or "识别" in family_name:
-                para += f"在目标检测与识别方面，{first_paper.title}{cites}针对矿井环境特点提出了改进方法，{summary_text}。"
-            elif "综述" in family_name:
-                para += f"在综述性研究方面，{first_paper.title}{cites}系统梳理了矿井视觉领域的技术演进路线。"
-            elif "数据" in family_name:
-                para += f"在数据集构建方面，{first_paper.title}{cites}提供了可支撑模型训练的公开数据资源。"
-            elif "监测" in family_name:
-                para += f"在监测方法方面，{first_paper.title}{cites}从工程应用角度提出了可落地的技术方案。{summary_text}。"
-            elif "火灾" in family_name or "烟雾" in family_name:
-                para += f"在火灾烟雾检测方面，{first_paper.title}{cites}针对井下特殊光照和粉尘条件设计了视觉识别方案。"
-            elif "机器人" in family_name or "slam" in family_name.lower():
-                para += f"在巡检机器人方面，{first_paper.title}{cites}探索了井下自主导航与环境感知技术。"
-            else:
-                para += f"{first_paper.title}{cites}。{summary_text}。"
-
-        para += f"总体来看，国内研究主要聚焦于YOLO系列目标检测算法在矿井场景中的适配改进{cite_papers_inline([p for p in domestic if 'yolo' in p.title.lower()])}、人员防护装备识别以及井下异常状态监测等方向。"
-        lines.extend([para, ""])
+        lines.extend(group_review_paragraph(domestic, "中文应用研究"))
     else:
-        lines.extend(["目前暂无充分的国内论文条目，建议继续以煤炭学报、采矿与安全工程学报、工矿自动化、煤炭科学技术等来源进行补充检索。", ""])
+        lines.extend(["暂无稳定中文应用论文条目，建议继续以煤炭学报、采矿与安全工程学报、工矿自动化、煤炭科学技术等来源核验。", ""])
 
-    # 2.2 国外研究现状
-    lines.append("### 国外研究现状")
-    lines.append("")
-
+    lines.extend(["### 国际前沿研究", ""])
     if international:
-        intl_families: dict[str, list[Paper]] = defaultdict(list)
-        for p in international:
-            families[method_family(p)].append(p)
-            intl_families[method_family(p)].append(p)
-
-        para = "国际上，矿井安全监测领域的研究同样取得了显著进展。"
-        for family_name, family_papers in intl_families.items():
-            cites = cite_papers_inline(family_papers)
-            first_paper = family_papers[0]
-            summary_text = first_paper.summary[:120] if first_paper.summary else ""
-            if "Safety" in family_name or "safety" in family_name:
-                para += f"{first_paper.title}{cites}提出了一种基于计算机视觉的井下安全监测方法，{summary_text}。"
-            elif "Detection" in family_name or "detection" in family_name:
-                para += f"{first_paper.title}{cites}在目标检测方向取得了重要突破，{summary_text}。"
-            elif "Monitoring" in family_name or "monitoring" in family_name:
-                para += f"{first_paper.title}{cites}在监测系统构建方面提出了新方案。{summary_text}。"
-            elif "Dataset" in family_name or "dataset" in family_name:
-                para += f"{first_paper.title}{cites}公开了面向井下场景的基准数据集，为后续研究提供了数据基础。"
-            elif "Survey" in family_name or "Review" in family_name:
-                para += f"{first_paper.title}{cites}从国际视角综述了矿井安全监测技术的发展趋势。"
-            elif "Collision" in family_name or "collision" in family_name:
-                para += f"{first_paper.title}{cites}在井下防碰撞系统方面做出了重要贡献。{summary_text}。"
-            else:
-                para += f"{first_paper.title}{cites}。{summary_text}。"
-
-        para += "国际研究在深度模型架构创新、多模态感知融合、以及基准数据集建设等方面具有较强引领性。"
-        lines.extend([para, ""])
+        lines.extend(group_review_paragraph(international, "国际前沿研究"))
     else:
-        lines.extend(["目前暂无充分的国际前沿论文条目，建议继续以 IEEE、Springer、Elsevier、MDPI 等来源进行补充检索。", ""])
+        lines.extend(["暂无稳定国际前沿论文条目，建议继续以 arXiv、DBLP、IEEE、MDPI、Nature/Springer 等来源核验。", ""])
 
-    # --- Section 3: 研究趋势与展望 ---
-    family_counter = Counter(method_family(paper) for paper in papers)
-    family_summary = "、".join(f"{family}" for family, _ in family_counter.most_common(4))
-    if not family_summary:
-        family_summary = "矿井视觉监测方法、数据集与工程系统"
+    lines.extend(
+        [
+            "## 研究路线与论文契合关系",
+            "",
+            route,
+            "",
+            f"从契合关系看，本次 {len(papers)} 条论文线索主要集中在：{family_summary}。其中，{representative} 等条目可以分别支撑“场景必要性、算法路线、数据与评测、工程落地”四个论证环节。中文矿业应用论文更适合承担“场景定义、工程指标、矿井约束”的证据角色；国际前沿论文更适合承担“模型改进、对比实验、鲁棒性设计”的证据角色。",
+            "",
+            "因此，项目路线不应简单写成“使用 YOLO 做识别”，而应写成“面向井下复杂环境的视觉监测闭环”：先确定安全帽/自救器、皮带异物、烟雾火焰或人员越界等单一对象，再复现一个轻量目标检测 baseline，随后围绕弱光、粉尘、水雾、遮挡和边缘端部署做有针对性的改进，最后用可视化系统和文献综述说明工程价值。",
+            "",
+            "## 论文解决了什么，以及仍未解决什么",
+            "",
+            f"已检索论文大体解决了三类问题：一是证明机器视觉可以进入煤矿安全监测、火灾识别、人员行为识别和智能化矿山系统；二是给出 YOLO、SVM、Faster R-CNN、姿态估计、多模态模型等可迁移方法；三是提供了部分公开数据集、综述和工程系统线索。从当前线索看，方法谱系可概括为：{family_summary}。这些内容足够支撑本项目完成选题论证、baseline 选择和初步实验设计。",
+            "",
+            "仍未充分解决的问题包括：井下真实数据难获取，公开数据与现场分布存在差距；弱光、粉尘、水雾和遮挡同时出现时模型鲁棒性不足；很多论文更强调算法结果，缺少边缘端部署和安全流程闭环；导师和工程现场资源会直接影响项目能否拿到高质量数据。因此，本项目的创新点应聚焦在“矿井适配”而不是盲目堆叠模型。",
+            "",
+            "## 面向大创的选题建议",
+            "",
+            "建议把题目压缩为一个可验证对象，例如“低照度矿井场景下安全帽/自救器佩戴检测与轻量化部署”或“粉尘遮挡环境下煤矿皮带异物检测方法研究”。这样既能对接中文矿业论文的应用场景，又能对接国际前沿论文中的鲁棒检测和轻量化思路，还便于用 GitHub baseline 做可运行演示。",
+            "",
+            "申报材料中应明确三点：第一，数据从何而来，是否有公开数据、仿真增强或校内合作采集方案；第二，baseline 是什么，改进点相对 baseline 解决了哪一个矿井痛点；第三，最终产出是论文综述、模型训练结果、可视化演示系统还是边缘端部署 demo。答辩时不要把平台经验、搜索片段或未核验网页当作论文事实。",
+            "",
+            "## 参考文献与链接",
+            "",
+        ]
+    )
 
-    lines.extend([
-        "## 研究趋势与展望",
-        "",
-        f"综合上述国内外研究现状，当前矿井安全监测领域的研究主要集中在以下几个方面：{family_summary}。"
-        "尽管已有大量研究成果，但以下问题仍待进一步解决：（1）井下真实场景数据获取困难，公开数据集与实际工况存在分布偏差；"
-        "（2）弱光、粉尘、水雾和遮挡等多重退化因素同时出现时，现有算法的鲁棒性不足；"
-        "（3）大多数研究侧重于算法精度提升，缺乏面向边缘端部署的轻量化设计；"
-        "（4）从监测到预警再到处置的安全闭环尚未完全打通。",
-        "",
-        "未来研究方向应聚焦于：（1）构建更大规模、更多样化的矿井场景数据集；（2）设计面向复杂环境鲁棒性的自适应检测算法；"
-        "（3）推进模型轻量化与边缘端实时部署；（4）建立从感知到决策的智能安全闭环系统。",
-        "",
-    ])
-
-    # --- Section 4: 参考文献 ---
-    lines.extend(["## 参考文献", ""])
-    for idx, (_key, entry) in enumerate(refs[:30], 1):
-        lines.append(f"[{idx}] {entry}")
+    refs: list[str] = []
+    seen_urls: set[str] = set()
+    for paper in papers:
+        if paper.url and paper.url not in seen_urls:
+            refs.append(f"- {paper.title}：{paper.url}")
+            seen_urls.add(paper.url)
+    for index, url in enumerate(reference_urls_from_paper_sections(markdown), 1):
+        if url in seen_urls or not is_paper_url(url):
+            continue
+        refs.append(f"- 补充链接 {index}：{url}")
+        seen_urls.add(url)
+        if len(refs) >= 12:
+            break
+    for title_ref, url in DEFAULT_REFERENCE_LINKS:
+        if len(refs) >= 16:
+            break
+        if url not in seen_urls:
+            refs.append(f"- {title_ref}：{url}")
+            seen_urls.add(url)
+    if not refs:
+        refs = ["- 当前报告未抽取到稳定链接，需回到论文检索阶段补充。"]
+    lines.extend(refs[:24])
     lines.append("")
-
-    return clean_title, "\n".join(lines)
+    return "\n".join(lines)
 
 
 def latex_escape(text: str) -> str:
@@ -695,8 +623,6 @@ def markdown_to_latex_body(markdown: str) -> str:
     para: list[str] = []
     in_itemize = False
     first_heading = True
-    bib_mode = False
-    bib_idx = -1
 
     def flush_para() -> None:
         if para:
@@ -723,17 +649,11 @@ def markdown_to_latex_body(markdown: str) -> str:
             out.append("")
             in_itemize = False
 
-    for line_idx, raw in enumerate(lines):
+    for raw in lines:
         line = raw.strip()
         if not line:
             flush_para()
             close_itemize()
-            continue
-        if bib_mode:
-            # After "参考文献" heading, collect numbered entries
-            if re.match(r"^\[\d+\]", line):
-                out.append("\\hangindent=2em \\hangafter=1 \\noindent " + latex_text(line))
-                out.append("")
             continue
         heading = re.match(r"^(#{1,6})\s+(.+)$", line)
         if heading:
@@ -745,13 +665,6 @@ def markdown_to_latex_body(markdown: str) -> str:
                 first_heading = False
                 continue
             first_heading = False
-            # Handle "参考文献" section with hanging-indent items
-            if "参考文献" in heading_text:
-                out.append("\\section*{" + latex_text(heading_text) + "}")
-                out.append("\\addcontentsline{toc}{section}{" + latex_text(heading_text) + "}")
-                out.append("")
-                bib_mode = True
-                continue
             command = "section" if level <= 2 else "subsection" if level == 3 else "subsubsection"
             out.append(f"\\{command}{{{latex_text(heading_text)}}}")
             continue
@@ -787,75 +700,31 @@ def markdown_to_latex_body(markdown: str) -> str:
 
 
 def latex_document(title: str, review_markdown: str) -> str:
-    """Generate a LaTeX document following Chinese university thesis formatting conventions.
-
-    - No forced page break after title (content starts immediately)
-    - ctex auto-numbering (no manual 一、二、三、)
-    - Hanging-indent bibliography at the end
-    """
     body = markdown_to_latex_body(review_markdown)
-    return rf"""\documentclass[UTF8,zihao=-4,fontset=fandol]{{ctexart}}
-\usepackage[a4paper,left=3cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{{geometry}}
+    return rf"""\documentclass[UTF8,zihao=-4]{{ctexart}}
+\usepackage[a4paper,margin=2.25cm]{{geometry}}
 \usepackage{{xcolor}}
 \usepackage{{hyperref}}
 \usepackage{{url}}
 \usepackage{{setspace}}
-\usepackage{{tabularx}}
-\usepackage{{booktabs}}
-
-% ---- Fonts: Fandol (bundled, works with tectonic/xelatex/lualatex) ----
-
-% ---- Academic formatting ----
-\setstretch{{1.5}}
-\setlength{{\parindent}}{{2em}}
-\setlength{{\parskip}}{{0pt}}
-\setcounter{{secnumdepth}}{{3}}
-\setcounter{{tocdepth}}{{2}}
-
-\hypersetup{{
-  colorlinks=true,
-  linkcolor=black,
-  urlcolor=blue!70!black,
-  citecolor=black,
-  bookmarks=true,
-  bookmarksopen=true
-}}
+\hypersetup{{colorlinks=true,linkcolor=green!45!black,urlcolor=green!35!black}}
 \Urlmuskip=0mu plus 2mu
 \sloppy
-
-% ---- Section formatting: GB/T academic style ----
+\setstretch{{1.18}}
+\setcounter{{secnumdepth}}{{0}}
+\definecolor{{minegreen}}{{HTML}}{{2F7D32}}
 \ctexset{{
-  section = {{
-    format = \centering\bfseries\fontsize{{15bp}}{{20bp}}\selectfont,
-    beforeskip = 1.5ex plus .2ex minus .2ex,
-    afterskip = 1.5ex plus .2ex minus .2ex,
-  }},
-  subsection = {{
-    format = \bfseries\fontsize{{14bp}}{{18bp}}\selectfont,
-    beforeskip = 1ex plus .2ex minus .2ex,
-    afterskip = 1ex plus .2ex minus .2ex,
-  }},
-  subsubsection = {{
-    format = \bfseries\fontsize{{12bp}}{{16bp}}\selectfont,
-    beforeskip = 0.8ex plus .2ex minus .2ex,
-    afterskip = 0.8ex plus .2ex minus .2ex,
-  }}
+  section={{format=\Large\bfseries\color{{minegreen}}}},
+  subsection={{format=\large\bfseries}},
+  subsubsection={{format=\normalsize\bfseries}}
 }}
-
-% ---- Title formatting ----
-\renewcommand{{\maketitle}}{{
-  \begin{{center}}
-    \vspace*{{0.8cm}}
-    {{\bfseries\fontsize{{22bp}}{{26bp}}\selectfont {latex_text(title)}}}\\[0.6cm]
-    {{\fontsize{{14bp}}{{18bp}}\selectfont 文献综述}}
-  \end{{center}}
-  \vspace{{0.8cm}}
-}}
-
+\title{{\textbf{{{latex_text(title + "：文献综述")}}}\\\large MineIntel 矿小智科研情报}}
+\author{{CUMT MineIntel / AutoClaw Native Skill}}
+\date{{{latex_text(datetime.now().strftime("%Y-%m-%d"))}}}
 \begin{{document}}
+\pagestyle{{empty}}
 \maketitle
-\pagestyle{{plain}}
-
+\thispagestyle{{empty}}
 {body}
 \end{{document}}
 """
@@ -1013,53 +882,17 @@ def cleanup_latex_temp(tex_path: Path) -> None:
         pass
 
 
-def find_tectonic() -> str | None:
-    """Find tectonic binary on the system PATH."""
-    return shutil.which("tectonic")
-
-
 def compile_latex(tex_path: Path) -> dict[str, Any]:
-    # Try tectonic first (modern, self-contained, no MiKTeX needed)
-    tectonic = find_tectonic()
-    if tectonic:
-        runs = []
-        last: subprocess.CompletedProcess[str] | None = None
-        try:
-            last = subprocess.run(
-                [tectonic, "-X", "compile", str(tex_path)],
-                cwd=str(tex_path.parent),
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                text=True,
-                encoding="utf-8",
-                errors="replace",
-                timeout=180,
-            )
-        except subprocess.TimeoutExpired as exc:
-            runs.append({"returncode": "timeout", "tail": str(exc)[-1200:]})
-            return {"status": "error", "compiler": tectonic, "runs": runs}
-        except OSError as exc:
-            runs.append({"returncode": "oserror", "tail": str(exc)[-1200:]})
-            return {"status": "error", "compiler": tectonic, "runs": runs}
-        runs.append({"returncode": last.returncode, "tail": (last.stdout or "")[-1200:]})
-        pdf_path = tex_path.with_suffix(".pdf")
-        if last and last.returncode == 0 and pdf_path.exists():
-            cleanup_latex_temp(tex_path)
-            return {"status": "success", "compiler": tectonic, "pdf": str(pdf_path.resolve()), "runs": len(runs)}
-        cleanup_latex_temp(tex_path)
-        return {"status": "error", "compiler": tectonic, "runs": runs}
-
-    # Fallback to xelatex (MiKTeX or system install)
     xelatex = find_xelatex()
     if not xelatex:
         return {
             "status": "skipped",
-            "warning": "未找到 tectonic 或 xelatex，已保留文献综述 tex 源码。可手动运行: tectonic <file>.tex",
+            "warning": "工作区内未找到 xelatex，已保留文献综述 tex 源码。",
         }
     env = build_latex_env(xelatex)
     initialize_miktex_runtime(xelatex, env)
     runs = []
-    last = None
+    last: subprocess.CompletedProcess[str] | None = None
     for _ in range(2):
         try:
             last = subprocess.run(
@@ -1093,9 +926,9 @@ def compile_latex(tex_path: Path) -> dict[str, Any]:
 def export(title: str, markdown: str, output_dir: Path, filename: str | None = None, compile_pdf: bool = True) -> dict[str, Any]:
     output_dir.mkdir(parents=True, exist_ok=True)
     stem = safe_filename(filename or title)
-    clean_title, review_md = build_review_markdown(title, markdown)
+    review_md = build_review_markdown(title, markdown)
     tex_path = output_dir / f"{stem}_literature_review.tex"
-    tex_path.write_text(latex_document(clean_title, review_md), encoding="utf-8")
+    tex_path.write_text(latex_document(title, review_md), encoding="utf-8")
     files: dict[str, str] = {"tex": str(tex_path.resolve())}
     compile_result: dict[str, Any] | None = None
     if compile_pdf:

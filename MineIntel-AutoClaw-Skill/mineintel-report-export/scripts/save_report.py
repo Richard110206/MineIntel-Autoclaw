@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Save MineIntel report deliverables.
 
-The final competition outputs are the MineIntel magazine-poster HTML and the
-literature-review LaTeX/PDF bundle. Markdown is accepted as input only; it is
-not saved as a formal output artifact.
+The final competition outputs are the complete MineIntel HTML report, the
+presentation deck, and the literature-review LaTeX/PDF bundle. Markdown is
+accepted as input only; it is not saved as a formal output artifact.
 """
 
 from __future__ import annotations
@@ -96,6 +96,15 @@ def export_formats(title: str, markdown: str, output_dir: Path, formats: str) ->
         html_result = html_module.export(title, markdown, output_dir)
         exports["html_poster"] = html_result
         files.update(html_result.get("files", {}))
+
+    if any(fmt in requested for fmt in ("deck", "ppt", "slides")):
+        deck_module = load_script_module(
+            "mineintel_deck_export",
+            PACKAGE_DIR / "mineintel-deck-export" / "scripts" / "render_deck.py",
+        )
+        deck_result = deck_module.export(title, markdown, output_dir)
+        exports["deck"] = deck_result
+        files.update(deck_result.get("files", {}))
 
     if any(fmt in requested for fmt in ("tex", "latex", "pdf")):
         review_module = load_script_module(
@@ -395,9 +404,9 @@ def extract_unique_urls(text: str) -> list[str]:
 
 
 DEFAULT_BASELINE = {
-    "name": "AyushRajput-cmds/End_to_End_Vision_Based_PPE_Compliance_And_Personal-Monitoring_System_for_Coal_Minning_Environments",
-    "use": "煤矿环境 PPE 合规与人员监测原型，适合作为矿井安全视觉识别 baseline 起点。",
-    "url": "https://github.com/AyushRajput-cmds/End_to_End_Vision_Based_PPE_Compliance_And_Personal-Monitoring_System_for_Coal_Minning_Environments",
+    "name": "ultralytics/ultralytics",
+    "use": "YOLO 生态成熟，适合快速构建矿井安全视觉识别 baseline 和系统闭环。",
+    "url": "https://github.com/ultralytics/ultralytics",
 }
 
 DEFAULT_PAPER_RESULTS = [
@@ -488,6 +497,10 @@ def relevant_repo_context(name: str, line: str) -> bool:
         "detection",
         "vision",
         "yolo",
+        "ultralytics",
+        "mmdetection",
+        "detectron",
+        "openmmlab",
         "underground",
         "矿",
         "煤",
@@ -500,6 +513,10 @@ def relevant_repo_context(name: str, line: str) -> bool:
     )
     generic_bad = ("neurons", "awesome", "tutorial", "demo", "examples")
     return any(token in value for token in positive) and not any(token in name.lower() for token in generic_bad)
+
+
+def valid_repo_name(name: str) -> bool:
+    return bool(re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", name.strip()))
 
 
 def paper_from_table_row(line: str, sources: tuple[str, ...]) -> dict[str, str] | None:
@@ -605,36 +622,51 @@ def parse_papers(markdown: str) -> list[dict[str, str]]:
 
 def parse_baseline(markdown: str) -> list[dict[str, str]]:
     body = section_body(markdown, ("github", "baseline", "代码", "仓库", "开源"))
-    repos: list[dict[str, str]] = []
+    candidates: list[tuple[int, dict[str, str]]] = []
     seen: set[str] = set()
     for line in candidate_lines(body):
         clean_line = strip_markdown(line)
         url_match = re.search(r"https?://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", line)
         if re.match(r"^(地址|链接|URL|技术方向|推荐理由|核心内容|用途|适配用途)[:：]", clean_line, re.I) and not url_match:
             continue
-        repo_candidates = [item for item in re.findall(r"\b[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+\b", line) if not item.lower().startswith("github.com/")]
-        repo_match = repo_candidates[0] if repo_candidates else ""
+        repo_candidates = [
+            item
+            for item in re.findall(r"\b[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+\b", line)
+            if not item.lower().startswith("github.com/") and valid_repo_name(item)
+        ]
         if url_match:
-            name = "/".join(url_match.group(0).rstrip("/").split("/")[-2:])
-        else:
-            name = repo_match or clean_line.split("：", 1)[0].split(":", 1)[0][:48]
-        if name.lower() in {"github", "github.com"} or "/" not in name:
-            continue
-        if not name or name.lower() in seen:
-            continue
-        if not relevant_repo_context(name, line):
-            continue
-        seen.add(name.lower())
-        repos.append(
-            {
-                "name": name,
-                "use": "适合作为矿井安全视觉识别 baseline 的工程参考。",
-                "url": url_match.group(0) if url_match else f"https://github.com/{name}",
-            }
-        )
-        if len(repos) >= 1:
-            break
-    return repos or [dict(DEFAULT_BASELINE)]
+            repo_candidates.insert(0, "/".join(url_match.group(0).rstrip("/").split("/")[-2:]))
+        for name in repo_candidates:
+            if not valid_repo_name(name) or name.lower() in seen:
+                continue
+            score = 0
+            if url_match:
+                score += 3
+            if re.search(r"(推荐|baseline|github|仓库|开源|代码)", line, re.I):
+                score += 2
+            if relevant_repo_context(name, line):
+                score += 2
+            if relevant_repo_context(name, body):
+                score += 1
+            if name.lower() in {"ultralytics/ultralytics", "open-mmlab/mmdetection"}:
+                score += 4
+            if score <= 0:
+                continue
+            seen.add(name.lower())
+            candidates.append(
+                (
+                    score,
+                    {
+                        "name": name,
+                        "use": "适合作为矿井安全视觉识别 baseline 的工程参考。",
+                        "url": url_match.group(0) if url_match else f"https://github.com/{name}",
+                    },
+                )
+            )
+    if not candidates:
+        return [dict(DEFAULT_BASELINE)]
+    candidates.sort(key=lambda item: item[0], reverse=True)
+    return [candidates[0][1]]
 
 
 def parse_advisors(markdown: str, state: dict) -> list[dict[str, str]]:
@@ -1125,10 +1157,12 @@ def collect_artifacts(result: dict) -> list[dict[str, str]]:
         if isinstance(files, dict):
             labels = {
                 "html": "MineIntel HTML 完整报告",
+                "deck": "MineIntel 逐页展示 Deck",
+                "route_diagram": "技术路线 Excalidraw 源文件",
                 "tex": "文献综述 LaTeX 源码",
                 "pdf": "文献综述 PDF",
             }
-            for key in ("html", "tex", "pdf"):
+            for key in ("html", "deck", "route_diagram", "tex", "pdf"):
                 file_path = files.get(key)
                 if not file_path:
                     continue
@@ -1145,6 +1179,7 @@ def update_progress_from_report(title: str, content: str, output_dir: Path, resu
     state["message"] = "报告已生成并导出完成，可在结果区查看和下载。"
     state["percent"] = 100
     state["completed"] = ["confirm", "knowledge", "paper", "baseline", "advisor", "experience", "report"]
+    state.setdefault("selection", {})["formats"] = "HTML 完整报告 / 逐页展示 Deck / 文献综述 LaTeX / PDF"
     state["sections"] = pick_sections(content)
     state["results"] = build_structured_results(content, state)
     state["artifacts"] = collect_artifacts(result)
@@ -1158,7 +1193,10 @@ def update_progress_from_report(title: str, content: str, output_dir: Path, resu
         "dir": str(output_dir),
         "relative_dir": relative_dir,
     }
-    logs = state.setdefault("logs", [])
+    logs = [
+        log for log in state.setdefault("logs", [])
+        if "PowerPoint" not in str(log.get("text", ""))
+    ]
     logs.append({"time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "text": state["message"]})
     state["logs"] = logs[-12:]
     state["updated_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -1166,15 +1204,15 @@ def update_progress_from_report(title: str, content: str, output_dir: Path, resu
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Save MineIntel HTML poster and literature-review deliverables.")
+    parser = argparse.ArgumentParser(description="Save MineIntel HTML report, deck, and literature-review deliverables.")
     parser.add_argument("--title", required=True)
     parser.add_argument("--content")
     parser.add_argument("--content-file")
     parser.add_argument("--output-dir", default=str(OUTPUT_ROOT))
     parser.add_argument(
         "--formats",
-        default="html,tex,pdf",
-        help="Comma-separated formats: html, tex, pdf. Default: html,tex,pdf.",
+        default="html,deck,tex,pdf",
+        help="Comma-separated formats: html, deck, tex, pdf. Default: html,deck,tex,pdf.",
     )
     parser.add_argument("--no-format", action="store_true", help="Create the run directory but skip deliverable export.")
     args = parser.parse_args()

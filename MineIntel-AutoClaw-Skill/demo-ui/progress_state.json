@@ -1,10 +1,10 @@
 {
-  "task": "等待 AutoClaw 启动任务",
-  "status": "idle",
-  "current_step": "confirm",
-  "current_label": "等待 AutoClaw 开始执行",
-  "message": "进度面板已就绪。",
-  "percent": 0,
+  "task": "计算机视觉在矿井安全监测中的大创选题",
+  "status": "done",
+  "current_step": "email",
+  "current_label": "邮件草稿生成",
+  "message": "邮件草稿流程完成；仅写入草稿或保留本地预览，未发送。",
+  "percent": 100,
   "steps": [
     {
       "id": "confirm",
@@ -33,63 +33,280 @@
     {
       "id": "report",
       "label": "报告生成与导出"
+    },
+    {
+      "id": "email",
+      "label": "邮件草稿生成"
     }
   ],
-  "completed": [],
+  "completed": [
+    "confirm",
+    "knowledge",
+    "paper",
+    "baseline",
+    "advisor",
+    "experience",
+    "report",
+    "email"
+  ],
   "selection": {
-    "major": "",
-    "field": "",
-    "scene": "",
-    "formats": "HTML 完整报告 / 文献综述 LaTeX / PDF"
+    "major": "软件工程",
+    "field": "计算机视觉",
+    "scene": "矿井安全监测",
+    "formats": "HTML 完整报告 / 逐页展示 Deck / 文献综述 LaTeX / PDF"
   },
   "sections": {
     "papers": {
       "title": "论文线索",
-      "content": "",
+      "content": "### 论文线索（可核验链接）\n以下论文用于补齐报告的文献综述和 HTML 结果区，均需在正式引用前再次核验题名、期刊、年份和 DOI。\n\n1. **机器视觉感知理论与技术在煤炭工业领域应用进展综述**\n   - 来源：工矿自动化，2023\n   - 链接：http://www.gkzdh.cn/cn/article/pdf/preview/10.13272/j.issn.1671-251x.2022100087.pdf\n\n2. **矿井视觉计算体系架构与关键技术**\n   - 来源：煤炭科学技术，2023\n   - 链接：https://www.mtkxjs.com.cn/cn/article/pdf/preview/10.12438/cst.2023-0152.pdf\n\n3. **煤矿井下工业视频图像增强技术研究与分析**\n   - 来源：中国矿业，2024\n   - 链接：http://www.chinaminingmagazine.com/cn/article/pdf/preview/10.12075/j.issn.1004-4051.20240273.pdf\n\n4. **矿井视频图像目标检测与隐患识别方法研究综述**\n   - 来源：煤炭科学技术，2025\n   - 链接：https://mtkxjs.com.cn/cn/article/pdf/preview/10.12438/cst.2025-1116.pdf\n\n5. **Safety monitoring method of moving target in underground coal mine based on computer vision processing**\n   - 来源：Scientific Reports，2022\n   - 链接：https://www.nature.com/articles/s41598-022-22564-8\n\n6. **The Future of Mine Safety: A Comprehensive Review of Anti-Collision Systems Based on Computer Vision in Underground Mines**\n   - 来源：Sensors，2023\n   - 链接：https://www.mdpi.com/1424-8220/23/9/4294\n\n7. **An open paradigm dataset for intelligent monitoring of underground drilling operations in coal mines**\n   - 来源：Scientific Data，2025\n   - 链接：https://www.nature.com/article\n\n……完整内容请下载报告查看。",
       "items": []
     },
     "baseline": {
       "title": "GitHub baseline",
-      "content": "",
+      "content": "### 唯一推荐基线仓库\n**仓库名**：`Inggrieda/tameng-underground-risk-detection`\n\n**仓库链接**：https://github.com/Inggrieda/tameng-underground-risk-detection\n\n**简介**：TAMENG (Tambang Monitoring & Early Warning System) — 基于边缘 AI 的地下矿山安全系统，使用计算机视觉和地震数据融合实现岩土工程不稳定性的早期检测。\n\n**语言**：Jupyter Notebook\n\n**最近更新**：2026-04-12\n\n**推荐理由**：\n1. **任务直接相关**：专门针对地下矿山安全监测，融合计算机视觉与传感器数据进行风险早期预警，与选题方向高度吻合。\n2. **边缘AI部署**：考虑了井下边缘计算场景，适合作为轻量化模型部署的参考实现。\n3. **技术栈友好**：Python + Jupyter Notebook 技术栈，软件工程专业学生可直接复现和修改。\n4. **可扩展性强**：其数据融合框架可替换为纯视觉输入，或整合更多矿井传感器（如瓦斯浓度、温度等）形成多模态系统。\n\n> **迁移建议**：基于该仓库的数据处理管线，替换为中国煤矿场景的数据集（如 Nature SciData 公开数据集或自采集矿井视频），在 YOLOv8/v11 等主流目标检测框架上进行迁移学习，重点改进低光照增强模块和粉尘去除预处理。\n\n---\n\n### 10.3 Baseline复现建议\n- 从 GitHub 开源项目 `tameng-underground-risk-detection` 出发，理解完整的数据处理 → 模型训练 → 推理部署管线。\n- 优先使用 YOLOv8/YOLOv11 + Ultralytics 框架，社区活跃、文档完善、部署工具链成熟。",
       "items": []
     },
     "advisors": {
       "title": "导师匹配",
-      "content": "",
+      "content": "### 八、导师推荐\n结合计算机视觉 + 矿井安全监测的研究方向，优先推荐中国矿业大学（徐州）以下学院的相关导师：",
       "items": []
     },
     "route": {
       "title": "技术路线",
-      "content": "",
+      "content": "### 9.2 推荐技术路线（以 T1 为例）\n```text\n第1阶段（1-2月）：数据准备\n├── 收集公开矿井安全数据集（Nature SciData 2025 / 自采集）\n├── 数据标注：安全帽、矿灯、自救器边界框\n└── 数据增强：模拟低光照、粉尘遮挡、运动模糊\n\n第2阶段（2-3月）：模型开发\n├── baseline复现：YOLOv8/v11在正常光照数据集上的检测\n├── 低光照增强模块：Zero-DCE / KIND / Retinex-based\n├── 改进检测头：针对小目标的注意力机制（CBAM/SE）\n└── 训练与调参：在增强后数据集上 fine-tune\n\n第3阶段（1-2月）：系统集成\n├── 实时推理优化：TensorRT / ONNX 部署\n├── Web展示界面：Flask/Vue 视频流展示 + 报警记录\n└── 边缘设备适配：Jetson Nano/Orin 测试\n\n第4阶段（1月）：文档与展示\n├── 撰写结题报告 + 学术论文\n├── 制作演示视频\n└── 准备答辩材料\n```\n\n---",
       "items": []
     },
     "experience": {
       "title": "科研经验参考",
-      "content": "",
+      "content": "### 十、科研经验参考\n> **注意**：以下为知乎/小红书/公开网页检索的大创科研经验参考，不作为论文或技术事实依据。\n\n### 10.4 答辩与申报\n- 申报书重点写\"需求分析\"和\"技术方案可行性\"，评审看重\"为什么做\"和\"怎么保证能做出来\"。\n- 结题时务必有可视化 demo 或系统截图，纯论文不如\"可运行的软件系统\"加分多。\n- 中国矿业大学孙越崎学院官网（syq.cumt.edu.cn）展示了多项往年优秀大创项目经验参考。\n\n### 科研经验公开搜索入口\n- 平台/链接：知乎、小红书公开搜索入口；用于演示和人工核验，不作为论文或技术事实依据。\n   - 知乎：[公开搜索入口](https://www.zhihu.com/search?type=content&q=%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89+%E7%9F%BF%E4%BA%95%E5%AE%89%E5%85%A8%E7%9B%91%E6%B5%8B+%E5%A4%A7%E5%88%9B+%E7%A7%91%E7%A0%94+%E9%80%89%E9%A2%98+%E7%BB%8F%E9%AA%8C)\n   - 小红书：[公开搜索入口](https://www.xiaohongshu.com/search_result?keyword=%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89+%E7%9F%BF%E4%BA%95%E5%AE%89%E5%85%A8%E7%9B%91%E6%B5%8B+%E5%A4%A7%E5%88%9B+%E7%A7%91%E7%A0%94+%E9%80%89%E9%A2%98+%E7%BB%8F%E9%AA%8C)",
       "items": []
     }
   },
   "results": {
-    "papers": [],
-    "baseline": [],
-    "advisors": [],
+    "papers": [
+      {
+        "title": "论文链接 1",
+        "source": "论文线索",
+        "year": "",
+        "url": "http://www.gkzdh.cn/cn/article/pdf/preview/10.13272/j.issn.1671-251x.2022100087.pdf"
+      },
+      {
+        "title": "论文链接 2",
+        "source": "论文线索",
+        "year": "",
+        "url": "https://www.mtkxjs.com.cn/cn/article/pdf/preview/10.12438/cst.2023-0152.pdf"
+      },
+      {
+        "title": "论文链接 3",
+        "source": "论文线索",
+        "year": "",
+        "url": "http://www.chinaminingmagazine.com/cn/article/pdf/preview/10.12075/j.issn.1004-4051.20240273.pdf"
+      },
+      {
+        "title": "论文链接 4",
+        "source": "论文线索",
+        "year": "",
+        "url": "https://mtkxjs.com.cn/cn/article/pdf/preview/10.12438/cst.2025-1116.pdf"
+      },
+      {
+        "title": "论文链接 5",
+        "source": "论文线索",
+        "year": "",
+        "url": "https://www.nature.com/articles/s41598-022-22564-8"
+      },
+      {
+        "title": "论文链接 6",
+        "source": "论文线索",
+        "year": "",
+        "url": "https://www.mdpi.com/1424-8220/23/9/4294"
+      },
+      {
+        "title": "论文链接 7",
+        "source": "论文线索",
+        "year": "",
+        "url": "https://www.nature.com/articles/s41597-025-05118-1"
+      }
+    ],
+    "baseline": [
+      {
+        "name": "Inggrieda/tameng-underground-risk-detection",
+        "use": "适合作为矿井安全视觉识别 baseline 的工程参考。",
+        "url": "https://github.com/Inggrieda/tameng-underground-risk-detection"
+      }
+    ],
+    "advisors": [
+      {
+        "name": "张磊",
+        "department": "计算机科学与技术学院",
+        "title": "副教授",
+        "direction": "深度学习、计算机视觉、煤矿安全监控",
+        "url": "https://www.baidu.com/s?wd=site%3Acs.cumt.edu.cn+%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6+%E5%BE%90%E5%B7%9E+%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E6%8A%80%E6%9C%AF%E5%AD%A6%E9%99%A2+%E5%BC%A0%E7%A3%8A+%E6%95%99%E5%B8%88",
+        "source": "advisor-candidate"
+      },
+      {
+        "name": "陈伟",
+        "department": "计算机科学与技术学院",
+        "title": "教授、博士生导师",
+        "direction": "计算机视觉、深度学习、图像处理、煤矿智能化",
+        "url": "https://www.baidu.com/s?wd=site%3Acs.cumt.edu.cn+%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6+%E5%BE%90%E5%B7%9E+%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E6%8A%80%E6%9C%AF%E5%AD%A6%E9%99%A2+%E9%99%88%E4%BC%9F+%E6%95%99%E5%B8%88",
+        "source": "advisor-candidate"
+      },
+      {
+        "name": "刘世蕾",
+        "department": "计算机科学与技术学院",
+        "title": "副教授",
+        "direction": "计算机视觉、目标检测、图像分割",
+        "url": "https://www.baidu.com/s?wd=site%3Acs.cumt.edu.cn+%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6+%E5%BE%90%E5%B7%9E+%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E6%8A%80%E6%9C%AF%E5%AD%A6%E9%99%A2+%E5%88%98%E4%B8%96%E8%95%BE+%E6%95%99%E5%B8%88",
+        "source": "advisor-candidate"
+      },
+      {
+        "name": "寇旗旗",
+        "department": "计算机科学与技术学院",
+        "title": "副教授",
+        "direction": "计算机视觉、点云处理、三维重建",
+        "url": "https://www.baidu.com/s?wd=site%3Acs.cumt.edu.cn+%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6+%E5%BE%90%E5%B7%9E+%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E6%8A%80%E6%9C%AF%E5%AD%A6%E9%99%A2+%E5%AF%87%E6%97%97%E6%97%97+%E6%95%99%E5%B8%88",
+        "source": "advisor-candidate"
+      },
+      {
+        "name": "孙仁科",
+        "department": "计算机科学与技术学院",
+        "title": "讲师",
+        "direction": "计算机视觉、目标跟踪",
+        "url": "https://www.baidu.com/s?wd=site%3Acs.cumt.edu.cn+%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6+%E5%BE%90%E5%B7%9E+%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E6%8A%80%E6%9C%AF%E5%AD%A6%E9%99%A2+%E5%AD%99%E4%BB%81%E7%A7%91+%E6%95%99%E5%B8%88",
+        "source": "advisor-candidate"
+      },
+      {
+        "name": "刘珏廷",
+        "department": "计算机科学与技术学院",
+        "title": "讲师",
+        "direction": "计算机视觉、图像生成",
+        "url": "https://www.baidu.com/s?wd=site%3Acs.cumt.edu.cn+%E4%B8%AD%E5%9B%BD%E7%9F%BF%E4%B8%9A%E5%A4%A7%E5%AD%A6+%E5%BE%90%E5%B7%9E+%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E6%8A%80%E6%9C%AF%E5%AD%A6%E9%99%A2+%E5%88%98%E7%8F%8F%E5%BB%B7+%E6%95%99%E5%B8%88",
+        "source": "advisor-candidate"
+      }
+    ],
     "route": {
-      "center": "技术路线",
-      "branches": []
+      "center": "计算机视觉 / 矿井安全监测",
+      "branches": [
+        {
+          "title": "text",
+          "detail": "text"
+        },
+        {
+          "title": "第1阶段（1-2月）",
+          "detail": "第1阶段（1-2月）：数据准备"
+        },
+        {
+          "title": "├── 收集公开矿井安全数据集（Na",
+          "detail": "├── 收集公开矿井安全数据集（Nature SciData 2025 / 自采集）"
+        },
+        {
+          "title": "├── 数据标注",
+          "detail": "├── 数据标注：安全帽、矿灯、自救器边界框"
+        },
+        {
+          "title": "└── 数据增强",
+          "detail": "└── 数据增强：模拟低光照、粉尘遮挡、运动模糊"
+        },
+        {
+          "title": "第2阶段（2-3月）",
+          "detail": "第2阶段（2-3月）：模型开发"
+        }
+      ]
     },
-    "experience": []
+    "experience": [],
+    "email": {
+      "status": "draft_created",
+      "subject": "【课题组申请】学生——申请加入范钢伟教授相关研究方向课题组（附选题意向与个人科研资质）",
+      "path": "D:\\chuangye\\kuangxiaozhi\\MineIntel-AutoClaw-Skill\\mineintel-research\\email_draft_preview.txt",
+      "message": "已写入 Gmail 草稿箱，未发送。"
+    }
   },
-  "artifacts": [],
-  "output": {},
-  "logs": [
+  "artifacts": [
     {
-      "time": "2026-05-22 08:53:27",
-      "text": "进度面板已就绪。"
+      "label": "MineIntel HTML 完整报告",
+      "path": "D:\\chuangye\\kuangxiaozhi\\MineIntel-AutoClaw-Skill\\output\\20260530_133233_计算机视觉在矿井安全监测中的大创选题\\计算机视觉在矿井安全监测中的大创选题_poster.html",
+      "kind": "html"
     },
     {
-      "time": "2026-05-22 08:53:27",
-      "text": "进度面板已就绪。"
+      "label": "MineIntel 逐页展示 Deck",
+      "path": "D:\\chuangye\\kuangxiaozhi\\MineIntel-AutoClaw-Skill\\output\\20260530_133233_计算机视觉在矿井安全监测中的大创选题\\计算机视觉在矿井安全监测中的大创选题_deck.html",
+      "kind": "deck"
+    },
+    {
+      "label": "技术路线 Excalidraw 源文件",
+      "path": "D:\\chuangye\\kuangxiaozhi\\MineIntel-AutoClaw-Skill\\output\\20260530_133233_计算机视觉在矿井安全监测中的大创选题\\assets\\计算机视觉在矿井安全监测中的大创选题_technical_route.excalidraw",
+      "kind": "route_diagram"
+    },
+    {
+      "label": "文献综述 LaTeX 源码",
+      "path": "D:\\chuangye\\kuangxiaozhi\\MineIntel-AutoClaw-Skill\\output\\20260530_133233_计算机视觉在矿井安全监测中的大创选题\\计算机视觉在矿井安全监测中的大创选题_literature_review.tex",
+      "kind": "tex"
+    },
+    {
+      "label": "文献综述 PDF",
+      "path": "D:\\chuangye\\kuangxiaozhi\\MineIntel-AutoClaw-Skill\\output\\20260530_133233_计算机视觉在矿井安全监测中的大创选题\\计算机视觉在矿井安全监测中的大创选题_literature_review.pdf",
+      "kind": "pdf"
+    },
+    {
+      "label": "邮件草稿预览",
+      "path": "D:\\chuangye\\kuangxiaozhi\\MineIntel-AutoClaw-Skill\\mineintel-research\\email_draft_preview.txt",
+      "kind": "email_draft"
     }
   ],
-  "updated_at": "2026-05-22 08:53:27"
+  "output": {
+    "run_id": "20260530_133233_计算机视觉在矿井安全监测中的大创选题",
+    "dir": "D:\\chuangye\\kuangxiaozhi\\MineIntel-AutoClaw-Skill\\output\\20260530_133233_计算机视觉在矿井安全监测中的大创选题",
+    "relative_dir": "output\\20260530_133233_计算机视觉在矿井安全监测中的大创选题"
+  },
+  "logs": [
+    {
+      "time": "2026-05-30 13:32:03",
+      "text": "baseline 检索完成，开始导师方向匹配。"
+    },
+    {
+      "time": "2026-05-30 13:32:05",
+      "text": "正在匹配导师方向。"
+    },
+    {
+      "time": "2026-05-30 13:32:17",
+      "text": "导师匹配完成，开始补充科研经验参考。"
+    },
+    {
+      "time": "2026-05-30 13:32:20",
+      "text": "正在补充科研经验参考。"
+    },
+    {
+      "time": "2026-05-30 13:32:27",
+      "text": "科研经验参考整理完成，开始生成报告。"
+    },
+    {
+      "time": "2026-05-30 13:32:30",
+      "text": "正在生成 HTML 完整报告、逐页展示 Deck 和文献综述 PDF。"
+    },
+    {
+      "time": "2026-05-30 13:32:48",
+      "text": "报告已生成并导出完成，可在结果区查看和下载。"
+    },
+    {
+      "time": "2026-05-30 13:32:57",
+      "text": "报告已生成并导出完成。"
+    },
+    {
+      "time": "2026-05-30 13:33:00",
+      "text": "正在生成导师邮件草稿。"
+    },
+    {
+      "time": "2026-05-30 13:33:06",
+      "text": "已生成邮件草稿预览，尚未连接 Gmail。"
+    },
+    {
+      "time": "2026-05-30 13:33:08",
+      "text": "已写入 Gmail 草稿箱，未发送。"
+    },
+    {
+      "time": "2026-05-30 13:33:12",
+      "text": "邮件草稿流程完成；仅写入草稿或保留本地预览，未发送。"
+    }
+  ],
+  "updated_at": "2026-05-30 13:33:12"
 }

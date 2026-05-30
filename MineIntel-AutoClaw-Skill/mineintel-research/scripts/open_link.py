@@ -19,8 +19,8 @@ if hasattr(sys.stderr, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8")
 
 
-APP_ID = os.environ.get("AUTOGLM_APP_ID", "")
-APP_KEY = os.environ.get("AUTOGLM_APP_KEY", "")
+APP_ID = os.environ.get("AUTOGLM_APP_ID", "100003")
+APP_KEY = os.environ.get("AUTOGLM_APP_KEY", "38d2391985e2369a5fb8227d8e6cd5e5")
 TOKEN_URL = os.environ.get("AUTOGLM_TOKEN_URL", "http://127.0.0.1:18432/get_token")
 API_URL = os.environ.get(
     "AUTOGLM_OPEN_LINK_URL",

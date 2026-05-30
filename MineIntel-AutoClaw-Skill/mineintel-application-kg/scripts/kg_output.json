@@ -1,0 +1,719 @@
+{
+  "status": "success",
+  "query": "计算机视觉 矿井安全监测 痛点 解决方案 技术设备",
+  "matched_nodes": [
+    {
+      "score": 13,
+      "id": "technology:计算机视觉-3cda93d326",
+      "type": "technology",
+      "name": "计算机视觉",
+      "attributes": {
+        "candidate_category": "technology",
+        "candidate_count": 3,
+        "candidate_source_count": 3
+      }
+    },
+    {
+      "score": 9,
+      "id": "solution:矸石山尾矿库在线安全监测-582149f804",
+      "type": "solution",
+      "name": "矸石山/尾矿库在线安全监测",
+      "attributes": {
+        "curated": true
+      }
+    },
+    {
+      "score": 9,
+      "id": "source_document:2026年ai智慧矿山全场景应用解决-b74a5b6ee7",
+      "type": "source_document",
+      "name": "《2026年AI+智慧矿山全场景应用解决方案白皮书》",
+      "attributes": {
+        "curated_reference": true
+      }
+    },
+    {
+      "score": 9,
+      "id": "source_document:华为集团云与矿山大模型解决方案-5e572021ef",
+      "type": "source_document",
+      "name": "华为集团云与矿山大模型解决方案",
+      "attributes": {
+        "source_id": "B09",
+        "publisher": "华为企业业务官网",
+        "year": "2025/2026 页面",
+        "credibility": "A",
+        "url": "https://e.huawei.com/cn/industries/mining/mine-ict-technology-enablement/group-center-cloud",
+        "source_type": "application_source"
+      }
+    },
+    {
+      "score": 6,
+      "id": "application_scenario:大型固定设备运维主提升主排水压风等-ab39706388",
+      "type": "application_scenario",
+      "name": "大型固定设备运维（主提升/主排水/压风等）",
+      "attributes": {
+        "curated": true,
+        "source_file": "user_sources\\矿井场景总览.csv"
+      }
+    },
+    {
+      "score": 6,
+      "id": "application_scenario:瓦斯监测监控-b0c64d407e",
+      "type": "application_scenario",
+      "name": "瓦斯监测监控",
+      "attributes": {
+        "curated": true,
+        "source_file": "user_sources\\矿井场景总览.csv"
+      }
+    },
+    {
+      "score": 6,
+      "id": "application_scenario:顶板与矿压监测-83921c28bd",
+      "type": "application_scenario",
+      "name": "顶板与矿压监测",
+      "attributes": {
+        "curated": true,
+        "source_file": "user_sources\\矿井场景总览.csv"
+      }
+    },
+    {
+      "score": 5,
+      "id": "application_scenario:ai大模型赋能-df51d150af",
+      "type": "application_scenario",
+      "name": "AI大模型赋能",
+      "attributes": {
+        "curated": true,
+        "source_file": "user_sources\\矿井场景总览.csv"
+      }
+    }
+  ],
+  "related_edges": [
+    {
+      "source": "AI大模型赋能",
+      "source_type": "application_scenario",
+      "relation": "belongs_to",
+      "target": "综合管理",
+      "target_type": "scenario_category",
+      "confidence": 0.96,
+      "evidence": {
+        "source_id": "U01",
+        "field": "场景大类"
+      }
+    },
+    {
+      "source": "大型固定设备运维（主提升/主排水/压风等）",
+      "source_type": "application_scenario",
+      "relation": "belongs_to",
+      "target": "设备运维",
+      "target_type": "scenario_category",
+      "confidence": 0.96,
+      "evidence": {
+        "source_id": "U01",
+        "field": "场景大类"
+      }
+    },
+    {
+      "source": "瓦斯监测监控",
+      "source_type": "application_scenario",
+      "relation": "belongs_to",
+      "target": "安全监控",
+      "target_type": "scenario_category",
+      "confidence": 0.96,
+      "evidence": {
+        "source_id": "U01",
+        "field": "场景大类"
+      }
+    },
+    {
+      "source": "顶板与矿压监测",
+      "source_type": "application_scenario",
+      "relation": "belongs_to",
+      "target": "安全监控",
+      "target_type": "scenario_category",
+      "confidence": 0.96,
+      "evidence": {
+        "source_id": "U01",
+        "field": "场景大类"
+      }
+    },
+    {
+      "source": "AI大模型赋能",
+      "source_type": "application_scenario",
+      "relation": "evidenced_by",
+      "target": "《2026年AI+智慧矿山全场景应用解决方案白皮书》",
+      "target_type": "source_document",
+      "confidence": 0.9,
+      "evidence": {
+        "source_id": "U01",
+        "field": "参考白皮书来源",
+        "scene": "AI大模型赋能"
+      }
+    },
+    {
+      "source": "AI大模型赋能",
+      "source_type": "application_scenario",
+      "relation": "evidenced_by",
+      "target": "《中央企业AI应用场景白皮书》(2024)",
+      "target_type": "source_document",
+      "confidence": 0.9,
+      "evidence": {
+        "source_id": "U01",
+        "field": "参考白皮书来源",
+        "scene": "AI大模型赋能"
+      }
+    },
+    {
+      "source": "AI大模型赋能",
+      "source_type": "application_scenario",
+      "relation": "evidenced_by",
+      "target": "华为《矿山智能化白皮书》",
+      "target_type": "source_document",
+      "confidence": 0.9,
+      "evidence": {
+        "source_id": "U01",
+        "field": "参考白皮书来源",
+        "scene": "AI大模型赋能"
+      }
+    },
+    {
+      "source": "地质保障与三维建模",
+      "source_type": "application_scenario",
+      "relation": "evidenced_by",
+      "target": "《2026年AI+智慧矿山全场景应用解决方案白皮书》",
+      "target_type": "source_document",
+      "confidence": 0.9,
+      "evidence": {
+        "source_id": "U01",
+        "field": "参考白皮书来源",
+        "scene": "地质保障与三维建模"
+      }
+    },
+    {
+      "source": "大型固定设备运维（主提升/主排水/压风等）",
+      "source_type": "application_scenario",
+      "relation": "evidenced_by",
+      "target": "《2024智能矿山暨无人驾驶行业蓝皮书》",
+      "target_type": "source_document",
+      "confidence": 0.9,
+      "evidence": {
+        "source_id": "U01",
+        "field": "参考白皮书来源",
+        "scene": "大型固定设备运维（主提升/主排水/压风等）"
+      }
+    },
+    {
+      "source": "大型固定设备运维（主提升/主排水/压风等）",
+      "source_type": "application_scenario",
+      "relation": "evidenced_by",
+      "target": "ABB《Next Level Mining》白皮书",
+      "target_type": "source_document",
+      "confidence": 0.9,
+      "evidence": {
+        "source_id": "U01",
+        "field": "参考白皮书来源",
+        "scene": "大型固定设备运维（主提升/主排水/压风等）"
+      }
+    },
+    {
+      "source": "大型固定设备运维（主提升/主排水/压风等）",
+      "source_type": "application_scenario",
+      "relation": "evidenced_by",
+      "target": "《煤矿智能化发展蓝皮书》2025",
+      "target_type": "source_document",
+      "confidence": 0.9,
+      "evidence": {
+        "source_id": "U01",
+        "field": "参考白皮书来源",
+        "scene": "大型固定设备运维（主提升/主排水/压风等）"
+      }
+    },
+    {
+      "source": "水害防治",
+      "source_type": "application_scenario",
+      "relation": "evidenced_by",
+      "target": "《2026年AI+智慧矿山全场景应用解决方案白皮书》",
+      "target_type": "source_document",
+      "confidence": 0.9,
+      "evidence": {
+        "source_id": "U01",
+        "field": "参考白皮书来源",
+        "scene": "水害防治"
+      }
+    },
+    {
+      "source": "火灾与防灭火",
+      "source_type": "application_scenario",
+      "relation": "evidenced_by",
+      "target": "《2026年AI+智慧矿山全场景应用解决方案白皮书》",
+      "target_type": "source_document",
+      "confidence": 0.9,
+      "evidence": {
+        "source_id": "U01",
+        "field": "参考白皮书来源",
+        "scene": "火灾与防灭火"
+      }
+    },
+    {
+      "source": "瓦斯监测监控",
+      "source_type": "application_scenario",
+      "relation": "evidenced_by",
+      "target": "《2026年AI+智慧矿山全场景应用解决方案白皮书》",
+      "target_type": "source_document",
+      "confidence": 0.9,
+      "evidence": {
+        "source_id": "U01",
+        "field": "参考白皮书来源",
+        "scene": "瓦斯监测监控"
+      }
+    },
+    {
+      "source": "瓦斯监测监控",
+      "source_type": "application_scenario",
+      "relation": "evidenced_by",
+      "target": "国家能源局《煤矿智能化标准体系建设指南》(2024)",
+      "target_type": "source_document",
+      "confidence": 0.9,
+      "evidence": {
+        "source_id": "U01",
+        "field": "参考白皮书来源",
+        "scene": "瓦斯监测监控"
+      }
+    },
+    {
+      "source": "瓦斯监测监控",
+      "source_type": "application_scenario",
+      "relation": "evidenced_by",
+      "target": "《煤矿智能化发展蓝皮书》2025",
+      "target_type": "source_document",
+      "confidence": 0.9,
+      "evidence": {
+        "source_id": "U01",
+        "field": "参考白皮书来源",
+        "scene": "瓦斯监测监控"
+      }
+    },
+    {
+      "source": "矿山综合管控平台",
+      "source_type": "application_scenario",
+      "relation": "evidenced_by",
+      "target": "《2026年AI+智慧矿山全场景应用解决方案白皮书》",
+      "target_type": "source_document",
+      "confidence": 0.9,
+      "evidence": {
+        "source_id": "U01",
+        "field": "参考白皮书来源",
+        "scene": "矿山综合管控平台"
+      }
+    },
+    {
+      "source": "顶板与矿压监测",
+      "source_type": "application_scenario",
+      "relation": "evidenced_by",
+      "target": "《2026年AI+智慧矿山全场景应用解决方案白皮书》",
+      "target_type": "source_document",
+      "confidence": 0.9,
+      "evidence": {
+        "source_id": "U01",
+        "field": "参考白皮书来源",
+        "scene": "顶板与矿压监测"
+      }
+    },
+    {
+      "source": "顶板与矿压监测",
+      "source_type": "application_scenario",
+      "relation": "evidenced_by",
+      "target": "国家能源局《煤矿智能化标准体系建设指南》(2024)",
+      "target_type": "source_document",
+      "confidence": 0.9,
+      "evidence": {
+        "source_id": "U01",
+        "field": "参考白皮书来源",
+        "scene": "顶板与矿压监测"
+      }
+    },
+    {
+      "source": "顶板与矿压监测",
+      "source_type": "application_scenario",
+      "relation": "evidenced_by",
+      "target": "《煤矿智能化发展蓝皮书》2025",
+      "target_type": "source_document",
+      "confidence": 0.9,
+      "evidence": {
+        "source_id": "U01",
+        "field": "参考白皮书来源",
+        "scene": "顶板与矿压监测"
+      }
+    },
+    {
+      "source": "AI大模型赋能",
+      "source_type": "application_scenario",
+      "relation": "has_pain_point",
+      "target": "AI工业机理模型与矿山专业知识结合不足",
+      "target_type": "pain_point",
+      "confidence": 0.94,
+      "evidence": {
+        "source_id": "U01",
+        "field": "有什么问题（痛点）",
+        "scene": "AI大模型赋能"
+      }
+    },
+    {
+      "source": "AI大模型赋能",
+      "source_type": "application_scenario",
+      "relation": "has_pain_point",
+      "target": "各场景AI模型重复开发、通用性差",
+      "target_type": "pain_point",
+      "confidence": 0.94,
+      "evidence": {
+        "source_id": "U01",
+        "field": "有什么问题（痛点）",
+        "scene": "AI大模型赋能"
+      }
+    },
+    {
+      "source": "AI大模型赋能",
+      "source_type": "application_scenario",
+      "relation": "has_pain_point",
+      "target": "数据标注与训练样本积累不足",
+      "target_type": "pain_point",
+      "confidence": 0.94,
+      "evidence": {
+        "source_id": "U01",
+        "field": "有什么问题（痛点）",
+        "scene": "AI大模型赋能"
+      }
+    },
+    {
+      "source": "AI大模型赋能",
+      "source_type": "application_scenario",
+      "relation": "has_pain_point",
+      "target": "矿山专业AI算法开发门槛高、周期长",
+      "target_type": "pain_point",
+      "confidence": 0.94,
+      "evidence": {
+        "source_id": "U01",
+        "field": "有什么问题（痛点）",
+        "scene": "AI大模型赋能"
+      }
+    },
+    {
+      "source": "AI大模型赋能",
+      "source_type": "application_scenario",
+      "relation": "has_pain_point",
+      "target": "缺乏统一的AI开发与部署平台",
+      "target_type": "pain_point",
+      "confidence": 0.94,
+      "evidence": {
+        "source_id": "U01",
+        "field": "有什么问题（痛点）",
+        "scene": "AI大模型赋能"
+      }
+    },
+    {
+      "source": "大型固定设备运维（主提升/主排水/压风等）",
+      "source_type": "application_scenario",
+      "relation": "has_pain_point",
+      "target": "关键设备运行参数监测不全面",
+      "target_type": "pain_point",
+      "confidence": 0.94,
+      "evidence": {
+        "source_id": "U01",
+        "field": "有什么问题（痛点）",
+        "scene": "大型固定设备运维（主提升/主排水/压风等）"
+      }
+    },
+    {
+      "source": "大型固定设备运维（主提升/主排水/压风等）",
+      "source_type": "application_scenario",
+      "relation": "has_pain_point",
+      "target": "备品备件管理粗放",
+      "target_type": "pain_point",
+      "confidence": 0.94,
+      "evidence": {
+        "source_id": "U01",
+        "field": "有什么问题（痛点）",
+        "scene": "大型固定设备运维（主提升/主排水/压风等）"
+      }
+    },
+    {
+      "source": "大型固定设备运维（主提升/主排水/压风等）",
+      "source_type": "application_scenario",
+      "relation": "has_pain_point",
+      "target": "设备健康状态评估缺乏数据支撑",
+      "target_type": "pain_point",
+      "confidence": 0.94,
+      "evidence": {
+        "source_id": "U01",
+        "field": "有什么问题（痛点）",
+        "scene": "大型固定设备运维（主提升/主排水/压风等）"
+      }
+    },
+    {
+      "source": "大型固定设备运维（主提升/主排水/压风等）",
+      "source_type": "application_scenario",
+      "relation": "has_pain_point",
+      "target": "设备故障停机影响生产，损失大",
+      "target_type": "pain_point",
+      "confidence": 0.94,
+      "evidence": {
+        "source_id": "U01",
+        "field": "有什么问题（痛点）",
+        "scene": "大型固定设备运维（主提升/主排水/压风等）"
+      }
+    },
+    {
+      "source": "大型固定设备运维（主提升/主排水/压风等）",
+      "source_type": "application_scenario",
+      "relation": "has_pain_point",
+      "target": "设备检修依赖定期计划，过度维修或维修不足",
+      "target_type": "pain_point",
+      "confidence": 0.94,
+      "evidence": {
+        "source_id": "U01",
+        "field": "有什么问题（痛点）",
+        "scene": "大型固定设备运维（主提升/主排水/压风等）"
+      }
+    },
+    {
+      "source": "瓦斯监测监控",
+      "source_type": "application_scenario",
+      "relation": "has_pain_point",
+      "target": "传感器维护标定频繁，工作量大",
+      "target_type": "pain_point",
+      "confidence": 0.94,
+      "evidence": {
+        "source_id": "U01",
+        "field": "有什么问题（痛点）",
+        "scene": "瓦斯监测监控"
+      }
+    },
+    {
+      "source": "瓦斯监测监控",
+      "source_type": "application_scenario",
+      "relation": "has_pain_point",
+      "target": "大面积瓦斯监测覆盖不完整",
+      "target_type": "pain_point",
+      "confidence": 0.94,
+      "evidence": {
+        "source_id": "U01",
+        "field": "有什么问题（痛点）",
+        "scene": "瓦斯监测监控"
+      }
+    },
+    {
+      "source": "瓦斯监测监控",
+      "source_type": "application_scenario",
+      "relation": "has_pain_point",
+      "target": "瓦斯传感器精度不足，误报率高",
+      "target_type": "pain_point",
+      "confidence": 0.94,
+      "evidence": {
+        "source_id": "U01",
+        "field": "有什么问题（痛点）",
+        "scene": "瓦斯监测监控"
+      }
+    },
+    {
+      "source": "瓦斯监测监控",
+      "source_type": "application_scenario",
+      "relation": "has_pain_point",
+      "target": "瓦斯抽采系统与监测联动不足",
+      "target_type": "pain_point",
+      "confidence": 0.94,
+      "evidence": {
+        "source_id": "U01",
+        "field": "有什么问题（痛点）",
+        "scene": "瓦斯监测监控"
+      }
+    },
+    {
+      "source": "瓦斯监测监控",
+      "source_type": "application_scenario",
+      "relation": "has_pain_point",
+      "target": "瓦斯超限后应急响应不及时",
+      "target_type": "pain_point",
+      "confidence": 0.94,
+      "evidence": {
+        "source_id": "U01",
+        "field": "有什么问题（痛点）",
+        "scene": "瓦斯监测监控"
+      }
+    },
+    {
+      "source": "顶板与矿压监测",
+      "source_type": "application_scenario",
+      "relation": "has_pain_point",
+      "target": "冲击地压预警手段不足",
+      "target_type": "pain_point",
+      "confidence": 0.94,
+      "evidence": {
+        "source_id": "U01",
+        "field": "有什么问题（痛点）",
+        "scene": "顶板与矿压监测"
+      }
+    },
+    {
+      "source": "顶板与矿压监测",
+      "source_type": "application_scenario",
+      "relation": "has_pain_point",
+      "target": "围岩变形监测手段单一",
+      "target_type": "pain_point",
+      "confidence": 0.94,
+      "evidence": {
+        "source_id": "U01",
+        "field": "有什么问题（痛点）",
+        "scene": "顶板与矿压监测"
+      }
+    },
+    {
+      "source": "顶板与矿压监测",
+      "source_type": "application_scenario",
+      "relation": "has_pain_point",
+      "target": "大采高/放顶煤工作面矿压显现复杂",
+      "target_type": "pain_point",
+      "confidence": 0.94,
+      "evidence": {
+        "source_id": "U01",
+        "field": "有什么问题（痛点）",
+        "scene": "顶板与矿压监测"
+      }
+    },
+    {
+      "source": "顶板与矿压监测",
+      "source_type": "application_scenario",
+      "relation": "has_pain_point",
+      "target": "支架工作阻力监测不连续",
+      "target_type": "pain_point",
+      "confidence": 0.94,
+      "evidence": {
+        "source_id": "U01",
+        "field": "有什么问题（痛点）",
+        "scene": "顶板与矿压监测"
+      }
+    },
+    {
+      "source": "顶板与矿压监测",
+      "source_type": "application_scenario",
+      "relation": "has_pain_point",
+      "target": "顶板来压规律预测精度低",
+      "target_type": "pain_point",
+      "confidence": 0.94,
+      "evidence": {
+        "source_id": "U01",
+        "field": "有什么问题（痛点）",
+        "scene": "顶板与矿压监测"
+      }
+    },
+    {
+      "source": "华为集团云与矿山大模型解决方案",
+      "source_type": "source_document",
+      "relation": "mentions",
+      "target": "煤流调速",
+      "target_type": "application_concept",
+      "confidence": 0.68,
+      "evidence": {
+        "source_id": "B09",
+        "chunk_ids": [
+          "B09-38427fdd56e38c92"
+        ],
+        "snippets": [
+          "识，规范人员作业行为，减少安全管理对抗 • 从源头减少并消除生产过程中各类风险隐患，提升本质安全 降本增效 • 安监效率有效提升：由40%提升至80% • 智能煤流调速，单矿可节约电费10万元/年 • 重介分选密度智能控制，提升精煤产率0.2% 架 构 图 相关 华为云Stack 华为云Stack是部署在政企客户本地数据中心的云基础设施，通过持续创新，打造安全、可靠、高效的混合云，以用户视角一朵云的能力，"
+        ]
+      }
+    },
+    {
+      "source": "华为集团云与矿山大模型解决方案",
+      "source_type": "source_document",
+      "relation": "mentions",
+      "target": "人才",
+      "target_type": "pain_concept",
+      "confidence": 0.68,
+      "evidence": {
+        "source_id": "B09",
+        "chunk_ids": [],
+        "snippets": []
+      }
+    },
+    {
+      "source": "华为集团云与矿山大模型解决方案",
+      "source_type": "source_document",
+      "relation": "mentions",
+      "target": "运维",
+      "target_type": "pain_concept",
+      "confidence": 0.68,
+      "evidence": {
+        "source_id": "B09",
+        "chunk_ids": [],
+        "snippets": []
+      }
+    },
+    {
+      "source": "华为集团云与矿山大模型解决方案",
+      "source_type": "source_document",
+      "relation": "mentions",
+      "target": "一朵云",
+      "target_type": "solution_concept",
+      "confidence": 0.68,
+      "evidence": {
+        "source_id": "B09",
+        "chunk_ids": [
+          "B09-38427fdd56e38c92"
+        ],
+        "snippets": [
+          "率0.2% 架 构 图 相关 华为云Stack 华为云Stack是部署在政企客户本地数据中心的云基础设施，通过持续创新，打造安全、可靠、高效的混合云，以用户视角一朵云的能力，助力客户从业务上云迈向深度用云，释放数字生产力。 了解更多 鲲鹏计算 提供基于鲲鹏处理器的TaiShan服务器、鲲鹏主板及开发套件，适配各行业多样性计算、绿色计算需求，致力于打造最强算力平台。 昇腾计算 基于昇腾系列处理器，打造面向"
+        ]
+      }
+    },
+    {
+      "source": "华为集团云与矿山大模型解决方案",
+      "source_type": "source_document",
+      "relation": "mentions",
+      "target": "AI",
+      "target_type": "technology",
+      "confidence": 0.68,
+      "evidence": {
+        "source_id": "B09",
+        "chunk_ids": [],
+        "snippets": []
+      }
+    },
+    {
+      "source": "华为集团云与矿山大模型解决方案",
+      "source_type": "source_document",
+      "relation": "mentions",
+      "target": "人工智能",
+      "target_type": "technology",
+      "confidence": 0.68,
+      "evidence": {
+        "source_id": "B09",
+        "chunk_ids": [],
+        "snippets": []
+      }
+    },
+    {
+      "source": "华为集团云与矿山大模型解决方案",
+      "source_type": "source_document",
+      "relation": "mentions",
+      "target": "大模型",
+      "target_type": "technology",
+      "confidence": 0.68,
+      "evidence": {
+        "source_id": "B09",
+        "chunk_ids": [],
+        "snippets": []
+      }
+    },
+    {
+      "source": "华为集团云与矿山大模型解决方案",
+      "source_type": "source_document",
+      "relation": "mentions",
+      "target": "工业互联网",
+      "target_type": "technology",
+      "confidence": 0.68,
+      "evidence": {
+        "source_id": "B09",
+        "chunk_ids": [],
+        "snippets": []
+      }
+    }
+  ]
+}
