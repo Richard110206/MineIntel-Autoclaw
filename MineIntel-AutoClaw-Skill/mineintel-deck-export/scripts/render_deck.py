@@ -23,14 +23,20 @@ if hasattr(sys.stderr, "reconfigure"):
 BASE_DIR = Path(__file__).resolve().parents[1]
 PACKAGE_DIR = BASE_DIR.parent
 OUTPUT_ROOT = PACKAGE_DIR / "output"
-GUIZANG_DIR = Path(
-    os.environ.get(
-        "GUIZANG_PPT_SKILL_DIR",
-        r"C:\Users\34833\.codex\skills\guizang-ppt-skill-main",
-    )
-)
-GUIZANG_TEMPLATE = GUIZANG_DIR / "assets" / "template.html"
-GUIZANG_MOTION = GUIZANG_DIR / "assets" / "motion.min.js"
+# 归藏 PPT 模板已随仓库内置（来源 op7418/guizang-ppt-skill，AGPL-3.0，见 assets/LICENSE-guizang-ppt-skill）。
+# 如需替换为外部副本，设置环境变量 GUIZANG_PPT_SKILL_DIR 指向该 skill 的根目录（其下 assets/ 含模板）。
+_EXTERNAL_GUIZANG_DIR = os.environ.get("GUIZANG_PPT_SKILL_DIR")
+_GUIZANG_ASSETS = Path(_EXTERNAL_GUIZANG_DIR, "assets") if _EXTERNAL_GUIZANG_DIR else BASE_DIR / "assets"
+GUIZANG_TEMPLATE = _GUIZANG_ASSETS / "template.html"
+GUIZANG_MOTION = _GUIZANG_ASSETS / "motion.min.js"
+
+
+def display_path(path: Path) -> str:
+    """结果输出统一使用相对包根的路径，避免泄露本机目录结构。"""
+    try:
+        return path.resolve().relative_to(PACKAGE_DIR).as_posix()
+    except ValueError:
+        return path.as_posix()
 
 
 INDIGO_THEME = {
@@ -433,7 +439,11 @@ def build_slides(title: str, markdown: str) -> str:
 
 def load_template() -> str:
     if not GUIZANG_TEMPLATE.exists():
-        raise FileNotFoundError(f"Guizang template not found: {GUIZANG_TEMPLATE}")
+        try:
+            shown = GUIZANG_TEMPLATE.relative_to(PACKAGE_DIR).as_posix()
+        except ValueError:
+            shown = GUIZANG_TEMPLATE.name
+        raise FileNotFoundError(f"Guizang template not found: {shown}")
     template = GUIZANG_TEMPLATE.read_text(encoding="utf-8")
     for old, new in INDIGO_THEME.items():
         template = template.replace(old, new)
@@ -461,7 +471,7 @@ def export(title: str, markdown: str, output_dir: Path, filename: str | None = N
     stem = safe_filename(filename or title)
     path = output_dir / f"{stem}_deck.html"
     path.write_text(render_deck(title, markdown), encoding="utf-8")
-    return {"status": "success", "title": title, "files": {"deck": str(path.resolve())}}
+    return {"status": "success", "title": title, "files": {"deck": display_path(path)}}
 
 
 def main() -> int:

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Paper-search orchestrator for MineIntel Research Skill.
+"""Paper-search orchestrator for MineIntel literature retrieval.
 
 The script expands one research topic into several paper-oriented queries and
-reuses web_search.py. It keeps the workflow deterministic while leaving final
-judgment and synthesis to AutoClaw/GLM.
+reuses the shared AutoGLM web-search client. It keeps the workflow
+deterministic while leaving final judgment and synthesis to AutoClaw/GLM.
 """
 
 from __future__ import annotations
@@ -21,10 +21,11 @@ if hasattr(sys.stderr, "reconfigure"):
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-if str(SCRIPT_DIR) not in sys.path:
-    sys.path.insert(0, str(SCRIPT_DIR))
+PACKAGE_DIR = SCRIPT_DIR.parents[1]
+if str(PACKAGE_DIR) not in sys.path:
+    sys.path.insert(0, str(PACKAGE_DIR))
 
-import web_search  # noqa: E402
+from mineintel_common import web_search  # noqa: E402
 
 
 def build_queries(topic: str, scope: str) -> list[dict[str, str]]:
@@ -69,16 +70,14 @@ def build_queries(topic: str, scope: str) -> list[dict[str, str]]:
 def run_search(topic: str, scope: str, max_results: int, timeout: int) -> dict[str, Any]:
     queries = build_queries(topic, scope)
     groups = []
-    fallback_count = 0
+    error_count = 0
 
     for item in queries:
         try:
             result = web_search.web_search(item["query"], max_results=max_results, timeout=timeout)
-        except Exception as exc:  # The fallback is intentional for contest demos.
-            result = web_search.offline_fallback(item["query"])
-            result["error"] = str(exc)
-        if result.get("status") == "fallback":
-            fallback_count += 1
+        except Exception as exc:
+            error_count += 1
+            result = {"status": "error", "query": item["query"], "error": str(exc), "results": []}
         groups.append(
             {
                 "kind": item["kind"],
@@ -89,12 +88,12 @@ def run_search(topic: str, scope: str, max_results: int, timeout: int) -> dict[s
         )
 
     return {
-        "status": "success" if fallback_count == 0 else "partial_fallback",
+        "status": "success" if error_count == 0 else ("error" if error_count == len(queries) else "partial"),
         "source": "paper-query-expander",
         "topic": topic,
         "scope": scope,
         "query_count": len(queries),
-        "fallback_count": fallback_count,
+        "error_count": error_count,
         "results_by_query": groups,
         "note": "输出是论文检索线索，最终报告中不得把未核验线索写成确定论文事实。",
     }
@@ -108,8 +107,9 @@ def main() -> int:
     parser.add_argument("--timeout", type=int, default=20)
     args = parser.parse_args()
 
-    print(json.dumps(run_search(args.topic, args.scope, args.max_results, args.timeout), ensure_ascii=False, indent=2))
-    return 0
+    result = run_search(args.topic, args.scope, args.max_results, args.timeout)
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    return 2 if result["status"] == "error" else 0
 
 
 if __name__ == "__main__":

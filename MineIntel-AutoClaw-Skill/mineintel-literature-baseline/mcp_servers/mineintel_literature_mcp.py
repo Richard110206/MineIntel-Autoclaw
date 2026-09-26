@@ -25,11 +25,13 @@ if hasattr(sys.stderr, "reconfigure"):
 SERVER_DIR = Path(__file__).resolve().parent
 SKILL_DIR = SERVER_DIR.parent
 SCRIPTS_DIR = SKILL_DIR / "scripts"
-if str(SCRIPTS_DIR) not in sys.path:
-    sys.path.insert(0, str(SCRIPTS_DIR))
+PACKAGE_DIR = SKILL_DIR.parent
+for entry in (str(SCRIPTS_DIR), str(PACKAGE_DIR)):
+    if entry not in sys.path:
+        sys.path.insert(0, entry)
 
 import github_search  # noqa: E402
-import web_search  # noqa: E402
+from mineintel_common import web_search  # noqa: E402
 
 
 PROTOCOL_VERSION = "2025-03-26"
@@ -60,23 +62,15 @@ def mcp_text(payload: dict[str, Any]) -> dict[str, Any]:
 def safe_web_search(query: str, max_results: int, timeout: int) -> dict[str, Any]:
     try:
         return web_search.web_search(query, max_results=max_results, timeout=timeout)
-    except Exception:
-        result = web_search.offline_fallback(query)
-        result.pop("warning", None)
-        result["note"] = "公开检索暂未返回可核验结果，使用本地检索提示作为兜底。"
-        return result
+    except Exception as exc:
+        return {"status": "error", "query": query, "error": str(exc), "results": []}
 
 
 def safe_github_search(query: str, limit: int, timeout: int) -> dict[str, Any]:
     try:
         return github_search.search_github(query, limit=limit, timeout=timeout)
-    except Exception:
-        result = github_search.fallback(query)
-        result.pop("warning", None)
-        result["results"] = result.get("results", [])[: max(1, limit)]
-        result["count"] = len(result["results"])
-        result["note"] = "GitHub 检索暂未返回可核验结果，使用本地 baseline 提示作为兜底。"
-        return result
+    except Exception as exc:
+        return {"status": "error", "query": query, "error": str(exc), "results": []}
 
 
 def clean(value: Any) -> str:
@@ -122,12 +116,14 @@ def domain_analyst_search(arguments: dict[str, Any]) -> dict[str, Any]:
         result = safe_web_search(item["query"], max_results=max_results, timeout=timeout)
         results_by_query.append({**item, "result": result})
 
+    error_count = sum(1 for item in results_by_query if item["result"].get("status") == "error")
     return {
-        "status": "success",
+        "status": "success" if error_count == 0 else ("error" if error_count == len(queries) else "partial"),
         "tool": "mineintel_domain_analyst_search",
         "topic": topic,
         "scenario": scenario,
         "query_count": len(queries),
+        "error_count": error_count,
         "results_by_query": results_by_query,
         "usage_note": "这些是领域应用论文线索，报告中必须保留来源链接；未打开核验的条目不能写成确定论文事实。",
     }
@@ -173,13 +169,18 @@ def frontier_technology_search(arguments: dict[str, Any]) -> dict[str, Any]:
         github_query = f"{english_topic} mining detection monitoring"
         github_result = safe_github_search(github_query, limit=1, timeout=timeout)
 
+    error_count = sum(1 for item in results_by_query if item["result"].get("status") == "error")
+    if include_github:
+        error_count += int(github_result.get("status") == "error")
+    total = len(queries) + int(include_github)
     return {
-        "status": "success",
+        "status": "success" if error_count == 0 else ("error" if error_count == total else "partial"),
         "tool": "mineintel_frontier_technology_search",
         "topic": topic,
         "scenario": scenario,
         "english_topic": english_topic,
         "query_count": len(queries),
+        "error_count": error_count,
         "results_by_query": results_by_query,
         "github_baseline": github_result,
         "usage_note": "国际前沿结果作为趋势线索；GitHub baseline 默认只取一个最相关仓库，避免网页端重复展示多个地址。",

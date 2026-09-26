@@ -47,7 +47,7 @@ mineintel-research/SKILL.md
 - `mineintel-html-poster`：MineIntel 杂志排版风格 HTML 完整报告，只保留完整正文，不再生成摘要宫格。
 - `mineintel-deck-export`：归藏风格横向翻页 HTML deck。
 - `mineintel-literature-review`：文献综述 LaTeX/PDF。
-- `mineintel-email-draft`：根据第一个导师推荐生成套磁邮件草稿；只写 Gmail Drafts，不发送邮件。
+- `mineintel-email-draft`：根据第一个导师推荐生成套磁邮件草稿；用浏览器打开 Gmail 撰写页并预填内容，不自动发送邮件。
 - `excalidraw-diagram-generator`：项目内 Excalidraw 图示生成参考，用于技术路线流程图源文件。
 
 ## 执行要求

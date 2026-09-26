@@ -34,6 +34,14 @@ XELATEX_CONFIG_PATHS = (
 )
 
 
+def display_path(path: Path) -> str:
+    """结果输出统一使用相对包根的路径，避免泄露本机目录结构。"""
+    try:
+        return path.resolve().relative_to(PACKAGE_DIR).as_posix()
+    except ValueError:
+        return path.as_posix()
+
+
 @dataclass
 class Paper:
     title: str
@@ -435,13 +443,13 @@ def group_review_paragraph(papers: list[Paper], group_name: str) -> list[str]:
         text = (
             f"{group_name}共抽取 {len(papers)} 条可核验线索，来源主要包括{source_summary}。"
             f"这些文献集中在{family_summary}，更适合支撑本课题的场景必要性、工程指标、矿井约束和系统落地论证。"
-            "正文不再逐条重复论文题名，避免和文末参考文献重复；具体题名、链接和来源统一放在第七节。"
+            "正文不再逐条重复论文题名，避免和文末参考文献重复；具体题名、链接和来源统一放在文末参考文献列表。"
         )
     else:
         text = (
             f"{group_name}共抽取 {len(papers)} 条可核验线索，来源主要包括{source_summary}。"
             f"这些研究集中在{family_summary}，更适合支撑模型改进、鲁棒性设计、数据集建设和对比实验。"
-            "本课题应从其中提取方法路线，而不是把论文题名逐条堆在正文里；具体条目统一放在第七节。"
+            "本课题应从其中提取方法路线，而不是把论文题名逐条堆在正文里；具体条目统一放在文末参考文献列表。"
         )
     return [text, ""]
 
@@ -467,10 +475,27 @@ def build_review_markdown(title: str, markdown: str) -> str:
     if not route:
         route = "建议采用场景定义、数据采集、baseline 复现、矿井适配优化、实验评估和申报产出的路线推进。"
 
+    abstract_text = (
+        "本综述只基于已检索到的公开题名、摘要/网页片段、链接和已解析资料做归纳，"
+        "不把未取得全文的实验细节写成确定结论；正式申报或引用前应逐条核验原文、DOI、期刊信息和发表时间。"
+        f"本次共整理 {len(papers)} 条可核验文献线索"
+    )
+    if domestic or international:
+        abstract_text += f"（中文应用 {len(domestic)} 条、国际前沿 {len(international)} 条）"
+    abstract_text += "。"
+
+    keyword_candidates = [family for family, _ in family_counter.most_common(3)]
+    keyword_candidates += ["矿井安全监测", "计算机视觉", "大创选题"]
+    keywords = "；".join(dict.fromkeys(keyword for keyword in keyword_candidates if keyword))
+
     lines: list[str] = [
         f"# {title}：文献综述",
         "",
-        "> 本综述只基于已检索到的公开题名、摘要/网页片段、链接和已解析资料做归纳，不把未取得全文的实验细节写成确定结论。正式申报或引用前应逐条核验原文、DOI、期刊信息和发表时间。",
+        "## 摘要",
+        "",
+        abstract_text,
+        "",
+        f"**关键词**：{keywords}",
         "",
         "## 研究背景",
         "",
@@ -523,35 +548,35 @@ def build_review_markdown(title: str, markdown: str) -> str:
             "",
             "申报材料中应明确三点：第一，数据从何而来，是否有公开数据、仿真增强或校内合作采集方案；第二，baseline 是什么，改进点相对 baseline 解决了哪一个矿井痛点；第三，最终产出是论文综述、模型训练结果、可视化演示系统还是边缘端部署 demo。答辩时不要把平台经验、搜索片段或未核验网页当作论文事实。",
             "",
-            "## 参考文献与链接",
-            "",
         ]
     )
+    return "\n".join(lines)
 
-    refs: list[str] = []
+
+def collect_reference_items(papers: list[Paper], markdown: str) -> list[dict[str, str]]:
+    """汇总参考文献条目：论文优先，其次报告正文链接，最后补充稳定公开链接。"""
+    items: list[dict[str, str]] = []
     seen_urls: set[str] = set()
     for paper in papers:
         if paper.url and paper.url not in seen_urls:
-            refs.append(f"- {paper.title}：{paper.url}")
+            items.append(
+                {"title": paper.title, "source": paper.source, "url": paper.url}
+            )
             seen_urls.add(paper.url)
     for index, url in enumerate(reference_urls_from_paper_sections(markdown), 1):
         if url in seen_urls or not is_paper_url(url):
             continue
-        refs.append(f"- 补充链接 {index}：{url}")
+        items.append({"title": f"补充链接 {index}", "source": "", "url": url})
         seen_urls.add(url)
-        if len(refs) >= 12:
+        if len(items) >= 12:
             break
     for title_ref, url in DEFAULT_REFERENCE_LINKS:
-        if len(refs) >= 16:
+        if len(items) >= 16:
             break
         if url not in seen_urls:
-            refs.append(f"- {title_ref}：{url}")
+            items.append({"title": title_ref, "source": "", "url": url})
             seen_urls.add(url)
-    if not refs:
-        refs = ["- 当前报告未抽取到稳定链接，需回到论文检索阶段补充。"]
-    lines.extend(refs[:24])
-    lines.append("")
-    return "\n".join(lines)
+    return items
 
 
 def latex_escape(text: str) -> str:
@@ -665,6 +690,11 @@ def markdown_to_latex_body(markdown: str) -> str:
                 first_heading = False
                 continue
             first_heading = False
+            if heading_text == "摘要":
+                out.append(r"\section*{摘要}")
+                out.append(r"\addcontentsline{toc}{section}{摘要}")
+                out.append("")
+                continue
             command = "section" if level <= 2 else "subsection" if level == 3 else "subsubsection"
             out.append(f"\\{command}{{{latex_text(heading_text)}}}")
             continue
@@ -699,33 +729,71 @@ def markdown_to_latex_body(markdown: str) -> str:
     return "\n".join(out)
 
 
-def latex_document(title: str, review_markdown: str) -> str:
+def format_reference_item(item: dict[str, str], index: int) -> str:
+    parts = [latex_text(item.get("title", "")).rstrip(".")]
+    if item.get("source", ""):
+        parts.append(latex_text(item["source"]))
+    if item.get("url"):
+        parts.append(r"\url{" + item["url"] + "}")
+    return r"\bibitem{mineintel-ref-" + str(index) + "} " + ". ".join(parts) + "."
+
+
+def references_block(references: list[dict[str, str]]) -> str:
+    if not references:
+        return "\\section*{参考文献}\n当前报告未抽取到稳定链接，需回到论文检索阶段补充。"
+    lines = [r"\begin{thebibliography}{99}", r"\addcontentsline{toc}{section}{参考文献}"]
+    for index, item in enumerate(references, 1):
+        lines.append(format_reference_item(item, index))
+    lines.append(r"\end{thebibliography}")
+    return "\n".join(lines)
+
+
+def latex_document(title: str, review_markdown: str, references: list[dict[str, str]] | None = None) -> str:
     body = markdown_to_latex_body(review_markdown)
+    pdf_title = latex_escape(f"{title}：文献综述")
     return rf"""\documentclass[UTF8,zihao=-4]{{ctexart}}
-\usepackage[a4paper,margin=2.25cm]{{geometry}}
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=2.6cm,right=2.6cm]{{geometry}}
 \usepackage{{xcolor}}
-\usepackage{{hyperref}}
-\usepackage{{url}}
+\usepackage{{fancyhdr}}
 \usepackage{{setspace}}
-\hypersetup{{colorlinks=true,linkcolor=green!45!black,urlcolor=green!35!black}}
+\usepackage{{enumitem}}
+\usepackage{{url}}
+\usepackage{{hyperref}}
+\definecolor{{minegreen}}{{HTML}}{{2F7D32}}
+\definecolor{{mineblue}}{{HTML}}{{1F4E79}}
+\hypersetup{{
+  colorlinks=true, linkcolor=mineblue, urlcolor=mineblue, citecolor=mineblue,
+  pdftitle={{{pdf_title}}}, pdfauthor={{MineIntel 矿小智}}, pdflang={{zh-CN}}
+}}
 \Urlmuskip=0mu plus 2mu
 \sloppy
-\setstretch{{1.18}}
-\setcounter{{secnumdepth}}{{0}}
-\definecolor{{minegreen}}{{HTML}}{{2F7D32}}
+\setstretch{{1.22}}
+\setlist{{itemsep=2pt,topsep=4pt,parsep=0pt}}
+\setcounter{{secnumdepth}}{{2}}
+\setcounter{{tocdepth}}{{2}}
 \ctexset{{
   section={{format=\Large\bfseries\color{{minegreen}}}},
   subsection={{format=\large\bfseries}},
   subsubsection={{format=\normalsize\bfseries}}
 }}
+\pagestyle{{fancy}}
+\fancyhf{{}}
+\fancyhead[L]{{\small\color{{minegreen}}MineIntel 文献综述}}
+\fancyhead[R]{{\small\nouppercase{{\leftmark}}}}
+\fancyfoot[C]{{\small 第 \thepage\ 页}}
+\renewcommand{{\headrulewidth}}{{0.4pt}}
+\renewcommand{{\headrule}}{{\color{{minegreen}}\hrule width\headwidth height \headrulewidth}}
 \title{{\textbf{{{latex_text(title + "：文献综述")}}}\\\large MineIntel 矿小智科研情报}}
 \author{{CUMT MineIntel / AutoClaw Native Skill}}
 \date{{{latex_text(datetime.now().strftime("%Y-%m-%d"))}}}
 \begin{{document}}
-\pagestyle{{empty}}
 \maketitle
-\thispagestyle{{empty}}
+\thispagestyle{{fancy}}
+\tableofcontents
+\vspace{{1em}}
 {body}
+
+{references_block(references or [])}
 \end{{document}}
 """
 
@@ -918,7 +986,7 @@ def compile_latex(tex_path: Path) -> dict[str, Any]:
     pdf_path = tex_path.with_suffix(".pdf")
     if last and last.returncode == 0 and pdf_path.exists():
         cleanup_latex_temp(tex_path)
-        return {"status": "success", "compiler": xelatex, "pdf": str(pdf_path.resolve()), "runs": len(runs)}
+        return {"status": "success", "compiler": xelatex, "pdf": display_path(pdf_path), "runs": len(runs)}
     cleanup_latex_temp(tex_path)
     return {"status": "error", "compiler": xelatex, "runs": runs}
 
@@ -926,21 +994,24 @@ def compile_latex(tex_path: Path) -> dict[str, Any]:
 def export(title: str, markdown: str, output_dir: Path, filename: str | None = None, compile_pdf: bool = True) -> dict[str, Any]:
     output_dir.mkdir(parents=True, exist_ok=True)
     stem = safe_filename(filename or title)
+    papers = extract_papers(markdown)
     review_md = build_review_markdown(title, markdown)
+    references = collect_reference_items(papers, markdown)
     tex_path = output_dir / f"{stem}_literature_review.tex"
-    tex_path.write_text(latex_document(title, review_md), encoding="utf-8")
-    files: dict[str, str] = {"tex": str(tex_path.resolve())}
+    tex_path.write_text(latex_document(title, review_md, references), encoding="utf-8")
+    files: dict[str, str] = {"tex": display_path(tex_path)}
     compile_result: dict[str, Any] | None = None
     if compile_pdf:
         compile_result = compile_latex(tex_path)
         pdf_path = tex_path.with_suffix(".pdf")
         if compile_result.get("status") == "success" and pdf_path.exists():
-            files["pdf"] = str(pdf_path.resolve())
+            files["pdf"] = display_path(pdf_path)
     result: dict[str, Any] = {
         "status": "success",
         "title": title,
         "files": files,
-        "paper_count": len(extract_papers(markdown)),
+        "paper_count": len(papers),
+        "reference_count": len(references),
     }
     if compile_result:
         result["latex_compile"] = compile_result

@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+
+# 环境与密钥
+.env
+
+# 运行时生成物（可按 README 重新生成）
+mineintel-knowledge-rag/data/vector_index/
+output/
+demo-ui/progress_state.json
+
+# LaTeX 编译中间产物
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz

@@ -15,13 +15,29 @@ Skill 组：
   mineintel-html-poster             HTML 完整报告 Skill（沿用 poster 文件名）
   mineintel-deck-export             归藏风格横向翻页 HTML deck Skill
   mineintel-literature-review       文献综述 LaTeX/PDF Skill
-  mineintel-email-draft             导师套磁邮件草稿 Skill（只写 Gmail Drafts，不发送）
+  mineintel-email-draft             导师套磁邮件草稿 Skill（浏览器预填 Gmail，不自动发送）
   excalidraw-diagram-generator      项目内 Excalidraw skill，用于生成技术路线图源文件
 
 演示 UI：
   demo-ui/index.html
   mineintel-research/scripts/start_progress_ui.py
   mineintel-research/scripts/progress_update.py
+
+仓库结构（脚本分层）：
+  pyproject.toml / uv.lock           UV 依赖管理（uv sync 一键创建虚拟环境）
+  config/infrastructure.json         全局基础设施配置：嵌入模型、FAISS、Neo4j、AutoGLM 地址
+  mineintel_common/                  共享基础设施层（各 Skill 通过 import 复用，只有这一份实现）
+    config.py                          配置加载与相对路径显示
+    web_search.py                      AutoGLM 网页搜索客户端（显式失败，无兜底数据）
+    open_link.py                       AutoGLM 网页阅读客户端（凭据全部来自环境变量）
+  mineintel-research/scripts/        主控编排与进度 UI；paper/github 检索已收编到
+                                     literature-baseline，这里只留委托包装
+  mineintel-literature-baseline/     论文/GitHub 检索规范实现（scripts/）+ MCP 服务（mcp_servers/）
+  mineintel-experience-insights/     知乎/小红书经验检索（唯一实现）
+  mineintel-knowledge-rag/           FAISS 语义 RAG（faiss_store 索引库 + local_search 检索）
+  mineintel-application-kg/          Neo4j 知识图谱（clean/build/import/neo4j_store/kg_search）
+  mineintel-report-export 等导出类    HTML 报告、Deck、LaTeX 综述的渲染与导出
+  同一能力全仓库只有一份规范实现；跨 Skill 调用一律通过 mineintel_common 或委托包装完成。
 
 用途：
   面向矿井/矿业场景完成科研选题调研、矿井应用知识图谱检索、论文线索整理、GitHub baseline 推荐、导师方向匹配、知乎/小红书经验参考和报告交付。
@@ -46,11 +62,32 @@ Skill 组：
   Markdown 只作为输入中间内容，不作为最终交付文件；Word/docx 不再生成。
 
 依赖：
-  不需要启动原项目后端，不需要本地外部模型 API Key，不需要本地向量模型。
-  运行时主要依赖 AutoClaw/GLM、AutoGLM 搜索能力和 Python 3 标准库。
+  依赖管理使用 UV（推荐）：在仓库根目录执行 `uv sync`，自动创建 .venv 并按 uv.lock 安装
+  faiss-cpu、neo4j、numpy、sentence-transformers；之后用 `uv run python <脚本>` 运行。
+  没有 uv 时可用 `python -m pip install -r requirements-advanced.txt`（与 pyproject.toml 保持一致）。
+  运行时依赖 AutoClaw/GLM 编排、AutoGLM 搜索能力和 Python 3.10+；不需要启动原项目后端。
+  所有路径均为相对路径，仓库放在任意目录都能运行；嵌入模型与索引配置见 config/infrastructure.json。
+
+  FAISS 语义知识库（mineintel-knowledge-rag）：
+    python -m pip install -r requirements-advanced.txt
+    python mineintel-knowledge-rag/scripts/build_faiss_index.py
+    python mineintel-knowledge-rag/scripts/local_search.py "查询词" --limit 5
+    首次构建需联网下载嵌入模型（BAAI/bge-m3）；国内网络建议设置 HF_ENDPOINT=https://hf-mirror.com，
+    模型已缓存后可设置 HF_HUB_OFFLINE=1 离线运行。构建与检索必须使用同一嵌入模型。
+
+  Neo4j 知识图谱（mineintel-application-kg）：
+    设置环境变量 MINEINTEL_NEO4J_PASSWORD 后执行 docker compose -f docker-compose.neo4j.yml up -d
+    环境变量 MINEINTEL_NEO4J_URI / MINEINTEL_NEO4J_USER / MINEINTEL_NEO4J_PASSWORD / MINEINTEL_NEO4J_DATABASE
+    的说明见 .env.example。然后：
+    python mineintel-application-kg/scripts/import_neo4j.py
+    python mineintel-application-kg/scripts/kg_search.py "查询词" --limit 8
+    Neo4j 未启动或未配置时，图谱阶段会显式报错，不会降级读取本地 JSON。
+
+  AutoGLM 网页搜索凭据：设置 AUTOGLM_APP_ID / AUTOGLM_APP_KEY 环境变量（参见 .env.example）。
+
   提交包不内置 MiKTeX/TeX Live。演示机如需 PDF，可把编译器放在工作区根目录 local_tools/MiKTeX/，与 MineIntel-AutoClaw-Skill 平级；脚本只在工作区内查找 xelatex，不跳出工作区调用外部绝对路径。
   若工作区内 xelatex 不可用，仍会保留 HTML 完整报告、逐页展示 Deck 和文献综述 tex。
-  Gmail 草稿功能只使用 Python 标准库 IMAP append 写入 Drafts；需要用户在本机环境变量中自行配置 GMAIL_USER 和 GMAIL_APP_PASSWORD，不在聊天或文件中保存凭证。
+  Gmail 草稿功能只使用 Python 标准库生成本地预览并打开浏览器撰写页；不需要保存邮箱密码，不调用 SMTP/IMAP，也不会自动发送。
 
 演示提示词：
   见 demo_prompts.txt。

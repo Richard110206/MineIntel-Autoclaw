@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""GitHub repository search helper for MineIntel Research Skill."""
+"""GitHub repository search helper for MineIntel literature retrieval."""
 
 from __future__ import annotations
 
@@ -64,47 +64,19 @@ def search_github(query: str, limit: int, timeout: int) -> dict[str, Any]:
     }
 
 
-def fallback(query: str) -> dict[str, Any]:
-    return {
-        "status": "fallback",
-        "source": "local-fallback",
-        "query": query,
-        "warning": "GitHub API unavailable. Use these as search-query hints, not verified repositories.",
-        "results": [
-            {
-                "name": "ultralytics/ultralytics",
-                "url": "https://github.com/ultralytics/ultralytics",
-                "description": "YOLO vision models that can be adapted for mine-object detection baselines.",
-                "stars": None,
-                "language": "Python",
-                "updated_at": "",
-                "topics": ["object-detection", "yolo", "computer-vision"],
-            },
-            {
-                "name": "open-mmlab/mmdetection",
-                "url": "https://github.com/open-mmlab/mmdetection",
-                "description": "General object detection toolbox, suitable for custom underground mining datasets.",
-                "stars": None,
-                "language": "Python",
-                "updated_at": "",
-                "topics": ["detection", "pytorch", "baseline"],
-            },
-        ],
-    }
-
-
 def main() -> int:
     parser = argparse.ArgumentParser(description="Search GitHub repositories.")
     parser.add_argument("query")
     parser.add_argument("--limit", type=int, default=5)
     parser.add_argument("--timeout", type=int, default=20)
-    parser.add_argument("--no-fallback", action="store_true")
     args = parser.parse_args()
 
     try:
         result = search_github(args.query, limit=args.limit, timeout=args.timeout)
     except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, json.JSONDecodeError) as exc:
-        result = {"status": "error", "query": args.query, "error": str(exc)} if args.no_fallback else fallback(args.query)
+        result = {"status": "error", "query": args.query, "error": str(exc), "results": []}
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return 2
 
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 0

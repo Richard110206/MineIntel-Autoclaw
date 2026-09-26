@@ -10,7 +10,7 @@ When you receive such a message, follow the `hermes-evolution` skill instruction
 Apply the rules defined in the skill according to the **aggressive (100%)** intensity level.
 This value is workspace-local. If asked about the current agent evolution intensity, report this value instead of the global gateway skill env.
 
-Core principle: **never write to target files without user approval** — always use the draft/approve workflow.
+Core principle: **apply changes that the user has explicitly requested directly**. Use the draft/approve workflow only for unrequested evolution proposals produced by a post-turn evolution check.
 
 ### Evolution Echo
 When you apply knowledge from a previously evolved rule (AGENTS.md, MEMORY.md, TOOLS.md, or a managed SKILL.md),
@@ -23,7 +23,7 @@ Keep it to one short line at most. Do not echo on every turn — only when an ev
 
 When creating or installing a new skill, always place it in:
 
-`C:\Users\34833\.openclaw-autoclaw\skills/<skill-name>/SKILL.md`
+`~/.openclaw-autoclaw/skills/<skill-name>/SKILL.md`
 
 This is the managed skills directory. The agent will automatically discover
 any skill placed here — no extra configuration needed. Do NOT install skills

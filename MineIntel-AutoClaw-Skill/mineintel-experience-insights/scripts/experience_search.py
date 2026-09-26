@@ -13,7 +13,6 @@ import json
 import sys
 from pathlib import Path
 from typing import Any
-from urllib.parse import quote_plus
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
@@ -22,47 +21,18 @@ if hasattr(sys.stderr, "reconfigure"):
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-if str(SCRIPT_DIR) not in sys.path:
-    sys.path.insert(0, str(SCRIPT_DIR))
+PACKAGE_DIR = SCRIPT_DIR.parents[1]
+if str(PACKAGE_DIR) not in sys.path:
+    sys.path.insert(0, str(PACKAGE_DIR))
 
-import web_search  # noqa: E402
-
-
-def public_search_fallback(query: str) -> dict[str, Any]:
-    lower = query.lower()
-    if "xiaohongshu" in lower or "小红书" in query:
-        platform = "小红书"
-        url = f"https://www.xiaohongshu.com/search_result?keyword={quote_plus(query)}"
-    elif "zhihu" in lower or "知乎" in query:
-        platform = "知乎"
-        url = f"https://www.zhihu.com/search?type=content&q={quote_plus(query)}"
-    else:
-        platform = "公开网页"
-        url = f"https://www.baidu.com/s?wd={quote_plus(query)}"
-    return {
-        "status": "success",
-        "source": "public-search-link",
-        "query": query,
-        "count": 1,
-        "results": [
-            {
-                "title": f"{platform}公开搜索入口",
-                "url": url,
-                "snippet": "当前环境未返回稳定帖子详情，已提供平台公开搜索入口，可在演示时直接打开核验。",
-            }
-        ],
-        "note": "已提供公开平台搜索入口，不把经验内容作为论文或技术事实依据。",
-    }
+from mineintel_common import web_search  # noqa: E402
 
 
 def safe_search(query: str, max_results: int, timeout: int) -> dict[str, Any]:
     try:
-        result = web_search.web_search(query, max_results=max_results, timeout=timeout)
-        if not result.get("results"):
-            return public_search_fallback(query)
-        return result
-    except Exception:
-        return public_search_fallback(query)
+        return web_search.web_search(query, max_results=max_results, timeout=timeout)
+    except Exception as exc:
+        return {"status": "error", "query": query, "error": str(exc), "results": []}
 
 
 def run(topic: str, scenario: str, max_results: int, timeout: int) -> dict[str, Any]:
@@ -90,10 +60,13 @@ def run(topic: str, scenario: str, max_results: int, timeout: int) -> dict[str, 
         },
     ]
     groups = []
+    error_count = 0
     for item in queries:
-        groups.append({**item, "result": safe_search(item["query"], max_results=max_results, timeout=timeout)})
+        result = safe_search(item["query"], max_results=max_results, timeout=timeout)
+        error_count += int(result.get("status") == "error")
+        groups.append({**item, "result": result})
     return {
-        "status": "success",
+        "status": "success" if error_count == 0 else ("error" if error_count == len(queries) else "partial"),
         "source": "mineintel-experience-search",
         "topic": topic,
         "scenario": scenario,
@@ -110,8 +83,9 @@ def main() -> int:
     parser.add_argument("--max-results", type=int, default=4)
     parser.add_argument("--timeout", type=int, default=15)
     args = parser.parse_args()
-    print(json.dumps(run(args.topic, args.scenario, args.max_results, args.timeout), ensure_ascii=False, indent=2))
-    return 0
+    result = run(args.topic, args.scenario, args.max_results, args.timeout)
+    print(json.dumps(result, ensure_ascii=False, indent=2))
+    return 2 if result["status"] == "error" else 0
 
 
 if __name__ == "__main__":

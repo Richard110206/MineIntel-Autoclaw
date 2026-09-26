@@ -781,11 +781,15 @@
         els.emailDraftList.innerHTML = `<p class="empty">尚未生成邮件草稿。</p>`;
         return;
       }
-      const statusText = item.status === "draft_created"
-        ? "已写入 Gmail 草稿箱（未发送）"
-        : item.status === "draft_failed"
-          ? "Gmail 写入失败，已保留本地预览"
-          : "已生成本地预览";
+      const statusText = item.status === "browser_opened"
+        ? "已打开 Gmail 撰写页（未自动发送）"
+        : item.status === "browser_open_failed"
+          ? "浏览器打开失败，已保留本地预览"
+          : item.status === "draft_created"
+            ? "已创建 Gmail 草稿（未发送）"
+            : item.status === "draft_failed"
+              ? "Gmail 草稿创建失败，已保留本地预览"
+              : "已生成本地预览";
       const path = String(item.path || "").trim();
       const link = path
         ? `<a class="item-link" href="/download?path=${encodeURIComponent(path)}" target="_blank" rel="noreferrer">预览</a>`

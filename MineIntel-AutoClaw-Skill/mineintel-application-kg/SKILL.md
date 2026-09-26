@@ -8,7 +8,7 @@ description: >
 
 # MineIntel Application KG Skill
 
-这是 MineIntel 技能组中的“矿井应用专家”Skill。它不做泛泛 RAG，而是基于清洗后的白皮书、蓝皮书、政策标准和团队人工场景表，查询“矿井场景-痛点-解决方案-技术设备-来源依据”的轻量知识图谱。
+这是 MineIntel 技能组中的“矿井应用专家”Skill。它不做泛泛 RAG，而是通过 Neo4j 查询由白皮书、蓝皮书、政策标准和团队人工场景表构建的“矿井场景-痛点-解决方案-技术设备-来源依据”知识图谱。
 
 ## 使用时机
 
@@ -21,10 +21,23 @@ description: >
 
 - `data/user_sources/矿井场景总览.csv`：团队人工整理的 20 个矿井应用场景，是高置信骨架。
 - `data/clean/`：清洗后的白皮书、蓝皮书、政策标准和原 MineIntel 语料。
-- `data/kg/kg_graph.json`：完整知识图谱。
+- `data/kg/kg_graph.json`：用于导入 Neo4j 的版本化交换数据，不承担在线查询。
 - `data/kg/kg_nodes.json`：节点。
 - `data/kg/kg_edges.json`：关系。
 - `data/kg/kg_triples.csv`：便于人工检查的三元组表。
+
+## 初始化 Neo4j
+
+安装驱动、启动 Neo4j，并导入图谱：
+
+```bash
+python -m pip install -r {baseDir}/../requirements-advanced.txt
+docker compose -f {baseDir}/../docker-compose.neo4j.yml up -d
+python {baseDir}/scripts/build_application_kg.py
+python {baseDir}/scripts/import_neo4j.py
+```
+
+连接参数通过 `MINEINTEL_NEO4J_URI`、`MINEINTEL_NEO4J_USER`、`MINEINTEL_NEO4J_PASSWORD`、`MINEINTEL_NEO4J_DATABASE` 提供，不写入代码或仓库。
 
 ## 查询图谱
 
@@ -48,9 +61,10 @@ python {baseDir}/scripts/kg_search.py "<技术方向> <矿井场景> 痛点 解�
 python {baseDir}/scripts/build_application_kg.py
 ```
 
-重建后检查：
+重建后必须重新导入 Neo4j，再检查：
 
 ```bash
+python {baseDir}/scripts/import_neo4j.py
 python {baseDir}/scripts/kg_search.py "矿井安全监测 计算机视觉" --limit 5
 ```
 
@@ -68,3 +82,5 @@ python {baseDir}/scripts/kg_search.py "矿井安全监测 计算机视觉" --lim
 ```
 
 不要把没有证据边的内容写成确定事实。来自 `related_concept` 或 `mentions` 的内容可作为辅助线索；来自人工 CSV 的 `has_pain_point`、`needs_solution`、`requires_technology` 和 `evidenced_by` 优先级更高。
+
+Neo4j 未配置、连接失败或索引不存在时必须显式失败并给出初始化步骤，禁止改读本地 JSON 或做关键词计分。

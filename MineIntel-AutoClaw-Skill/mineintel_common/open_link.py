@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
-"""AutoGLM Open Link helper for MineIntel Research Skill."""
+"""MineIntel 共享的 AutoGLM 网页阅读客户端。
+
+凭据必须通过环境变量显式提供（AUTOGLM_APP_ID / AUTOGLM_APP_KEY），
+不内置任何默认凭据；token 与 API 地址默认读取 config/infrastructure.json。
+打开失败时显式报错，不返回兜底数据。
+
+命令行入口：``python -m mineintel_common.open_link "<url>" --timeout 30``
+"""
 
 from __future__ import annotations
 
@@ -18,14 +25,22 @@ if hasattr(sys.stdout, "reconfigure"):
 if hasattr(sys.stderr, "reconfigure"):
     sys.stderr.reconfigure(encoding="utf-8")
 
+from .config import load_infrastructure
 
-APP_ID = os.environ.get("AUTOGLM_APP_ID", "100003")
-APP_KEY = os.environ.get("AUTOGLM_APP_KEY", "38d2391985e2369a5fb8227d8e6cd5e5")
-TOKEN_URL = os.environ.get("AUTOGLM_TOKEN_URL", "http://127.0.0.1:18432/get_token")
-API_URL = os.environ.get(
-    "AUTOGLM_OPEN_LINK_URL",
-    "https://autoglm-api.zhipuai.cn/agentdr/v1/assistant/skills/open-link",
-)
+
+def open_link_config() -> dict[str, str]:
+    config = load_infrastructure()["open_link"]
+    values = {
+        "app_id": os.getenv("AUTOGLM_APP_ID", ""),
+        "app_key": os.getenv("AUTOGLM_APP_KEY", ""),
+        "token_url": os.getenv("AUTOGLM_TOKEN_URL", config["token_url"]),
+        "api_url": os.getenv("AUTOGLM_OPEN_LINK_URL", config["api_url"]),
+    }
+    missing = [name for name in ("app_id", "app_key") if not values[name]]
+    if missing:
+        env_names = ", ".join(f"AUTOGLM_{name.upper()}" for name in missing)
+        raise RuntimeError(f"AutoGLM 打开网页凭据未配置：{env_names}")
+    return values
 
 
 def sign(app_id: str, timestamp: int, app_key: str) -> str:
@@ -33,25 +48,27 @@ def sign(app_id: str, timestamp: int, app_key: str) -> str:
     return hashlib.md5(raw.encode("utf-8")).hexdigest()
 
 
-def get_token(timeout: int = 10) -> str:
-    with urllib.request.urlopen(TOKEN_URL, timeout=timeout) as resp:
+def get_token(token_url: str, timeout: int = 10) -> str:
+    req = urllib.request.Request(token_url, method="GET")
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
         token = resp.read().decode("utf-8").strip()
-    if not token.lower().startswith("bearer "):
-        token = f"Bearer {token}"
-    return token
+    if not token:
+        raise RuntimeError("AutoGLM token service returned an empty token")
+    return token if token.lower().startswith("bearer ") else f"Bearer {token}"
 
 
 def open_link(url: str, timeout: int) -> dict[str, Any]:
-    token = get_token(timeout=timeout)
+    config = open_link_config()
+    token = get_token(config["token_url"], timeout=timeout)
     timestamp = int(time.time())
     payload = json.dumps({"url": url}, ensure_ascii=False).encode("utf-8")
 
-    req = urllib.request.Request(API_URL, data=payload, method="POST")
+    req = urllib.request.Request(config["api_url"], data=payload, method="POST")
     req.add_header("Authorization", token)
     req.add_header("Content-Type", "application/json")
-    req.add_header("X-Auth-Appid", APP_ID)
+    req.add_header("X-Auth-Appid", config["app_id"])
     req.add_header("X-Auth-TimeStamp", str(timestamp))
-    req.add_header("X-Auth-Sign", sign(APP_ID, timestamp, APP_KEY))
+    req.add_header("X-Auth-Sign", sign(config["app_id"], timestamp, config["app_key"]))
 
     with urllib.request.urlopen(req, timeout=timeout) as resp:
         data = json.loads(resp.read().decode("utf-8"))

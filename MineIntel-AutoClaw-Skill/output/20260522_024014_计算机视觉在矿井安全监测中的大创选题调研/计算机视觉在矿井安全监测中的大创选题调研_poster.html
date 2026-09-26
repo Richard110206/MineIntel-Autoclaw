@@ -77,26 +77,75 @@ body {
   margin-bottom: 36px;
 }
 
-/* ── oversized serif headline ───────────────────────────────── */
-.headline {
-  font-family: var(--serif-display);
-  font-weight: 900;
-  font-size: clamp(48px, 7vw, 88px);
-  line-height: 1.0;
-  letter-spacing: -0.02em;
-  margin: 0 0 20px;
-  max-width: 14ch;
+/* ── magazine cover headline ────────────────────────────────── */
+.headline-group {
+  margin: 0 0 56px;
+  padding: 48px 40px 44px;
+  position: relative;
+  background:
+    linear-gradient(135deg, rgba(26,92,46,0.04) 0%, transparent 50%),
+    linear-gradient(225deg, rgba(160,74,42,0.03) 0%, transparent 50%);
+  border: 2px solid var(--ink);
+  outline: 1px solid var(--ink);
+  outline-offset: 6px;
 }
-.headline em {
+.headline-group::before,
+.headline-group::after {
+  content: "\2727";
+  position: absolute;
+  font-size: 22px;
+  color: var(--accent);
+  opacity: .5;
+}
+.headline-group::before { top: 12px; left: 14px; }
+.headline-group::after { bottom: 12px; right: 14px; }
+.headline-group .hg-brand {
+  display: inline-block;
+  font: 400 14px/1 var(--mono);
+  color: var(--muted);
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+}
+.headline-group .hg-label {
+  display: block;
+  font: italic 500 18px/1.4 var(--serif-display);
+  color: var(--accent-2);
+  letter-spacing: .06em;
+  margin-bottom: 8px;
+}
+.headline-group h1 {
+  font-family: var(--serif-cn);
+  font-weight: 900;
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 1.15;
+  letter-spacing: .04em;
+  color: var(--ink);
+  margin: 0;
+}
+.headline-group h1 em {
+  font-family: var(--serif-display);
   font-style: italic;
+  font-weight: 900;
   color: var(--accent);
 }
-.headline s {
-  text-decoration: line-through;
-  text-decoration-color: var(--accent-2);
-  text-decoration-thickness: 3px;
-  color: var(--muted);
-  opacity: .6;
+.headline-group h1 .accent-line {
+  display: block;
+  font-size: .5em;
+  font-weight: 700;
+  letter-spacing: .18em;
+  color: var(--accent-2);
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+.headline-group .hg-rule {
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--accent);
+  margin: 20px 0 0;
 }
 
 /* ── deck / summary ─────────────────────────────────────────── */
@@ -137,6 +186,8 @@ body {
   max-width: 980px;
   text-align: justify;
   hyphens: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
 }
 
 /* ── numbered section headings ──────────────────────────────── */
@@ -211,6 +262,17 @@ blockquote::before {
   margin-bottom: -8px;
   font-family: var(--serif-display);
 }
+blockquote::after {
+  content: "\201D";
+  font-size: 48px;
+  line-height: 1;
+  color: var(--accent);
+  opacity: .35;
+  display: block;
+  text-align: right;
+  margin-top: -8px;
+  font-family: var(--serif-display);
+}
 
 /* ── links ──────────────────────────────────────────────────── */
 a {
@@ -283,8 +345,8 @@ th { background: var(--paper-deep); color: var(--ink); text-align: left; }
 @media (max-width: 860px) {
   .page { padding: 24px 20px 44px; }
   .content { column-count: 1; column-rule: none; }
-  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .headline { font-size: 42px; max-width: none; }
+  .headline-group { padding: 32px 20px 28px; outline: none; }
+  .headline-group h1 { font-size: 36px; }
 }
 
 @media print {
@@ -302,44 +364,18 @@ th { background: var(--paper-deep); color: var(--ink); text-align: left; }
     <span class="ornament">&sect;</span>
     <span>2026-05-22 02:40 &middot; Vol.1 &middot; AutoClaw Report</span>
   </div>
-  <div class="top-thick-rule"></div>
+  <div class=”top-thick-rule”></div>
 
-  <!-- oversized serif headline -->
-  <h1 class="headline">MineIntel <em>Research</em><br>计算机视觉在矿井安全监测中的大创选题调研</h1>
-
-  <!-- deck / summary -->
-  <p class="deck">本报告面向软件工程专业学生，围绕“计算机视觉在矿井安全监测中的大创选题”进行端到端科研调研。建议选题聚焦为：面向矿井复杂低照环境的轻量化视觉安全隐患识别与预警系统。研究对象可从“人员 PPE 合规识别、危险区域入侵、人员跌倒/异常姿态、皮带异物、井下移动目标监测”中选择 1-2 个切入点，避免一开始覆盖全部安全监测任务。 该方向的价值在于：煤矿智能化建设正在推进“少人化、无人化、智能化”，国家能源局《煤矿智能化标准体系建设指南》明确提出构建适应煤矿智能化发展的标准体系，并覆盖智能视频、算法平台、平台软件等方向；矿井场景则存在低照度、粉尘、水雾、遮挡、空间狭窄、摄像头部署受限、误报成本高等工程难点。因此，大创项目应强调“可复现算法…</p>
-
-  <!-- stats strip -->
-  <section class="stats" aria-label="报告统计">
-    <div class="stat"><strong>23</strong>章节</div>
-    <div class="stat"><strong>0</strong>论文线索</div>
-    <div class="stat"><strong>22</strong>链接</div>
-    <div class="stat"><strong>2026-05-22 02:40</strong>生成时间</div>
-  </section>
+  <!-- magazine cover headline -->
+  <div class=”headline-group”>
+    <span class=”hg-brand”>MineIntel Research &middot; 矿业纪事报特别报道</span>
+    <span class=”hg-label”>大学生创新创业训练计划 &middot; 选题调研报告</span>
+    <h1>计算机视觉在矿井<em>安全监测</em>中的<br>大创选题调研</h1>
+    <span class=”hg-rule”></span>
+  </div>
 
   <!-- two-column body -->
   <article class="content">
-<h2 class="major-heading">MineIntel 矿小智科研情报简报</h2>
-<blockquote>CUMT MineIntel / AutoClaw Native Skill Report</blockquote>
-<div class="table-wrap"><table>
-<thead><tr><th>项目</th><th>内容</th></tr></thead>
-<tbody>
-<tr><td>报告标题</td><td>计算机视觉在矿井安全监测中的大创选题调研</td></tr>
-<tr><td>专业或方向</td><td>待确认</td></tr>
-<tr><td>研究领域</td><td>待确认</td></tr>
-<tr><td>矿业场景</td><td>矿井/矿业场景</td></tr>
-<tr><td>交付格式</td><td>HTML 完整报告, 文献综述 LaTeX, 文献综述 PDF(工作区内编译器可用时)</td></tr>
-<tr><td>生成时间</td><td>2026-05-22 02:40</td></tr>
-</tbody></table></div>
-<h2 class="">Executive Snapshot</h2>
-<ul>
-<li><strong>定位</strong>：面向矿井/矿业场景的科研选题、论文线索、baseline、导师方向与技术路线综合分析。</li>
-<li><strong>方法</strong>：AutoClaw 主控 Skill 编排，本地知识库补充，公开检索与 GitHub baseline 作为外部线索。</li>
-<li><strong>核验</strong>：论文、导师、仓库等外部信息均应在正式申报前二次核验；本报告不替代学校官网、论文数据库或导师确认。</li>
-</ul>
-<p>---</p>
-<h2 class="major-heading">计算机视觉在矿井安全监测中的大创选题科研调研报告</h2>
 <h2 class="">1. 研究主题概述</h2>
 <p>本报告面向软件工程专业学生，围绕“计算机视觉在矿井安全监测中的大创选题”进行端到端科研调研。建议选题聚焦为：<strong>面向矿井复杂低照环境的轻量化视觉安全隐患识别与预警系统</strong>。研究对象可从“人员 PPE 合规识别、危险区域入侵、人员跌倒/异常姿态、皮带异物、井下移动目标监测”中选择 1-2 个切入点，避免一开始覆盖全部安全监测任务。</p>
 <p>该方向的价值在于：煤矿智能化建设正在推进“少人化、无人化、智能化”，国家能源局《煤矿智能化标准体系建设指南》明确提出构建适应煤矿智能化发展的标准体系，并覆盖智能视频、算法平台、平台软件等方向；矿井场景则存在低照度、粉尘、水雾、遮挡、空间狭窄、摄像头部署受限、误报成本高等工程难点。因此，大创项目应强调“可复现算法 + 小规模数据集 + 工程化部署原型 + 风险核验机制”，而不是只做普通目标检测套壳。</p>
@@ -394,7 +430,7 @@ th { background: var(--paper-deep); color: var(--ink); text-align: left; }
 <tr><td>开采场景视觉综述</td><td>A Review of the Application of Computer Vision Techniques in Sustainable Engineering of Open Pit Mines</td><td><a href="https://www.mdpi.com/2071-1050/17/7/3051" target="_blank" rel="noopener noreferrer">Sustainability/MDPI, 2025</a></td><td>虽偏露天矿，但可借鉴视觉监测、设备识别和安全预警思路。</td></tr>
 </tbody></table></div>
 <h2 class="">7. GitHub baseline 推荐</h2>
-<p>推荐仓库：<a href="https://github.com/AyushRajput-cmds/End_to_End_Vision_Based_PPE_Compliance_And_Personal-Monitoring_System_for_Coal_Minning_Environments" target="_blank" rel="noopener noreferrer">AyushRajput-cmds/EndtoEndVisionBasedPPEComplianceAndPersonal-MonitoringSystemforCoalMinningEnvironments</a></p>
+<p>推荐仓库：<a href="https://github.com/AyushRajput-cmds/End_to_End_Vision_Based_PPE_Compliance_And_Personal-Monitoring_System_for_Coal_Minning_Environments" target="_blank" rel="noopener noreferrer">End-to-End Vision Based PPE Compliance &amp; Personal Monitoring System for Coal Mining Environments</a></p>
 <p>推荐理由：</p>
 <ol>
 <li>场景贴近：仓库描述直接面向 coal mining environments 的 PPE compliance 和 personal monitoring。</li>
@@ -474,12 +510,108 @@ th { background: var(--paper-deep); color: var(--ink); text-align: left; }
 <li>融合低照增强与目标跟踪的井下人员异常行为识别方法研究。</li>
 </ol>
 <p>最推荐第一个备选题，因为它和软件工程专业最匹配，既有算法复现，也有系统开发，还能形成可演示原型。</p>
-<h2 class="">科研经验公开搜索入口</h2>
+<h2 class="">技术路线图</h2>
+<figure style="break-inside:avoid; column-span:all; margin:24px 0; text-align:center;">
+<svg viewBox="0 0 960 920" xmlns="http://www.w3.org/2000/svg" style="width:100%; font-family:'IBM Plex Serif','Noto Serif SC',serif; background:#faf8f2; border:2px solid #c8bea4; border-radius:6px; padding:20px;">
+  <defs>
+    <marker id="ahg" markerWidth="10" markerHeight="8" refX="10" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#1a5c2e"/></marker>
+    <marker id="aho" markerWidth="10" markerHeight="8" refX="10" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#a04a2a"/></marker>
+    <marker id="ahb" markerWidth="10" markerHeight="8" refX="10" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#1971c2"/></marker>
+    <marker id="ahp" markerWidth="10" markerHeight="8" refX="10" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#862e9c"/></marker>
+    <marker id="ahd" markerWidth="10" markerHeight="8" refX="10" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#6e685a"/></marker>
+  </defs>
+  <text x="480" y="44" text-anchor="middle" font-size="26" font-weight="800" fill="#1a1710">面向矿井低照环境的人员安全监测系统 — 技术路线图</text>
+  <text x="60" y="94" font-size="18" font-weight="700" fill="#1a5c2e">阶段一</text>
+  <text x="60" y="120" font-size="20" font-weight="800" fill="#1a1710">数据采集与标注</text>
+  <text x="860" y="110" font-size="15" fill="#6e685a" font-style="italic">第 1-2 周</text>
+  <rect x="60" y="140" width="240" height="72" rx="8" fill="#b2f2bb" stroke="#1a5c2e" stroke-width="2"/>
+  <text x="180" y="172" text-anchor="middle" font-size="17" fill="#1a1710">公开 PPE 数据集</text>
+  <text x="180" y="196" text-anchor="middle" font-size="17" fill="#1a1710">+ 模拟矿井视频采集</text>
+  <line x1="300" y1="176" x2="340" y2="176" stroke="#1a5c2e" stroke-width="2" marker-end="url(#ahg)"/>
+  <rect x="350" y="140" width="240" height="72" rx="8" fill="#b2f2bb" stroke="#1a5c2e" stroke-width="2"/>
+  <text x="470" y="172" text-anchor="middle" font-size="17" fill="#1a1710">YOLO 格式标注</text>
+  <text x="470" y="196" text-anchor="middle" font-size="17" fill="#1a1710">person / helmet / vest / zone</text>
+  <line x1="590" y1="176" x2="630" y2="176" stroke="#1a5c2e" stroke-width="2" marker-end="url(#ahg)"/>
+  <rect x="640" y="140" width="240" height="72" rx="8" fill="#b2f2bb" stroke="#1a5c2e" stroke-width="2"/>
+  <text x="760" y="172" text-anchor="middle" font-size="17" fill="#1a1710">数据增强策略</text>
+  <text x="760" y="196" text-anchor="middle" font-size="17" fill="#1a1710">低照 / 粉尘 / 遮挡模拟</text>
+  <line x1="180" y1="212" x2="180" y2="290" stroke="#6e685a" stroke-width="1.5" stroke-dasharray="6,5" marker-end="url(#ahd)"/>
+  <text x="60" y="320" font-size="18" font-weight="700" fill="#a04a2a">阶段二</text>
+  <text x="60" y="346" font-size="20" font-weight="800" fill="#1a1710">模型训练与优化</text>
+  <text x="860" y="336" font-size="15" fill="#6e685a" font-style="italic">第 3-5 周</text>
+  <rect x="60" y="366" width="240" height="72" rx="8" fill="#ffd43b" stroke="#a04a2a" stroke-width="2"/>
+  <text x="180" y="398" text-anchor="middle" font-size="17" fill="#1a1710">低照图像增强</text>
+  <text x="180" y="422" text-anchor="middle" font-size="17" fill="#1a1710">Gamma / CLAHE / Retinex</text>
+  <line x1="300" y1="402" x2="340" y2="402" stroke="#a04a2a" stroke-width="2" marker-end="url(#aho)"/>
+  <rect x="350" y="366" width="240" height="72" rx="8" fill="#ffd43b" stroke="#a04a2a" stroke-width="2"/>
+  <text x="470" y="398" text-anchor="middle" font-size="17" fill="#1a1710">YOLOv8 / YOLOv10</text>
+  <text x="470" y="422" text-anchor="middle" font-size="17" fill="#1a1710">PPE + 人员检测训练</text>
+  <line x1="590" y1="402" x2="630" y2="402" stroke="#a04a2a" stroke-width="2" marker-end="url(#aho)"/>
+  <rect x="640" y="366" width="240" height="72" rx="8" fill="#ffd43b" stroke="#a04a2a" stroke-width="2"/>
+  <text x="760" y="398" text-anchor="middle" font-size="17" fill="#1a1710">对比实验评估</text>
+  <text x="760" y="422" text-anchor="middle" font-size="17" fill="#1a1710">mAP / FPS / 误报率</text>
+  <line x1="180" y1="438" x2="180" y2="516" stroke="#6e685a" stroke-width="1.5" stroke-dasharray="6,5" marker-end="url(#ahd)"/>
+  <text x="60" y="546" font-size="18" font-weight="700" fill="#1971c2">阶段三</text>
+  <text x="60" y="572" font-size="20" font-weight="800" fill="#1a1710">跟踪与规则引擎</text>
+  <text x="860" y="562" font-size="15" fill="#6e685a" font-style="italic">第 6-8 周</text>
+  <rect x="60" y="592" width="240" height="72" rx="8" fill="#a5d8ff" stroke="#1971c2" stroke-width="2"/>
+  <text x="180" y="624" text-anchor="middle" font-size="17" fill="#1a1710">ByteTrack / DeepSORT</text>
+  <text x="180" y="648" text-anchor="middle" font-size="17" fill="#1a1710">多目标跟踪</text>
+  <line x1="300" y1="628" x2="340" y2="628" stroke="#1971c2" stroke-width="2" marker-end="url(#ahb)"/>
+  <rect x="350" y="592" width="240" height="72" rx="8" fill="#a5d8ff" stroke="#1971c2" stroke-width="2"/>
+  <text x="470" y="624" text-anchor="middle" font-size="17" fill="#1a1710">规则引擎</text>
+  <text x="470" y="648" text-anchor="middle" font-size="17" fill="#1a1710">PPE合规 / 区域入侵 / 异常</text>
+  <line x1="590" y1="628" x2="630" y2="628" stroke="#1971c2" stroke-width="2" marker-end="url(#ahb)"/>
+  <rect x="640" y="592" width="240" height="72" rx="8" fill="#a5d8ff" stroke="#1971c2" stroke-width="2"/>
+  <text x="760" y="624" text-anchor="middle" font-size="17" fill="#1a1710">分级告警机制</text>
+  <text x="760" y="648" text-anchor="middle" font-size="17" fill="#1a1710">记录 / 推送 / 日志</text>
+  <line x1="180" y1="664" x2="180" y2="742" stroke="#6e685a" stroke-width="1.5" stroke-dasharray="6,5" marker-end="url(#ahd)"/>
+  <text x="60" y="772" font-size="18" font-weight="700" fill="#862e9c">阶段四</text>
+  <text x="60" y="798" font-size="20" font-weight="800" fill="#1a1710">系统部署与交付</text>
+  <text x="860" y="788" font-size="15" fill="#6e685a" font-style="italic">第 9-12 周</text>
+  <rect x="60" y="818" width="240" height="72" rx="8" fill="#d0bfff" stroke="#862e9c" stroke-width="2"/>
+  <text x="180" y="850" text-anchor="middle" font-size="17" fill="#1a1710">后端 FastAPI</text>
+  <text x="180" y="874" text-anchor="middle" font-size="17" fill="#1a1710">推理服务 + 告警 API</text>
+  <line x1="300" y1="854" x2="340" y2="854" stroke="#862e9c" stroke-width="2" marker-end="url(#ahp)"/>
+  <rect x="350" y="818" width="240" height="72" rx="8" fill="#d0bfff" stroke="#862e9c" stroke-width="2"/>
+  <text x="470" y="850" text-anchor="middle" font-size="17" fill="#1a1710">前端可视化面板</text>
+  <text x="470" y="874" text-anchor="middle" font-size="17" fill="#1a1710">视频 + 检测框 + 统计图</text>
+  <line x1="590" y1="854" x2="630" y2="854" stroke="#862e9c" stroke-width="2" marker-end="url(#ahp)"/>
+  <rect x="640" y="818" width="240" height="72" rx="8" fill="#d0bfff" stroke="#862e9c" stroke-width="2"/>
+  <text x="760" y="850" text-anchor="middle" font-size="17" fill="#1a1710">边缘端轻量化部署</text>
+  <text x="760" y="874" text-anchor="middle" font-size="17" fill="#1a1710">ONNX / TensorRT / Jetson</text>
+</svg>
+<figcaption style="font:13px/1.4 'JetBrains Mono','IBM Plex Mono',monospace; color:#6e685a; margin-top:10px; letter-spacing:.06em;">TECHNICAL ROADMAP &middot; 技术路线图 &middot; 同步生成 <code>technical_route.excalidraw</code> 可编辑文件</figcaption>
+</figure>
+
+<h2 class="">科研经验参考与资源推荐</h2>
+<p>以下为知乎、小红书等平台精选经验内容，仅作为项目推进和申报参考，不作为论文或技术事实依据。</p>
+
+<h3>知乎精选文章</h3>
 <ul>
-<li>平台/链接：知乎、小红书公开搜索入口；用于演示和人工核验，不作为论文或技术事实依据。</li>
-<li>知乎：<a href="https://www.zhihu.com/search?type=content&amp;q=%E5%A4%A7%E5%88%9B+%E7%A7%91%E7%A0%94+%E9%80%89%E9%A2%98+%E7%BB%8F%E9%AA%8C" target="_blank" rel="noopener noreferrer">公开搜索入口</a></li>
-<li>小红书：<a href="https://www.xiaohongshu.com/search_result?keyword=%E5%A4%A7%E5%88%9B+%E7%A7%91%E7%A0%94+%E9%80%89%E9%A2%98+%E7%BB%8F%E9%AA%8C" target="_blank" rel="noopener noreferrer">公开搜索入口</a></li>
+<li><strong>大创全流程指南</strong>：<a href="https://zhuanlan.zhihu.com/p/347768924" target="_blank" rel="noopener noreferrer">大学生创新创业训练计划项目如何做？</a> — 详述大创三大分类、申报书撰写、中期检查、结题报告全流程。</li>
+<li><strong>零基础选题入门</strong>：<a href="https://zhuanlan.zhihu.com/p/600124987" target="_blank" rel="noopener noreferrer">零基础入手大创项目：如何选题</a> — 系统介绍选题方法论，适合第一次参加大创的同学。</li>
+<li><strong>大创答辩技巧</strong>：<a href="https://zhuanlan.zhihu.com/p/485245211" target="_blank" rel="noopener noreferrer">大创答辩常见问题及回答思路</a> — 按立项答辩流程梳理常见问题和应对策略，答辩分数直接决定国家级/省级/校级。</li>
+<li><strong>大创申报书撰写</strong>：<a href="https://zhuanlan.zhihu.com/p/496112517" target="_blank" rel="noopener noreferrer">简记大创经历（含技巧和心态）</a> — 答主亲身经历分享，重点在申报书填写技巧和心态调整。</li>
+<li><strong>科研申报书与PPT</strong>：<a href="https://zhuanlan.zhihu.com/p/79856457" target="_blank" rel="noopener noreferrer">【本科生科研入门】如何撰写科研项目申报书和答辩PPT</a> — 面向工科类学生的实用经验。</li>
+<li><strong>计算机专业选题</strong>：<a href="https://www.zhihu.com/question/522852974/answer/2417863400" target="_blank" rel="noopener noreferrer">计算机专业大创怎么选题？</a> — 明确不同级别结题要求：校级论文、省部级论文+软著/专利、国家级多篇论文+软著+专利。</li>
+<li><strong>选题如何找方向</strong>：<a href="https://www.zhihu.com/question/619103897" target="_blank" rel="noopener noreferrer">大创项目的选题是怎么找的呢？</a> — 选题应贴合国家时政或社会需要，大创立项特别看重时效性和现实意义。</li>
 </ul>
+
+<h3>知乎问答推荐</h3>
+<ul>
+<li><a href="https://www.zhihu.com/question/269887232" target="_blank" rel="noopener noreferrer">大创项目申请时如何准备答辩？</a> — 成功申请国家级大创的经验，强调自信和充分准备。</li>
+<li><a href="https://www.zhihu.com/question/390596459/answer/1264517673" target="_blank" rel="noopener noreferrer">本科生如何给大创项目确定合适的选题？</a> — 从立项通知到答辩确定等级的完整流程和选题建议。</li>
+</ul>
+
+<h3>小红书 / 其他平台</h3>
+<ul>
+<li><strong>大创选题干货</strong>：在小红书搜索"<a href="https://www.xiaohongshu.com/search_result?keyword=%E5%A4%A7%E5%88%9B%E9%80%89%E9%A2%98%E7%BB%8F%E9%AA%8C" target="_blank" rel="noopener noreferrer">大创选题经验</a>"可获取大量本科生一线经验帖，涵盖选题思路、申报书模板、答辩实录等。</li>
+<li><strong>科研入门经验</strong>：在小红书搜索"<a href="https://www.xiaohongshu.com/search_result?keyword=%E6%9C%AC%E7%A7%91%E7%94%9F%E7%A7%91%E7%A0%94%E5%85%A5%E9%97%A8" target="_blank" rel="noopener noreferrer">本科生科研入门</a>"可获取实验室选择、文献阅读、论文写作等经验分享。</li>
+<li><strong>计算机视觉项目实战</strong>：在小红书搜索"<a href="https://www.xiaohongshu.com/search_result?keyword=%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89%E5%A4%A7%E5%88%9B%E9%A1%B9%E7%9B%AE" target="_blank" rel="noopener noreferrer">计算机视觉大创项目</a>"可找到同方向的项目分享和代码资源。</li>
+</ul>
+
+<blockquote>提示：以上经验内容仅供项目推进参考，正式申报时应以学校教务通知、导师建议和期刊论文为主要依据。建议结合本报告技术路线，按 12 周规划逐步推进。</blockquote>
   </article>
 
   <!-- footer with ornament -->

@@ -9,7 +9,6 @@ import re
 import sys
 from pathlib import Path
 from typing import Any
-from urllib.parse import quote_plus
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
@@ -60,7 +59,6 @@ DEFAULT_DOMAINS = (
     "sce.cumt.edu.cn",
     "hr.cumt.edu.cn",
 )
-LOCAL_ADVISOR_PATH = BASE_DIR / "data" / "advisor_fallback.md"
 TITLE_WORDS = ("教授", "副教授", "讲师", "研究员", "副研究员", "博导", "硕导")
 NAME_STOP_WORDS = {
     "中国矿业",
@@ -194,24 +192,6 @@ DEFAULT_FOCUSED_COLLEGES = (
     "电气工程学院",
     "资源与地球科学学院",
 )
-CS_FALLBACK_KEYWORDS = (
-    "计算机",
-    "软件",
-    "人工智能",
-    "AI",
-    "机器学习",
-    "深度学习",
-    "计算机视觉",
-    "图像",
-    "算法",
-    "大模型",
-    "NLP",
-    "自然语言",
-    "知识图谱",
-    "数据挖掘",
-    "网络安全",
-    "信息安全",
-)
 KEYWORD_COLLEGE_RULES = (
     (("矿院", "矿业", "采矿", "煤矿", "矿井", "智能采矿", "矿山"), ("矿业工程学院", "安全工程学院", "资源与地球科学学院")),
     (("安全", "瓦斯", "灾害", "风险", "预警", "应急"), ("安全工程学院", "公共管理学院", "应急管理学院")),
@@ -308,11 +288,6 @@ def select_target_colleges(topic: str, college: str, limit: int = 9) -> list[str
         add(item)
 
     return picked[:limit]
-
-
-def should_use_local_cs_fallback(topic: str, college: str) -> bool:
-    text = f"{topic} {college}"
-    return any(keyword in text for keyword in CS_FALLBACK_KEYWORDS)
 
 
 def build_queries(topic: str, school: str, college: str, domains: list[str]) -> list[str]:
@@ -508,88 +483,6 @@ def extract_page_advisors(page: dict[str, Any], domains: list[str], school: str,
     return candidates
 
 
-def tokenize(text: str) -> list[str]:
-    return [token for token in re.findall(r"[\u4e00-\u9fff]{2,}|[A-Za-z0-9_+-]{2,}", text) if len(token) >= 2]
-
-
-def advisor_search_url(name: str, school: str, college: str) -> str:
-    search_college = college or "计算机科学与技术学院"
-    query = quote_plus(f"site:cs.cumt.edu.cn {school} 徐州 {search_college} {name} 教师")
-    return f"https://www.baidu.com/s?wd={query}"
-
-
-def load_local_advisors(school: str, college: str) -> list[dict[str, Any]]:
-    if not LOCAL_ADVISOR_PATH.exists():
-        return []
-    text = LOCAL_ADVISOR_PATH.read_text(encoding="utf-8")
-    advisors: list[dict[str, Any]] = []
-    current_title = ""
-    current: dict[str, Any] | None = None
-
-    def push() -> None:
-        if current and current.get("name"):
-            name = str(current["name"])
-            if not current.get("department"):
-                current["department"] = college or "计算机科学与技术学院"
-            current.setdefault("url", advisor_search_url(name, school, college))
-            current.setdefault("source_title", "校内导师候选库")
-            current.setdefault("school", school)
-            current.setdefault("official_score", 0)
-            current.setdefault("verification", "advisor-candidate")
-            advisors.append(dict(current))
-
-    for raw in text.splitlines():
-        line = raw.strip()
-        section = re.match(r"^##\s+(.+)$", line)
-        if section:
-            current_title = section.group(1).strip()
-            continue
-        name_match = re.match(r"^###\s+([\u4e00-\u9fff]{2,4})", line)
-        if name_match:
-            push()
-            name = name_match.group(1)
-            current = {
-                "name": name,
-                "department": college or "计算机科学与技术学院",
-                "title": current_title if current_title not in {"教授", "副教授", "讲师"} else current_title,
-                "direction": "",
-                "url": advisor_search_url(name, school, college),
-                "source_title": "校内导师候选库",
-                "school": school,
-                "official_score": 0,
-                "verification": "advisor-candidate",
-            }
-            continue
-        if current is None:
-            continue
-        if line.startswith("- 职称："):
-            current["title"] = line.split("：", 1)[1].strip()
-        elif line.startswith("- 研究方向："):
-            current["direction"] = line.split("：", 1)[1].strip()
-    push()
-    return advisors
-
-
-def local_fallback_advisors(topic: str, school: str, college: str, limit: int) -> list[dict[str, Any]]:
-    if not should_use_local_cs_fallback(topic, college):
-        return []
-    advisors = load_local_advisors(school, college)
-    if not advisors:
-        return []
-    query_tokens = set(tokenize(topic))
-    scored: list[tuple[int, dict[str, Any]]] = []
-    for advisor in advisors:
-        text = " ".join(str(advisor.get(key, "")) for key in ("name", "title", "direction", "department"))
-        tokens = set(tokenize(text))
-        score = len(query_tokens & tokens)
-        for strong in ("计算机视觉", "深度学习", "机器人", "物联网", "边缘计算", "矿山", "矿井", "安全", "煤矿"):
-            if strong in topic and strong in text:
-                score += 3
-        scored.append((score, advisor))
-    scored.sort(key=lambda item: item[0], reverse=True)
-    return [item for score, item in scored if score > 0][:limit] or [item for _, item in scored[: min(3, limit)]]
-
-
 def diversify_advisors(items: list[dict[str, Any]], limit: int, max_per_department: int = 2) -> list[dict[str, Any]]:
     picked: list[dict[str, Any]] = []
     counts: dict[str, int] = {}
@@ -618,10 +511,8 @@ def search_advisors(
     max_results: int,
     timeout: int,
     open_pages: int,
-    local_fallback: bool,
 ) -> dict[str, Any]:
     queries = build_queries(topic, school, college, domains)
-    local_pool = local_fallback_advisors(topic, school, college, max_results) if local_fallback else []
     candidates: list[dict[str, Any]] = []
     pages_to_open: list[dict[str, Any]] = []
     seen: set[str] = set()
@@ -684,16 +575,8 @@ def search_advisors(
         )
     ]
     online_candidates.sort(key=lambda item: (item.get("official_score", 0), bool(item.get("title"))), reverse=True)
-    local_candidates: list[dict[str, Any]] = []
-    if local_fallback and len(online_candidates) < min(3, max_results):
-        existing_names = {str(item.get("name", "")) for item in online_candidates}
-        need = min(2, max_results - len(online_candidates))
-        local_candidates = [item for item in local_pool if item.get("name") not in existing_names][:need]
-
-    final_candidates = diversify_advisors(online_candidates + local_candidates, max_results)
-    status = "success" if online_candidates else "local_fallback"
-    if online_candidates and local_candidates:
-        status = "partial_local_fallback"
+    final_candidates = diversify_advisors(online_candidates, max_results)
+    status = "success" if online_candidates else "error"
     return {
         "status": status,
         "source": "official-advisor-search",
@@ -707,8 +590,7 @@ def search_advisors(
         "count": len(final_candidates),
         "results": final_candidates,
         "online_count": len(online_candidates),
-        "local_count": len(local_candidates),
-        "note": "优先使用矿大徐州官网；官网结果不足时补充校内导师候选，并提供官网限定搜索链接。",
+        "note": "结果仅来自矿大徐州官网或学院官网；不足时显式返回，不使用静态导师候选。",
     }
 
 
@@ -722,7 +604,6 @@ def main() -> int:
     parser.add_argument("--timeout", type=int, default=20)
     parser.add_argument("--open-pages", type=int, default=3, help="Open top official pages to extract more advisor names")
     parser.add_argument("--no-open-pages", action="store_true", help="Only use search result snippets")
-    parser.add_argument("--no-local-fallback", action="store_true", help="Disable local advisor reference fallback")
     args = parser.parse_args()
 
     domains = [item.strip() for item in args.domains.split(",") if item.strip()]
@@ -735,7 +616,6 @@ def main() -> int:
         args.max_results,
         args.timeout,
         open_pages,
-        not args.no_local_fallback,
     )
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 0

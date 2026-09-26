@@ -1,0 +1,16 @@
+[project]
+name = "mineintel-autoclaw-skill"
+version = "1.0.0"
+description = "矿小智 MineIntel 科研调研技能组：FAISS 语义 RAG、Neo4j 知识图谱与多专家检索编排"
+requires-python = ">=3.10"
+dependencies = [
+    "faiss-cpu>=1.12,<2",
+    "neo4j>=6.0,<7",
+    "numpy>=1.26,<3",
+    "sentence-transformers>=5.1,<6",
+]
+
+[tool.uv]
+# 本仓库是脚本型 Skill 组（AutoClaw 约定），不作为 Python 包安装；
+# uv 只负责创建虚拟环境并锁定第三方依赖。
+package = false

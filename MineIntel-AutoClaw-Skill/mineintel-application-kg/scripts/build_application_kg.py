@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Build a lightweight MineIntel application knowledge graph.
+"""Build the versioned exchange artifact imported into MineIntel Neo4j.
 
-The graph is deterministic and file-based. It uses the team curated scenario
-CSV as the high-confidence backbone, then links cleaned corpus candidates as
-evidence concepts. This is intentionally not a heavy Neo4j deployment.
+The curated scenario CSV remains the high-confidence backbone. This script
+normalizes source data and provenance into a portable graph artifact; online
+queries are served exclusively by Neo4j after ``import_neo4j.py`` upserts it.
 """
 
 from __future__ import annotations
@@ -356,8 +356,8 @@ def build_graph() -> dict[str, Any]:
     graph = {
         "metadata": {
             "name": "MineIntel Application Knowledge Graph",
-            "version": "0.1",
-            "description": "矿井应用专家轻量知识图谱。以团队人工场景表为主骨架，融合白皮书、蓝皮书、政策标准和原 MineIntel 知识库证据。",
+            "version": "1.0",
+            "description": "MineIntel Neo4j 图谱交换数据。以团队人工场景表为主骨架，融合白皮书、蓝皮书、政策标准和原 MineIntel 知识库证据。",
             "source_count": len(clean_sources),
             "curated_scene_count": len(curated_rows),
             "chunk_count": len(chunks),
@@ -423,6 +423,7 @@ def write_outputs(graph: dict[str, Any]) -> None:
             "- `kg_edges.json`：知识图谱关系，含 source_id/chunk_id 证据。",
             "- `kg_graph.json`：节点、关系和元数据全集。",
             "- `kg_triples.csv`：便于人工查看的三元组表。",
+            "- 运行 `scripts/import_neo4j.py` 将交换数据事务化导入 Neo4j；在线查询不读取这些 JSON 文件。",
             "",
             "## 说明",
             "",

@@ -21,7 +21,7 @@ python {baseDir}/scripts/render_deck.py --title "<报告标题>" --content-file 
 
 ## 设计规则
 
-- 使用 `guizang-ppt-skill-main` 的风格 A：电子杂志 × 电子墨水模板。
+- 使用归藏风格 A：电子杂志 × 电子墨水模板。模板已随仓库内置在 `assets/template.html`（来源 op7418/guizang-ppt-skill，AGPL-3.0，许可证见 `assets/LICENSE-guizang-ppt-skill`）；如需替换为外部副本，设置环境变量 `GUIZANG_PPT_SKILL_DIR` 指向该 skill 目录。
 - 默认主题为“靛蓝瓷”，适合矿业科研、技术报告和答辩场景。
 - 内容必须与正式 HTML 报告同源，不另写一套低密度摘要。
 - 每页只承载一个展示意图：结论、场景、难点、论文、baseline、导师、路线、建议、核验。

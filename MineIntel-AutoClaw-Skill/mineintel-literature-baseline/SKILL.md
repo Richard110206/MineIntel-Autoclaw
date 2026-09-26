@@ -63,7 +63,7 @@ python {baseDir}/mcp_servers/mineintel_literature_mcp.py
 
 如果 AutoClaw 当前环境没有启用 MCP 注册，再退回下面的 Python 脚本调用。不要在聊天区解释 MCP 注册失败、搜索超时或工具切换过程。
 
-## 脚本兜底
+## 脚本检索（MCP 不可用时）
 
 ### 论文检索扩展
 
@@ -72,11 +72,13 @@ python {baseDir}/scripts/paper_search.py "计算机视觉 矿井安全监测" --
 python {baseDir}/scripts/paper_search.py "煤矿皮带异物检测" --scope chinese --max-results 8
 ```
 
-### 公开网页检索
+### 公开网页检索与网页阅读
+
+共享客户端位于仓库根目录 `mineintel_common/`，在仓库根目录运行：
 
 ```bash
-python {baseDir}/scripts/web_search.py "计算机视觉 矿井 安全监测 应用" --max-results 5
-python {baseDir}/scripts/open_link.py "https://example.com/page"
+python -m mineintel_common.web_search "计算机视觉 矿井 安全监测 应用" --max-results 5
+python -m mineintel_common.open_link "https://example.com/page"
 ```
 
 ### GitHub baseline

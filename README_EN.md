@@ -1,4 +1,8 @@
 <p align="center">
+  <img src="assets/mineintel-hero.png" alt="MineIntel-AutoClaw: a multi-agent innovation assistant for intelligent mining" width="100%">
+</p>
+
+<p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/MineIntel-AutoClaw-0a0f12?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzNGI3YTAiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggZD0iTTIgMjJoMjBWMkgydjIweiIvPjxwYXRoIGQ9Ik0xMiAyVjIyIi8+PHBhdGggZD0iTTIgMTJoMjAiLz48L3N2Zz4=&logoColor=34b7a0&labelColor=0a0f12&color=34b7a0">
     <img src="https://img.shields.io/badge/MineIntel-AutoClaw-1a1a2e?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzNGI3YTAiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggZD0iTTIgMjJoMjBWMkgydjIweiIvPjxwYXRoIGQ9Ik0xMiAyVjIyIi8+PHBhdGggZD0iTTIgMTJoMjAiLz48L3N2Zz4=&logoColor=34b7a0&labelColor=1a1a2e&color=34b7a0" alt="MineIntel-AutoClaw">
@@ -21,6 +25,10 @@
   <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
   <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License">
   <img src="https://img.shields.io/badge/MCP-Compatible-4ac8e8?style=flat-square" alt="MCP">
+  <a href="https://jsjds.blcu.edu.cn/info/1041/2914.htm">
+    <img src="https://img.shields.io/badge/4C2026-National_First_Prize-d4af37?style=flat-square" alt="4C2026 National First Prize">
+  </a>
+  <img src="https://img.shields.io/badge/Featured_Work-Selected-b87333?style=flat-square" alt="Selected for Featured Work Review">
 </p>
 
 <p align="center">
@@ -32,11 +40,11 @@
 
 ---
 
-## Award
+## Achievement & Recognition
 
-> **2026 Chinese Collegiate Computing Competition (CCDC) — Intelligent Agent Special Track, Jiangsu Province First Prize**
->
-> 2026 (21st) Chinese Collegiate Computing Competition
+> **[Achievement]** *MineIntel-AutoClaw — A Multi-Agent Sci-Tech Innovation Incubation Assistant*. National First Prize in the Software Application and Development category of the 2026 (19th) Chinese Collegiate Computing Competition; selected for the Featured Work Review. Jinan Final Division (Qingdao, Shandong), 2026. [[Official Award Announcement]](https://jsjds.blcu.edu.cn/info/1041/2914.htm)
+
+The national final for the Software Application and Development category was held at Qingdao Agricultural University. MineIntel-AutoClaw combines multi-agent orchestration, a mining application knowledge graph, and end-to-end research delivery to support innovation projects from scenario analysis and literature retrieval to baseline recommendation and report generation.
 
 ---
 
@@ -149,6 +157,7 @@ Synchronizes research progress to a web page in real time, displaying the curren
 | `mineintel-report-export` | Report Export | HTML + LaTeX/PDF export |
 | `mineintel-html-poster` | HTML Poster | Magazine-poster style rendering |
 | `mineintel-literature-review` | Literature Review | Structured LaTeX review + PDF compilation |
+| `mineintel-email-draft` | Advisor Email Draft | Browser-prefilled Gmail compose page + local preview; never auto-sends |
 
 ---
 
@@ -256,6 +265,7 @@ MineIntel-AutoClaw-Skill/
 ├── mineintel-report-export/          # Report export Skill
 ├── mineintel-html-poster/            # HTML poster Skill
 ├── mineintel-literature-review/      # Literature review Skill
+├── mineintel-email-draft/            # Browser-based Gmail draft Skill
 │
 ├── demo-ui/                          # Real-time progress UI
 │   ├── index.html
@@ -272,10 +282,14 @@ MineIntel-AutoClaw-Skill/
 | Item | Detail |
 |:-----|:-------|
 | **Competition** | 2026 Chinese Collegiate Computing Competition (CCDC) |
-| **Track** | Intelligent Agent Special |
-| **Award** | Jiangsu Province First Prize |
+| **Edition** | 19th |
+| **Category** | Software Application and Development |
+| **Final Division** | Jinan Final Division (Qingdao, Shandong) |
+| **Award** | National First Prize |
+| **Recognition** | Selected for the Featured Work Review |
 | **Project** | MineIntel-AutoClaw |
 | **Institution** | China University of Mining and Technology |
+| **Official Source** | [2026 Competition Award Announcement](https://jsjds.blcu.edu.cn/info/1041/2914.htm) |
 
 ---
 

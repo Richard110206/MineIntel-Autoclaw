@@ -23,6 +23,14 @@ PACKAGE_DIR = BASE_DIR.parent
 OUTPUT_ROOT = PACKAGE_DIR / "output"
 
 
+def display_path(path: Path) -> str:
+    """结果输出统一使用相对包根的路径，避免泄露本机目录结构。"""
+    try:
+        return path.resolve().relative_to(PACKAGE_DIR).as_posix()
+    except ValueError:
+        return path.as_posix()
+
+
 def safe_filename(title: str) -> str:
     cleaned = re.sub(r"[\\/:*?\"<>|]+", "_", title).strip()
     cleaned = re.sub(r"\s+", "_", cleaned)
@@ -848,8 +856,8 @@ def export(title: str, markdown: str, output_dir: Path, filename: str | None = N
         "status": "success",
         "title": title,
         "files": {
-            "html": str(path.resolve()),
-            "route_diagram": str(diagram_path.resolve()),
+            "html": display_path(path),
+            "route_diagram": display_path(diagram_path),
         },
     }
 

@@ -1,0 +1,6 @@
+# 与 pyproject.toml 保持一致；优先使用 uv sync 安装（见 README.txt），无 uv 时可用：
+#   python -m pip install -r requirements-advanced.txt
+faiss-cpu>=1.12,<2
+neo4j>=6.0,<7
+numpy>=1.26,<3
+sentence-transformers>=5.1,<6

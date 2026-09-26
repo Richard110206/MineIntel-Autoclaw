@@ -1,4 +1,8 @@
 <p align="center">
+  <img src="assets/mineintel-hero.png" alt="MineIntel-AutoClaw：面向智慧矿山的多智能体科创孵化助手" width="100%">
+</p>
+
+<p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/MineIntel-AutoClaw-0a0f12?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzNGI3YTAiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggZD0iTTIgMjJoMjBWMkgydjIweiIvPjxwYXRoIGQ9Ik0xMiAyVjIyIi8+PHBhdGggZD0iTTIgMTJoMjAiLz48L3N2Zz4=&logoColor=34b7a0&labelColor=0a0f12&color=34b7a0">
     <img src="https://img.shields.io/badge/MineIntel-AutoClaw-1a1a2e?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzNGI3YTAiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggZD0iTTIgMjJoMjBWMkgydjIweiIvPjxwYXRoIGQ9Ik0xMiAyVjIyIi8+PHBhdGggZD0iTTIgMTJoMjAiLz48L3N2Zz4=&logoColor=34b7a0&labelColor=1a1a2e&color=34b7a0" alt="MineIntel-AutoClaw">
@@ -21,6 +25,10 @@
   <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
   <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License">
   <img src="https://img.shields.io/badge/MCP-%E5%85%BC%E5%AE%B9-4ac8e8?style=flat-square" alt="MCP">
+  <a href="https://jsjds.blcu.edu.cn/info/1041/2914.htm">
+    <img src="https://img.shields.io/badge/4C2026-%E5%9B%BD%E5%AE%B6%E4%B8%80%E7%AD%89%E5%A5%96-d4af37?style=flat-square" alt="4C2026 国家一等奖">
+  </a>
+  <img src="https://img.shields.io/badge/%E7%89%B9%E8%89%B2%E4%BD%9C%E5%93%81-%E7%82%B9%E8%AF%84%E5%85%A5%E9%80%89-b87333?style=flat-square" alt="特色作品点评入选">
 </p>
 
 <p align="center">
@@ -32,9 +40,11 @@
 
 ---
 
-## 获奖
+## 成果与荣誉
 
-> **2026 年（第 21 届）中国大学生计算机设计大赛 — 智能体专项赛 江苏省一等奖**
+> **[Achievement]** *MineIntel-AutoClaw（矿小智）——基于多智能体的科创孵化助手*. 2026 年（第 19 届）中国大学生计算机设计大赛“软件应用与开发”类国家一等奖，并入选特色作品点评。济南决赛区（山东青岛），2026。[[官方获奖公告]](https://jsjds.blcu.edu.cn/info/1041/2914.htm)
+
+本届“软件应用与开发”类全国决赛于青岛农业大学举行。项目以多智能体协作编排、矿井应用知识图谱和端到端科研调研交付能力为核心，面向矿业科创选题提供从场景分析、文献检索、Baseline 推荐到成果生成的一体化支持。
 
 ---
 
@@ -147,6 +157,7 @@
 | `mineintel-report-export` | 报告交付编排 | HTML + LaTeX/PDF 导出 |
 | `mineintel-html-poster` | HTML 海报报告 | Magazine-poster 风格渲染 |
 | `mineintel-literature-review` | 文献综述生成 | LaTeX 结构化综述 + PDF 编译 |
+| `mineintel-email-draft` | 导师邮件草稿 | 浏览器预填 Gmail + 本地预览，不自动发送 |
 
 ---
 
@@ -254,6 +265,7 @@ MineIntel-AutoClaw-Skill/
 ├── mineintel-report-export/          # 报告导出 Skill
 ├── mineintel-html-poster/            # HTML 海报 Skill
 ├── mineintel-literature-review/      # 文献综述 Skill
+├── mineintel-email-draft/            # 浏览器 Gmail 邮件草稿 Skill
 │
 ├── demo-ui/                          # 实时进度 UI
 │   ├── index.html
@@ -270,10 +282,14 @@ MineIntel-AutoClaw-Skill/
 | 项目 | 详情 |
 |:-----|:-----|
 | **赛事** | 2026 年中国大学生计算机设计大赛（CCDC） |
-| **赛道** | 智能体专项赛 |
-| **奖项** | 江苏省一等奖 |
+| **届次** | 第 19 届 |
+| **类别** | 软件应用与开发 |
+| **决赛区** | 济南决赛区（山东青岛） |
+| **奖项** | 国家一等奖 |
+| **特色成果** | 入选特色作品点评 |
 | **作品** | MineIntel-AutoClaw（矿小智） |
 | **院校** | 中国矿业大学 |
+| **官方信息** | [2026 年大赛获奖公告](https://jsjds.blcu.edu.cn/info/1041/2914.htm) |
 
 ---
 

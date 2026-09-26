@@ -1,0 +1,27 @@
+{
+  "embedding": {
+    "model": "BAAI/bge-m3",
+    "device": "cpu",
+    "batch_size": 16,
+    "chunk_chars": 1200,
+    "chunk_overlap_chars": 160
+  },
+  "faiss": {
+    "index_dir": "mineintel-knowledge-rag/data/vector_index",
+    "metric": "cosine"
+  },
+  "neo4j": {
+    "database": "neo4j",
+    "entity_search_index": "mineintel_entity_search",
+    "batch_size": 500,
+    "max_related_edges": 48
+  },
+  "web_search": {
+    "token_url": "http://127.0.0.1:18432/get_token",
+    "api_url": "https://autoglm-api.zhipuai.cn/agentdr/v1/assistant/skills/web-search"
+  },
+  "open_link": {
+    "token_url": "http://127.0.0.1:18432/get_token",
+    "api_url": "https://autoglm-api.zhipuai.cn/agentdr/v1/assistant/skills/open-link"
+  }
+}

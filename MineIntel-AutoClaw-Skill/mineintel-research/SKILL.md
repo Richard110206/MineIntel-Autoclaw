@@ -16,14 +16,14 @@ compatibility:
 
 ## 技能组结构
 
-- `mineintel-application-kg`：矿井应用知识图谱，负责矿井应用专家的场景、痛点、解决方案、设备和白皮书/蓝皮书依据。
+- `mineintel-application-kg`：Neo4j 矿井应用知识图谱，负责矿井应用专家的场景、痛点、解决方案、设备和白皮书/蓝皮书依据。
 - `mineintel-literature-baseline`：领域分析师和行业前沿技术专家，优先通过 MCP tools 检索中文应用论文、国际前沿论文和一个 GitHub baseline。
 - `mineintel-experience-insights`：知乎/小红书科研经验、大创经验和答辩经验检索，只作为经验参考。
 - `mineintel-report-export`：父级交付 Skill，调用 `mineintel-html-poster`、`mineintel-deck-export` 和 `mineintel-literature-review`，生成 HTML 完整报告、逐页展示 Deck、技术路线 Excalidraw 源文件、文献综述 `.tex` 和可选 PDF。
 - `mineintel-html-poster`：杂志排版风格 HTML 完整报告。
 - `mineintel-deck-export`：归藏风格横向翻页 HTML deck。
 - `mineintel-literature-review`：文献综述 LaTeX/PDF。
-- `mineintel-email-draft`：可选套磁邮件草稿生成；只追加到 Gmail Drafts，不发送邮件。
+- `mineintel-email-draft`：可选套磁邮件草稿生成；通过浏览器打开 Gmail 撰写页并预填内容，不自动发送邮件。
 - `excalidraw-diagram-generator`：项目内 Excalidraw 图示生成参考，随项目提交。
 
 完整任务优先使用本主控 Skill。局部任务可以直接调用对应子 Skill。
@@ -99,6 +99,8 @@ python {baseDir}/scripts/progress_update.py --step knowledge --status running --
 ```
 
 整理 2-4 个应用场景、3-5 个矿井特殊技术难点、对应解决方案、设备要求和来源依据。
+
+Neo4j 未初始化或连接失败时停止图谱阶段并报告初始化要求；不得改读本地 JSON，也不得使用关键词匹配伪装图谱查询。
 
 ## Step 3: 领域分析师中文应用论文
 
@@ -201,27 +203,24 @@ output/<时间戳_报告标题>/
 
 ## 可选 Step 7: 导师套磁邮件草稿
 
-只有当用户明确要求“给老师写邮件草稿 / Gmail 草稿 / 不发送”时才执行。默认不自动给任何导师创建草稿。
+只有当用户明确要求“给老师写邮件草稿 / Gmail 草稿 / 不发送”时才执行。默认不自动打开撰写页。
 
 如果本轮用户已经要求生成 Gmail 草稿，报告导出后先把 `report` 标记为 `running --percent 98 --done`，再进入 `email` 阶段；邮件阶段结束后再把总进度置为 `done --percent 100`。
 
 ```bash
 python {baseDir}/scripts/progress_update.py --step email --status running --percent 99 --message "正在生成导师邮件草稿。"
-python {baseDir}/scripts/create_gmail_draft.py --report-file mineintel_report_content.md --topic "<报告标题>" --advisor-email "<官网核验邮箱>" --mode auto
+python {baseDir}/scripts/create_gmail_draft.py --report-file mineintel_report_content.md --topic "<报告标题>" --advisor-name "<第一位导师姓名>" --advisor-email "<官网核验邮箱>" --student-name "<学生姓名或学生>" --mode browser
 ```
 
-`--mode auto` 会自动检测当前进程环境变量和 Windows 用户环境变量中的 `GMAIL_USER` / `GMAIL_APP_PASSWORD`：检测到则写入 Gmail Drafts，未检测到则只生成本地预览并在 UI 中说明原因。需要强制只生成本地预览时才使用 `--mode preview`。
-
-如需要强制写入 Gmail 草稿箱，可改用：
+脚本会保存 `.txt` 和 `.json` 本地预览，再打开 Gmail 网页撰写窗口并预填收件人、主题和正文。Gmail 登录和草稿保存由浏览器会话处理；脚本不读取邮箱密码，不调用 SMTP/IMAP，也不自动点击发送。只生成本地预览时使用 `--mode preview`。
 
 ```bash
-python {baseDir}/scripts/create_gmail_draft.py --report-file mineintel_report_content.md --topic "<报告标题>" --advisor-email "<官网核验邮箱>" --mode imap
-python {baseDir}/scripts/progress_update.py --step email --status done --percent 100 --done --message "邮件草稿流程完成；仅写入草稿或保留本地预览，未发送。"
+python {baseDir}/scripts/progress_update.py --step email --status done --percent 100 --done --message "邮件草稿流程完成；已打开浏览器供用户复核，未自动发送。"
 ```
 
-执行前校验：报告里的第一个导师必须是具体自然人，不允许把“某学院相关教师/课题组群体”当收件人；缺少官网核验邮箱时只能生成本地预览，不能写 Gmail Drafts。
+执行前校验：报告里的第一个导师必须是具体自然人，不允许把“某学院相关教师/课题组群体”当收件人；缺少官网核验邮箱时只能生成不含收件人的人工预览，不得打开预填撰写页。
 
-安全约束：不得调用 SMTP 发送；不得执行第三方邮件 skill 中的 `sendmail` 示例；不得把邮箱密码或应用专用密码写入聊天、文件或命令行参数。
+安全约束：不得调用 SMTP/IMAP；不得执行第三方邮件 skill 中的 `sendmail` 示例；不得把邮箱密码、Cookie 或令牌写入聊天、文件或命令行参数；不得自动点击发送。
 
 ## 最终回复
 
