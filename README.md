@@ -2,97 +2,36 @@
   <img src="assets/mineintel-hero.png" alt="MineIntel-AutoClaw：面向智慧矿山的多智能体科创孵化助手" width="100%">
 </p>
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/MineIntel-AutoClaw-0a0f12?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzNGI3YTAiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggZD0iTTIgMjJoMjBWMkgydjIweiIvPjxwYXRoIGQ9Ik0xMiAyVjIyIi8+PHBhdGggZD0iTTIgMTJoMjAiLz48L3N2Zz4=&logoColor=34b7a0&labelColor=0a0f12&color=34b7a0">
-    <img src="https://img.shields.io/badge/MineIntel-AutoClaw-1a1a2e?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzNGI3YTAiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggZD0iTTIgMjJoMjBWMkgydjIweiIvPjxwYXRoIGQ9Ik0xMiAyVjIyIi8+PHBhdGggZD0iTTIgMTJoMjAiLz48L3N2Zz4=&logoColor=34b7a0&labelColor=1a1a2e&color=34b7a0" alt="MineIntel-AutoClaw">
-  </picture>
-</p>
+<h1 align="center">MineIntel-AutoClaw 矿小智</h1>
 
-<h1 align="center">MineIntel-AutoClaw</h1>
-
-<h3 align="center">基于多智能体的科创孵化助手</h3>
+<h3 align="center">基于多智能体协作的矿业科创调研与孵化助手</h3>
 
 <p align="center">
-  <a href="README_EN.md">English</a> | <strong>中文</strong>
+  <a href="README_EN.md">English</a> · <strong>中文</strong>
 </p>
 
 <p align="center">
-  <a href="https://github.com/Richard110206/MineIntel-Autoclaw">
-    <img src="https://img.shields.io/github/stars/Richard110206/MineIntel-Autoclaw?style=social" alt="GitHub stars">
+  <a href="https://github.com/Richard110206/MineIntel-Autoclaw/stargazers">
+    <img src="https://img.shields.io/github/stars/Richard110206/MineIntel-Autoclaw?style=flat-square&logo=github" alt="stars">
   </a>
-  <img src="https://img.shields.io/badge/%E5%B9%B3%E5%8F%B0-AutoClaw%20%7C%20GLM-34b7a0?style=flat-square" alt="Platform">
-  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License">
+  <a href="https://github.com/zhipu-ai/autoclaw">
+    <img src="https://img.shields.io/badge/%E5%B9%B3%E5%8F%B0-AutoClaw%20%C2%B7%20GLM-34b7a0?style=flat-square" alt="AutoClaw">
+  </a>
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
   <img src="https://img.shields.io/badge/MCP-%E5%85%BC%E5%AE%B9-4ac8e8?style=flat-square" alt="MCP">
-  <a href="https://jsjds.blcu.edu.cn/info/1041/2914.htm">
-    <img src="https://img.shields.io/badge/4C2026-%E5%9B%BD%E5%AE%B6%E4%B8%80%E7%AD%89%E5%A5%96-d4af37?style=flat-square" alt="4C2026 国家一等奖">
-  </a>
-  <img src="https://img.shields.io/badge/%E7%89%B9%E8%89%B2%E4%BD%9C%E5%93%81-%E7%82%B9%E8%AF%84%E5%85%A5%E9%80%89-b87333?style=flat-square" alt="特色作品点评入选">
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/%E7%9F%BF%E4%BA%95%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1-7%20Skills-brightgreen?style=flat-square" alt="Skills">
-  <img src="https://img.shields.io/badge/%E5%A4%9A%E4%B8%93%E5%AE%B6%E7%BC%96%E6%8E%92-7%20Agents-orange?style=flat-square" alt="Agents">
-  <img src="https://img.shields.io/badge/%E5%AE%9E%E6%97%B6%E8%BF%9B%E5%BA%A6UI-Demo%20Ready-34b7a0?style=flat-square" alt="Demo">
-  <img src="https://img.shields.io/badge/%E6%8A%A5%E5%91%8A%E8%BE%93%E5%87%BA-HTML%20%7C%20LaTeX%20%7C%20PDF-e74c3c?style=flat-square" alt="Output">
+  <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License">
 </p>
 
 ---
 
 ## 成果与荣誉
 
-> **[Achievement]** *MineIntel-AutoClaw（矿小智）——基于多智能体的科创孵化助手*. 2026 年（第 19 届）中国大学生计算机设计大赛“软件应用与开发”类国家一等奖，并入选特色作品点评。济南决赛区（山东青岛），2026。[[官方获奖公告]](https://jsjds.blcu.edu.cn/info/1041/2914.htm)
+> 🏆 **2026 年（第 19 届）中国大学生计算机设计大赛**「软件应用与开发」类 **国家一等奖**，并入选特色作品点评。
+> 决赛地点：济南决赛区（山东青岛） · 参赛院校：中国矿业大学
+>
+> 查看[官方获奖公告](https://jsjds.blcu.edu.cn/info/1041/2914.htm)。
 
-本届“软件应用与开发”类全国决赛于青岛农业大学举行。项目以多智能体协作编排、矿井应用知识图谱和端到端科研调研交付能力为核心，面向矿业科创选题提供从场景分析、文献检索、Baseline 推荐到成果生成的一体化支持。
-
----
-
-## 项目简介
-
-**MineIntel-AutoClaw（矿小智）** 是一个基于多智能体协作的科创孵化助手，面向矿井/矿业场景提供端到端科研调研服务。项目基于 [AutoClaw](https://github.com/zhipu-ai/autoclaw) 原生 Skill 架构构建，通过 7 个协作专家角色的多步编排，自动完成从场景分析、知识图谱检索、论文线索整理、Baseline 推荐到导师匹配的全链路科研调研，最终交付 HTML 完整报告与 LaTeX/PDF 文献综述。
-
----
-
-## 系统架构
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    MineIntel-AutoClaw-Skill                      │
-│                         （矿小智 总入口）                          │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                  │
-│  ┌─────────────────── mineintel-research ───────────────────┐   │
-│  │                   （主控闭环 Skill）                        │   │
-│  │                                                          │   │
-│  │   ┌──────────┐  ┌──────────┐  ┌──────────────────────┐  │   │
-│  │   │ Step 1   │→ │ Step 2   │→ │ Step 3               │  │   │
-│  │   │ 任务理解  │  │ 知识图谱  │  │ 中文应用论文检索      │  │   │
-│  │   └──────────┘  └──────────┘  └──────────┬───────────┘  │   │
-│  │                                              │            │   │
-│  │   ┌──────────────────────┐  ┌──────────┐    │            │   │
-│  │   │ Step 6   经验参考     │  │ Step 5   │    │            │   │
-│  │   │ 知乎/小红书           │← │ 导师匹配  │←   │            │   │
-│  │   └──────────┬───────────┘  └──────────┘    │            │   │
-│  │              ↓                               │            │   │
-│  │   ┌──────────────────────┐  ┌──────────┐    │            │   │
-│  │   │ Step 7   报告交付     │← │ Step 4   │←───┘            │   │
-│  │   │ HTML / LaTeX / PDF   │  │ 国际前沿   │                 │   │
-│  │   └──────────────────────┘  │ + Baseline │                 │   │
-│  │                              └──────────┘                  │   │
-│  └──────────────────────────────────────────────────────────┘   │
-│                                                                  │
-│  ┌─────────────┐  ┌────────────┐  ┌─────────────────────────┐  │
-│  │  知识图谱    │  │  MCP 检索   │  │  报告生成引擎            │  │
-│  │  Knowledge   │  │  Literature │  │  HTML Poster & LaTeX    │  │
-│  │  Graph       │  │  MCP Server │  │  Report Engine          │  │
-│  └─────────────┘  └────────────┘  └─────────────────────────┘  │
-│                                                                  │
-│  ┌───────────────────────────────────────────────────────────┐  │
-│  │                 实时进度展示 UI (demo-ui)                    │  │
-│  └───────────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────────┘
-```
+项目以多智能体协作编排、矿井应用知识图谱和端到端科研调研交付能力为核心，面向矿业科创选题提供从场景分析、文献检索、Baseline 推荐到成果生成的一体化支持。
 
 ---
 
@@ -100,48 +39,58 @@
 
 <table>
 <tr>
-<td width="50%">
+<td width="50%" align="center">
 
-### 矿井应用知识图谱
-基于白皮书、蓝皮书、政策标准和人工场景表构建，支持 **场景 → 痛点 → 解决方案 → 技术设备 → 来源依据** 的结构化检索与溯源。
-
-</td>
-<td width="50%">
-
-### 多智能体协作编排
+**多智能体协作编排**<br>
 7 个协作专家角色按序编排：矿井应用专家 → 领域分析师 → 行业前沿专家 → Baseline 专家 → 导师申报专家 → 经验参考专家 → 总报告专家。
+<img src="assets/demo-pipeline.png" alt="多智能体编排流水线" width="100%">
+
+</td>
+<td width="50%" align="center">
+
+**HTML 完整报告**<br>
+自动生成 magazine-poster 风格的 HTML 调研报告，覆盖研究主题、场景分析、论文线索与技术路线。
+<img src="assets/demo-report-html.png" alt="HTML 调研报告" width="100%">
 
 </td>
 </tr>
 <tr>
-<td width="50%">
+<td width="50%" align="center">
 
-### 论文线索检索
-内置 MCP Server，支持中文矿业期刊（煤炭学报、工矿自动化等）和国际前沿（arXiv、IEEE、MDPI）论文线索检索，MCP 不可用时自动脚本兜底。
-
-</td>
-<td width="50%">
-
-### 导师方向匹配
-自动检索中国矿业大学各学院官网师资页面，匹配研究方向相关的导师，给出姓名、学院和官网链接。
+**LaTeX/PDF 文献综述**<br>
+结构化 LaTeX 综述自动编译为 PDF，含规范的引用与参考文献排版。
+<img src="assets/demo-literature-review.png" alt="LaTeX 文献综述" width="100%">
 
 </td>
-</tr>
-<tr>
-<td width="50%">
+<td width="50%" align="center">
 
-### 报告自动生成
-自动生成 **HTML 完整报告**（magazine-poster 风格）和 **LaTeX/PDF 文献综述**，包含研究主题、场景分析、论文线索、技术路线等完整内容。
-
-</td>
-<td width="50%">
-
-### 实时进度 UI
-调研过程中实时同步进度到 Web 页面，展示当前阶段、思考过程、工具调用状态和完成百分比。
+**技术路线图自动生成**<br>
+基于调研结论生成 Excalidraw 技术路线图并嵌入报告对应章节。
+<img src="assets/demo-tech-route.png" alt="技术路线图" width="100%">
 
 </td>
 </tr>
 </table>
+
+其他核心能力：
+
+- **矿井应用知识图谱** — 基于蓝皮书、政策标准与人工场景表构建，支持 *场景 → 痛点 → 解决方案 → 技术设备 → 来源依据* 的结构化检索与溯源
+- **实时进度 UI** — 调研过程实时同步到 Web 页面，展示当前阶段、思考过程、工具调用与完成百分比
+- **论文线索检索** — 中文矿业期刊 + arXiv/IEEE/MDPI 国际前沿，MCP 不可用时脚本兜底
+- **导师方向匹配** — 自动检索中国矿业大学各学院师资页面，给出姓名、学院与官网链接
+- **导师邮件草稿** — 浏览器预填 Gmail + 本地预览，不自动发送
+
+---
+
+## 系统架构
+
+<p align="center">
+  <img src="assets/architecture.png" alt="MineIntel-AutoClaw 系统架构" width="100%">
+</p>
+
+**MineIntel-AutoClaw（矿小智）** 基于 [AutoClaw](https://github.com/zhipu-ai/autoclaw) 原生 Skill 架构构建：宿主层的 GLM 模型按 Skill 定义调度 7 步调研流水线，能力支撑层的各 Skill 提供知识图谱检索、文献 MCP、报告引擎与项目记忆，数据层沉淀白皮书语料、场景表、向量索引与图数据库。
+
+项目定位为**面向中国矿业大学与矿井场景的个性化科创调研助手**：读取学生过往项目与本人贡献，结合兴趣、时间、团队及数据设备约束，调研矿井需求并推荐可完成的选题。每个学生使用独立本地档案（由 `project_memory.py` 管理，支持查看、更新、删除与来源记录，格式见[项目记忆说明](MineIntel-AutoClaw-Skill/mineintel-research/references/project-memory.md)），推荐方案不会自动成为"已掌握能力"，也不自动训练模型或循环执行实验——报告与导出仅使用实际提供的材料。
 
 ---
 
@@ -166,7 +115,8 @@
 ### 环境要求
 
 - [AutoClaw](https://github.com/zhipu-ai/autoclaw) Desktop App
-- Python 3.x
+- Python 3.10+
+- [UV](https://docs.astral.sh/uv/)（推荐）或 pip
 - （可选）XeLaTeX — 用于 PDF 编译
 
 ### 安装
@@ -174,12 +124,22 @@
 ```bash
 # 1. 克隆仓库
 git clone git@github.com:Richard110206/MineIntel-Autoclaw.git
+cd MineIntel-Autoclaw/MineIntel-AutoClaw-Skill
 
-# 2. 将整个 MineIntel-AutoClaw-Skill 文件夹导入 AutoClaw 作为 Skill 组
+# 2. 安装依赖（推荐 UV：一键创建 .venv 并按 uv.lock 安装）
+uv sync
+# 没有 uv 时可用：python -m pip install -r requirements-advanced.txt
+
+# 3. 将整个 MineIntel-AutoClaw-Skill 文件夹导入 AutoClaw 作为 Skill 组
 #    拖入 AutoClaw Skills 目录即可自动识别
 
-# 3. （可选）如果 AutoClaw 支持 MCP 注册，配置文献检索 MCP Server：
-#    参见 MineIntel-AutoClaw-Skill/mineintel-literature-baseline/mcp_servers/mcp_config.json
+# 4. （可选）配置检索服务环境变量（参见 .env.example）：
+#    AUTOGLM_APP_ID / AUTOGLM_APP_KEY     AutoGLM 网页搜索
+#    MINEINTEL_NEO4J_PASSWORD 等          Neo4j 知识图谱（docker compose -f docker-compose.neo4j.yml up -d）
+#    首次使用需构建 FAISS 索引：python mineintel-knowledge-rag/scripts/build_faiss_index.py
+
+# 5. （可选）如果 AutoClaw 支持 MCP 注册，配置文献检索 MCP Server：
+#    参见 mineintel-literature-baseline/mcp_servers/mcp_config.json
 ```
 
 ### 使用方法
@@ -198,6 +158,8 @@ git clone git@github.com:Richard110206/MineIntel-Autoclaw.git
 | 文件 | 说明 |
 |:-----|:-----|
 | `<标题>_poster.html` | HTML 完整报告（magazine-poster 风格） |
+| `<标题>_deck.html` | 逐页展示版 HTML Deck |
+| `assets/<标题>_technical_route.excalidraw` | 技术路线图源文件（已嵌入 HTML 报告技术路线章节） |
 | `<标题>_literature_review.tex` | 文献综述 LaTeX 源码 |
 | `<标题>_literature_review.pdf` | 文献综述 PDF（需 XeLaTeX） |
 
@@ -205,12 +167,13 @@ git clone git@github.com:Richard110206/MineIntel-Autoclaw.git
 
 ## 技术栈
 
-<p>
-  <img src="https://img.shields.io/badge/AutoClaw-Agent%20Platform-34b7a0?style=for-the-badge" alt="AutoClaw">
-  <img src="https://img.shields.io/badge/GLM-LLM%20Engine-4285f4?style=for-the-badge" alt="GLM">
-  <img src="https://img.shields.io/badge/MCP-Tool%20Protocol-4ac8e8?style=for-the-badge" alt="MCP">
-  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/XeLaTeX-PDF%20Engine-008080?style=for-the-badge" alt="XeLaTeX">
+<p align="center">
+  <img src="https://img.shields.io/badge/AutoClaw-Agent%20Platform-34b7a0?style=flat-square" alt="AutoClaw">
+  <img src="https://img.shields.io/badge/GLM-LLM%20Engine-4285f4?style=flat-square" alt="GLM">
+  <img src="https://img.shields.io/badge/MCP-Tool%20Protocol-4ac8e8?style=flat-square" alt="MCP">
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/XeLaTeX-PDF%20Engine-008080?style=flat-square" alt="XeLaTeX">
+  <img src="https://img.shields.io/badge/Neo4j%20%C2%B7%20FAISS-Knowledge%20Storage-e07b39?style=flat-square" alt="Storage">
 </p>
 
 ---
@@ -234,33 +197,18 @@ git clone git@github.com:Richard110206/MineIntel-Autoclaw.git
 ```
 MineIntel-AutoClaw-Skill/
 ├── SKILL.md                          # 总入口 Skill
-├── README.txt                        # 提交说明
 ├── demo_prompts.txt                  # 演示提示词
 │
 ├── mineintel-research/               # 主控闭环 Skill
 │   ├── SKILL.md
-│   ├── scripts/                      # 主控脚本
-│   │   ├── progress_update.py
-│   │   ├── start_progress_ui.py
-│   │   ├── advisor_search.py
-│   │   ├── paper_search.py
-│   │   ├── github_search.py
-│   │   └── ...
+│   ├── scripts/                      # 主控脚本（进度、导师、论文检索等）
 │   └── references/                   # 参考文档
 │
 ├── mineintel-application-kg/         # 知识图谱 Skill
-│   ├── SKILL.md
-│   ├── scripts/
-│   └── data/
-│       ├── user_sources/             # 人工场景表
-│       ├── raw_docs/                 # 原始文档（30+）
-│       ├── clean/                    # 清洗后语料
-│       └── kg/                       # 知识图谱数据
+│   └── data/                         # 原始文档、清洗语料、图谱数据
 │
-├── mineintel-knowledge-rag/          # 知识库 Skill
-├── mineintel-literature-baseline/    # 论文检索 Skill（含 MCP）
-│   ├── mcp_servers/                  # MCP Server
-│   └── scripts/
+├── mineintel-knowledge-rag/          # 知识库 Skill（RAG + 导师匹配）
+├── mineintel-literature-baseline/    # 论文检索 Skill（含 MCP Server）
 ├── mineintel-experience-insights/    # 经验参考 Skill
 ├── mineintel-report-export/          # 报告导出 Skill
 ├── mineintel-html-poster/            # HTML 海报 Skill
@@ -268,51 +216,18 @@ MineIntel-AutoClaw-Skill/
 ├── mineintel-email-draft/            # 浏览器 Gmail 邮件草稿 Skill
 │
 ├── demo-ui/                          # 实时进度 UI
-│   ├── index.html
-│   └── assets/
-│
 ├── output/                           # 报告输出目录
 └── tools/                            # 辅助工具
 ```
 
 ---
 
-## 参赛信息
-
-| 项目 | 详情 |
-|:-----|:-----|
-| **赛事** | 2026 年中国大学生计算机设计大赛（CCDC） |
-| **届次** | 第 19 届 |
-| **类别** | 软件应用与开发 |
-| **决赛区** | 济南决赛区（山东青岛） |
-| **奖项** | 国家一等奖 |
-| **特色成果** | 入选特色作品点评 |
-| **作品** | MineIntel-AutoClaw（矿小智） |
-| **院校** | 中国矿业大学 |
-| **官方信息** | [2026 年大赛获奖公告](https://jsjds.blcu.edu.cn/info/1041/2914.htm) |
-
----
-
-## 团队
+## 团队与许可
 
 <p align="center">
   <a href="https://github.com/Richard110206">
-    <img src="https://img.shields.io/badge/Author-Richard110206-34b7a0?style=for-the-badge&logo=github&logoColor=white" alt="Author">
+    <img src="https://img.shields.io/badge/Author-Richard110206-34b7a0?style=flat-square&logo=github&logoColor=white" alt="Author">
   </a>
 </p>
 
----
-
-## 许可证
-
-本项目基于 MIT 许可证开源。
-
----
-
-<p align="center">
-  <sub>Built with</sub>
-  <img src="https://img.shields.io/badge/AutoClaw-34b7a0?style=flat-square" alt="AutoClaw">
-  <img src="https://img.shields.io/badge/%E7%9F%BF%E5%B0%8F%E6%99%BA-4fd4bb?style=flat-square" alt="矿小智">
-  <br>
-  <sub>MineIntel-AutoClaw &copy; 2026</sub>
-</p>
+本项目基于 [MIT 许可证](LICENSE) 开源，基于 [AutoClaw](https://github.com/zhipu-ai/autoclaw) Skill 架构构建。

@@ -1,172 +1,122 @@
 <p align="center">
-  <img src="assets/mineintel-hero.png" alt="MineIntel-AutoClaw: a multi-agent innovation assistant for intelligent mining" width="100%">
-</p>
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/MineIntel-AutoClaw-0a0f12?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzNGI3YTAiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggZD0iTTIgMjJoMjBWMkgydjIweiIvPjxwYXRoIGQ9Ik0xMiAyVjIyIi8+PHBhdGggZD0iTTIgMTJoMjAiLz48L3N2Zz4=&logoColor=34b7a0&labelColor=0a0f12&color=34b7a0">
-    <img src="https://img.shields.io/badge/MineIntel-AutoClaw-1a1a2e?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzNGI3YTAiIHN0cm9rZS13aWR0aD0iMiI+PHBhdGggZD0iTTIgMjJoMjBWMkgydjIweiIvPjxwYXRoIGQ9Ik0xMiAyVjIyIi8+PHBhdGggZD0iTTIgMTJoMjAiLz48L3N2Zz4=&logoColor=34b7a0&labelColor=1a1a2e&color=34b7a0" alt="MineIntel-AutoClaw">
-  </picture>
+  <img src="assets/mineintel-hero.png" alt="MineIntel-AutoClaw: multi-agent research incubation assistant for smart mining" width="100%">
 </p>
 
 <h1 align="center">MineIntel-AutoClaw</h1>
 
-<h3 align="center">Multi-Agent Based Sci-Tech Innovation Incubation Assistant</h3>
+<h3 align="center">A multi-agent research & incubation assistant for mining sci-tech innovation</h3>
 
 <p align="center">
-  <strong>English</strong> | <a href="README.md">中文</a>
+  <strong>English</strong> · <a href="README.md">中文</a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/Richard110206/MineIntel-Autoclaw">
-    <img src="https://img.shields.io/github/stars/Richard110206/MineIntel-Autoclaw?style=social" alt="GitHub stars">
+  <a href="https://github.com/Richard110206/MineIntel-Autoclaw/stargazers">
+    <img src="https://img.shields.io/github/stars/Richard110206/MineIntel-Autoclaw?style=flat-square&logo=github" alt="stars">
   </a>
-  <img src="https://img.shields.io/badge/Platform-AutoClaw%20%7C%20GLM-34b7a0?style=flat-square" alt="Platform">
-  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+  <a href="https://github.com/zhipu-ai/autoclaw">
+    <img src="https://img.shields.io/badge/Platform-AutoClaw%20%C2%B7%20GLM-34b7a0?style=flat-square" alt="AutoClaw">
+  </a>
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/MCP-compatible-4ac8e8?style=flat-square" alt="MCP">
   <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License">
-  <img src="https://img.shields.io/badge/MCP-Compatible-4ac8e8?style=flat-square" alt="MCP">
-  <a href="https://jsjds.blcu.edu.cn/info/1041/2914.htm">
-    <img src="https://img.shields.io/badge/4C2026-National_First_Prize-d4af37?style=flat-square" alt="4C2026 National First Prize">
-  </a>
-  <img src="https://img.shields.io/badge/Featured_Work-Selected-b87333?style=flat-square" alt="Selected for Featured Work Review">
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Knowledge_Graph-7%20Skills-brightgreen?style=flat-square" alt="Skills">
-  <img src="https://img.shields.io/badge/Multi_Agent-7%20Experts-orange?style=flat-square" alt="Agents">
-  <img src="https://img.shields.io/badge/Progress_UI-Demo%20Ready-34b7a0?style=flat-square" alt="Demo">
-  <img src="https://img.shields.io/badge/Report_Output-HTML%20%7C%20LaTeX%20%7C%20PDF-e74c3c?style=flat-square" alt="Output">
 </p>
 
 ---
 
-## Achievement & Recognition
+## Awards
 
-> **[Achievement]** *MineIntel-AutoClaw — A Multi-Agent Sci-Tech Innovation Incubation Assistant*. National First Prize in the Software Application and Development category of the 2026 (19th) Chinese Collegiate Computing Competition; selected for the Featured Work Review. Jinan Final Division (Qingdao, Shandong), 2026. [[Official Award Announcement]](https://jsjds.blcu.edu.cn/info/1041/2914.htm)
+> 🏆 **First Prize (National Level)** in the Software Application & Development track of the 2026 China Collegiate Computing Contest (19th edition), selected for the featured-works commentary.
+> Finals: Jinan region (Qingdao, Shandong) · Institution: China University of Mining and Technology
+>
+> See the [official results announcement](https://jsjds.blcu.edu.cn/info/1041/2914.htm) (in Chinese).
 
-The national final for the Software Application and Development category was held at Qingdao Agricultural University. MineIntel-AutoClaw combines multi-agent orchestration, a mining application knowledge graph, and end-to-end research delivery to support innovation projects from scenario analysis and literature retrieval to baseline recommendation and report generation.
-
----
-
-## Overview
-
-**MineIntel-AutoClaw** is a multi-agent based sci-tech innovation incubation assistant designed for mining-related research scenarios. Built on [AutoClaw](https://github.com/zhipu-ai/autoclaw)'s native Skill architecture, it orchestrates 7 collaborative expert roles through a multi-step pipeline to automate the full research workflow — from scene analysis, knowledge graph retrieval, and literature search to baseline recommendation and advisor matching — ultimately delivering polished HTML reports and LaTeX/PDF literature reviews.
+The project centers on multi-agent orchestration, a mining-application knowledge graph, and end-to-end research delivery — supporting the full pipeline from scenario analysis, literature search, and baseline recommendation to deliverable generation for mining-focused innovation topics.
 
 ---
 
-## Architecture
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    MineIntel-AutoClaw-Skill                      │
-│                       (Master Entry Point)                       │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                  │
-│  ┌─────────────────── mineintel-research ───────────────────┐   │
-│  │                 (Main Orchestrator Skill)                  │   │
-│  │                                                          │   │
-│  │   ┌──────────┐  ┌──────────┐  ┌──────────────────────┐  │   │
-│  │   │ Step 1   │→ │ Step 2   │→ │ Step 3               │  │   │
-│  │   │ Task     │  │ Knowledge│  │ Chinese Literature   │  │   │
-│  │   │ Analysis │  │ Graph    │  │ Search               │  │   │
-│  │   └──────────┘  └──────────┘  └──────────┬───────────┘  │   │
-│  │                                              │            │   │
-│  │   ┌──────────────────────┐  ┌──────────┐    │            │   │
-│  │   │ Step 6   Experience  │  │ Step 5   │    │            │   │
-│  │   │ Insights (Zhihu etc) │← │ Advisor  │←   │            │   │
-│  │   └──────────┬───────────┘  │ Matching │    │            │   │
-│  │              ↓               └──────────┘    │            │   │
-│  │   ┌──────────────────────┐  ┌──────────┐    │            │   │
-│  │   │ Step 7   Report      │← │ Step 4   │←───┘            │   │
-│  │   │ HTML / LaTeX / PDF   │  │ Frontier  │                 │   │
-│  │   └──────────────────────┘  │ + Baseline│                 │   │
-│  │                              └──────────┘                  │   │
-│  └──────────────────────────────────────────────────────────┘   │
-│                                                                  │
-│  ┌─────────────┐  ┌────────────┐  ┌─────────────────────────┐  │
-│  │ Knowledge   │  │ Literature │  │ HTML Poster & LaTeX      │  │
-│  │ Graph       │  │ MCP Server │  │ Report Engine            │  │
-│  └─────────────┘  └────────────┘  └─────────────────────────┘  │
-│                                                                  │
-│  ┌───────────────────────────────────────────────────────────┐  │
-│  │               Real-time Progress UI (demo-ui)              │  │
-│  └───────────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## Feature Highlights
+## Key Features
 
 <table>
 <tr>
-<td width="50%">
+<td width="50%" align="center">
 
-### Mining Knowledge Graph
-Built from white papers, blue books, policy standards, and manually curated scenario tables. Supports structured retrieval and traceability along the chain: **Scenario → Pain Point → Solution → Equipment → Evidence**.
-
-</td>
-<td width="50%">
-
-### Multi-Agent Orchestration
-7 collaborative expert roles orchestrated sequentially: Mining Application Expert → Domain Analyst → Frontier Technology Expert → Baseline Expert → Advisor Matching Expert → Experience Insights Expert → Report Synthesis Expert.
+**Multi-agent Orchestration**<br>
+Seven collaborating expert roles in sequence: mining application expert → domain analyst → frontier expert → baseline expert → advisor-matching expert → experience expert → report expert.
+<img src="assets/demo-pipeline.png" alt="Multi-agent pipeline" width="100%">
 
 </td>
-</tr>
-<tr>
-<td width="50%">
+<td width="50%" align="center">
 
-### Literature Search
-Built-in MCP Server for searching Chinese mining journals (Journal of China Coal Society, Industry and Mine Automation, etc.) and international venues (arXiv, IEEE, MDPI). Falls back to Python scripts when MCP is unavailable.
-
-</td>
-<td width="50%">
-
-### Advisor Matching
-Automatically crawls faculty pages from colleges at China University of Mining and Technology, matching research-direction-relevant advisors with name, department, and official website links.
+**Full HTML Report**<br>
+Auto-generates a magazine-poster style HTML research report covering topic, scenario analysis, paper leads, and technical route.
+<img src="assets/demo-report-html.png" alt="HTML research report" width="100%">
 
 </td>
 </tr>
 <tr>
-<td width="50%">
+<td width="50%" align="center">
 
-### Report Generation
-Automatically produces **HTML full reports** (magazine-poster style) and **LaTeX/PDF literature reviews**, covering research topics, scene analysis, literature leads, technical roadmaps, and more.
+**LaTeX/PDF Literature Review**<br>
+A structured LaTeX review compiled to PDF with proper citations and bibliography.
+<img src="assets/demo-literature-review.png" alt="LaTeX literature review" width="100%">
 
 </td>
-<td width="50%">
+<td width="50%" align="center">
 
-### Real-time Progress UI
-Synchronizes research progress to a web page in real time, displaying the current stage, agent thinking process, tool call status, and completion percentage.
+**Automatic Technical-Route Diagrams**<br>
+Excalidraw technical route diagrams generated from research conclusions and embedded into the report.
+<img src="assets/demo-tech-route.png" alt="Technical route diagram" width="100%">
 
 </td>
 </tr>
 </table>
 
----
+Other core capabilities:
 
-## Skill Structure
-
-| Skill | Description | Key Capability |
-|:------|:------------|:---------------|
-| `mineintel-research` | Main Orchestrator Skill | End-to-end task orchestration, 7-step pipeline |
-| `mineintel-application-kg` | Mining Application KG | Structured scenario-pain-solution retrieval |
-| `mineintel-knowledge-rag` | Local Knowledge & Advisor | RAG retrieval + official advisor matching |
-| `mineintel-literature-baseline` | Literature & Baseline | MCP tools + bilingual paper search |
-| `mineintel-experience-insights` | Experience Insights | Zhihu/Xiaohongshu experience distillation |
-| `mineintel-report-export` | Report Export | HTML + LaTeX/PDF export |
-| `mineintel-html-poster` | HTML Poster | Magazine-poster style rendering |
-| `mineintel-literature-review` | Literature Review | Structured LaTeX review + PDF compilation |
-| `mineintel-email-draft` | Advisor Email Draft | Browser-prefilled Gmail compose page + local preview; never auto-sends |
+- **Mining application knowledge graph** — built from blue/white books, policy standards, and manually curated scenario tables; structured retrieval with provenance (*scenario → pain point → solution → equipment → source*)
+- **Real-time progress UI** — pipeline state syncs live to a web page: current stage, reasoning, tool calls, and completion percentage
+- **Paper lead retrieval** — Chinese mining journals + arXiv/IEEE/MDPI, with script fallback when MCP is unavailable
+- **Advisor matching** — crawls faculty pages of China University of Mining and Technology schools for name, school, and profile link
+- **Advisor email drafts** — Gmail pre-fill in the browser + local preview, never sent automatically
 
 ---
 
-## Quick Start
+## Architecture
+
+<p align="center">
+  <img src="assets/architecture.png" alt="MineIntel-AutoClaw system architecture" width="100%">
+</p>
+
+**MineIntel-AutoClaw** is built on the native Skill architecture of [AutoClaw](https://github.com/zhipu-ai/autoclaw): the host-layer GLM model drives a 7-step research pipeline defined by Skills; the support layer provides knowledge-graph retrieval, a literature MCP, the report engine, and project memory; the data layer holds white-book corpora, scenario tables, vector indexes, and a graph database.
+
+The assistant is positioned as a **personalized research scout for China University of Mining and Technology and mine-site scenarios**: it reads a student's past projects and contributions, weighs interests, time, team, and equipment constraints, then surveys mining needs and recommends feasible topics. Each student gets an isolated local profile (managed by `project_memory.py` with view/update/delete and source tracking; see the [project memory reference](MineIntel-AutoClaw-Skill/mineintel-research/references/project-memory.md)). Recommended topics never become "mastered skills" automatically; no model training or experiment loops are performed — reports and exports use only the materials actually provided.
+
+---
+
+## Skill Set
+
+| Skill | Description | Capability |
+|:------|:------------|:-----------|
+| `mineintel-research` | Master orchestration Skill | End-to-end task orchestration, 7-step pipeline |
+| `mineintel-application-kg` | Mining application KG | Scenario-pain point-solution structured retrieval |
+| `mineintel-knowledge-rag` | Local knowledge base & advisors | RAG retrieval + faculty recommendation |
+| `mineintel-literature-baseline` | Paper leads & baselines | MCP tools + CN/EN literature search |
+| `mineintel-experience-insights` | Research experience reference | Zhihu/Xiaohongshu insight distillation |
+| `mineintel-report-export` | Report delivery orchestration | HTML + LaTeX/PDF export |
+| `mineintel-html-poster` | HTML poster report | Magazine-poster style rendering |
+| `mineintel-literature-review` | Literature review generation | Structured LaTeX review + PDF |
+| `mineintel-email-draft` | Advisor email draft | Browser Gmail pre-fill + local preview, no auto-send |
+
+---
+
+## Getting Started
 
 ### Prerequisites
 
 - [AutoClaw](https://github.com/zhipu-ai/autoclaw) Desktop App
-- Python 3.x
+- Python 3.10+
+- [UV](https://docs.astral.sh/uv/) (recommended) or pip
 - (Optional) XeLaTeX — for PDF compilation
 
 ### Installation
@@ -174,30 +124,42 @@ Synchronizes research progress to a web page in real time, displaying the curren
 ```bash
 # 1. Clone the repository
 git clone git@github.com:Richard110206/MineIntel-Autoclaw.git
+cd MineIntel-Autoclaw/MineIntel-AutoClaw-Skill
 
-# 2. Import the entire MineIntel-AutoClaw-Skill folder into AutoClaw as a Skill group
-#    Drag it into the AutoClaw Skills directory for automatic recognition
+# 2. Install dependencies (UV recommended: creates .venv from uv.lock in one step)
+uv sync
+# Or without uv: python -m pip install -r requirements-advanced.txt
 
-# 3. (Optional) If AutoClaw supports MCP registration, configure the literature MCP Server:
-#    See MineIntel-AutoClaw-Skill/mineintel-literature-baseline/mcp_servers/mcp_config.json
+# 3. Import the whole MineIntel-AutoClaw-Skill folder into AutoClaw as a skill group
+#    (drop it into the AutoClaw Skills directory for auto-detection)
+
+# 4. (Optional) Configure search service env vars (see .env.example):
+#    AUTOGLM_APP_ID / AUTOGLM_APP_KEY     AutoGLM web search
+#    MINEINTEL_NEO4J_PASSWORD etc.        Neo4j KG (docker compose -f docker-compose.neo4j.yml up -d)
+#    Build the FAISS index first run: python mineintel-knowledge-rag/scripts/build_faiss_index.py
+
+# 5. (Optional) If your AutoClaw supports MCP registration, configure the literature MCP server:
+#    see mineintel-literature-baseline/mcp_servers/mcp_config.json
 ```
 
 ### Usage
 
-Send the following prompt in AutoClaw to trigger the full research pipeline:
+Send the following prompt in AutoClaw to trigger the full research pipeline (the pipeline currently targets Chinese-language output):
 
 ```
-Please use the MineIntel-AutoClaw-Skill to generate a research report on "Computer Vision for Safety Monitoring in Underground Mines."
-My major is Software Engineering.
-My research field is Computer Vision.
-The mining scenario is underground mine safety monitoring.
+请使用 MineIntel-AutoClaw-Skill（矿小智）技能组，围绕“计算机视觉在矿井安全监测中的大创选题”生成科研调研报告。
+我的专业是软件工程。
+我想研究的技术领域是计算机视觉。
+矿业场景是矿井安全监测。
 ```
 
-Output is saved to `output/<timestamp_report-title>/`:
+Outputs are saved to `output/<timestamp_title>/`:
 
 | File | Description |
 |:-----|:------------|
 | `<title>_poster.html` | Full HTML report (magazine-poster style) |
+| `<title>_deck.html` | Page-by-page HTML deck |
+| `assets/<title>_technical_route.excalidraw` | Technical route source (embedded in the HTML report) |
 | `<title>_literature_review.tex` | Literature review LaTeX source |
 | `<title>_literature_review.pdf` | Literature review PDF (requires XeLaTeX) |
 
@@ -205,27 +167,28 @@ Output is saved to `output/<timestamp_report-title>/`:
 
 ## Tech Stack
 
-<p>
-  <img src="https://img.shields.io/badge/AutoClaw-Agent%20Platform-34b7a0?style=for-the-badge" alt="AutoClaw">
-  <img src="https://img.shields.io/badge/GLM-LLM%20Engine-4285f4?style=for-the-badge" alt="GLM">
-  <img src="https://img.shields.io/badge/MCP-Tool%20Protocol-4ac8e8?style=for-the-badge" alt="MCP">
-  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/XeLaTeX-PDF%20Engine-008080?style=for-the-badge" alt="XeLaTeX">
+<p align="center">
+  <img src="https://img.shields.io/badge/AutoClaw-Agent%20Platform-34b7a0?style=flat-square" alt="AutoClaw">
+  <img src="https://img.shields.io/badge/GLM-LLM%20Engine-4285f4?style=flat-square" alt="GLM">
+  <img src="https://img.shields.io/badge/MCP-Tool%20Protocol-4ac8e8?style=flat-square" alt="MCP">
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/XeLaTeX-PDF%20Engine-008080?style=flat-square" alt="XeLaTeX">
+  <img src="https://img.shields.io/badge/Neo4j%20%C2%B7%20FAISS-Knowledge%20Storage-e07b39?style=flat-square" alt="Storage">
 </p>
 
 ---
 
 ## Data Sources
 
-| Source | Type | Usage |
-|:-------|:-----|:------|
-| Coal Mine Intelligent Blue Book (2025) | Blue Book | Knowledge graph construction |
-| Coal Mine Intelligent Construction Guide (2021) | Policy Standard | Scenario evidence |
-| National Mine Safety Administration Policies | Policy Documents | Industry background |
-| 5G Smart Mine White Papers | Industry White Paper | Technical reference |
-| Huawei/ZTE/China Telecom Mining Solutions | Enterprise Solutions | Technology roadmap |
-| ABB/Siemens/Schneider Mining | International Solutions | Frontier comparison |
-| Mining Scenario Overview (20 scenarios) | Manual Annotation | High-confidence skeleton |
+| Source | Type | Use |
+|:-------|:-----|:----|
+| Coal Mine Intelligence Blue Book (2025) | White paper | KG construction |
+| Coal Mine Intelligence Construction Guide (2021) | Policy standard | Scenario evidence |
+| National Mine Safety Administration policies | Policy | Industry context |
+| 5G Smart Mine White Paper | Industry white paper | Technical reference |
+| Huawei/ZTE/China Telecom mining solutions | Vendor solutions | Technical routes |
+| ABB/Siemens/Schneider mining | International solutions | Frontier comparison |
+| Mining scenario overview (20 scenarios) | Manual curation | High-confidence skeleton |
 
 ---
 
@@ -233,86 +196,38 @@ Output is saved to `output/<timestamp_report-title>/`:
 
 ```
 MineIntel-AutoClaw-Skill/
-├── SKILL.md                          # Master entry Skill
-├── README.txt                        # Submission notes
+├── SKILL.md                          # Entry skill
 ├── demo_prompts.txt                  # Demo prompts
 │
-├── mineintel-research/               # Main orchestrator Skill
+├── mineintel-research/               # Master orchestration skill
 │   ├── SKILL.md
-│   ├── scripts/                      # Core scripts
-│   │   ├── progress_update.py
-│   │   ├── start_progress_ui.py
-│   │   ├── advisor_search.py
-│   │   ├── paper_search.py
-│   │   ├── github_search.py
-│   │   └── ...
-│   └── references/                   # Reference documents
+│   ├── scripts/                      # Orchestration scripts (progress, advisor, search…)
+│   └── references/
 │
-├── mineintel-application-kg/         # Knowledge graph Skill
-│   ├── SKILL.md
-│   ├── scripts/
-│   └── data/
-│       ├── user_sources/             # Manual scenario tables
-│       ├── raw_docs/                 # Raw documents (30+)
-│       ├── clean/                    # Cleaned corpus
-│       └── kg/                       # Knowledge graph data
+├── mineintel-application-kg/         # Knowledge graph skill
+│   └── data/                         # Raw docs, cleaned corpus, KG data
 │
-├── mineintel-knowledge-rag/          # Local knowledge Skill
-├── mineintel-literature-baseline/    # Literature search Skill (with MCP)
-│   ├── mcp_servers/                  # MCP Server
-│   └── scripts/
-├── mineintel-experience-insights/    # Experience insights Skill
-├── mineintel-report-export/          # Report export Skill
-├── mineintel-html-poster/            # HTML poster Skill
-├── mineintel-literature-review/      # Literature review Skill
-├── mineintel-email-draft/            # Browser-based Gmail draft Skill
+├── mineintel-knowledge-rag/          # Knowledge base skill (RAG + advisors)
+├── mineintel-literature-baseline/    # Literature skill (MCP server included)
+├── mineintel-experience-insights/    # Experience reference skill
+├── mineintel-report-export/          # Report export skill
+├── mineintel-html-poster/            # HTML poster skill
+├── mineintel-literature-review/      # Literature review skill
+├── mineintel-email-draft/            # Browser Gmail draft skill
 │
 ├── demo-ui/                          # Real-time progress UI
-│   ├── index.html
-│   └── assets/
-│
 ├── output/                           # Report output directory
-└── tools/                            # Utility tools
+└── tools/                            # Helper tools
 ```
 
 ---
 
-## Competition Info
-
-| Item | Detail |
-|:-----|:-------|
-| **Competition** | 2026 Chinese Collegiate Computing Competition (CCDC) |
-| **Edition** | 19th |
-| **Category** | Software Application and Development |
-| **Final Division** | Jinan Final Division (Qingdao, Shandong) |
-| **Award** | National First Prize |
-| **Recognition** | Selected for the Featured Work Review |
-| **Project** | MineIntel-AutoClaw |
-| **Institution** | China University of Mining and Technology |
-| **Official Source** | [2026 Competition Award Announcement](https://jsjds.blcu.edu.cn/info/1041/2914.htm) |
-
----
-
-## Team
+## Team & License
 
 <p align="center">
   <a href="https://github.com/Richard110206">
-    <img src="https://img.shields.io/badge/Author-Richard110206-34b7a0?style=for-the-badge&logo=github&logoColor=white" alt="Author">
+    <img src="https://img.shields.io/badge/Author-Richard110206-34b7a0?style=flat-square&logo=github&logoColor=white" alt="Author">
   </a>
 </p>
 
----
-
-## License
-
-This project is licensed under the MIT License.
-
----
-
-<p align="center">
-  <sub>Built with</sub>
-  <img src="https://img.shields.io/badge/AutoClaw-34b7a0?style=flat-square" alt="AutoClaw">
-  <img src="https://img.shields.io/badge/MineIntel-4fd4bb?style=flat-square" alt="MineIntel">
-  <br>
-  <sub>MineIntel-AutoClaw &copy; 2026</sub>
-</p>
+Open-sourced under the [MIT License](LICENSE), built on the [AutoClaw](https://github.com/zhipu-ai/autoclaw) Skill architecture.
