@@ -24,6 +24,21 @@
 
 ---
 
+## Tech Stack
+
+<p align="center">
+  <img src="https://img.shields.io/badge/AutoClaw-Agent%20Platform-34b7a0?style=flat-square" alt="AutoClaw">
+  <img src="https://img.shields.io/badge/GLM-LLM%20Engine-4285f4?style=flat-square" alt="GLM">
+  <img src="https://img.shields.io/badge/MCP-Tool%20Protocol-4ac8e8?style=flat-square" alt="MCP">
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/XeLaTeX-PDF%20Engine-008080?style=flat-square" alt="XeLaTeX">
+  <img src="https://img.shields.io/badge/Neo4j%20%C2%B7%20FAISS-Knowledge%20Storage-e07b39?style=flat-square" alt="Storage">
+</p>
+
+Built on the native **AutoClaw** Skill architecture with the **GLM** host model: retrieval over **MCP**, knowledge in **Neo4j** + **FAISS**, literature reviews compiled to PDF by **XeLaTeX**.
+
+---
+
 ## Awards
 
 > 🏆 **First Prize (National Level)** in the Software Application & Development track of the 2026 China Collegiate Computing Contest (19th edition), selected for the featured-works commentary.
@@ -41,27 +56,20 @@ The project centers on multi-agent orchestration, a mining-application knowledge
 <tr>
 <td width="50%" align="center">
 
-**Multi-agent Orchestration**<br>
-Seven collaborating expert roles in sequence: mining application expert → domain analyst → frontier expert → baseline expert → advisor-matching expert → experience expert → report expert.
-<img src="assets/demo-pipeline.png" alt="Multi-agent pipeline" width="100%">
-
-</td>
-<td width="50%" align="center">
-
 **Full HTML Report**<br>
 Auto-generates a magazine-poster style HTML research report covering topic, scenario analysis, paper leads, and technical route.
 <img src="assets/demo-report-html.png" alt="HTML research report" width="100%">
 
 </td>
-</tr>
-<tr>
 <td width="50%" align="center">
 
 **LaTeX/PDF Literature Review**<br>
-A structured LaTeX review compiled to PDF with proper citations and bibliography.
+A structured LaTeX review compiled to PDF with proper citations and bibliography (screenshot of an actual compiled output above).
 <img src="assets/demo-literature-review.png" alt="LaTeX literature review" width="100%">
 
 </td>
+</tr>
+<tr>
 <td width="50%" align="center">
 
 **Automatic Technical-Route Diagrams**<br>
@@ -69,16 +77,19 @@ Excalidraw technical route diagrams generated from research conclusions and embe
 <img src="assets/demo-tech-route.png" alt="Technical route diagram" width="100%">
 
 </td>
-</tr>
-</table>
+<td width="50%" valign="top">
 
-Other core capabilities:
+**Other core capabilities**
 
 - **Mining application knowledge graph** — built from blue/white books, policy standards, and manually curated scenario tables; structured retrieval with provenance (*scenario → pain point → solution → equipment → source*)
 - **Real-time progress UI** — pipeline state syncs live to a web page: current stage, reasoning, tool calls, and completion percentage
 - **Paper lead retrieval** — Chinese mining journals + arXiv/IEEE/MDPI, with script fallback when MCP is unavailable
 - **Advisor matching** — crawls faculty pages of China University of Mining and Technology schools for name, school, and profile link
 - **Advisor email drafts** — Gmail pre-fill in the browser + local preview, never sent automatically
+
+</td>
+</tr>
+</table>
 
 ---
 
@@ -162,19 +173,6 @@ Outputs are saved to `output/<timestamp_title>/`:
 | `assets/<title>_technical_route.excalidraw` | Technical route source (embedded in the HTML report) |
 | `<title>_literature_review.tex` | Literature review LaTeX source |
 | `<title>_literature_review.pdf` | Literature review PDF (requires XeLaTeX) |
-
----
-
-## Tech Stack
-
-<p align="center">
-  <img src="https://img.shields.io/badge/AutoClaw-Agent%20Platform-34b7a0?style=flat-square" alt="AutoClaw">
-  <img src="https://img.shields.io/badge/GLM-LLM%20Engine-4285f4?style=flat-square" alt="GLM">
-  <img src="https://img.shields.io/badge/MCP-Tool%20Protocol-4ac8e8?style=flat-square" alt="MCP">
-  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/XeLaTeX-PDF%20Engine-008080?style=flat-square" alt="XeLaTeX">
-  <img src="https://img.shields.io/badge/Neo4j%20%C2%B7%20FAISS-Knowledge%20Storage-e07b39?style=flat-square" alt="Storage">
-</p>
 
 ---
 

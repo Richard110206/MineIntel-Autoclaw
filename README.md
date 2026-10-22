@@ -24,6 +24,21 @@
 
 ---
 
+## 技术栈
+
+<p align="center">
+  <img src="https://img.shields.io/badge/AutoClaw-Agent%20Platform-34b7a0?style=flat-square" alt="AutoClaw">
+  <img src="https://img.shields.io/badge/GLM-LLM%20Engine-4285f4?style=flat-square" alt="GLM">
+  <img src="https://img.shields.io/badge/MCP-Tool%20Protocol-4ac8e8?style=flat-square" alt="MCP">
+  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/XeLaTeX-PDF%20Engine-008080?style=flat-square" alt="XeLaTeX">
+  <img src="https://img.shields.io/badge/Neo4j%20%C2%B7%20FAISS-Knowledge%20Storage-e07b39?style=flat-square" alt="Storage">
+</p>
+
+基于 **AutoClaw** 原生 Skill 架构与 **GLM** 宿主模型构建：检索走 **MCP** 协议，知识沉淀于 **Neo4j** 图数据库与 **FAISS** 向量索引，文献综述由 **XeLaTeX** 编译为 PDF。
+
+---
+
 ## 成果与荣誉
 
 > 🏆 **2026 年（第 19 届）中国大学生计算机设计大赛**「软件应用与开发」类 **国家一等奖**，并入选特色作品点评。
@@ -41,27 +56,20 @@
 <tr>
 <td width="50%" align="center">
 
-**多智能体协作编排**<br>
-7 个协作专家角色按序编排：矿井应用专家 → 领域分析师 → 行业前沿专家 → Baseline 专家 → 导师申报专家 → 经验参考专家 → 总报告专家。
-<img src="assets/demo-pipeline.png" alt="多智能体编排流水线" width="100%">
-
-</td>
-<td width="50%" align="center">
-
 **HTML 完整报告**<br>
 自动生成 magazine-poster 风格的 HTML 调研报告，覆盖研究主题、场景分析、论文线索与技术路线。
 <img src="assets/demo-report-html.png" alt="HTML 调研报告" width="100%">
 
 </td>
-</tr>
-<tr>
 <td width="50%" align="center">
 
 **LaTeX/PDF 文献综述**<br>
-结构化 LaTeX 综述自动编译为 PDF，含规范的引用与参考文献排版。
+结构化 LaTeX 综述自动编译为 PDF（上图为真实编译产物），含规范的引用与参考文献排版。
 <img src="assets/demo-literature-review.png" alt="LaTeX 文献综述" width="100%">
 
 </td>
+</tr>
+<tr>
 <td width="50%" align="center">
 
 **技术路线图自动生成**<br>
@@ -69,16 +77,19 @@
 <img src="assets/demo-tech-route.png" alt="技术路线图" width="100%">
 
 </td>
-</tr>
-</table>
+<td width="50%" valign="top">
 
-其他核心能力：
+**其他核心能力**
 
 - **矿井应用知识图谱** — 基于蓝皮书、政策标准与人工场景表构建，支持 *场景 → 痛点 → 解决方案 → 技术设备 → 来源依据* 的结构化检索与溯源
 - **实时进度 UI** — 调研过程实时同步到 Web 页面，展示当前阶段、思考过程、工具调用与完成百分比
 - **论文线索检索** — 中文矿业期刊 + arXiv/IEEE/MDPI 国际前沿，MCP 不可用时脚本兜底
 - **导师方向匹配** — 自动检索中国矿业大学各学院师资页面，给出姓名、学院与官网链接
 - **导师邮件草稿** — 浏览器预填 Gmail + 本地预览，不自动发送
+
+</td>
+</tr>
+</table>
 
 ---
 
@@ -162,19 +173,6 @@ uv sync
 | `assets/<标题>_technical_route.excalidraw` | 技术路线图源文件（已嵌入 HTML 报告技术路线章节） |
 | `<标题>_literature_review.tex` | 文献综述 LaTeX 源码 |
 | `<标题>_literature_review.pdf` | 文献综述 PDF（需 XeLaTeX） |
-
----
-
-## 技术栈
-
-<p align="center">
-  <img src="https://img.shields.io/badge/AutoClaw-Agent%20Platform-34b7a0?style=flat-square" alt="AutoClaw">
-  <img src="https://img.shields.io/badge/GLM-LLM%20Engine-4285f4?style=flat-square" alt="GLM">
-  <img src="https://img.shields.io/badge/MCP-Tool%20Protocol-4ac8e8?style=flat-square" alt="MCP">
-  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/XeLaTeX-PDF%20Engine-008080?style=flat-square" alt="XeLaTeX">
-  <img src="https://img.shields.io/badge/Neo4j%20%C2%B7%20FAISS-Knowledge%20Storage-e07b39?style=flat-square" alt="Storage">
-</p>
 
 ---
 
