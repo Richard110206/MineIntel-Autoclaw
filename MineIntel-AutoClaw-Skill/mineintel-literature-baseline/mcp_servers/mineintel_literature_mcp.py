@@ -166,7 +166,7 @@ def frontier_technology_search(arguments: dict[str, Any]) -> dict[str, Any]:
 
     github_result = None
     if include_github:
-        github_query = f"{english_topic} mining detection monitoring"
+        github_query = combined_en
         github_result = safe_github_search(github_query, limit=1, timeout=timeout)
 
     error_count = sum(1 for item in results_by_query if item["result"].get("status") == "error")

@@ -129,21 +129,15 @@ def heading_block(markdown: str, title_pattern: str) -> str:
 
 
 def route_steps(markdown: str) -> list[str]:
-    route_text = heading_block(markdown, r"技术路线|研究路线|实施路线|路线图")
-    plain = strip_markdown(route_text)
-    candidates = [
-        ("数据集整理", ("数据集", "数据整理", "公开数据", "标注")),
-        ("YOLO baseline 复现", ("YOLO", "baseline", "基线", "复现")),
-        ("低照度与小目标优化", ("低照度", "小目标", "增强", "轻量化", "注意力")),
-        ("边缘推理部署", ("边缘", "部署", "推理", "导出")),
-        ("Web 看板", ("Web", "看板", "可视化", "系统")),
-        ("报警闭环", ("报警", "预警", "闭环", "规则")),
-    ]
-    steps = [label for label, keywords in candidates if any(keyword in plain for keyword in keywords)]
-    if "YOLO baseline 复现" not in steps and ("计算机视觉" in plain or "目标检测" in plain):
-        steps.insert(1 if steps else 0, "YOLO baseline 复现")
-    if len(steps) < 4:
-        steps = ["数据集整理", "YOLO baseline 复现", "场景适配优化", "Web 看板与报警闭环"]
+    body = heading_block(markdown, r"技术路线|研究路线|实施路线|路线图")
+    steps = []
+    for raw in body.splitlines():
+        line = raw.strip()
+        if not re.match(r"^(?:[-*+]\s+|\d+[.)、]\s*)", line):
+            continue
+        value = strip_markdown(re.sub(r"^(?:[-*+]\s+|\d+[.)、]\s*)", "", line))
+        if value and value not in steps:
+            steps.append(value)
     return steps[:6]
 
 
@@ -402,7 +396,7 @@ def poster_cells(markdown: str) -> list[dict[str, str]]:
     ]
     cells: list[dict[str, str]] = []
     for num, title, patterns, fallback, quote in specs:
-        text = section_text(markdown, patterns, 300) or fallback
+        text = section_text(markdown, patterns, 300) or "该章节尚未提供调研内容。"
         cells.append({"num": num, "title": title, "text": text, "quote": quote})
     return cells
 

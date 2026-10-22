@@ -28,11 +28,6 @@ PACKAGE_DIR = BASE_DIR.parent
 STATE_PATH = PACKAGE_DIR / "demo-ui" / "progress_state.json"
 SCRIPT_DIR = Path(__file__).resolve().parent
 OUTPUT_ROOT = PACKAGE_DIR / "output"
-LOCAL_ADVISOR_PATHS = (
-    BASE_DIR / "data" / "advisor_fallback.md",
-    PACKAGE_DIR / "mineintel-research" / "data" / "advisor_fallback.md",
-    PACKAGE_DIR / "mineintel-knowledge-rag" / "data" / "advisor_fallback.md",
-)
 BRAND_MARKER = "<!-- MINEINTEL_BRANDED_REPORT -->"
 
 ASCII_LOGO = r"""
@@ -403,84 +398,22 @@ def extract_unique_urls(text: str) -> list[str]:
     return urls
 
 
-DEFAULT_BASELINE = {
-    "name": "ultralytics/ultralytics",
-    "use": "YOLO 生态成熟，适合快速构建矿井安全视觉识别 baseline 和系统闭环。",
-    "url": "https://github.com/ultralytics/ultralytics",
-}
 
-DEFAULT_PAPER_RESULTS = [
-    {
-        "title": "机器视觉感知理论与技术在煤炭工业领域应用进展综述",
-        "source": "工矿自动化",
-        "year": "2023",
-        "url": "http://www.gkzdh.cn/cn/article/pdf/preview/10.13272/j.issn.1671-251x.2022100087.pdf",
-    },
-    {
-        "title": "矿井视觉计算体系架构与关键技术",
-        "source": "煤炭科学技术",
-        "year": "2023",
-        "url": "https://www.mtkxjs.com.cn/cn/article/pdf/preview/10.12438/cst.2023-0152.pdf",
-    },
-    {
-        "title": "煤矿井下工业视频图像增强技术研究与分析",
-        "source": "中国矿业",
-        "year": "2024",
-        "url": "http://www.chinaminingmagazine.com/cn/article/pdf/preview/10.12075/j.issn.1004-4051.20240273.pdf",
-    },
-    {
-        "title": "矿井视频图像目标检测与隐患识别方法研究综述",
-        "source": "煤炭科学技术",
-        "year": "2025",
-        "url": "https://mtkxjs.com.cn/cn/article/pdf/preview/10.12438/cst.2025-1116.pdf",
-    },
-    {
-        "title": "Safety monitoring method of moving target in underground coal mine based on computer vision processing",
-        "source": "Scientific Reports",
-        "year": "2022",
-        "url": "https://www.nature.com/articles/s41598-022-22564-8",
-    },
-    {
-        "title": "The Future of Mine Safety: A Comprehensive Review of Anti-Collision Systems Based on Computer Vision in Underground Mines",
-        "source": "Sensors",
-        "year": "2023",
-        "url": "https://www.mdpi.com/1424-8220/23/9/4294",
-    },
-    {
-        "title": "An open paradigm dataset for intelligent monitoring of underground drilling operations in coal mines",
-        "source": "Scientific Data",
-        "year": "2025",
-        "url": "https://www.nature.com/articles/s41597-025-05118-1",
-    },
-]
 
 
 def paper_results_with_fallback(papers: list[dict[str, str]], minimum: int = 5) -> list[dict[str, str]]:
-    results: list[dict[str, str]] = []
-    seen: set[str] = set()
+    """Compatibility name; validate actual links without adding defaults."""
+    results = []
+    seen = set()
     for item in papers:
-        title = item.get("title", "").strip()
         url = item.get("url", "").strip()
-        if not title or not valid_paper_title(title):
-            continue
-        if not re.match(r"^https?://", url):
+        if not item.get("title", "").strip() or not re.match(r"^https?://", url):
             continue
         if re.search(r"(github\.com|zhihu\.com|xiaohongshu\.com|baidu\.com/s)", url, re.I):
             continue
-        key = url.lower()
-        if key in seen:
-            continue
-        seen.add(key)
-        results.append(item)
-    if len(results) < minimum:
-        for item in DEFAULT_PAPER_RESULTS:
-            key = item["url"].lower()
-            if key in seen:
-                continue
-            seen.add(key)
-            results.append(dict(item))
-            if len(results) >= len(DEFAULT_PAPER_RESULTS):
-                break
+        if url.lower() not in seen:
+            seen.add(url.lower())
+            results.append(item)
     return results
 
 
@@ -621,63 +554,23 @@ def parse_papers(markdown: str) -> list[dict[str, str]]:
 
 
 def parse_baseline(markdown: str) -> list[dict[str, str]]:
+    """Preserve actual repository links without renderer-side method ranking."""
     body = section_body(markdown, ("github", "baseline", "代码", "仓库", "开源"))
-    candidates: list[tuple[int, dict[str, str]]] = []
-    seen: set[str] = set()
-    for line in candidate_lines(body):
-        clean_line = strip_markdown(line)
-        url_match = re.search(r"https?://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", line)
-        if re.match(r"^(地址|链接|URL|技术方向|推荐理由|核心内容|用途|适配用途)[:：]", clean_line, re.I) and not url_match:
-            continue
-        repo_candidates = [
-            item
-            for item in re.findall(r"\b[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+\b", line)
-            if not item.lower().startswith("github.com/") and valid_repo_name(item)
-        ]
-        if url_match:
-            repo_candidates.insert(0, "/".join(url_match.group(0).rstrip("/").split("/")[-2:]))
-        for name in repo_candidates:
-            if not valid_repo_name(name) or name.lower() in seen:
-                continue
-            score = 0
-            if url_match:
-                score += 3
-            if re.search(r"(推荐|baseline|github|仓库|开源|代码)", line, re.I):
-                score += 2
-            if relevant_repo_context(name, line):
-                score += 2
-            if relevant_repo_context(name, body):
-                score += 1
-            if name.lower() in {"ultralytics/ultralytics", "open-mmlab/mmdetection"}:
-                score += 4
-            if score <= 0:
-                continue
+    results = []
+    seen = set()
+    for url in re.findall(r"https?://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", body):
+        url = url.rstrip(".")
+        name = "/".join(url.split("/")[-2:])
+        if name.lower() not in seen:
             seen.add(name.lower())
-            candidates.append(
-                (
-                    score,
-                    {
-                        "name": name,
-                        "use": "适合作为矿井安全视觉识别 baseline 的工程参考。",
-                        "url": url_match.group(0) if url_match else f"https://github.com/{name}",
-                    },
-                )
-            )
-    if not candidates:
-        return [dict(DEFAULT_BASELINE)]
-    candidates.sort(key=lambda item: item[0], reverse=True)
-    return [candidates[0][1]]
+            results.append({"name": name, "url": url, "use": "本轮报告提供的工程参考；适配性见调研正文。"})
+    return results
+
 
 
 def parse_advisors(markdown: str, state: dict) -> list[dict[str, str]]:
     body = section_body(markdown, ("导师", "课题组", "研究方向"))
-    explicit = [item for item in parse_report_advisors(body) if is_valid_advisor(item)]
-    if len(explicit) >= 3:
-        return diversify_advisors(explicit, 6)
-    fallback = local_advisors_from_state(state, body, 6 - len(explicit))
-    seen = {item.get("name", "") for item in explicit}
-    merged = explicit + [item for item in fallback if item.get("name", "") not in seen]
-    return diversify_advisors(merged, 6)
+    return diversify_advisors([item for item in parse_report_advisors(body) if is_valid_advisor(item)], 6)
 
 
 BAD_ADVISOR_NAMES = {
@@ -775,24 +668,6 @@ BLOCKED_DEPARTMENT_KEYWORDS = (
     "北京",
     "机械与电气工程学院",
 )
-CS_FALLBACK_KEYWORDS = (
-    "计算机",
-    "软件",
-    "人工智能",
-    "AI",
-    "机器学习",
-    "深度学习",
-    "计算机视觉",
-    "图像",
-    "算法",
-    "大模型",
-    "NLP",
-    "自然语言",
-    "知识图谱",
-    "数据挖掘",
-    "网络安全",
-    "信息安全",
-)
 
 
 def is_valid_name(name: str) -> bool:
@@ -852,89 +727,12 @@ def is_online_advisor(item: dict[str, str]) -> bool:
     return url.startswith(("http://", "https://"))
 
 
-def should_use_local_cs_fallback(query: str) -> bool:
-    return any(keyword in query for keyword in CS_FALLBACK_KEYWORDS)
 
 
-def local_advisors_from_state(state: dict, body: str, limit: int) -> list[dict[str, str]]:
-    if limit <= 0:
-        return []
-    local_path = next((path for path in LOCAL_ADVISOR_PATHS if path.exists()), None)
-    if local_path is None:
-        return []
-    selection = state.get("selection", {}) if isinstance(state, dict) else {}
-    query = " ".join(str(selection.get(key, "")) for key in ("major", "field", "scene"))
-    query = f"{query} {body}"
-    if not should_use_local_cs_fallback(query):
-        return []
-    tokens = set(re.findall(r"[\u4e00-\u9fff]{2,}|[A-Za-z0-9_+-]{2,}", query))
-    advisors = parse_local_advisor_markdown(local_path)
-    scored: list[tuple[int, dict[str, str]]] = []
-    for advisor in advisors:
-        text = " ".join(advisor.values())
-        score = sum(1 for token in tokens if token and token in text)
-        for strong in ("计算机视觉", "深度学习", "机器人", "物联网", "边缘计算", "矿井", "煤矿", "安全"):
-            if strong in query and strong in text:
-                score += 3
-        scored.append((score, advisor))
-    scored.sort(key=lambda item: item[0], reverse=True)
-    picked = [item for score, item in scored if score > 0][:limit]
-    fallback = picked or [item for _, item in scored[:limit]]
-    return [item for item in fallback if is_valid_advisor(item)]
 
 
-def advisor_search_link(name: str) -> str:
-    from urllib.parse import quote_plus
-
-    query = quote_plus(f"site:cs.cumt.edu.cn 中国矿业大学 徐州 计算机科学与技术学院 {name} 教师")
-    return f"https://www.baidu.com/s?wd={query}"
 
 
-def parse_local_advisor_markdown(path: Path) -> list[dict[str, str]]:
-    text = path.read_text(encoding="utf-8")
-    advisors: list[dict[str, str]] = []
-    current_title = ""
-    current: dict[str, str] | None = None
-
-    def push() -> None:
-        if current and current.get("name"):
-            name = current["name"]
-            current.setdefault("department", "计算机科学与技术学院")
-            current.setdefault("title", "")
-            current.setdefault("direction", "")
-            current.setdefault("url", advisor_search_link(name))
-            current.setdefault("source", "advisor-candidate")
-            item = dict(current)
-            if is_valid_advisor(item):
-                advisors.append(item)
-
-    for raw in text.splitlines():
-        line = raw.strip()
-        section = re.match(r"^##\s+(.+)$", line)
-        if section:
-            current_title = section.group(1).strip()
-            continue
-        name_match = re.match(r"^###\s+([\u4e00-\u9fff]{2,4})", line)
-        if name_match:
-            push()
-            name = name_match.group(1)
-            current = {
-                "name": name,
-                "department": "计算机科学与技术学院",
-                "title": current_title if current_title not in {"教授", "副教授", "讲师"} else current_title,
-                "direction": "",
-                "url": advisor_search_link(name),
-                "source": "advisor-candidate",
-            }
-            continue
-        if current is None:
-            continue
-        if line.startswith("- 职称："):
-            current["title"] = line.split("：", 1)[1].strip()
-        elif line.startswith("- 研究方向："):
-            current["direction"] = line.split("：", 1)[1].strip()
-    push()
-    return advisors
 
 
 def parse_report_advisors(body: str) -> list[dict[str, str]]:
@@ -1019,15 +817,6 @@ def parse_route(markdown: str, state: dict) -> dict:
         branches.append({"title": title, "detail": detail})
         if len(branches) >= 6:
             break
-    if not branches:
-        branches = [
-            {"title": "场景定义", "detail": "明确矿井环境、目标对象和安全约束。"},
-            {"title": "数据采集", "detail": "整理公开数据、现场样例或可替代仿真数据。"},
-            {"title": "基线模型", "detail": "选择可迁移的论文方法或 GitHub baseline。"},
-            {"title": "模型优化", "detail": "处理弱光、粉尘、小目标和边缘部署问题。"},
-            {"title": "现场验证", "detail": "设计准确率、实时性、鲁棒性和安全性指标。"},
-            {"title": "申报产出", "detail": "形成选题、技术路线、导师匹配和报告文件。"},
-        ]
     return {"center": center, "branches": branches}
 
 
@@ -1050,77 +839,8 @@ def paper_urls_in_text(markdown: str) -> list[str]:
 
 
 def ensure_minimum_report_content(title: str, content: str, state: dict) -> str:
-    """Prevent sparse upstream skill output from producing incomplete artifacts."""
-    text = content.strip()
-    appendix: list[str] = []
-
-    if len(paper_urls_in_text(text)) < 5:
-        appendix.extend(
-            [
-                "### 论文线索（可核验链接）",
-                "",
-                "以下论文用于补齐报告的文献综述和 HTML 结果区，均需在正式引用前再次核验题名、期刊、年份和 DOI。",
-                "",
-            ]
-        )
-        for index, paper in enumerate(DEFAULT_PAPER_RESULTS, start=1):
-            appendix.extend(
-                [
-                    f"{index}. **{paper['title']}**",
-                    f"   - 来源：{paper['source']}，{paper['year']}",
-                    f"   - 链接：{paper['url']}",
-                    "",
-                ]
-            )
-
-    if "github.com/" not in text.lower():
-        appendix.extend(
-            [
-                "### GitHub baseline（可运行参考）",
-                "",
-                f"1. **煤矿 PPE 合规监测 baseline**",
-                f"   - 地址：{DEFAULT_BASELINE['url']}",
-                f"   - 适配用途：{DEFAULT_BASELINE['use']}",
-                "",
-            ]
-        )
-
-    advisors = parse_advisors(text, state)
-    existing_advisor_names = set(re.findall(r"[\u4e00-\u9fff]{2,4}", section_body(text, ("导师", "课题组", "研究方向"))))
-    if len(existing_advisor_names) < 4 and advisors:
-        appendix.extend(["### 导师匹配（结构化候选）", ""])
-        for index, advisor in enumerate(advisors[:6], start=1):
-            appendix.extend(
-                [
-                    f"{index}. **{advisor.get('name', '').strip()}** - {advisor.get('title', '').strip()}",
-                    f"   - 所属学院：{advisor.get('department', '').strip()}",
-                    f"   - 研究方向：{advisor.get('direction', '').strip()}",
-                    f"   - 链接：{advisor.get('url', '').strip()}",
-                    "",
-                ]
-            )
-
-    if "zhihu.com/search" not in text and "xiaohongshu.com/search_result" not in text:
-        appendix.extend(
-            [
-                "### 科研经验参考入口",
-                "",
-                experience_link_block(state),
-                "",
-                "以上入口只作为大创推进、答辩准备和经验归纳的公开搜索入口，不作为论文事实依据。",
-                "",
-            ]
-        )
-
-    if not appendix:
-        return text + "\n"
-
-    return (
-        text
-        + "\n\n## 附录：结构化核验结果\n\n"
-        + "\n".join(appendix).strip()
-        + "\n"
-    )
+    """Preserve supplied research without inventing missing facts."""
+    return content.strip() + "\n"
 
 
 def pick_sections(markdown: str) -> dict:

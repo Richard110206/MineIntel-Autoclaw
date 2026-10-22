@@ -58,6 +58,12 @@ def get_token(token_url: str, timeout: int) -> str:
 
 
 def normalize_response(data: dict[str, Any], query: str, max_results: int) -> dict[str, Any]:
+    if not isinstance(data, dict) or not isinstance(data.get("data"), dict):
+        raise RuntimeError("搜索响应缺少有效 data，不能视为检索成功")
+    if data.get("status") in ("error", "failed", "failure", False):
+        raise RuntimeError("搜索服务返回业务错误")
+    if "results" not in data["data"] or not isinstance(data["data"]["results"], list):
+        raise RuntimeError("搜索响应缺少有效 results 数组")
     pages: list[dict[str, str]] = []
     for block in data.get("data", {}).get("results", []):
         for item in block.get("webPages", {}).get("value", []):

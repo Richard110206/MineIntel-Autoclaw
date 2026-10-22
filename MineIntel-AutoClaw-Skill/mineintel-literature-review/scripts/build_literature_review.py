@@ -129,16 +129,6 @@ def extract_urls(text: str) -> list[str]:
     return urls
 
 
-DEFAULT_REFERENCE_LINKS = [
-    ("机器视觉感知理论与技术在煤炭工业领域应用进展综述", "http://www.gkzdh.cn/cn/article/pdf/preview/10.13272/j.issn.1671-251x.2022100087.pdf"),
-    ("矿井视觉计算体系架构与关键技术", "https://www.mtkxjs.com.cn/cn/article/pdf/preview/10.12438/cst.2023-0152.pdf"),
-    ("煤矿井下工业视频图像增强技术研究与分析", "http://www.chinaminingmagazine.com/cn/article/pdf/preview/10.12075/j.issn.1004-4051.20240273.pdf"),
-    ("矿井视频图像目标检测与隐患识别方法研究综述", "https://mtkxjs.com.cn/cn/article/pdf/preview/10.12438/cst.2025-1116.pdf"),
-    ("Safety monitoring method of moving target in underground coal mine based on computer vision processing", "https://www.nature.com/articles/s41598-022-22564-8"),
-    ("The Future of Mine Safety: Anti-Collision Systems Based on Computer Vision in Underground Mines", "https://www.mdpi.com/1424-8220/23/9/4294"),
-    ("An open paradigm dataset for intelligent monitoring of underground drilling operations in coal mines", "https://www.nature.com/articles/s41597-025-05118-1"),
-    ("全国煤矿智能化建设典型案例汇编", "http://www.nea.gov.cn/download/%E5%85%A8%E5%9B%BD%E7%85%A4%E7%9F%BF%E6%99%BA%E8%83%BD%E5%8C%96%E5%BB%BA%E8%AE%BE%E5%85%B8%E5%9E%8B%E6%A1%88%E4%BE%8B%E6%B1%87%E7%BC%96%EF%BC%882023%E5%B9%B4%EF%BC%89.pdf"),
-]
 
 
 def is_paper_section_title(title: str) -> bool:
@@ -182,8 +172,6 @@ def reference_urls_from_paper_sections(markdown: str) -> list[str]:
     return urls
 
 
-def default_reference_papers() -> list[Paper]:
-    return [Paper(title=title, source="公开论文/资料链接", url=url, section="默认补充文献") for title, url in DEFAULT_REFERENCE_LINKS[:7]]
 
 
 def ensure_minimum_papers(papers: list[Paper], minimum: int = 5) -> list[Paper]:
@@ -199,13 +187,6 @@ def ensure_minimum_papers(papers: list[Paper], minimum: int = 5) -> list[Paper]:
             continue
         seen.add(key)
         results.append(paper)
-    if len([paper for paper in results if paper.url]) < minimum:
-        for paper in default_reference_papers():
-            key = paper.url.lower()
-            if key in seen:
-                continue
-            seen.add(key)
-            results.append(paper)
     return results
 
 
@@ -455,102 +436,22 @@ def group_review_paragraph(papers: list[Paper], group_name: str) -> list[str]:
 
 
 def build_review_markdown(title: str, markdown: str) -> str:
+    """Format this research only; synthesis must be supplied by the research agent."""
     papers = extract_papers(markdown)
-    domestic, international = classify_papers(papers)
-    background = section_text(markdown, ("研究主题", "主题概述"), 900)
-    difficulties = section_text(markdown, ("技术难点", "特殊技术难点", "痛点", "难点"), 900)
-    route = section_text(markdown, ("技术路线", "研究建议", "路线"), 1000)
-    family_counter = Counter(method_family(paper) for paper in papers)
-    family_summary = "；".join(f"{family} {count} 条" for family, count in family_counter.most_common(5))
-    representative = "前述中文应用论文、国际前沿论文和工程系统线索"
-    if not family_summary:
-        family_summary = "矿井视觉监测方法、数据集与工程系统线索"
-    if not papers:
-        representative = "后续补充的可核验论文线索"
-
-    if not background:
-        background = "矿井安全监测具有明确工程需求：井下人员、设备、运输皮带、火灾烟雾和巡检机器人等对象需要持续感知，但现场存在弱光、粉尘、水雾、遮挡和网络不稳定等约束。计算机视觉与深度学习适合作为大创项目切入点，因为它可以用公开数据、仿真数据和可复现 baseline 形成相对完整的验证闭环。"
-    if not difficulties:
-        difficulties = "主要难点集中在低照度成像、粉尘水雾导致的图像退化、人员/设备遮挡、小目标漏检、边缘端算力受限、井下安全误报成本较高，以及公开矿井数据不足。"
-    if not route:
-        route = "建议采用场景定义、数据采集、baseline 复现、矿井适配优化、实验评估和申报产出的路线推进。"
-
-    abstract_text = (
-        "本综述只基于已检索到的公开题名、摘要/网页片段、链接和已解析资料做归纳，"
-        "不把未取得全文的实验细节写成确定结论；正式申报或引用前应逐条核验原文、DOI、期刊信息和发表时间。"
-        f"本次共整理 {len(papers)} 条可核验文献线索"
+    lines = [f"# {title}：文献调研", "", "## 资料状态", "",
+             f"本次提取 {len(papers)} 条文献线索。提取不等于全文核验；正式引用前需核验原文。", ""]
+    sections = (
+        ("研究背景", ("研究主题", "主题概述", "背景")),
+        ("学生能力与选题匹配", ("能力", "项目记忆", "选题", "候选")),
+        ("场景难点与资源缺口", ("难点", "痛点", "资源", "约束")),
+        ("文献分析", ("文献分析", "论文", "文献", "前沿")),
+        ("推进路线", ("技术路线", "研究建议", "路线", "里程碑")),
     )
-    if domestic or international:
-        abstract_text += f"（中文应用 {len(domestic)} 条、国际前沿 {len(international)} 条）"
-    abstract_text += "。"
-
-    keyword_candidates = [family for family, _ in family_counter.most_common(3)]
-    keyword_candidates += ["矿井安全监测", "计算机视觉", "大创选题"]
-    keywords = "；".join(dict.fromkeys(keyword for keyword in keyword_candidates if keyword))
-
-    lines: list[str] = [
-        f"# {title}：文献综述",
-        "",
-        "## 摘要",
-        "",
-        abstract_text,
-        "",
-        f"**关键词**：{keywords}",
-        "",
-        "## 研究背景",
-        "",
-        background,
-        "",
-        "矿井安全监测类选题的价值不只在模型精度，还在于能否把算法嵌入实际生产约束：摄像头安装位置受限、井下光照和粉尘条件不稳定、数据采集成本高、误报漏报会影响安全调度。因此，大创阶段更适合从一个清晰对象切入，例如安全帽/自救器佩戴、井下人员越界、皮带异物、烟雾火焰或巡检机器人目标识别，再逐步扩展到系统化监测。",
-        "",
-        "## 研究问题与技术痛点",
-        "",
-        difficulties,
-        "",
-        "结合检索线索，本项目应把问题定义为“矿井复杂环境下的可部署视觉识别”，而不是泛化地做普通目标检测。关键评价指标除 mAP、Precision、Recall 外，还应加入弱光/粉尘/遮挡子集表现、边缘端推理速度、误报类型和可解释性分析。",
-        "",
-        "## 已有论文方法综述",
-        "",
-        "### 中文应用研究",
-        "",
-    ]
-
-    if domestic:
-        lines.extend(group_review_paragraph(domestic, "中文应用研究"))
-    else:
-        lines.extend(["暂无稳定中文应用论文条目，建议继续以煤炭学报、采矿与安全工程学报、工矿自动化、煤炭科学技术等来源核验。", ""])
-
-    lines.extend(["### 国际前沿研究", ""])
-    if international:
-        lines.extend(group_review_paragraph(international, "国际前沿研究"))
-    else:
-        lines.extend(["暂无稳定国际前沿论文条目，建议继续以 arXiv、DBLP、IEEE、MDPI、Nature/Springer 等来源核验。", ""])
-
-    lines.extend(
-        [
-            "## 研究路线与论文契合关系",
-            "",
-            route,
-            "",
-            f"从契合关系看，本次 {len(papers)} 条论文线索主要集中在：{family_summary}。其中，{representative} 等条目可以分别支撑“场景必要性、算法路线、数据与评测、工程落地”四个论证环节。中文矿业应用论文更适合承担“场景定义、工程指标、矿井约束”的证据角色；国际前沿论文更适合承担“模型改进、对比实验、鲁棒性设计”的证据角色。",
-            "",
-            "因此，项目路线不应简单写成“使用 YOLO 做识别”，而应写成“面向井下复杂环境的视觉监测闭环”：先确定安全帽/自救器、皮带异物、烟雾火焰或人员越界等单一对象，再复现一个轻量目标检测 baseline，随后围绕弱光、粉尘、水雾、遮挡和边缘端部署做有针对性的改进，最后用可视化系统和文献综述说明工程价值。",
-            "",
-            "## 论文解决了什么，以及仍未解决什么",
-            "",
-            f"已检索论文大体解决了三类问题：一是证明机器视觉可以进入煤矿安全监测、火灾识别、人员行为识别和智能化矿山系统；二是给出 YOLO、SVM、Faster R-CNN、姿态估计、多模态模型等可迁移方法；三是提供了部分公开数据集、综述和工程系统线索。从当前线索看，方法谱系可概括为：{family_summary}。这些内容足够支撑本项目完成选题论证、baseline 选择和初步实验设计。",
-            "",
-            "仍未充分解决的问题包括：井下真实数据难获取，公开数据与现场分布存在差距；弱光、粉尘、水雾和遮挡同时出现时模型鲁棒性不足；很多论文更强调算法结果，缺少边缘端部署和安全流程闭环；导师和工程现场资源会直接影响项目能否拿到高质量数据。因此，本项目的创新点应聚焦在“矿井适配”而不是盲目堆叠模型。",
-            "",
-            "## 面向大创的选题建议",
-            "",
-            "建议把题目压缩为一个可验证对象，例如“低照度矿井场景下安全帽/自救器佩戴检测与轻量化部署”或“粉尘遮挡环境下煤矿皮带异物检测方法研究”。这样既能对接中文矿业论文的应用场景，又能对接国际前沿论文中的鲁棒检测和轻量化思路，还便于用 GitHub baseline 做可运行演示。",
-            "",
-            "申报材料中应明确三点：第一，数据从何而来，是否有公开数据、仿真增强或校内合作采集方案；第二，baseline 是什么，改进点相对 baseline 解决了哪一个矿井痛点；第三，最终产出是论文综述、模型训练结果、可视化演示系统还是边缘端部署 demo。答辩时不要把平台经验、搜索片段或未核验网页当作论文事实。",
-            "",
-        ]
-    )
+    for heading, patterns in sections:
+        body = section_text(markdown, patterns, 4000)
+        lines.extend([f"## {heading}", "", body or "本轮调研未提供该部分，尚需补充。", ""])
     return "\n".join(lines)
+
 
 
 def collect_reference_items(papers: list[Paper], markdown: str) -> list[dict[str, str]]:
@@ -570,12 +471,6 @@ def collect_reference_items(papers: list[Paper], markdown: str) -> list[dict[str
         seen_urls.add(url)
         if len(items) >= 12:
             break
-    for title_ref, url in DEFAULT_REFERENCE_LINKS:
-        if len(items) >= 16:
-            break
-        if url not in seen_urls:
-            items.append({"title": title_ref, "source": "", "url": url})
-            seen_urls.add(url)
     return items
 
 

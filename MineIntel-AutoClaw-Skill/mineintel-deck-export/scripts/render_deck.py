@@ -137,7 +137,7 @@ def lines_from_body(body: str, limit: int, fallback: list[str]) -> list[str]:
             return lines
     if lines:
         return lines[:limit]
-    return fallback[:limit]
+    return ["该章节尚未提供调研内容。"]
 
 
 def count_urls(markdown: str) -> int:
@@ -208,12 +208,7 @@ def slide_verdict(total: int, sections: list[dict[str, str]], markdown: str) -> 
     items = lines_from_body(
         verdict,
         4,
-        [
-            "选题可行性高，适合从矿井视觉安全监测切入。",
-            "建议聚焦 PPE 合规检测、低照度增强和边缘预警闭环。",
-            "核心难点是矿井场景适配，而不是堆模型名称。",
-            "申报材料要突出安全价值、软件系统闭环和可复现实验。",
-        ],
+        [],
     )
     return f"""
 <section class="slide light">
@@ -222,9 +217,9 @@ def slide_verdict(total: int, sections: list[dict[str, str]], markdown: str) -> 
   <h1 class="h-xl" data-anim>结论不是“能做”，而是怎么收敛。</h1>
   <div class="grid-4" style="padding-top:7vh">
     {stat_card("报告章节", str(len(sections)), "完整报告中的结构化章节")}
-    {stat_card("论文线索", str(max(1, count_paper_items(markdown))), "中文与国际前沿线索")}
+    {stat_card("论文线索", str(count_paper_items(markdown)), "中文与国际前沿线索")}
     {stat_card("链接证据", str(count_urls(markdown)), "论文、仓库、导师页面")}
-    {stat_card("核心建议", "小闭环", "PPE + 低照度 + 边缘预警")}
+    {stat_card("核心建议", "可行性", "依据学生经历与矿井需求")}
   </div>
   <div class="callout" style="margin-top:4vh" data-anim>
     <div class="q-big">{esc(items[0])}</div>
@@ -238,16 +233,16 @@ def slide_scenarios(total: int, sections: list[dict[str, str]]) -> str:
     items = lines_from_body(
         section_body(sections, ("应用场景", "场景")),
         4,
-        ["人员 PPE 与不安全行为监测", "巷道巡检与固定摄像头异常识别", "输送带与机电设备安全监测", "瓦斯、顶板、矿压等传感器联动"],
+        [],
     )
     return f"""
 <section class="slide dark">
 {chrome("Act I · Mining Scene", 3, total)}
   <div class="frame grid-2-7-5" style="padding-top:7vh">
     <div>
-      <div class="kicker" data-anim>矿井不是普通摄像头场景</div>
+      <div class="kicker" data-anim>场景需求决定技术选择</div>
       <h1 class="h-xl" data-anim>先落场景，再谈模型。</h1>
-      <p class="lead" style="margin-top:3vh" data-anim>视觉识别的价值不在“看见目标”，而在把人员、设备、巷道和传感器报警串成安全闭环。</p>
+      <p class="lead" style="margin-top:3vh" data-anim>结合当前调研证据明确矿井需求，根据学生能力选择可完成的方案。</p>
     </div>
     <div class="col" style="gap:2vh">
       {''.join(text_card(f"场景 {idx:02d}", item) for idx, item in enumerate(items, 1))}
@@ -261,13 +256,13 @@ def slide_challenges(total: int, sections: list[dict[str, str]]) -> str:
     items = lines_from_body(
         section_body(sections, ("难点", "挑战")),
         6,
-        ["低照度与光照不均", "粉尘、水雾和镜头污染", "小目标与密集遮挡", "真实数据采集难", "边缘部署约束", "误报/漏报代价高"],
+        [],
     )
     return f"""
 <section class="slide light">
 {chrome("Act II · Constraints", 4, total)}
   <div class="kicker" data-anim>真正的难点</div>
-  <h1 class="h-xl" style="font-size:5.4vw" data-anim>矿井会把通用视觉模型的短板放大。</h1>
+  <h1 class="h-xl" style="font-size:5.4vw" data-anim>项目难点要结合场景与资源判断。</h1>
   <div class="grid-6" style="padding-top:6vh">
     {''.join(text_card(f"{idx:02d}", item) for idx, item in enumerate(items[:6], 1))}
   </div>
@@ -279,7 +274,7 @@ def slide_papers(total: int, sections: list[dict[str, str]]) -> str:
     items = lines_from_body(
         section_body(sections, ("论文", "文献", "前沿")),
         5,
-        ["矿井视频图像目标检测与隐患识别方法研究综述", "矿井复杂环境小目标检测算法", "地下矿山计算机视觉防碰撞系统综述"],
+        [],
     )
     return f"""
 <section class="slide dark">
@@ -306,7 +301,7 @@ def slide_baseline(total: int, sections: list[dict[str, str]]) -> str:
     items = lines_from_body(
         baseline,
         4,
-        ["ultralytics/ultralytics：生态成熟，适合快速构建检测闭环", "先复现公开 PPE/安全帽数据集", "再迁移到矿井低照度样例", "导出 ONNX/TensorRT 并接入 Web 看板"],
+        [],
     )
     return f"""
 <section class="slide light">
@@ -315,7 +310,7 @@ def slide_baseline(total: int, sections: list[dict[str, str]]) -> str:
     <div>
       <div class="kicker" data-anim>一个 baseline 就够</div>
       <h1 class="h-xl" data-anim>先复现，再迁移，再做系统闭环。</h1>
-      <p class="lead" style="margin-top:3vh" data-anim>{esc(compact(baseline, 210) or "推荐以 YOLO 系列目标检测作为 baseline，并把训练、推理、报警和看板做成可演示系统。")}</p>
+      <p class="lead" style="margin-top:3vh" data-anim>{esc(compact(baseline, 210) or "尚未提供经过调研的 baseline。")}</p>
     </div>
     <div class="col" style="gap:2vh">
       {''.join(text_card(f"Step {idx}", item) for idx, item in enumerate(items, 1))}
@@ -329,13 +324,13 @@ def slide_advisors(total: int, sections: list[dict[str, str]]) -> str:
     items = lines_from_body(
         section_body(sections, ("导师", "研究方向")),
         6,
-        ["计算机视觉与模式识别方向导师", "图像处理与视频分析方向导师", "智慧矿山与边缘部署方向导师"],
+        [],
     )
     return f"""
 <section class="slide dark">
 {chrome("Advisor Match", 7, total)}
   <div class="kicker" data-anim>导师匹配不是泛泛推荐</div>
-  <h1 class="h-xl" style="font-size:5.2vw" data-anim>候选导师要能接住“视觉 + 矿井 + 系统”。</h1>
+  <h1 class="h-xl" style="font-size:5.2vw" data-anim>候选导师应与课题需求、学生方向相匹配。</h1>
   <div class="grid-3" style="padding-top:7vh">
     {''.join(text_card(f"候选 {idx:02d}", item) for idx, item in enumerate(items[:3], 1))}
   </div>
@@ -351,7 +346,7 @@ def slide_route(total: int, sections: list[dict[str, str]]) -> str:
     route = lines_from_body(
         section_body(sections, ("技术路线", "研究目标", "创新点", "评价指标")),
         6,
-        ["明确矿井目标对象和安全边界", "整理公开数据与可合规采集样例", "复现 YOLO baseline", "加入低照度增强和轻量化策略", "部署边缘端推理与报警看板", "沉淀申报材料和实验记录"],
+        [],
     )
     steps = "".join(
         f"""
@@ -381,7 +376,7 @@ def slide_project(total: int, sections: list[dict[str, str]]) -> str:
     items = lines_from_body(
         section_body(sections, ("大创", "建议书", "科研经验", "最终建议")),
         4,
-        ["题目里明确对象、场景、方法和系统", "先复现 baseline，再做小改进", "数据来源必须合规", "答辩重点解释矿井场景差异"],
+        [],
     )
     return f"""
 <section class="slide dark">
