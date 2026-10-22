@@ -40,20 +40,11 @@ The project centers on multi-agent orchestration, a mining-application knowledge
 <tr>
 <td width="50%" align="center">
 
-**Full HTML Report**<br>
-Auto-generates a magazine-poster style HTML research report covering topic, scenario analysis, paper leads, and technical route.
-<img src="assets/demo-report-html.png" alt="HTML research report" width="100%">
+**Research Intelligence Poster**<br>
+Research findings distilled into a one-page poster layout — topic, key scenarios, technical route, and conclusion highlights at a glance.
+<img src="assets/demo-poster.png" alt="Research intelligence poster" width="100%">
 
 </td>
-<td width="50%" align="center">
-
-**LaTeX/PDF Poster Report**<br>
-A LaTeX-typeset poster-style report compiled to PDF (screenshot of an actual compiled output).
-<img src="assets/demo-poster.png" alt="LaTeX poster report" width="100%">
-
-</td>
-</tr>
-<tr>
 <td width="50%" align="center">
 
 **Automatic Technical-Route Diagrams**<br>
@@ -61,11 +52,20 @@ Excalidraw technical route diagrams generated from research conclusions and embe
 <img src="assets/demo-tech-route.png" alt="Technical route diagram" width="100%">
 
 </td>
+</tr>
+<tr>
 <td width="50%" align="center">
 
 **PDF Literature Review**<br>
 A structured literature review compiled to PDF with proper sections, citations, and bibliography.
 <img src="assets/demo-literature-review.png" alt="PDF literature review" width="100%">
+
+</td>
+<td width="50%" align="center">
+
+**Advisor Email Draft**<br>
+One click generates a ready-to-send cold email to advisors — Gmail pre-filled in the browser with local preview; never sent automatically.
+<img src="assets/demo-email-draft.png" alt="Advisor email draft" width="100%">
 
 </td>
 </tr>
@@ -76,7 +76,7 @@ A structured literature review compiled to PDF with proper sections, citations, 
 ## Architecture
 
 <p align="center">
-  <img src="assets/system-architecture.png" alt="MineIntel-AutoClaw system architecture" width="100%">
+  <img src="assets/system-architecture-v3.png" alt="MineIntel-AutoClaw system architecture" width="100%">
 </p>
 
 **MineIntel-AutoClaw** is built on the native Skill architecture of [AutoClaw](https://github.com/zhipu-ai/autoclaw): the host-layer GLM model drives a 7-step research pipeline defined by Skills; the support layer provides knowledge-graph retrieval, a literature MCP, the report engine, and project memory; the data layer holds white-book corpora, scenario tables, vector indexes, and a graph database.

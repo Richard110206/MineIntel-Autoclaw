@@ -40,20 +40,11 @@
 <tr>
 <td width="50%" align="center">
 
-**HTML 完整报告**<br>
-自动生成 magazine-poster 风格的 HTML 调研报告，覆盖研究主题、场景分析、论文线索与技术路线。
-<img src="assets/demo-report-html.png" alt="HTML 调研报告" width="100%">
+**科研情报海报**<br>
+以海报版式呈现调研的具体内容——研究主题、关键场景、技术路线与结论要点浓缩一页，可读性优先。
+<img src="assets/demo-poster.png" alt="科研情报海报" width="100%">
 
 </td>
-<td width="50%" align="center">
-
-**LaTeX/PDF 海报报告**<br>
-LaTeX 排版的海报风格报告自动编译为 PDF（上图为真实编译产物）。
-<img src="assets/demo-poster.png" alt="LaTeX 海报报告" width="100%">
-
-</td>
-</tr>
-<tr>
 <td width="50%" align="center">
 
 **技术路线图自动生成**<br>
@@ -61,11 +52,20 @@ LaTeX 排版的海报风格报告自动编译为 PDF（上图为真实编译产�
 <img src="assets/demo-tech-route.png" alt="技术路线图" width="100%">
 
 </td>
+</tr>
+<tr>
 <td width="50%" align="center">
 
 **PDF 文献综述**<br>
 结构化文献综述以 LaTeX 编译为 PDF，含规范的章节、引用与参考文献排版。
 <img src="assets/demo-literature-review.png" alt="PDF 文献综述" width="100%">
+
+</td>
+<td width="50%" align="center">
+
+**导师邮件草稿**<br>
+一键生成可直接发给导师的套磁邮件，浏览器预填 Gmail、本地预览确认，不自动发送。
+<img src="assets/demo-email-draft.png" alt="导师邮件草稿" width="100%">
 
 </td>
 </tr>
@@ -76,7 +76,7 @@ LaTeX 排版的海报风格报告自动编译为 PDF（上图为真实编译产�
 ## 系统架构
 
 <p align="center">
-  <img src="assets/system-architecture.png" alt="MineIntel-AutoClaw 系统架构" width="100%">
+  <img src="assets/system-architecture-v3.png" alt="MineIntel-AutoClaw 系统架构" width="100%">
 </p>
 
 **MineIntel-AutoClaw（矿小智）** 基于 [AutoClaw](https://github.com/zhipu-ai/autoclaw) 原生 Skill 架构构建：宿主层的 GLM 模型按 Skill 定义调度 7 步调研流水线，能力支撑层的各 Skill 提供知识图谱检索、文献 MCP、报告引擎与项目记忆，数据层沉淀白皮书语料、场景表、向量索引与图数据库。
