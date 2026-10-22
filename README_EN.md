@@ -15,36 +15,20 @@
     <img src="https://img.shields.io/github/stars/Richard110206/MineIntel-Autoclaw?style=flat-square&logo=github" alt="stars">
   </a>
   <a href="https://github.com/zhipu-ai/autoclaw">
-    <img src="https://img.shields.io/badge/Platform-AutoClaw%20%C2%B7%20GLM-34b7a0?style=flat-square" alt="AutoClaw">
+    <img src="https://img.shields.io/badge/AutoClaw%20%C2%B7%20GLM-Agent%20Platform-34b7a0?style=flat-square" alt="AutoClaw">
   </a>
   <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/MCP-compatible-4ac8e8?style=flat-square" alt="MCP">
+  <img src="https://img.shields.io/badge/MCP-Tool%20Protocol-4ac8e8?style=flat-square" alt="MCP">
+  <img src="https://img.shields.io/badge/XeLaTeX-PDF%20Engine-008080?style=flat-square" alt="XeLaTeX">
+  <img src="https://img.shields.io/badge/Neo4j%20%C2%B7%20FAISS-Storage-e07b39?style=flat-square" alt="Storage">
   <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License">
 </p>
 
 ---
 
-## Tech Stack
-
-<p align="center">
-  <img src="https://img.shields.io/badge/AutoClaw-Agent%20Platform-34b7a0?style=flat-square" alt="AutoClaw">
-  <img src="https://img.shields.io/badge/GLM-LLM%20Engine-4285f4?style=flat-square" alt="GLM">
-  <img src="https://img.shields.io/badge/MCP-Tool%20Protocol-4ac8e8?style=flat-square" alt="MCP">
-  <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/XeLaTeX-PDF%20Engine-008080?style=flat-square" alt="XeLaTeX">
-  <img src="https://img.shields.io/badge/Neo4j%20%C2%B7%20FAISS-Knowledge%20Storage-e07b39?style=flat-square" alt="Storage">
-</p>
-
-Built on the native **AutoClaw** Skill architecture with the **GLM** host model: retrieval over **MCP**, knowledge in **Neo4j** + **FAISS**, literature reviews compiled to PDF by **XeLaTeX**.
-
----
-
 ## Awards
 
-> 🏆 **First Prize (National Level)** in the Software Application & Development track of the 2026 China Collegiate Computing Contest (19th edition), selected for the featured-works commentary.
-> Finals: Jinan region (Qingdao, Shandong) · Institution: China University of Mining and Technology
->
-> See the [official results announcement](https://jsjds.blcu.edu.cn/info/1041/2914.htm) (in Chinese).
+> 🏆 **First Prize (National Level)**, Software Application & Development track, 2026 China Collegiate Computing Contest (19th edition), selected for the featured-works commentary · Jinan finals (Qingdao, Shandong) · China University of Mining and Technology · [Official announcement](https://jsjds.blcu.edu.cn/info/1041/2914.htm) (in Chinese)
 
 The project centers on multi-agent orchestration, a mining-application knowledge graph, and end-to-end research delivery — supporting the full pipeline from scenario analysis, literature search, and baseline recommendation to deliverable generation for mining-focused innovation topics.
 
@@ -63,9 +47,9 @@ Auto-generates a magazine-poster style HTML research report covering topic, scen
 </td>
 <td width="50%" align="center">
 
-**LaTeX/PDF Literature Review**<br>
-A structured LaTeX review compiled to PDF with proper citations and bibliography (screenshot of an actual compiled output above).
-<img src="assets/demo-literature-review.png" alt="LaTeX literature review" width="100%">
+**LaTeX/PDF Poster Report**<br>
+A LaTeX-typeset poster-style report compiled to PDF (screenshot of an actual compiled output).
+<img src="assets/demo-poster.png" alt="LaTeX poster report" width="100%">
 
 </td>
 </tr>
@@ -77,15 +61,11 @@ Excalidraw technical route diagrams generated from research conclusions and embe
 <img src="assets/demo-tech-route.png" alt="Technical route diagram" width="100%">
 
 </td>
-<td width="50%" valign="top">
+<td width="50%" align="center">
 
-**Other core capabilities**
-
-- **Mining application knowledge graph** — built from blue/white books, policy standards, and manually curated scenario tables; structured retrieval with provenance (*scenario → pain point → solution → equipment → source*)
-- **Real-time progress UI** — pipeline state syncs live to a web page: current stage, reasoning, tool calls, and completion percentage
-- **Paper lead retrieval** — Chinese mining journals + arXiv/IEEE/MDPI, with script fallback when MCP is unavailable
-- **Advisor matching** — crawls faculty pages of China University of Mining and Technology schools for name, school, and profile link
-- **Advisor email drafts** — Gmail pre-fill in the browser + local preview, never sent automatically
+**PDF Literature Review**<br>
+A structured literature review compiled to PDF with proper sections, citations, and bibliography.
+<img src="assets/demo-literature-review.png" alt="PDF literature review" width="100%">
 
 </td>
 </tr>
@@ -96,7 +76,7 @@ Excalidraw technical route diagrams generated from research conclusions and embe
 ## Architecture
 
 <p align="center">
-  <img src="assets/architecture.png" alt="MineIntel-AutoClaw system architecture" width="100%">
+  <img src="assets/system-architecture.png" alt="MineIntel-AutoClaw system architecture" width="100%">
 </p>
 
 **MineIntel-AutoClaw** is built on the native Skill architecture of [AutoClaw](https://github.com/zhipu-ai/autoclaw): the host-layer GLM model drives a 7-step research pipeline defined by Skills; the support layer provides knowledge-graph retrieval, a literature MCP, the report engine, and project memory; the data layer holds white-book corpora, scenario tables, vector indexes, and a graph database.
@@ -141,8 +121,8 @@ cd MineIntel-Autoclaw/MineIntel-AutoClaw-Skill
 uv sync
 # Or without uv: python -m pip install -r requirements-advanced.txt
 
-# 3. Import the whole MineIntel-AutoClaw-Skill folder into AutoClaw as a skill group
-#    (drop it into the AutoClaw Skills directory for auto-detection)
+# 3. In the AutoClaw desktop app, use "Add Skill" to import the whole MineIntel-AutoClaw-Skill folder
+#    (it contains the top-level SKILL.md; the skill group is auto-detected)
 
 # 4. (Optional) Configure search service env vars (see .env.example):
 #    AUTOGLM_APP_ID / AUTOGLM_APP_KEY     AutoGLM web search
@@ -155,7 +135,8 @@ uv sync
 
 ### Usage
 
-Send the following prompt in AutoClaw to trigger the full research pipeline (the pipeline currently targets Chinese-language output):
+1. Open the AutoClaw desktop app, click **"Add Skill"** in the skill manager, and select the entire `MineIntel-AutoClaw-Skill` folder (it contains the top-level `SKILL.md`; no need to import sub-skills one by one);
+2. Send the following prompt in an AutoClaw chat to trigger the full research pipeline (the pipeline currently targets Chinese-language output):
 
 ```
 请使用 MineIntel-AutoClaw-Skill（矿小智）技能组，围绕“计算机视觉在矿井安全监测中的大创选题”生成科研调研报告。
